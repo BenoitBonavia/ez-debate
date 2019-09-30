@@ -8,6 +8,8 @@ public class DataEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "data_title")
     private String dataTitle;
 
     public Long getId() {
