@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+}
+
+.font-montserrat {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+
+
+
+
+.font-size-14 {
+  font-size: 14px !important;
+}
