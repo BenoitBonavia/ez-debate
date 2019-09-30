@@ -8,6 +8,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {HeaderComponent} from "./header/header.component";
 import {MatButtonModule} from "@angular/material/button";
 import {faPlus} from "@fortawesome/fontawesome-free";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import {faPlus} from "@fortawesome/fontawesome-free";
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
