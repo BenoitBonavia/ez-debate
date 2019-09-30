@@ -19,4 +19,8 @@ public class DataEntity {
     public String getDataTitle() {
         return dataTitle;
     }
+
+    public void setDataTitle(String dataTitle) {
+        this.dataTitle = dataTitle;
+    }
 }
