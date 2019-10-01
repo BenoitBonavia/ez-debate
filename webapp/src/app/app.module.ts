@@ -7,14 +7,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {HeaderComponent} from "./header/header.component";
 import {MatButtonModule} from "@angular/material/button";
-import {faPlus} from "@fortawesome/fontawesome-free";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {HomeComponent} from "./home/home.component";
+import {DataDetailComponent} from "./data/detail/data-detail.component";
+import {MatCardModule} from "@angular/material/card";
+import {DataListingComponent} from "./data/listing/data-listing.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    DataDetailComponent,
+    DataListingComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +30,7 @@ import {MatInputModule} from "@angular/material/input";
     MatButtonModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
