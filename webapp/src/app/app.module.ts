@@ -15,6 +15,7 @@ import {MatCardModule} from "@angular/material/card";
 import {DataListingComponent} from "./data/listing/data-listing.component";
 import {CreateDataComponent} from "./create-data/create-data.component";
 import {MatStepperModule} from "@angular/material/stepper";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatInputModule,
     MatCardModule,
     MatStepperModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

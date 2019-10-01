@@ -26,3 +26,33 @@ body {
 .display-block {
   display: block !important;
 }
+
+.container {
+  margin: 0 auto !important;
+  float: none !important;
+}
+@media (max-width: 575.98px) {
+  .container {
+
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}

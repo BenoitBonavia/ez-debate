@@ -1,10 +1,18 @@
-<mat-vertical-stepper>
-  <mat-step label="Titre & Sous titre">
-    <mat-form-field class="display-block">
-      <input matInput placeholder="Title">
-    </mat-form-field>
-  </mat-step>
-  <mat-step label="Step 1">
-    Content 2
-  </mat-step>
-</mat-vertical-stepper>
+<div class="container">
+  <div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row">
+      <div fxFlex="100">
+        <mat-vertical-stepper>
+          <mat-step label="Titre & Sous titre">
+            <mat-form-field class="display-block">
+              <input matInput placeholder="Title">
+            </mat-form-field>
+          </mat-step>
+          <mat-step label="Step 1">
+            Content 2
+          </mat-step>
+        </mat-vertical-stepper>
+      </div>
+    </div>
+  </div>
+</div>
