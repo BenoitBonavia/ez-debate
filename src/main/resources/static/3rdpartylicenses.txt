@@ -87,6 +87,12 @@ THE SOFTWARE.
 
 @angular/material/button
 
+@angular/material/form-field
+
+@angular/material/icon
+
+@angular/material/stepper
+
 @angular/material/toolbar
 
 @angular/platform-browser
