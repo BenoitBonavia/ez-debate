@@ -8,6 +8,10 @@ body {
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
 }
 
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
 .font-montserrat {
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
 }
@@ -30,6 +34,8 @@ body {
 .container {
   margin: 0 auto !important;
   float: none !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 @media (max-width: 575.98px) {
   .container {

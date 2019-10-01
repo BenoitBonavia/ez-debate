@@ -9,18 +9,33 @@ public class DataEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "data_title")
-    private String dataTitle;
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "subtitle")
+    private String subtitle;
 
     public Long getId() {
         return id;
     }
 
-    public String getDataTitle() {
-        return dataTitle;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setDataTitle(String dataTitle) {
-        this.dataTitle = dataTitle;
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
     }
 }
