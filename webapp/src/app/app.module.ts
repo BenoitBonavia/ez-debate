@@ -13,6 +13,8 @@ import {HomeComponent} from "./home/home.component";
 import {DataDetailComponent} from "./data/detail/data-detail.component";
 import {MatCardModule} from "@angular/material/card";
 import {DataListingComponent} from "./data/listing/data-listing.component";
+import {CreateDataComponent} from "./create-data/create-data.component";
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {DataListingComponent} from "./data/listing/data-listing.component";
     HeaderComponent,
     HomeComponent,
     DataDetailComponent,
-    DataListingComponent
+    DataListingComponent,
+    CreateDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import {DataListingComponent} from "./data/listing/data-listing.component";
     ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

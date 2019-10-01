@@ -1,4 +1,4 @@
-package com.perso.ez.debate;
+package com.perso.ez.debate.data;
 
 import javax.persistence.*;
 
