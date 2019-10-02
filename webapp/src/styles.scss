@@ -12,6 +12,8 @@ body {
   flex: 1 1 auto;
 }
 
+/* font --------------------------------------------------------------------------------------------------------------*/
+
 .font-montserrat {
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
 }
@@ -24,12 +26,52 @@ body {
   font-size: 14px !important;
 }
 
-
-
+/* display -----------------------------------------------------------------------------------------------------------*/
 
 .display-block {
   display: block !important;
 }
+
+.display-none {
+  display: none !important;
+}
+
+/* padding -----------------------------------------------------------------------------------------------------------*/
+
+.padding-top-15 {
+  padding-top: 15px;
+}
+
+.padding-right-15 {
+  padding-right: 15px;
+}
+
+/* sizing ------------------------------------------------------------------------------------------------------------*/
+
+.w100 {
+  width: 100%;
+}
+
+/* positioning -------------------------------------------------------------------------------------------------------*/
+
+.centered-block {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .container {
   margin: 0 auto !important;

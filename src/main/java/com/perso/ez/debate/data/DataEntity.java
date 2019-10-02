@@ -1,6 +1,9 @@
 package com.perso.ez.debate.data;
 
+import com.perso.ez.debate.data.source.SourceEntity;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "data")
@@ -14,6 +17,13 @@ public class DataEntity {
 
     @Column(name = "subtitle")
     private String subtitle;
+
+    @Column(name = "text")
+    private String text;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "data_id", referencedColumnName = "id")
+    private List<SourceEntity> sources;
 
     public Long getId() {
         return id;
@@ -37,5 +47,21 @@ public class DataEntity {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
+    }
+
+    public List<SourceEntity> getSources() {
+        return sources;
+    }
+
+    public void setSources(List<SourceEntity> sources) {
+        this.sources = sources;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

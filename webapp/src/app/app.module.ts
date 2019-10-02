@@ -13,11 +13,12 @@ import {HomeComponent} from "./home/home.component";
 import {DataDetailComponent} from "./data/detail/data-detail.component";
 import {MatCardModule} from "@angular/material/card";
 import {DataListingComponent} from "./data/listing/data-listing.component";
-import {CreateDataComponent} from "./create-data/create-data.component";
+import {CreateDataComponent} from "./data/create/create-data.component";
 import {MatStepperModule} from "@angular/material/stepper";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {DataService} from "./data/data.service";
+import {DataService} from "./data.service";
 import {HttpClientModule} from "@angular/common/http";
+import {SearchDataComponent} from "./data/search/search-data.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {HttpClientModule} from "@angular/common/http";
     DataDetailComponent,
     DataListingComponent,
     CreateDataComponent,
+    SearchDataComponent
   ],
   imports: [
     HttpClientModule,
