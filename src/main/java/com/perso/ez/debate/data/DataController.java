@@ -25,7 +25,6 @@ public class DataController {
     @PostMapping()
     public @ResponseBody
     DataEntity saveData(@RequestBody DataEntity data) {
-        System.out.println(data.toString());
         return dataRepository.save(data);
     }
 }

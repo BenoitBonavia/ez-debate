@@ -16,13 +16,14 @@ import {DataListingComponent} from "./data/listing/data-listing.component";
 import {CreateDataComponent} from "./data/create/create-data.component";
 import {MatStepperModule} from "@angular/material/stepper";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {DataService} from "./data.service";
+import {DataService} from "./models/service/data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {SearchDataComponent} from "./data/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Overlay} from "@angular/cdk/overlay";
 import {NgxMasonryModule} from "ngx-masonry";
+import {IconService} from "./models/service/icon.service";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {NgxMasonryModule} from "ngx-masonry";
   ],
   providers: [
     DataService,
+    IconService,
     MatSnackBar,
     Overlay
   ],

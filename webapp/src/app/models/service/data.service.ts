@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {DataModel} from "./models/data.model";
+import {DataModel} from "../data.model";
 import {Observable} from "rxjs";
 
 @Injectable()

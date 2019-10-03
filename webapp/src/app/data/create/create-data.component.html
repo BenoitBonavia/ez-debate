@@ -51,9 +51,25 @@
 
         <mat-step label="Validation" class="padding-top-15">
           <div fxLayout="row">
-            <div fxFlex="50">
-              <h1 class="font-rubik">{{ this.newData.title }}</h1>
-              <h2 class="font-rubik">{{ this.newData.subtitle }}</h2>
+            <div fxFlex="40" class="padding-30">
+              <ed-card-data [data]="newData"></ed-card-data>
+            </div>
+            <div fxFlex="60" class="padding-30">
+              <div fxLayout="row">
+                <div fxFlex="90">
+                  <mat-form-field class="w100">
+                    <input matInput placeholder="Icon" [(ngModel)]="newData.icon">
+                  </mat-form-field>
+                </div>
+                <div fxFlex="10">
+                  <button mat-raised-button color="primary" (click)="saveIcon()">Save</button>
+                </div>
+              </div>
+              <div>
+                <button mat-raised-button *ngFor="let icon of icons" class="font-color-primary icon-button margin-right-15" (click)="setIcon(icon)">
+                  <i [class]="icon.icon"></i>
+                </button>
+              </div>
             </div>
           </div>
           <div fxLayout="row">
