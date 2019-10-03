@@ -1,3 +1,6 @@
-<div *ngFor="let data of datas">
-  {{ data | json }}
+<div fxLayout="row wrap">
+  <label *ngFor="let data of datas" fxFlex="33" class="padding-15">
+    <ed-card-data [data]="data"></ed-card-data>
+  </label>
 </div>
+

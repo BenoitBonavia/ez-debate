@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DataModel} from "../../models/data.model";
 import {DataService} from "../../data.service";
 import {SourceModel} from "../../models/source.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'ed-create-data',
@@ -10,7 +11,7 @@ import {SourceModel} from "../../models/source.model";
 })
 export class CreateDataComponent   implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService) {}
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private snackBar: MatSnackBar) {}
 
   newData: DataModel = new DataModel();
 
@@ -27,6 +28,7 @@ export class CreateDataComponent   implements OnInit {
   createData() {
     this.dataService.saveData(this.newData).subscribe(response => {
       this.newData = new DataModel();
+      this.openSnackBar("New data created", null);
     })
   }
 
@@ -39,5 +41,11 @@ export class CreateDataComponent   implements OnInit {
     //   this.newData.sources[index].link = "";
     //   this.newData.sources.splice(index, 1);
     // }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }

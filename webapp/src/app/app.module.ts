@@ -19,6 +19,9 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {DataService} from "./data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {SearchDataComponent} from "./data/search/search-data.component";
+import {CardDataComponent} from "./data/card/card-data.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Overlay} from "@angular/cdk/overlay";
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import {SearchDataComponent} from "./data/search/search-data.component";
     DataDetailComponent,
     DataListingComponent,
     CreateDataComponent,
-    SearchDataComponent
+    SearchDataComponent,
+    CardDataComponent
   ],
   imports: [
     HttpClientModule,
@@ -45,7 +49,9 @@ import {SearchDataComponent} from "./data/search/search-data.component";
     FormsModule
   ],
   providers: [
-    DataService
+    DataService,
+    MatSnackBar,
+    Overlay
   ],
   bootstrap: [AppComponent]
 })
