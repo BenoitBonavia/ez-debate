@@ -18,8 +18,11 @@ public class DataEntity {
     @Column(name = "subtitle")
     private String subtitle;
 
-    @Column(name = "text")
+    @Column(name = "text", columnDefinition = "TEXT")
     private String text;
+
+    @Column(name = "icon")
+    private String icon;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
@@ -63,5 +66,13 @@ public class DataEntity {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

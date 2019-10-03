@@ -22,6 +22,7 @@ import {SearchDataComponent} from "./data/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Overlay} from "@angular/cdk/overlay";
+import {NgxMasonryModule} from "ngx-masonry";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {Overlay} from "@angular/cdk/overlay";
     MatCardModule,
     MatStepperModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    NgxMasonryModule
   ],
   providers: [
     DataService,
