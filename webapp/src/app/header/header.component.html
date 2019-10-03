@@ -1,8 +1,9 @@
 <mat-toolbar color="primary">
-  <span>EZ-Debate</span>
+  <a [routerLink]="['/home']">EZ-Debate</a>
 
   <span class="fill-remaining-space"></span>
 
+  <a [routerLink]="['/home']" mat-button color="link" class="font-rubik">Home</a>
   <a [routerLink]="['/research']" mat-button color="link" class="font-rubik">Consult</a>
   <a [routerLink]="['/create']" mat-raised-button color="link" class="font-rubik"><i class="fas fa-plus"></i> Add data</a>
 </mat-toolbar>
