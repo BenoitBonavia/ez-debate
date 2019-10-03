@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --base-href / --deploy-url / --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "buildapp": "ng build --prod",
+    "copy": "rm -rf ../src/main/resources/static && cp -r dist/webapp ../src/main/resources/static",
+    "deployapp": "npm run buildapp && npm run copy"
   },
   "private": true,
   "dependencies": {
@@ -16,12 +19,14 @@
     "@angular/common": "~8.2.8",
     "@angular/compiler": "~8.2.8",
     "@angular/core": "~8.2.8",
+    "@angular/flex-layout": "^8.0.0-beta.27",
     "@angular/forms": "~8.2.8",
     "@angular/material": "^8.2.1",
     "@angular/platform-browser": "~8.2.8",
     "@angular/platform-browser-dynamic": "~8.2.8",
     "@angular/router": "~8.2.8",
     "hammerjs": "^2.0.8",
+    "ngx-masonry": "^1.1.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

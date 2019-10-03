@@ -1,0 +1,69 @@
+<div class="container">
+  <div fxLayout="row">
+    <div fxFlex="100%">
+      <mat-vertical-stepper>
+        <mat-step label="Title & Subtitle" class="padding-top-15">
+          <mat-form-field class="display-block">
+            <input matInput placeholder="Title" [(ngModel)]="newData.title">
+          </mat-form-field>
+          <mat-form-field class="display-block">
+            <input matInput placeholder="Sous titre" [(ngModel)]="newData.subtitle">
+          </mat-form-field>
+          <div fxLayout="row">
+            <span class="fill-remaining-space"></span>
+            <button mat-button matStepperNext color="primary">Next</button>
+          </div>
+        </mat-step>
+
+        <mat-step label="Text" class="padding-top-15">
+          <mat-form-field class="example-full-width display-block">
+            <textarea matInput placeholder="Main content" rows="15" [(ngModel)]="newData.text"></textarea>
+          </mat-form-field>
+          <div fxLayout="row">
+            <span class="fill-remaining-space"></span>
+            <button mat-button matStepperNext color="primary">Next</button>
+          </div>
+        </mat-step>
+
+        <mat-step label="Sources" class="padding-top-15">
+          <div fxLayout="row" *ngFor="let source of newData.sources; let i = index;">
+            <div fxFlex="6%">
+              <button mat-button color="warn" class="centered-block"
+                      [ngClass]="{'display-none': source.title === undefined && source.link === undefined}"><i
+                class="fas fa-times"></i></button>
+            </div>
+            <div fxFlex="47%" class="padding-right-15">
+              <mat-form-field class="display-block">
+                <input matInput placeholder="Title" [(ngModel)]="source.title" (keyup)="editTabOnType(i)">
+              </mat-form-field>
+            </div>
+            <div fxFlex="47%" class="padding-right-15">
+              <mat-form-field class="display-block">
+                <input matInput placeholder="Link" [(ngModel)]="source.link" (keyup)="editTabOnType(i)">
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <span class="fill-remaining-space"></span>
+            <button mat-button matStepperNext color="primary">Next</button>
+          </div>
+        </mat-step>
+
+        <mat-step label="Validation" class="padding-top-15">
+          <div fxLayout="row">
+            <div fxFlex="50">
+              <h1 class="font-rubik">{{ this.newData.title }}</h1>
+              <h2 class="font-rubik">{{ this.newData.subtitle }}</h2>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div class="fill-remaining-space"></div>
+            <!--              <form [formGroup]="firstFormGroup" (ngSubmit)="createData()">-->
+            <button mat-button color="primary" type="subsribe" (click)="createData()">Validate</button>
+            <!--              </form>-->
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

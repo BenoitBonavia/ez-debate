@@ -1,0 +1,18 @@
+<mat-card class="example-card">
+  <mat-card-header>
+<!--    class="example-header-image"-->
+    <div mat-card-avatar><i [class]="data.icon + ' font-color-primary font-size-35'"></i></div>
+    <mat-card-title>{{ data.title }}</mat-card-title>
+    <mat-card-subtitle>{{ data.subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+  <!--  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+  <mat-card-content>
+    <p>
+      {{ data.text }}
+    </p>
+  </mat-card-content>
+  <div fxLayout="row">
+    <div class="fill-remaining-space"></div>
+    <button mat-mini-fab color="primary" class="right: 0px;"><i class="fas fa-angle-right"></i></button>
+  </div>
+</mat-card>

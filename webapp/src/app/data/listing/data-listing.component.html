@@ -1,0 +1,10 @@
+<!--<div fxLayout="row wrap">-->
+<!--  <label *ngFor="let data of datas" fxFlex="33" class="padding-15">-->
+<!--    <ed-card-data [data]="data"></ed-card-data>-->
+<!--  </label>-->
+<!--</div>-->
+<ngx-masonry>
+  <div ngxMasonryItem *ngFor="let data of datas" fxFlex="33%" fxFlex.sm="50%" fxFlex.xs="100%" class="padding-15">
+    <ed-card-data [data]="data"></ed-card-data>
+  </div>
+</ngx-masonry>
