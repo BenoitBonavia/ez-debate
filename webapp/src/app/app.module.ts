@@ -24,6 +24,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Overlay} from "@angular/cdk/overlay";
 import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./models/service/icon.service";
+import {VideoEmbedComponent} from "./common/video-embed/video.embed.component";
+import { EmbedVideo } from 'ngx-embed-video';
+
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +39,8 @@ import {IconService} from "./models/service/icon.service";
     DataListingComponent,
     CreateDataComponent,
     SearchDataComponent,
-    CardDataComponent
+    CardDataComponent,
+    VideoEmbedComponent
   ],
   imports: [
     HttpClientModule,
@@ -49,7 +55,9 @@ import {IconService} from "./models/service/icon.service";
     MatStepperModule,
     FlexLayoutModule,
     FormsModule,
-    NgxMasonryModule
+    NgxMasonryModule,
+    EmbedVideo.forRoot(),
+
   ],
   providers: [
     DataService,

@@ -9,7 +9,8 @@ import {IconModel} from "../../models/icon.model";
 
 @Component({
   selector: 'ed-create-data',
-  templateUrl: 'create-data.component.html'
+  templateUrl: 'create-data.component.html',
+  styleUrls: ['create-data.component.scss']
 })
 export class CreateDataComponent   implements OnInit {
 
