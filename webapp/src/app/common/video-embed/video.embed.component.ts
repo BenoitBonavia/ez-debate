@@ -7,7 +7,19 @@ import { EmbedVideoService } from 'ngx-embed-video';
 })
 export class VideoEmbedComponent implements OnInit {
 
-  @Input() link: string;
+  @Input()
+  set link(link: string) {
+    try {
+      this.embed = this.embedService.embed(link, {
+        attr: {width: this.width, height: this.height}
+      })
+    } catch {
+      console.log("Bad link for the video embed");
+    }
+  }
+
+  @Input() width: number;
+  @Input() height: number;
   // @ViewChild("videoContainer") videoContainer:ElementRef;
 
   embed: any;
@@ -17,10 +29,7 @@ export class VideoEmbedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.embed = this.embedService.embed(this.link, {
-      query: {portrait: 0, color: '#000000'},
 
-    });
   }
 
 }

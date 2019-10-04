@@ -32,16 +32,16 @@
                       [ngClass]="{'display-none': video.title === undefined && video.link === undefined}"><i
                 class="fas fa-times"></i></button>
             </div>
-            <div fxFlex="47%" class="padding-right-15">
+            <div fxFlex="54%" class="padding-right-15">
               <mat-form-field class="display-block">
-                <input matInput placeholder="Title" [(ngModel)]="video.title" (keyup)="editTabOnType(i)">
+                <input matInput placeholder="Title" [(ngModel)]="video.title" (keyup)="addVideoLink(i)">
               </mat-form-field>
               <mat-form-field class="display-block">
-                <input matInput placeholder="Link" [(ngModel)]="video.link" (keyup)="editTabOnType(i)">
+                <input matInput placeholder="Link" [(ngModel)]="video.link" (keyup)="addVideoLink(i)">
               </mat-form-field>
             </div>
-            <div fxFlex="47%" class="padding-right-15" #videoContainer>
-              <ed-video-embed [link]="video.link" *ngIf="video.link != ''"></ed-video-embed>
+            <div fxFlex="40%" class="padding-right-15" #videoContainer>
+              <ed-video-embed [link]="video.link" *ngIf="video.link != ''" [width]="getWidth()" [height]="getWidth()*(9/16)"></ed-video-embed>
             </div>
           </div>
           <div fxLayout="row">

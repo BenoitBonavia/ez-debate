@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DataModel} from "../../models/data.model";
 import {DataService} from "../../models/service/data.service";
@@ -17,6 +17,7 @@ export class CreateDataComponent   implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private dataService: DataService, private iconService: IconService, private snackBar: MatSnackBar) {}
 
+  @ViewChild("videoContainer", {static: false}) videoContainer: ElementRef;
   icons: IconModel[];
 
   newData: DataModel = new DataModel();
@@ -62,5 +63,15 @@ export class CreateDataComponent   implements OnInit {
 
   setIcon(icon) {
     this.newData.icon = icon.icon;
+  }
+
+  getWidth() {
+    return this.videoContainer.nativeElement.offsetWidth;
+  }
+
+  addVideoLink(index) {
+    if (index == this.newData.videos.length - 1 && this.newData.videos[index].title !== undefined) {
+      this.newData.videos.push(new VideoModel());
+    }
   }
 }

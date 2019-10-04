@@ -1,6 +1,7 @@
 package com.perso.ez.debate.data;
 
 import com.perso.ez.debate.data.source.SourceEntity;
+import com.perso.ez.debate.data.video.VideoEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,6 +28,10 @@ public class DataEntity {
 
     @Column(name = "date")
     private LocalDateTime date = LocalDateTime.now();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "data_id", referencedColumnName = "id")
+    private List<VideoEntity> videos;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
@@ -86,5 +91,13 @@ public class DataEntity {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public List<VideoEntity> getVideos() {
+        return videos;
+    }
+
+    public void setVideos(List<VideoEntity> videos) {
+        this.videos = videos;
     }
 }
