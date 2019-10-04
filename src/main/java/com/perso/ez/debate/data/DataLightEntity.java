@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "data")
-public class DataEntity {
+public class DataLightEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -27,10 +27,6 @@ public class DataEntity {
 
     @Column(name = "date")
     private LocalDateTime date = LocalDateTime.now();
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "data_id", referencedColumnName = "id")
-    private List<SourceEntity> sources;
 
     public Long getId() {
         return id;
@@ -54,14 +50,6 @@ public class DataEntity {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
-    }
-
-    public List<SourceEntity> getSources() {
-        return sources;
-    }
-
-    public void setSources(List<SourceEntity> sources) {
-        this.sources = sources;
     }
 
     public String getText() {

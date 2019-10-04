@@ -11,7 +11,7 @@ export class DataService {
   }
 
   getAll(): Observable<DataModel[]> {
-    return this.http.get('/api/data/all') as Observable<DataModel[]>;
+    return this.http.get('/api/data/light/all') as Observable<DataModel[]>;
   }
 
   saveData(data: DataModel): Observable<DataModel> {

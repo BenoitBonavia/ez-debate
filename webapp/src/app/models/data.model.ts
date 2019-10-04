@@ -7,4 +7,5 @@ export class DataModel {
   icon: string = "fas fa-question";
   text: string;
   sources: SourceModel[] =[];
+  date: Date;
 }
