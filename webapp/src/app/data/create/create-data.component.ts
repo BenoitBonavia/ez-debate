@@ -6,6 +6,7 @@ import {SourceModel} from "../../models/source.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {IconService} from "../../models/service/icon.service";
 import {IconModel} from "../../models/icon.model";
+import {VideoModel} from "../../models/video.model";
 
 @Component({
   selector: 'ed-create-data',
@@ -31,6 +32,7 @@ export class CreateDataComponent   implements OnInit {
       this.icons = response;
     });
     this.newData.sources.push(new SourceModel());
+    this.newData.videos.push(new VideoModel());
   }
 
   createData() {

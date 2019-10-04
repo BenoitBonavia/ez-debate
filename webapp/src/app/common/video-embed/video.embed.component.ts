@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import { EmbedVideoService } from 'ngx-embed-video';
 
 @Component({
@@ -7,16 +7,20 @@ import { EmbedVideoService } from 'ngx-embed-video';
 })
 export class VideoEmbedComponent implements OnInit {
 
-  embed: any;
-
   @Input() link: string;
+  // @ViewChild("videoContainer") videoContainer:ElementRef;
+
+  embed: any;
 
   constructor(private embedService: EmbedVideoService) {
 
   }
 
   ngOnInit(): void {
-    this.embed = this.embedService.embed(this.link);
+    this.embed = this.embedService.embed(this.link, {
+      query: {portrait: 0, color: '#000000'},
+
+    });
   }
 
 }

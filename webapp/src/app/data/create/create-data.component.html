@@ -25,6 +25,31 @@
           </div>
         </mat-step>
 
+        <mat-step label="Medias" class="padding-top-15">
+          <div fxLayout="row" *ngFor="let video of newData.videos; let i = index;">
+            <div fxFlex="6%">
+              <button mat-button color="warn" class="centered-block"
+                      [ngClass]="{'display-none': video.title === undefined && video.link === undefined}"><i
+                class="fas fa-times"></i></button>
+            </div>
+            <div fxFlex="47%" class="padding-right-15">
+              <mat-form-field class="display-block">
+                <input matInput placeholder="Title" [(ngModel)]="video.title" (keyup)="editTabOnType(i)">
+              </mat-form-field>
+              <mat-form-field class="display-block">
+                <input matInput placeholder="Link" [(ngModel)]="video.link" (keyup)="editTabOnType(i)">
+              </mat-form-field>
+            </div>
+            <div fxFlex="47%" class="padding-right-15" #videoContainer>
+              <ed-video-embed [link]="video.link" *ngIf="video.link != ''"></ed-video-embed>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <span class="fill-remaining-space"></span>
+            <button mat-button matStepperNext color="primary">Next</button>
+          </div>
+        </mat-step>
+
         <mat-step label="Sources" class="padding-top-15">
           <div fxLayout="row" *ngFor="let source of newData.sources; let i = index;">
             <div fxFlex="6%">
