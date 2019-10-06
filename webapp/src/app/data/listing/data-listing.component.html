@@ -5,6 +5,6 @@
 <!--</div>-->
 <ngx-masonry>
   <div ngxMasonryItem *ngFor="let data of datas" fxFlex="33%" fxFlex.sm="50%" fxFlex.xs="100%" class="padding-15">
-    <ed-card-data [data]="data"></ed-card-data>
+    <ed-card-data [data]="data" [routerLink]="'/detail/' + data.id" class="pointer"></ed-card-data>
   </div>
 </ngx-masonry>

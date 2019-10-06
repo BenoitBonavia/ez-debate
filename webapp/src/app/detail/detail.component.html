@@ -1,0 +1,14 @@
+<div class="container" *ngIf="this.data">
+  <div fxLayout="row">
+    <div fxFlex="100">
+      <h1>{{ this.data.title }}</h1><h2>{{ this.data.subtitle }}</h2>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="50" *ngFor="let video of this.data.videos">
+      <ed-video-embed [link]="video.link"></ed-video-embed>
+    </div>
+  </div>
+</div>
+
+{{ this.data | json }}

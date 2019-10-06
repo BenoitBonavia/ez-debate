@@ -16,8 +16,6 @@ import {VideoModel} from "../../models/video.model";
 export class CreateDataComponent   implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private dataService: DataService, private iconService: IconService, private snackBar: MatSnackBar) {}
-
-  @ViewChild("videoContainer", {static: false}) videoContainer: ElementRef;
   icons: IconModel[];
 
   newData: DataModel = new DataModel();
@@ -63,10 +61,6 @@ export class CreateDataComponent   implements OnInit {
 
   setIcon(icon) {
     this.newData.icon = icon.icon;
-  }
-
-  getWidth() {
-    return this.videoContainer.nativeElement.offsetWidth;
   }
 
   addVideoLink(index) {

@@ -26,6 +26,7 @@ import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./models/service/icon.service";
 import {VideoEmbedComponent} from "./common/video-embed/video.embed.component";
 import { EmbedVideo } from 'ngx-embed-video';
+import {DetailComponent} from "./detail/detail.component";
 
 
 
@@ -40,7 +41,8 @@ import { EmbedVideo } from 'ngx-embed-video';
     CreateDataComponent,
     SearchDataComponent,
     CardDataComponent,
-    VideoEmbedComponent
+    VideoEmbedComponent,
+    DetailComponent
   ],
   imports: [
     HttpClientModule,
