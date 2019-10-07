@@ -1,5 +1,11 @@
-<div class="vertical-video-carousel-container" [ngStyle]="{'height': this.height + 'px'}">
+<div #verticalVideoCarouselContainer id="verticalVideoCarouselContainer" class="vertical-video-carousel-container" [ngStyle]="{'height': this.containerWidth*(this.width/100)*(9/16) + 'px'}">
+  <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
   <div class="display-inline-block" [ngStyle]="{'width': this.width + '%'}" *ngFor="let video of videos">
     <ed-video-embed [link]="video.link"></ed-video-embed>
   </div>
+  <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
 </div>
+<button mat-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toRight()"><i class="fas fa-angle-right"></i></button>
+<button mat-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toLeft()"><i class="fas fa-angle-left"></i></button>
+
+

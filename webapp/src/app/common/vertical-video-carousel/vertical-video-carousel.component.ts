@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import {VideoModel} from "../../models/video.model";
 
 @Component({
@@ -8,8 +8,38 @@ import {VideoModel} from "../../models/video.model";
 })
 export class VerticalVideoCarouselComponent {
 
-  @Input() height: number;
+  @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: any;
+  @Input() containerWidth: number;
   @Input() width: number;
   @Input() videos: VideoModel[];
 
+  private margin: number = null;
+
+  getMargin() {
+    if (this.margin == null) {
+      this.margin = (100-this.width)/2;
+    }
+    return this.margin;
+  }
+
+  toRight() {
+    var currentScrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+    var i = 0;
+    while (i < currentScrollLeft) {
+      i += this.width/100*this.containerWidth;
+    }
+    if (i == currentScrollLeft) {
+      i += this.width/100*this.containerWidth;
+    }
+    this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
+  }
+
+  toLeft() {
+    var currentScrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft - this.width/100*this.containerWidth;
+    var i = 0;
+    while (i < currentScrollLeft) {
+      i += this.width/100*this.containerWidth;
+    }
+    this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
+  }
 }

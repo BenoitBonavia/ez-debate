@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {ChangeDetectorRef, Component, ElementRef, ViewChild} from "@angular/core";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {DataService} from "../models/service/data.service";
 import {DataModel} from "../models/data.model";
@@ -10,6 +10,8 @@ import {DataModel} from "../models/data.model";
 export class DetailComponent {
 
   private data: DataModel;
+
+  @ViewChild("verticalVideoCarouselContainer", {static: false}) verticalVideoCarouselContainer: ElementRef;
 
   constructor(private activatedRoute: ActivatedRoute, private dataService: DataService) {
 

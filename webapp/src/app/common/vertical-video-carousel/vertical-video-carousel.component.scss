@@ -1,5 +1,11 @@
 .vertical-video-carousel-container {
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
-  display: flex;
+  white-space: nowrap;
+  transition-delay: 800ms;
+  scroll-behavior: smooth;
+}
+
+.translateY-50 {
+  transform: translateY(-50%);
 }
