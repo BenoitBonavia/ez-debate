@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {HeaderComponent} from "./header/header.component";
 import {MatButtonModule} from "@angular/material/button";
@@ -25,9 +25,9 @@ import {Overlay} from "@angular/cdk/overlay";
 import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./models/service/icon.service";
 import {VideoEmbedComponent} from "./common/video-embed/video.embed.component";
-import { EmbedVideo } from 'ngx-embed-video';
-
-
+import {EmbedVideo} from 'ngx-embed-video';
+import {DetailComponent} from "./detail/detail.component";
+import {VerticalVideoCarouselComponent} from "./common/vertical-video-carousel/vertical-video-carousel.component";
 
 
 @NgModule({
@@ -40,7 +40,9 @@ import { EmbedVideo } from 'ngx-embed-video';
     CreateDataComponent,
     SearchDataComponent,
     CardDataComponent,
-    VideoEmbedComponent
+    VideoEmbedComponent,
+    DetailComponent,
+    VerticalVideoCarouselComponent,
   ],
   imports: [
     HttpClientModule,
@@ -67,4 +69,5 @@ import { EmbedVideo } from 'ngx-embed-video';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

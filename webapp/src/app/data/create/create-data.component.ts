@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DataModel} from "../../models/data.model";
 import {DataService} from "../../models/service/data.service";
@@ -16,7 +16,6 @@ import {VideoModel} from "../../models/video.model";
 export class CreateDataComponent   implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private dataService: DataService, private iconService: IconService, private snackBar: MatSnackBar) {}
-
   icons: IconModel[];
 
   newData: DataModel = new DataModel();
@@ -36,6 +35,8 @@ export class CreateDataComponent   implements OnInit {
   }
 
   createData() {
+    this.newData.videos.splice(-1, 1);
+    this.newData.sources.splice(-1, 1);
     this.dataService.saveData(this.newData).subscribe(response => {
       this.newData = new DataModel();
       this.openSnackBar("New data created", null);
@@ -62,5 +63,11 @@ export class CreateDataComponent   implements OnInit {
 
   setIcon(icon) {
     this.newData.icon = icon.icon;
+  }
+
+  addVideoLink(index) {
+    if (index == this.newData.videos.length - 1 && this.newData.videos[index].title !== undefined) {
+      this.newData.videos.push(new VideoModel());
+    }
   }
 }

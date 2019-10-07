@@ -1,0 +1,5 @@
+<div class="vertical-video-carousel-container" [ngStyle]="{'height': this.height + 'px'}">
+  <div class="display-inline-block" [ngStyle]="{'width': this.width + '%'}" *ngFor="let video of videos">
+    <ed-video-embed [link]="video.link"></ed-video-embed>
+  </div>
+</div>

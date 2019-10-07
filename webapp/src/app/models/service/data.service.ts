@@ -10,6 +10,10 @@ export class DataService {
 
   }
 
+  getDataDetail(id: number): Observable<DataModel> {
+    return this.http.get('/api/data/detail/' + id) as Observable<DataModel>;
+  }
+
   getAll(): Observable<DataModel[]> {
     return this.http.get('/api/data/light/all') as Observable<DataModel[]>;
   }

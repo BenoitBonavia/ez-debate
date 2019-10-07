@@ -1,0 +1,13 @@
+<div class="container" *ngIf="this.data">
+  <div fxLayout="row">
+    <div fxFlex="100" class="padding-15">
+      <h1>{{ this.data.title }}</h1>
+      <h2>{{ this.data.subtitle }}</h2>
+    </div>
+  </div>
+  <div>
+    <ed-vertical-video-carousel [height]="300" [width]="40" [videos]="this.data.videos"></ed-vertical-video-carousel>
+</div>
+
+
+{{ this.data | json }}
