@@ -9,7 +9,7 @@ import {DataModel} from "../../models/data.model";
 })
 export class DetailComponent {
 
-  private data: DataModel;
+  data: DataModel;
 
   @ViewChild("verticalVideoCarouselContainer", {static: false}) verticalVideoCarouselContainer: ElementRef;
 

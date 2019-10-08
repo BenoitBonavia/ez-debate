@@ -25,8 +25,7 @@ export class VideoEmbedComponent implements OnInit, AfterViewInit {
   private width: number = null;
   private height: number = null;
 
-  @Input()
-  private filter: boolean;
+  @Input() filter: boolean;
 
   @Input()
   set link(link: string) {
