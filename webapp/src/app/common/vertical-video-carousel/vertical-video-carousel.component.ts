@@ -15,6 +15,8 @@ export class VerticalVideoCarouselComponent {
 
   private margin: number = null;
 
+  private scrollLeft: number = 0;
+
   getMargin() {
     if (this.margin == null) {
       this.margin = (100-this.width)/2;
@@ -23,23 +25,36 @@ export class VerticalVideoCarouselComponent {
   }
 
   toRight() {
-    var currentScrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
     var i = 0;
-    while (i < currentScrollLeft) {
+    while (i < this.scrollLeft) {
       i += this.width/100*this.containerWidth;
     }
-    if (i == currentScrollLeft) {
+    if (i == this.scrollLeft) {
       i += this.width/100*this.containerWidth;
     }
     this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
+    this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
   }
 
   toLeft() {
-    var currentScrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft - this.width/100*this.containerWidth;
+    var currentScrollLeft = this.scrollLeft - this.width/100*this.containerWidth;
     var i = 0;
     while (i < currentScrollLeft) {
       i += this.width/100*this.containerWidth;
     }
     this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
+    this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+  }
+
+  getFilter(arg) {
+      var middle = arg*this.width/100*this.containerWidth + (this.width/100*this.containerWidth)/2;
+      if (this.scrollLeft < middle && middle < this.scrollLeft + this.width/100*this.containerWidth) {
+        return false;
+      }
+      return true;
+  }
+
+  scrolling(arg) {
+    this.scrollLeft = arg.target.scrollLeft;
   }
 }

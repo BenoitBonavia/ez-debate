@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, ElementRef, ViewChild} from "@angular/core";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {DataService} from "../models/service/data.service";
-import {DataModel} from "../models/data.model";
+import {DataService} from "../../models/service/data.service";
+import {DataModel} from "../../models/data.model";
 
 @Component({
   selector: 'detail',

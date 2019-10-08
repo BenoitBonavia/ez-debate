@@ -1,5 +1,10 @@
-<div #videoContainer class="w100">
-  <div [innerHTML]="embed"></div>
+<div #videoContainer class="w100" style="position: relative">
+  <div [innerHTML]="embed" style="position: absolute; z-index: -50; top: 0; left: 0;"></div>
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="100" height="100" fill="rgba(0, 0, 0, 0.5)" *ngIf="this.filter"></rect>
+    <rect x="0" y="0" width="100" height="100" fill="rgba(0, 0, 0, 0)" *ngIf="!this.filter"></rect>
+  </svg>
 </div>
+
 
 

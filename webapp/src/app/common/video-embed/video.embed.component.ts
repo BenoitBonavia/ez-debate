@@ -26,6 +26,9 @@ export class VideoEmbedComponent implements OnInit, AfterViewInit {
   private height: number = null;
 
   @Input()
+  private filter: boolean;
+
+  @Input()
   set link(link: string) {
     this._link = link;
     this.cdRef.detectChanges();

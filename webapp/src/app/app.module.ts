@@ -10,7 +10,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {HomeComponent} from "./home/home.component";
-import {DataDetailComponent} from "./data/detail/data-detail.component";
+import {DataDetailComponent} from "./data/card-detail/data-detail.component";
 import {MatCardModule} from "@angular/material/card";
 import {DataListingComponent} from "./data/listing/data-listing.component";
 import {CreateDataComponent} from "./data/create/create-data.component";
@@ -26,7 +26,7 @@ import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./models/service/icon.service";
 import {VideoEmbedComponent} from "./common/video-embed/video.embed.component";
 import {EmbedVideo} from 'ngx-embed-video';
-import {DetailComponent} from "./detail/detail.component";
+import {DetailComponent} from "./data/detail/detail.component";
 import {VerticalVideoCarouselComponent} from "./common/vertical-video-carousel/vertical-video-carousel.component";
 
 

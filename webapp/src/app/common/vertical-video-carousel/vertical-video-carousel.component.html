@@ -1,11 +1,9 @@
-<div #verticalVideoCarouselContainer id="verticalVideoCarouselContainer" class="vertical-video-carousel-container" [ngStyle]="{'height': this.containerWidth*(this.width/100)*(9/16) + 'px'}">
+<div #verticalVideoCarouselContainer class="vertical-video-carousel-container" [ngStyle]="{'height': this.containerWidth*(this.width/100)*(9/16) + 'px'}" (scroll)="scrolling($event)">
   <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
-  <div class="display-inline-block" [ngStyle]="{'width': this.width + '%'}" *ngFor="let video of videos">
-    <ed-video-embed [link]="video.link"></ed-video-embed>
+  <div class="display-inline-block vertical-video-carousel-element h100" [ngStyle]="{'width': this.width + '%'}" *ngFor="let video of videos; let index = index;">
+    <ed-video-embed [link]="video.link" [filter]="getFilter(index)"></ed-video-embed>
   </div>
   <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
 </div>
-<button mat-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toRight()"><i class="fas fa-angle-right"></i></button>
-<button mat-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toLeft()"><i class="fas fa-angle-left"></i></button>
-
-
+<button mat-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toRight()" style="z-index: 150"><i class="fas fa-angle-right"></i></button>
+<button mat-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toLeft()" style="z-index: 150"><i class="fas fa-angle-left"></i></button>
