@@ -10,14 +10,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Indexed
 @Table(name = "data")
 public class DataEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Field
     @Column(name = "title")
     private String title;
 
@@ -103,5 +101,19 @@ public class DataEntity {
 
     public void setVideos(List<VideoEntity> videos) {
         this.videos = videos;
+    }
+
+    @Override
+    public String toString() {
+        return "DataEntity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", subtitle='" + subtitle + '\'' +
+                ", text='" + text + '\'' +
+                ", icon='" + icon + '\'' +
+                ", date=" + date +
+                ", videos=" + videos +
+                ", sources=" + sources +
+                '}';
     }
 }

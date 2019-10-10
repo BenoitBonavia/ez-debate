@@ -1,18 +1,21 @@
 package com.perso.ez.debate.data;
 
-import com.perso.ez.debate.data.source.SourceEntity;
+
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
+@Indexed
 @Table(name = "data")
 public class DataLightEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Field
     @Column(name = "title")
     private String title;
 
