@@ -1,5 +1,5 @@
-import {Component, OnInit} from "@angular/core";
-import {DataService} from "../../models/service/data.service";
+import {Component, Input, OnInit} from "@angular/core";
+import {DataService} from "../../service/data.service";
 import {DataModel} from "../../models/data.model";
 
 @Component({
@@ -9,16 +9,10 @@ import {DataModel} from "../../models/data.model";
 })
 export class DataListingComponent implements OnInit {
 
-  constructor(private dataService: DataService) {
-
-  }
-
-  datas: DataModel[];
+  @Input() datas: DataModel[];
 
   ngOnInit(): void {
-    this.dataService.getAll().subscribe(response => {
-      this.datas = response;
-    })
+
   }
 
 }

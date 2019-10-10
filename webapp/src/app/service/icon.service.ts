@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {IconModel} from "../icon.model";
+import {IconModel} from "../models/icon.model";
 
 @Injectable()
 export class IconService {

@@ -1,4 +1,11 @@
 <div class="container">
-  research
-  <ed-data-listing></ed-data-listing>
+  <div fxLayout="row" class="margin-bottom-15">
+    <div fxFlex="20"></div>
+    <div fxFlex="60">
+      <mat-form-field class="example-full-width w100">
+        <input matInput placeholder="Searching ..." (keyup)="search()" [(ngModel)]="this.params">
+      </mat-form-field>
+    </div>
+  </div>
+  <ed-data-listing [datas]="this.datas"></ed-data-listing>
 </div>

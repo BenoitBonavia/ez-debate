@@ -16,18 +16,19 @@ import {DataListingComponent} from "./data/listing/data-listing.component";
 import {CreateDataComponent} from "./data/create/create-data.component";
 import {MatStepperModule} from "@angular/material/stepper";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {DataService} from "./models/service/data.service";
+import {DataService} from "./service/data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {SearchDataComponent} from "./data/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Overlay} from "@angular/cdk/overlay";
 import {NgxMasonryModule} from "ngx-masonry";
-import {IconService} from "./models/service/icon.service";
+import {IconService} from "./service/icon.service";
 import {VideoEmbedComponent} from "./common/video-embed/video.embed.component";
 import {EmbedVideo} from 'ngx-embed-video';
 import {DetailComponent} from "./data/detail/detail.component";
 import {VerticalVideoCarouselComponent} from "./common/vertical-video-carousel/vertical-video-carousel.component";
+import {SearchService} from "./service/search.service";
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import {VerticalVideoCarouselComponent} from "./common/vertical-video-carousel/v
   providers: [
     DataService,
     IconService,
+    SearchService,
     MatSnackBar,
     Overlay
   ],

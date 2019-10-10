@@ -1,10 +1,10 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DataModel} from "../../models/data.model";
-import {DataService} from "../../models/service/data.service";
+import {DataService} from "../../service/data.service";
 import {SourceModel} from "../../models/source.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {IconService} from "../../models/service/icon.service";
+import {IconService} from "../../service/icon.service";
 import {IconModel} from "../../models/icon.model";
 import {VideoModel} from "../../models/video.model";
 
