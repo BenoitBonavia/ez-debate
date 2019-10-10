@@ -9,7 +9,7 @@
     <ed-tag-list [tags]="this.data.tags"></ed-tag-list>
   </div>
   <div fxLayout="row" *ngIf="this.data.videos.length > 0">
-    <div #verticalVideoCarouselContainer fxFlex="100">
+    <div #verticalVideoCarouselContainer fxFlex="100" class="padding-15">
       <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="70" [videos]="this.data.videos"></ed-horizontal-video-carousel>
     </div>
   </div>
