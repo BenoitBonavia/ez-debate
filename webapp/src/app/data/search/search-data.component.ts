@@ -12,8 +12,8 @@ export class SearchDataComponent implements OnInit {
 
   }
 
-  private datas: DataModel[] = [];
-  private params: string = "";
+    datas: DataModel[] = [];
+  params: string = "";
 
   ngOnInit(): void {
     this.searchService.search(this.params).subscribe(response => {

@@ -22,6 +22,7 @@ public class DataLightEntity {
     @Column(name = "subtitle")
     private String subtitle;
 
+    @Field
     @Column(name = "text", columnDefinition = "TEXT")
     private String text;
 

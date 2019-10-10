@@ -32,8 +32,8 @@ public class SearchController {
         return dataLightRepository.findAll();
     }
 
-    @GetMapping("/{title}")
-    public List<DataLightEntity> searchData(@PathVariable String title) {
+    @GetMapping("/{text}")
+    public List<DataLightEntity> searchData(@PathVariable String text) {
         Session session = em.unwrap(SessionFactory.class).openSession();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
 
@@ -41,8 +41,9 @@ public class SearchController {
                 .buildQueryBuilder().forEntity(DataLightEntity.class).get();
 
         org.apache.lucene.search.Query query = qb
-                .keyword().onField("title")
-                .matching(title)
+                .keyword().onField("text")
+                .andField("title")
+                .matching(text)
                 .createQuery();
 
         FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataLightEntity.class);

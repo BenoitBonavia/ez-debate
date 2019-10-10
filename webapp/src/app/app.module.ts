@@ -29,6 +29,8 @@ import {EmbedVideo} from 'ngx-embed-video';
 import {DetailComponent} from "./data/detail/detail.component";
 import {VerticalVideoCarouselComponent} from "./common/vertical-video-carousel/vertical-video-carousel.component";
 import {SearchService} from "./service/search.service";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -60,6 +62,8 @@ import {SearchService} from "./service/search.service";
     FormsModule,
     NgxMasonryModule,
     EmbedVideo.forRoot(),
+    MatIconModule,
+    MatDividerModule,
 
   ],
   providers: [
