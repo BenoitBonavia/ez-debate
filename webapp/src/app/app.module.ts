@@ -34,6 +34,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatChipsModule} from "@angular/material/chips";
 import {TagService} from "./service/tag.service";
+import {TagListComponent} from "./data/tag-list/tag-list.component";
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {TagService} from "./service/tag.service";
     VideoEmbedComponent,
     DetailComponent,
     HorizontalVideoCarouselComponent,
+    TagListComponent,
   ],
   imports: [
     HttpClientModule,

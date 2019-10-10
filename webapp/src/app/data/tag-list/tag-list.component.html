@@ -1,0 +1,3 @@
+<mat-chip-list>
+  <mat-chip *ngFor="let tag of tags" class="pointer" color="primary" [routerLink]="'/research/' + tag.tag">{{ tag.tag }}</mat-chip>
+</mat-chip-list>

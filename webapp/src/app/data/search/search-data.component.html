@@ -1,7 +1,7 @@
 <div class="container">
   <div fxLayout="row" class="padding-top-5vw padding-bottom-5vw">
-    <div fxFlex="20"></div>
-    <div fxFlex="60">
+    <div fxFlex="25"></div>
+    <div fxFlex="50">
       <mat-form-field appearance="legacy" class="w100">
         <mat-label>Searching ...</mat-label>
         <input matInput (change)="search()" [(ngModel)]="this.params" autocomplete="off">
@@ -12,6 +12,9 @@
         </mat-icon>
       </mat-form-field>
     </div>
+  </div>
+  <div fxLayout="row">
+
   </div>
   <ed-data-listing [datas]="this.datas"></ed-data-listing>
 </div>

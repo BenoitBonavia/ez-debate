@@ -2,13 +2,19 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
+$primary-color: #3f51b5;
+
 html, body {
   height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  color: $primary-color;
 }
 
 ::-webkit-scrollbar {
@@ -23,13 +29,13 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #3f51b5;
+  background: $primary-color;
   border-radius: 15px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f51b5;
+  background: $primary-color;
 }
 
 .fill-remaining-space {
@@ -39,7 +45,7 @@ body {
 /* cursor ------------------------------------------------------------------------------------------------------------*/
 
 .pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 /* text --------------------------------------------------------------------------------------------------------------*/
@@ -49,7 +55,7 @@ body {
 }
 
 .font-color-primary {
-  color: #3f51b5;
+  color: $primary-color;
 }
 
 .font-weight-bold {
