@@ -12,17 +12,19 @@ export class SearchDataComponent implements OnInit {
 
   }
 
-    datas: DataModel[] = [];
+  datas: DataModel[] = [];
   params: string = "";
 
   ngOnInit(): void {
     this.searchService.search(this.params).subscribe(response => {
+      console.log("test");
       this.datas = response;
     })
   }
 
   search() {
     this.searchService.search(this.params).subscribe(response => {
+      console.log("test1");
       this.datas = response;
     })
   }
