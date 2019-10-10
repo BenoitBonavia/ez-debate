@@ -118,6 +118,8 @@ THE SOFTWARE.
 
 @angular/material/icon
 
+@angular/material/menu
+
 @angular/material/stepper
 
 @angular/material/toolbar
