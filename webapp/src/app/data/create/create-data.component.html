@@ -47,13 +47,13 @@
         </mat-step>
 
         <mat-step label="Medias" class="padding-top-15">
-          <div fxLayout="row" *ngFor="let video of newData.videos; let i = index;">
-            <div fxFlex="6%">
-              <button mat-button color="warn" class="centered-block"
-                      [ngClass]="{'display-none': video.title === undefined && video.link === undefined}"><i
-                class="fas fa-times"></i></button>
-            </div>
-            <div fxFlex="54%" class="padding-right-15">
+          <div fxLayout.gt-md="row" fxLayout.lt-md="column" *ngFor="let video of newData.videos; let i = index;">
+<!--            <div fxFlex="6%">-->
+<!--              <button mat-button color="warn" class="centered-block"-->
+<!--                      [ngClass]="{'display-none': video.title === undefined && video.link === undefined}"><i-->
+<!--                class="fas fa-times"></i></button>-->
+<!--            </div>-->
+            <div fxFlex="55%" class="padding-right-15">
               <mat-form-field class="display-block">
                 <input matInput placeholder="Title" [(ngModel)]="video.title" (keyup)="addVideoLink(i)">
               </mat-form-field>
@@ -61,8 +61,9 @@
                 <input matInput placeholder="Link" [(ngModel)]="video.link" (keyup)="addVideoLink(i)">
               </mat-form-field>
             </div>
-            <div fxFlex="40%" class="padding-right-15">
+            <div fxFlex="45%" class="padding-right-15 position-relative">
               <ed-video-embed [link]="video.link" *ngIf="video.link != ''" [position]="'static'"></ed-video-embed>
+              <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;" *ngIf="video.link"><mat-icon>delete</mat-icon></button>
             </div>
           </div>
           <div fxLayout="row">
