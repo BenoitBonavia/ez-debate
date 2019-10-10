@@ -41,7 +41,7 @@
               </mat-form-field>
             </div>
             <div fxFlex="40%" class="padding-right-15">
-              <ed-video-embed [link]="video.link" *ngIf="video.link != ''"></ed-video-embed>
+              <ed-video-embed [link]="video.link" *ngIf="video.link != ''" [position]="'static'"></ed-video-embed>
             </div>
           </div>
           <div fxLayout="row">

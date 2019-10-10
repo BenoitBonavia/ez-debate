@@ -18,14 +18,14 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class VideoEmbedComponent implements OnInit, AfterViewInit {
 
   @ViewChild("videoContainer", {static: false}) videoContainer: ElementRef;
-  // @ViewChild("embedContainer", {static: false}) embedContainer: ElementRef;
 
   private domSanitizer: any;
   private _link: any = null;
   private width: number = null;
   private height: number = null;
 
-  @Input() filter: boolean;
+  @Input() filter: boolean = null;
+  @Input() position: string = "absolute";
 
   @Input()
   set link(link: string) {
@@ -62,7 +62,6 @@ export class VideoEmbedComponent implements OnInit, AfterViewInit {
     }
   }
 }
-
 
 // this.embed = this.embedService.embed(link, {
 //   attr: {width: this.width, height: this.width*(16/9)}
