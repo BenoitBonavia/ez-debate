@@ -6,7 +6,9 @@
         <mat-label>Searching ...</mat-label>
         <input matInput (change)="search()" [(ngModel)]="this.params" autocomplete="off">
         <mat-icon matSuffix>
-          <button mat-mini-fab color="primary" style="z-index: 1500" (click)="search()"><i class="fas fa-search"></i></button>
+          <button mat-mini-fab color="primary" style="z-index: 15" (click)="search()">
+            <mat-icon>search</mat-icon>
+          </button>
         </mat-icon>
       </mat-form-field>
     </div>

@@ -3,8 +3,29 @@
 
   <span class="fill-remaining-space"></span>
 
-  <a [routerLink]="['/home']" mat-button color="link" class="font-rubik">Home</a>
-  <a [routerLink]="['/research']" mat-button color="link" class="font-rubik">Consult</a>
-  <a [routerLink]="['/create']" mat-raised-button color="link" class="font-rubik"><i class="fas fa-plus"></i> Add data</a>
+  <span ngClass.lt-md="display-none">
+    <a [routerLink]="['/home']" mat-button color="link" class="font-rubik">Home</a>
+    <a [routerLink]="['/research']" mat-button color="link" class="font-rubik">Consult</a>
+    <a [routerLink]="['/create']" mat-raised-button color="link" class="font-rubik"><i class="fas fa-plus"></i> Add data</a>
+  </span>
+  <span ngClass.gt-sm="display-none">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" style="position: relative; z-index: 2000;">
+      <button mat-menu-item [routerLink]="'/home'">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/research'">
+        <mat-icon>search</mat-icon>
+        <span>Search</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/create'">
+        <mat-icon>add</mat-icon>
+        <span>Create</span>
+      </button>
+    </mat-menu>
+  </span>
 </mat-toolbar>
 
