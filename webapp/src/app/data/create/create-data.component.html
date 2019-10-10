@@ -24,7 +24,9 @@
                        (matChipInputTokenEnd)="add($event)">
               </mat-chip-list>
             </mat-form-field>
-            <mat-chip-list>
+          </div>
+          <div fxLayout="row">
+            <mat-chip-list class="w100">
               <mat-chip *ngFor="let tag of this.tags">{{ tag.tag }}</mat-chip>
             </mat-chip-list>
           </div>
