@@ -27,7 +27,7 @@ import {IconService} from "./service/icon.service";
 import {VideoEmbedComponent} from "./common/video-embed/video.embed.component";
 import {EmbedVideo} from 'ngx-embed-video';
 import {DetailComponent} from "./data/detail/detail.component";
-import {VerticalVideoCarouselComponent} from "./common/vertical-video-carousel/vertical-video-carousel.component";
+import {HorizontalVideoCarouselComponent} from "./common/horizontal-video-carousel/horizontal-video-carousel.component";
 import {SearchService} from "./service/search.service";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
@@ -46,7 +46,7 @@ import {MatMenuModule} from "@angular/material/menu";
     CardDataComponent,
     VideoEmbedComponent,
     DetailComponent,
-    VerticalVideoCarouselComponent,
+    HorizontalVideoCarouselComponent,
   ],
   imports: [
     HttpClientModule,

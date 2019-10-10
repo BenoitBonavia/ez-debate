@@ -2,11 +2,11 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import {VideoModel} from "../../models/video.model";
 
 @Component({
-  selector: 'ed-vertical-video-carousel',
-  templateUrl: 'vertical-video-carousel.component.html',
-  styleUrls: ['vertical-video-carousel.component.scss']
+  selector: 'ed-horizontal-video-carousel',
+  templateUrl: 'horizontal-video-carousel.component.html',
+  styleUrls: ['horizontal-video-carousel.component.scss']
 })
-export class VerticalVideoCarouselComponent {
+export class HorizontalVideoCarouselComponent {
 
   @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: any;
   @Input() containerWidth: number;
