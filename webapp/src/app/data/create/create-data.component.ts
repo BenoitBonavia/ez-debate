@@ -7,20 +7,35 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {IconService} from "../../service/icon.service";
 import {IconModel} from "../../models/icon.model";
 import {VideoModel} from "../../models/video.model";
+import {TagModel} from "../../models/tag.model";
+import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import {MatChipInputEvent} from "@angular/material/chips";
+import {Tag} from "@angular/compiler/src/i18n/serializers/xml_helper";
+import {TagService} from "../../service/tag.service";
 
 @Component({
   selector: 'ed-create-data',
   templateUrl: 'create-data.component.html',
   styleUrls: ['create-data.component.scss']
 })
-export class CreateDataComponent   implements OnInit {
+export class CreateDataComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private iconService: IconService, private snackBar: MatSnackBar) {}
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private iconService: IconService, private snackBar: MatSnackBar, private tagService: TagService) {
+  }
+
   icons: IconModel[];
 
   newData: DataModel = new DataModel();
 
   firstFormGroup: FormGroup;
+
+  // Paramétrage du champs des tags
+  selectable: boolean = true;
+  removable: boolean = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  addOnBlur: boolean = true;
+
+  tags: TagModel[];
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
@@ -29,6 +44,9 @@ export class CreateDataComponent   implements OnInit {
     });
     this.iconService.getAll().subscribe(response => {
       this.icons = response;
+    });
+    this.tagService.getAll().subscribe(response => {
+      this.tags = response;
     });
     this.newData.sources.push(new SourceModel());
     this.newData.videos.push(new VideoModel());
@@ -68,6 +86,25 @@ export class CreateDataComponent   implements OnInit {
   addVideoLink(index) {
     if (index == this.newData.videos.length - 1 && this.newData.videos[index].title !== undefined) {
       this.newData.videos.push(new VideoModel());
+    }
+  }
+
+  remove(tagId: number): void {
+    this.newData.tags.splice(tagId, 1);
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+    if (value != "") {
+      let tag = new TagModel();
+      tag.tag = value;
+      this.tagService.saveTag(tag).subscribe(response => {
+        this.newData.tags.push(response);
+      })
+    }
+    if (input) {
+      input.value = '';
     }
   }
 }

@@ -32,6 +32,8 @@ import {SearchService} from "./service/search.service";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatChipsModule} from "@angular/material/chips";
+import {TagService} from "./service/tag.service";
 
 
 @NgModule({
@@ -66,6 +68,7 @@ import {MatMenuModule} from "@angular/material/menu";
     MatIconModule,
     MatDividerModule,
     MatMenuModule,
+    MatChipsModule,
 
   ],
   providers: [
@@ -73,6 +76,7 @@ import {MatMenuModule} from "@angular/material/menu";
     IconService,
     SearchService,
     MatSnackBar,
+    TagService,
     Overlay
   ],
   bootstrap: [AppComponent]

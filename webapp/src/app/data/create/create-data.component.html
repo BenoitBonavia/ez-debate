@@ -2,13 +2,32 @@
   <div fxLayout="row">
     <div fxFlex="100%">
       <mat-vertical-stepper>
-        <mat-step label="Title & Subtitle" class="padding-top-15">
+        <mat-step label="Title, subtitle & tags" class="padding-top-15">
           <mat-form-field class="display-block">
             <input matInput placeholder="Title" [(ngModel)]="newData.title">
           </mat-form-field>
           <mat-form-field class="display-block">
             <input matInput placeholder="Sous titre" [(ngModel)]="newData.subtitle">
           </mat-form-field>
+          <div fxLayout="row">
+            <mat-form-field class="example-chip-list w100">
+              <mat-chip-list #chipList aria-label="Fruit selection">
+                <mat-chip *ngFor="let tag of this.newData.tags; let i = index;" [selectable]="selectable"
+                          [removable]="removable" (removed)="remove(i)">
+                  {{tag.tag}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="New tag"
+                       [matChipInputFor]="chipList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       (matChipInputTokenEnd)="add($event)">
+              </mat-chip-list>
+            </mat-form-field>
+            <mat-chip-list>
+              <mat-chip *ngFor="let tag of this.datas">{{ tag.tag }}</mat-chip>
+            </mat-chip-list>
+          </div>
           <div fxLayout="row">
             <span class="fill-remaining-space"></span>
             <button mat-button matStepperNext color="primary">Next</button>
@@ -74,7 +93,7 @@
           </div>
         </mat-step>
 
-        <mat-step label="Validation" class="padding-top-15" >
+        <mat-step label="Validation" class="padding-top-15">
           <div fxLayout="row" fxLayout.lt-sm="column" [ngClass.lt-sm]="'sm-validation'">
             <div fxFlex="40" class="padding-30">
               <ed-card-data [data]="newData"></ed-card-data>
@@ -91,7 +110,8 @@
                 </div>
               </div>
               <div>
-                <button mat-raised-button *ngFor="let icon of icons" class="font-color-primary icon-button margin-right-15 margin-bottom-15" (click)="setIcon(icon)">
+                <button mat-raised-button *ngFor="let icon of icons"
+                        class="font-color-primary icon-button margin-right-15 margin-bottom-15" (click)="setIcon(icon)">
                   <i [class]="icon.icon"></i>
                 </button>
               </div>

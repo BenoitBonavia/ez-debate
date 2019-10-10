@@ -1,9 +1,8 @@
 package com.perso.ez.debate.data;
 
 import com.perso.ez.debate.data.source.SourceEntity;
+import com.perso.ez.debate.tag.TagEntity;
 import com.perso.ez.debate.data.video.VideoEntity;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -30,6 +29,10 @@ public class DataEntity {
 
     @Column(name = "date")
     private LocalDateTime date = LocalDateTime.now();
+
+    @ManyToMany
+    @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "tag"))
+    private List<TagEntity> tags;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
@@ -101,6 +104,14 @@ public class DataEntity {
 
     public void setVideos(List<VideoEntity> videos) {
         this.videos = videos;
+    }
+
+    public List<TagEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagEntity> tags) {
+        this.tags = tags;
     }
 
     @Override
