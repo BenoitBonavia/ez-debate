@@ -1,11 +1,14 @@
 package com.perso.ez.debate.data;
 
 
+import com.perso.ez.debate.tag.TagEntity;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Indexed
@@ -25,6 +28,11 @@ public class DataLightEntity {
     @Field
     @Column(name = "text", columnDefinition = "TEXT")
     private String text;
+
+    @IndexedEmbedded
+    @ManyToMany
+    @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "tag"))
+    private List<TagEntity> tags;
 
     @Column(name = "icon")
     private String icon;
@@ -78,5 +86,26 @@ public class DataLightEntity {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public List<TagEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagEntity> tags) {
+        this.tags = tags;
+    }
+
+    @Override
+    public String toString() {
+        return "DataLightEntity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", subtitle='" + subtitle + '\'' +
+                ", text='" + text + '\'' +
+                ", tags=" + tags +
+                ", icon='" + icon + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

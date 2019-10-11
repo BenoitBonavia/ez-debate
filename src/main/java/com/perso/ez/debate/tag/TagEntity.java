@@ -1,15 +1,19 @@
 package com.perso.ez.debate.tag;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.search.annotations.Field;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tag")
-public class TagEntity {
+public class TagEntity implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Field
     @Column(name = "tag")
     private String tag;
 
@@ -19,5 +23,13 @@ public class TagEntity {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

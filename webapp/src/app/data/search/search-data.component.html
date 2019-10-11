@@ -4,14 +4,14 @@
     <div fxFlex="60">
       <mat-form-field appearance="legacy" class="w100">
         <mat-label>Searching ...</mat-label>
-        <input matInput (change)="search()" [(ngModel)]="this.params" autocomplete="off">
+        <input matInput (keyup)="search()" [(ngModel)]="this.params" autocomplete="off">
         <mat-icon matSuffix>
           <button mat-mini-fab color="primary" style="z-index: 15" (click)="search()">
             <mat-icon>search</mat-icon>
           </button>
         </mat-icon>
       </mat-form-field>
-    </div>
+    </div>q
   </div>
   <div fxLayout="row">
 

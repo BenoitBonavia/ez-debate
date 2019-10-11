@@ -5,7 +5,7 @@
       <h2>{{ this.data.subtitle }}</h2>
     </div>
   </div>
-  <div fxLayout="row" class="padding-left-15 padding-right-15">
+  <div fxLayout="row">
     <ed-tag-list [tags]="this.data.tags"></ed-tag-list>
   </div>
   <div fxLayout="row" *ngIf="this.data.videos.length > 0">
@@ -13,7 +13,7 @@
       <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="70" [videos]="this.data.videos"></ed-horizontal-video-carousel>
     </div>
   </div>
-  <div fxLayout="row" class="padding-15">
+  <div fxLayout="row" class="padding-bottom-15 padding-top-15">
     <div fxFlex="100">
       {{ this.data.text }}
     </div>

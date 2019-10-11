@@ -41,7 +41,8 @@ public class SearchController {
                 .buildQueryBuilder().forEntity(DataLightEntity.class).get();
 
         org.apache.lucene.search.Query query = qb
-                .keyword().onField("text")
+                .keyword().onField("tags.tag")
+                .andField("text")
                 .andField("title")
                 .matching(text)
                 .createQuery();
@@ -49,7 +50,7 @@ public class SearchController {
         FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataLightEntity.class);
 
         List<DataLightEntity> result = hibQuery.list();
-        System.out.println(result);
+//        System.out.println(result);
 
         session.close();
         return result;
