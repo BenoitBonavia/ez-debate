@@ -11,10 +11,10 @@
           </button>
         </mat-icon>
       </mat-form-field>
-    </div>q
+    </div>
   </div>
   <div fxLayout="row">
 
   </div>
-  <ed-masonry-data-listing [datas]="this.datas"></ed-masonry-data-listing>
+  <ed-masonry-data-listing [datas]="this.datas" *ngIf="inited === true"></ed-masonry-data-listing>
 </div>

@@ -1,7 +1,7 @@
 <div fxLayout="row">
   <div fxFlex="90">
     <mat-form-field class="w100">
-      <input matInput placeholder="Icon" [(ngModel)]="this.icon">
+      <input matInput placeholder="Icon" [(ngModel)]="this.icon" (keyup)="refresh()">
     </mat-form-field>
   </div>
   <div fxFlex="10">

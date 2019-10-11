@@ -33,4 +33,8 @@ export class EditIconComponent implements OnInit {
     this.icon = icon.icon;
     this.iconChange.emit(this.icon);
   }
+
+  refresh() {
+    this.iconChange.emit(this.icon);
+  }
 }

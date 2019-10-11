@@ -15,6 +15,7 @@ export class SearchDataComponent implements OnInit {
 
   datas: DataModel[] = [];
   params: string = "";
+  inited = false;
 
   ngOnInit(): void {
     this.searchService.search(this.params).subscribe(response => {
@@ -24,6 +25,7 @@ export class SearchDataComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: ParamMap) => {
       this.searchService.search(params['search']).subscribe(response => {
         this.datas = response;
+        this.inited = true;
       });
     })
   }
