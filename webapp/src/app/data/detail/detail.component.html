@@ -20,7 +20,7 @@
   </div>
   <div>
     <h2>Sources</h2>
-    <ed-masonry-source-listing [sources]="data.sources"></ed-masonry-source-listing>
+    <ed-masonry-source-listing [sources]="data.sources" *ngIf="data && data.sources"></ed-masonry-source-listing>
   </div>
 </div>
 
