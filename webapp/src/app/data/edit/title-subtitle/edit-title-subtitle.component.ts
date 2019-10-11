@@ -10,6 +10,7 @@ export class EditTitleSubtitleComponent {
     @Input() data: DataModel;
     @Output() dataChange = new EventEmitter<DataModel>();
 
-
-
+    emitData() {
+      this.dataChange.emit(this.data);
+    }
 }

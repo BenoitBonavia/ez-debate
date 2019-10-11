@@ -12,7 +12,7 @@ import {MatInputModule} from "@angular/material/input";
 import {HomeComponent} from "./home/home.component";
 import {DataDetailComponent} from "./data/card-detail/data-detail.component";
 import {MatCardModule} from "@angular/material/card";
-import {DataListingComponent} from "./data/listing/data-listing.component";
+import {DataMasonryListingComponent} from "./data/masonry-listing/data-masonry-listing.component";
 import {CreateDataComponent} from "./data/create/create-data.component";
 import {MatStepperModule} from "@angular/material/stepper";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -40,6 +40,8 @@ import {EditTagsComponent} from "./data/edit/tags/edit-tags.component";
 import {EditVideosComponent} from "./data/edit/videos/edit-videos.component";
 import {EditSourcesComponent} from "./data/edit/sources/edit-sources.component";
 import {EditIconComponent} from "./data/edit/icon/edit-icon.component";
+import {CardSourceComponent} from "./data/source/card/card-source.component";
+import {SourceMasonryListingComponent} from "./data/source/masonry-listing/source-masonry-listing.component";
 
 
 @NgModule({
@@ -48,7 +50,7 @@ import {EditIconComponent} from "./data/edit/icon/edit-icon.component";
     HeaderComponent,
     HomeComponent,
     DataDetailComponent,
-    DataListingComponent,
+    DataMasonryListingComponent,
     CreateDataComponent,
     SearchDataComponent,
     CardDataComponent,
@@ -61,6 +63,8 @@ import {EditIconComponent} from "./data/edit/icon/edit-icon.component";
     EditVideosComponent,
     EditSourcesComponent,
     EditIconComponent,
+    CardSourceComponent,
+    SourceMasonryListingComponent
   ],
   imports: [
     HttpClientModule,

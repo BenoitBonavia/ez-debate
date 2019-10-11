@@ -37,6 +37,7 @@ export class EditTagsComponent implements OnInit {
       tag.tag = value;
       this.tagService.saveTag(tag).subscribe(response => {
         this.tags.push(response);
+        this.tagsChange.emit(this.tags);
       })
     }
     if (input) {
@@ -46,9 +47,11 @@ export class EditTagsComponent implements OnInit {
 
   remove(tagId: number): void {
     this.tags.splice(tagId, 1);
+    this.tagsChange.emit(this.tags);
   }
 
   addOnClick(tag: TagModel) {
     this.tags.push(tag);
+    this.tagsChange.emit(this.tags);
   }
 }

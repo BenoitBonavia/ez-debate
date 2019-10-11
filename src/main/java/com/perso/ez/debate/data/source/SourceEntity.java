@@ -1,5 +1,7 @@
 package com.perso.ez.debate.data.source;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,17 @@ public class SourceEntity {
 
     @Column(name = "link")
     private String link;
+
+    @Column(name = "m_title")
+    private String mTitle;
+
+    @Length(max = 10000)
+    @Column(name = "m_description")
+    private String mDescription;
+
+    @Length(max = 10000)
+    @Column(name = "m_image")
+    private String mImage;
 
     public Long getId() {
         return id;
@@ -38,5 +51,29 @@ public class SourceEntity {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getmTitle() {
+        return mTitle;
+    }
+
+    public void setmTitle(String mTitle) {
+        this.mTitle = mTitle;
+    }
+
+    public String getmDescription() {
+        return mDescription;
+    }
+
+    public void setmDescription(String mDescription) {
+        this.mDescription = mDescription;
+    }
+
+    public String getmImage() {
+        return mImage;
+    }
+
+    public void setmImage(String mImage) {
+        this.mImage = mImage;
     }
 }

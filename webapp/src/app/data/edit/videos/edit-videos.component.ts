@@ -13,10 +13,12 @@ export class EditVideosComponent {
   addVideoLink(index) {
     if (index == this.videos.length - 1 && this.videos[index].title !== undefined) {
       this.videos.push(new VideoModel());
+      this.videosChange.emit(this.videos);
     }
   }
 
   removeVideo(index) {
     this.videos.splice(index, 1);
+    this.videosChange.emit(this.videos);
   }
 }

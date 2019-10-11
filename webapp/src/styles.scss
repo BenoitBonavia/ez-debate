@@ -17,6 +17,11 @@ h2 {
   color: $primary-color;
 }
 
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -188,6 +193,10 @@ h2 {
 
 .position-fixed {
   position: fixed !important;
+}
+
+.z-index-1000000 {
+  z-index: 1000000 !important;
 }
 
 .float-right {

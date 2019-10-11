@@ -1,6 +1,6 @@
 <div class="container" *ngIf="this.data">
   <div fxLayout="row">
-    <div fxFlex="100" class="padding-left-15 padding-right-15">
+    <div fxFlex="100">
       <h1>{{ this.data.title }}</h1>
       <h2>{{ this.data.subtitle }}</h2>
     </div>
@@ -18,7 +18,9 @@
       {{ this.data.text }}
     </div>
   </div>
+  <div>
+    <h2>Sources</h2>
+    <ed-masonry-source-listing [sources]="data.sources"></ed-masonry-source-listing>
+  </div>
 </div>
 
-
-{{ this.data | json }}

@@ -13,6 +13,7 @@ export class EditSourcesComponent {
   editTabOnType(index) {
     if (index == this.sources.length - 1 && this.sources[index].title !== undefined) {
       this.sources.push(new SourceModel());
+      this.sourcesChange.emit(this.sources);
     }
   }
 }

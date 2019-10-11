@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{ source.mTitle }}</mat-card-title>
+    <mat-card-subtitle>{{ source.title }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="source.mImage" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      {{ source.mDescription }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions fxLayout="row">
+    <span class="fill-remaining-space"></span>
+    <a mat-button [href]="source.link" target="_blank">READ MORE</a>
+  </mat-card-actions>
+</mat-card>

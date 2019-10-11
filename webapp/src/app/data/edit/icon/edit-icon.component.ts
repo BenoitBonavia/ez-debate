@@ -31,5 +31,6 @@ export class EditIconComponent implements OnInit {
 
   setIcon(icon) {
     this.icon = icon.icon;
+    this.iconChange.emit(this.icon);
   }
 }
