@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "buildapp": "ng build --prod",
     "copy": "rm -rf ../src/main/resources/static && cp -r dist/webapp ../src/main/resources/static",
-    "deployapp": "npm run buildapp && npm run copy && git add ../src/main/resources/static && git commit -am \"deploiement\" && git push origin master"
+    "deployapp": "npm run buildapp && npm run copy && git add ../src/main/resources/static && git commit -am \"deploiement\""
   },
   "private": true,
   "dependencies": {
