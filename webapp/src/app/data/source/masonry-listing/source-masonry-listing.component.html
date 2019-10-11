@@ -1,4 +1,4 @@
-<ngx-masonry>
+<ngx-masonry [useImagesLoaded]="true">
   <div ngxMasonryItem *ngFor="let source of sources" fxFlex="33%" fxFlex.sm="50%" fxFlex.xs="100%" class="padding-15 w100">
     <ed-card-source [source]="source"></ed-card-source>
   </div>
