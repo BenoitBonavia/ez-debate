@@ -1,0 +1,16 @@
+<div fxLayout="row">
+  <div fxFlex="90">
+    <mat-form-field class="w100">
+      <input matInput placeholder="Icon" [(ngModel)]="this.icon">
+    </mat-form-field>
+  </div>
+  <div fxFlex="10">
+    <button mat-raised-button color="primary" (click)="saveIcon()">Save</button>
+  </div>
+</div>
+<div>
+  <button mat-raised-button *ngFor="let icon of icons"
+          class="font-color-primary icon-button margin-right-15 margin-bottom-15" (click)="setIcon(icon)">
+    <i [class]="icon.icon"></i>
+  </button>
+</div>

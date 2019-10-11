@@ -3,33 +3,8 @@
     <div fxFlex="100%">
       <mat-vertical-stepper>
         <mat-step label="Title, subtitle & tags" class="padding-top-15">
-          <mat-form-field class="display-block">
-            <input matInput placeholder="Title" [(ngModel)]="newData.title">
-          </mat-form-field>
-          <mat-form-field class="display-block">
-            <input matInput placeholder="Sous titre" [(ngModel)]="newData.subtitle">
-          </mat-form-field>
-          <div fxLayout="row">
-            <mat-form-field class="example-chip-list w100">
-              <mat-chip-list #chipList aria-label="Fruit selection">
-                <mat-chip *ngFor="let tag of this.newData.tags; let i = index;" [selectable]="selectable"
-                          [removable]="removable" (removed)="remove(i)">
-                  {{tag.tag}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-                <input placeholder="New tag"
-                       [matChipInputFor]="chipList"
-                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                       [matChipInputAddOnBlur]="addOnBlur"
-                       (matChipInputTokenEnd)="add($event)">
-              </mat-chip-list>
-            </mat-form-field>
-          </div>
-          <div fxLayout="row">
-            <mat-chip-list class="w100">
-              <mat-chip *ngFor="let tag of this.tags">{{ tag.tag }}</mat-chip>
-            </mat-chip-list>
-          </div>
+          <ed-edit-title-subtitle [(data)]="newData"></ed-edit-title-subtitle>
+          <ed-edit-tags [(tags)]="newData.tags"></ed-edit-tags>
           <div fxLayout="row">
             <span class="fill-remaining-space"></span>
             <button mat-button matStepperNext color="primary">Next</button>
@@ -47,25 +22,7 @@
         </mat-step>
 
         <mat-step label="Medias" class="padding-top-15">
-          <div fxLayout.gt-md="row" fxLayout.lt-md="column" *ngFor="let video of newData.videos; let i = index;">
-<!--            <div fxFlex="6%">-->
-<!--              <button mat-button color="warn" class="centered-block"-->
-<!--                      [ngClass]="{'display-none': video.title === undefined && video.link === undefined}"><i-->
-<!--                class="fas fa-times"></i></button>-->
-<!--            </div>-->
-            <div fxFlex="55%" class="padding-right-15">
-              <mat-form-field class="display-block">
-                <input matInput placeholder="Title" [(ngModel)]="video.title" (keyup)="addVideoLink(i)">
-              </mat-form-field>
-              <mat-form-field class="display-block">
-                <input matInput placeholder="Link" [(ngModel)]="video.link" (keyup)="addVideoLink(i)">
-              </mat-form-field>
-            </div>
-            <div fxFlex="45%" class="padding-right-15 position-relative">
-              <ed-video-embed [link]="video.link" *ngIf="video.link != ''" [position]="'static'"></ed-video-embed>
-              <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;" *ngIf="video.link"><mat-icon>delete</mat-icon></button>
-            </div>
-          </div>
+          <ed-edit-videos [(videos)]="this.newData.videos"></ed-edit-videos>
           <div fxLayout="row">
             <span class="fill-remaining-space"></span>
             <button mat-button matStepperNext color="primary">Next</button>
@@ -73,23 +30,7 @@
         </mat-step>
 
         <mat-step label="Sources" class="padding-top-15">
-          <div fxLayout="row" *ngFor="let source of newData.sources; let i = index;">
-            <div fxFlex="6%">
-              <button mat-button color="warn" class="centered-block"
-                      [ngClass]="{'display-none': source.title === undefined && source.link === undefined}"><i
-                class="fas fa-times"></i></button>
-            </div>
-            <div fxFlex="47%" class="padding-right-15">
-              <mat-form-field class="display-block">
-                <input matInput placeholder="Title" [(ngModel)]="source.title" (keyup)="editTabOnType(i)">
-              </mat-form-field>
-            </div>
-            <div fxFlex="47%" class="padding-right-15">
-              <mat-form-field class="display-block">
-                <input matInput placeholder="Link" [(ngModel)]="source.link" (keyup)="editTabOnType(i)">
-              </mat-form-field>
-            </div>
-          </div>
+          <ed-edit-sources [(sources)]="this.newData.sources"></ed-edit-sources>
           <div fxLayout="row">
             <span class="fill-remaining-space"></span>
             <button mat-button matStepperNext color="primary">Next</button>
@@ -102,22 +43,7 @@
               <ed-card-data [data]="newData"></ed-card-data>
             </div>
             <div fxFlex="60" class="padding-30">
-              <div fxLayout="row">
-                <div fxFlex="90">
-                  <mat-form-field class="w100">
-                    <input matInput placeholder="Icon" [(ngModel)]="newData.icon">
-                  </mat-form-field>
-                </div>
-                <div fxFlex="10">
-                  <button mat-raised-button color="primary" (click)="saveIcon()">Save</button>
-                </div>
-              </div>
-              <div>
-                <button mat-raised-button *ngFor="let icon of icons"
-                        class="font-color-primary icon-button margin-right-15 margin-bottom-15" (click)="setIcon(icon)">
-                  <i [class]="icon.icon"></i>
-                </button>
-              </div>
+              <ed-edit-icon [(icon)]="this.newData.icon"></ed-edit-icon>
             </div>
           </div>
           <div fxLayout="row">

@@ -23,17 +23,9 @@ export class CreateDataComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private dataService: DataService, private iconService: IconService, private snackBar: MatSnackBar, private tagService: TagService) {
   }
 
-  icons: IconModel[];
-
   newData: DataModel = new DataModel();
 
   firstFormGroup: FormGroup;
-
-  // Paramétrage du champs des tags
-  selectable: boolean = true;
-  removable: boolean = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  addOnBlur: boolean = true;
 
   tags: TagModel[];
 
@@ -41,12 +33,6 @@ export class CreateDataComponent implements OnInit {
     this.firstFormGroup = this.formBuilder.group({
       title: ['', Validators.required],
       subtitle: ['', Validators.required]
-    });
-    this.iconService.getAll().subscribe(response => {
-      this.icons = response;
-    });
-    this.tagService.getAll().subscribe(response => {
-      this.tags = response;
     });
     this.newData.sources.push(new SourceModel());
     this.newData.videos.push(new VideoModel());
@@ -61,50 +47,10 @@ export class CreateDataComponent implements OnInit {
     })
   }
 
-  editTabOnType(index) {
-    if (index == this.newData.sources.length - 1 && this.newData.sources[index].title !== undefined) {
-      this.newData.sources.push(new SourceModel());
-    }
-  }
-
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
   }
 
-  saveIcon() {
-    this.iconService.saveIcon(new IconModel(this.newData.icon)).subscribe(response => {
-      this.icons.push(response);
-    });
-  }
-
-  setIcon(icon) {
-    this.newData.icon = icon.icon;
-  }
-
-  addVideoLink(index) {
-    if (index == this.newData.videos.length - 1 && this.newData.videos[index].title !== undefined) {
-      this.newData.videos.push(new VideoModel());
-    }
-  }
-
-  remove(tagId: number): void {
-    this.newData.tags.splice(tagId, 1);
-  }
-
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-    if (value != "") {
-      let tag = new TagModel();
-      tag.tag = value;
-      this.tagService.saveTag(tag).subscribe(response => {
-        this.newData.tags.push(response);
-      })
-    }
-    if (input) {
-      input.value = '';
-    }
-  }
 }

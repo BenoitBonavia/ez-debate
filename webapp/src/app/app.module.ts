@@ -35,6 +35,11 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatChipsModule} from "@angular/material/chips";
 import {TagService} from "./service/tag.service";
 import {TagListComponent} from "./data/tag-list/tag-list.component";
+import {EditTitleSubtitleComponent} from "./data/edit/title-subtitle/edit-title-subtitle.component";
+import {EditTagsComponent} from "./data/edit/tags/edit-tags.component";
+import {EditVideosComponent} from "./data/edit/videos/edit-videos.component";
+import {EditSourcesComponent} from "./data/edit/sources/edit-sources.component";
+import {EditIconComponent} from "./data/edit/icon/edit-icon.component";
 
 
 @NgModule({
@@ -51,6 +56,11 @@ import {TagListComponent} from "./data/tag-list/tag-list.component";
     DetailComponent,
     HorizontalVideoCarouselComponent,
     TagListComponent,
+    EditTitleSubtitleComponent,
+    EditTagsComponent,
+    EditVideosComponent,
+    EditSourcesComponent,
+    EditIconComponent,
   ],
   imports: [
     HttpClientModule,
