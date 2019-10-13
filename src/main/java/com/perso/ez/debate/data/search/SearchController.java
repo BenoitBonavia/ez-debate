@@ -41,11 +41,19 @@ public class SearchController {
                 .buildQueryBuilder().forEntity(DataLightEntity.class).get();
 
         org.apache.lucene.search.Query query = qb
-                .keyword().onField("tags.tag")
-                .andField("text")
-                .andField("title")
-                .matching(text)
-                .createQuery();
+                .bool()
+                // Recherche d'un mot clef modulo 2 lettres
+                .must(
+                        qb.keyword()
+                                .fuzzy()
+                                .withEditDistanceUpTo(2)
+                                .withPrefixLength(0)
+                                .onField("tags.tag")
+                                .andField("text")
+                                .andField("title")
+                                .matching(text)
+                                .createQuery()
+                ).createQuery();
 
         FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataLightEntity.class);
 

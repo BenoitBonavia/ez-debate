@@ -1,6 +1,7 @@
 package com.perso.ez.debate.data;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.perso.ez.debate.tag.TagEntity;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
@@ -31,6 +32,7 @@ public class DataLightEntity {
 
     @IndexedEmbedded
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "tag"))
     private List<TagEntity> tags;
 
