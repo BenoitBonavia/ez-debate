@@ -1,5 +1,5 @@
 <div class="container" *ngIf="this.data">
-  <div fxLayout="row" (>
+  <div fxLayout="row">
     <div fxFlex="100" *ngIf="editableArea !== 'title&subtitle'">
       <h1 (mouseenter)="setHover('title')" (mouseleave)="setHover(null)">{{ this.data.title }}
         <ed-badge-button *ngIf="hoverArea === 'title'"
