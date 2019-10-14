@@ -1,4 +1,8 @@
-<div class="container" *ngIf="this.data">
+<div class="container" *ngIf="this.data" style="-webkit-user-select: none !important; /* Safari */
+-moz-user-select: none !important; /* Firefox */
+-ms-user-select: none !important; /* IE10+/Edge */
+user-select: none !important; /* Standard */
+">
   <div fxLayout="row">
     <div fxFlex="100" *ngIf="editableArea !== 'title&subtitle'" holdable (holdTime)="holdToEdit($event)">
       <h1 (mouseenter)="setHover('title')" (mouseleave)="setHover(null)">{{ this.data.title }}
