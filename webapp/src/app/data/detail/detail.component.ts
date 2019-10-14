@@ -66,4 +66,8 @@ export class DetailComponent {
         }
     }
   }
+
+  test() {
+    console.log("coucou");
+  }
 }
