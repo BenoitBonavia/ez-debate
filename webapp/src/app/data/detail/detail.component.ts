@@ -7,12 +7,14 @@ import {DataModel} from "../../models/data.model";
 export enum HoverArea {
   TITLE = 'title',
   SUBTITLE = 'subtitle',
-  TAGS = 'tags'
+  TAGS = 'tags',
+  TEXT = 'text'
 }
 
 export enum EditableArea {
   TITLE_SUBTITLE = 'title&subtitle',
-  TAGS = 'tags'
+  TAGS = 'tags',
+  TEXT = 'text'
 }
 
 @Component({
