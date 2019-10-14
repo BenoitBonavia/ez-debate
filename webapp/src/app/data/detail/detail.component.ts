@@ -9,7 +9,7 @@ import {DataModel} from "../../models/data.model";
 })
 export class DetailComponent {
 
-  EDIT_TIME: number = 500;
+  EDIT_TIME: number = 1000;
 
   data: DataModel;
   tempData: DataModel;
@@ -62,6 +62,7 @@ export class DetailComponent {
         this.titleHolding = event;
         if (event === this.EDIT_TIME) {
           this.setEditableArea('title&subtitle')
+          this.titleHolding = 0;
         }
     }
   }
