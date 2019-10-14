@@ -1,16 +1,39 @@
 <div class="container" *ngIf="this.data">
-  <div fxLayout="row">
-    <div fxFlex="100">
-      <h1 (mouseenter)="setHover('title')" (mouseleave)="setHover(null)">{{ this.data.title }} <ed-badge-button *ngIf="this.hoverArea === 'title'"></ed-badge-button></h1>
-      <h2 (mouseenter)="setHover('subtitle')" (mouseleave)="setHover(null)">{{ this.data.subtitle }} <ed-badge-button *ngIf="this.hoverArea === 'subtitle'"></ed-badge-button></h2>
+  <div fxLayout="row" (>
+    <div fxFlex="100" *ngIf="editableArea !== 'title&subtitle'">
+      <h1 (mouseenter)="setHover('title')" (mouseleave)="setHover(null)">{{ this.data.title }}
+        <ed-badge-button *ngIf="hoverArea === 'title'"
+                         (onButtonClick)="setEditableArea('title&subtitle')"></ed-badge-button>
+      </h1>
+      <h2 (mouseenter)="setHover('subtitle')" (mouseleave)="setHover(null)">{{ this.data.subtitle }}
+        <ed-badge-button *ngIf="hoverArea === 'subtitle'"
+                         (onButtonClick)="setEditableArea('title&subtitle')"></ed-badge-button>
+      </h2>
+
     </div>
   </div>
+  <div *ngIf="editableArea === 'title&subtitle'">
+    <div fxLayout="row">
+      <div fxFlex="100" class="padding-top-15">
+        <ed-edit-title-subtitle [(data)]="tempData"></ed-edit-title-subtitle>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <span class="fill-remaining-space"></span>
+      <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      <button mat-raised-button color="primary" (click)="saveData()" class="margin-left-15">Save</button>
+    </div>
+  </div>
+
+
+
   <div fxLayout="row">
     <ed-tag-list [tags]="this.data.tags"></ed-tag-list>
   </div>
   <div fxLayout="row" *ngIf="this.data.videos.length > 0">
     <div #verticalVideoCarouselContainer fxFlex="100">
-      <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="70" [videos]="this.data.videos"></ed-horizontal-video-carousel>
+      <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="70"
+                                    [videos]="this.data.videos"></ed-horizontal-video-carousel>
     </div>
   </div>
   <div fxLayout="row" class="padding-bottom-15 padding-top-15">
