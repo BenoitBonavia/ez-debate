@@ -3,6 +3,18 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {DataService} from "../../service/data.service";
 import {DataModel} from "../../models/data.model";
 
+
+export enum HoverArea {
+  TITLE = 'title',
+  SUBTITLE = 'subtitle',
+  TAGS = 'tags'
+}
+
+export enum EditableArea {
+  TITLE_SUBTITLE = 'title&subtitle',
+  TAGS = 'tags'
+}
+
 @Component({
   selector: 'detail',
   templateUrl: 'detail.component.html'
@@ -11,6 +23,8 @@ export class DetailComponent {
 
   EDIT_TIME: number = 1000;
 
+  HoverArea : typeof HoverArea = HoverArea;
+  EditableArea: typeof EditableArea = EditableArea;
   data: DataModel;
   tempData: DataModel;
   hoverArea: string = null;
