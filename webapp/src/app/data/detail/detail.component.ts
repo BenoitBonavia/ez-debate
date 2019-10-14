@@ -5,11 +5,12 @@ import {DataModel} from "../../models/data.model";
 
 @Component({
   selector: 'detail',
-  templateUrl: 'detail.component.html',
+  templateUrl: 'detail.component.html'
 })
 export class DetailComponent {
 
   data: DataModel;
+  hoverArea: string = null;
 
   @ViewChild("verticalVideoCarouselContainer", {static: false}) verticalVideoCarouselContainer: ElementRef;
 
@@ -23,5 +24,9 @@ export class DetailComponent {
         this.data = response;
       })
     })
+  }
+
+  setHover(val) {
+    this.hoverArea = val;
   }
 }

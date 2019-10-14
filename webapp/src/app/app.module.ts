@@ -42,6 +42,8 @@ import {EditSourcesComponent} from "./data/edit/sources/edit-sources.component";
 import {EditIconComponent} from "./data/edit/icon/edit-icon.component";
 import {CardSourceComponent} from "./data/source/card/card-source.component";
 import {SourceMasonryListingComponent} from "./data/source/masonry-listing/source-masonry-listing.component";
+import {MatBadgeModule} from "@angular/material/badge";
+import {BadgeButtonComponent} from "./common/badge-button/badge-button.component";
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import {SourceMasonryListingComponent} from "./data/source/masonry-listing/sourc
     EditSourcesComponent,
     EditIconComponent,
     CardSourceComponent,
-    SourceMasonryListingComponent
+    SourceMasonryListingComponent,
+    BadgeButtonComponent
   ],
   imports: [
     HttpClientModule,
@@ -85,6 +88,7 @@ import {SourceMasonryListingComponent} from "./data/source/masonry-listing/sourc
     MatDividerModule,
     MatMenuModule,
     MatChipsModule,
+    MatBadgeModule,
 
   ],
   providers: [

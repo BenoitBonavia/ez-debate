@@ -1,0 +1,21 @@
+.my-fab {
+  width: 20px;
+  height: 20px;
+  line-height: 15px;
+  font-size: 15px;
+  top: -1em;
+  right: -1em;
+
+  &::ng-deep .mat-button-wrapper{
+    line-height: 15px;
+    padding: 0;
+
+    .mat-icon {
+      width: 20px;
+      height: 20px;
+      font-size: 15px;
+      padding-right: 5px;
+      padding-top: 2.5px;
+    }
+  }
+}
