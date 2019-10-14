@@ -30,7 +30,7 @@ export class DetailComponent {
   hoverArea: string = null;
   editableArea: string = null;
 
-  titleHolding = 0;
+  holding = 0;
 
   @ViewChild("verticalVideoCarouselContainer", {static: false}) verticalVideoCarouselContainer: ElementRef;
 
@@ -69,15 +69,11 @@ export class DetailComponent {
     })
   }
 
-  holdToEdit(event) {
-    let val = 'title&subtitle';
-    switch (val) {
-      case 'title&subtitle':
-        this.titleHolding = event;
-        if (event === this.EDIT_TIME) {
-          this.setEditableArea('title&subtitle')
-          this.titleHolding = 0;
-        }
+  holdToEdit(event, val) {
+    this.holding = event;
+    if (event === this.EDIT_TIME) {
+      this.setEditableArea(val);
+      this.holding = 0;
     }
   }
 
