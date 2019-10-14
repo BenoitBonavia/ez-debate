@@ -22,14 +22,14 @@ export class HoldableDirective {
     );
   }
 
-  // @HostListener('touchend')
-  @HostListener('mouseup')
+  @HostListener('touchend')
+  // @HostListener('mouseup')
   onExit() {
     this.state.next('cancel');
   }
 
-  // @HostListener('touchstart')
-  @HostListener('mousedown')
+  @HostListener('touchstart')
+  // @HostListener('mousedown')
   onHold() {
     this.state.next('start');
     const n = 100;
