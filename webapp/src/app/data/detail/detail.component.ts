@@ -23,12 +23,13 @@ export class DetailComponent {
 
   EDIT_TIME: number = 1000;
 
-  HoverArea : typeof HoverArea = HoverArea;
+  HoverArea: typeof HoverArea = HoverArea;
   EditableArea: typeof EditableArea = EditableArea;
   data: DataModel;
   tempData: DataModel;
   hoverArea: string = null;
   editableArea: string = null;
+  loadingArea: string = null;
 
   holding = 0;
 
@@ -70,14 +71,11 @@ export class DetailComponent {
   }
 
   holdToEdit(event, val) {
+    this.loadingArea = val;
     this.holding = event;
     if (event === this.EDIT_TIME) {
       this.setEditableArea(val);
       this.holding = 0;
     }
-  }
-
-  test() {
-    console.log("coucou");
   }
 }
