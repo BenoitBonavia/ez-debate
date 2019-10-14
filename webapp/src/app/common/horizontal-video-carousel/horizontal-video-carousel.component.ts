@@ -27,14 +27,11 @@ export class HorizontalVideoCarouselComponent {
 
   toRight() {
     var i = 0;
-    this.log("enter to right");
     while (i < this.scrollLeft) {
       i += this.width/100*this.containerWidth;
-      this.log("scroll right 1");
     }
     if (i == this.scrollLeft) {
       i += this.width/100*this.containerWidth;
-      this.log("scroll right 2");
     }
     this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
     this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
@@ -43,11 +40,11 @@ export class HorizontalVideoCarouselComponent {
   toLeft() {
     var currentScrollLeft = this.scrollLeft - this.width/100*this.containerWidth;
     var i = 0;
-    this.log("enter to left");
     while (i < currentScrollLeft) {
       i += this.width/100*this.containerWidth;
-      this.log("scroll left 1")
     }
+    this.log(i);
+    this.log(this.verticalVideoCarouselContainer.nativeElement.scrollLeft);
     if (i === this.verticalVideoCarouselContainer.nativeElement.scrollLeft) {
       i -= this.width/100*this.containerWidth;
     }
