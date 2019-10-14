@@ -43,9 +43,10 @@ export class HorizontalVideoCarouselComponent {
     while (i < currentScrollLeft) {
       i += this.width/100*this.containerWidth;
     }
-    this.log(i);
-    this.log(this.verticalVideoCarouselContainer.nativeElement.scrollLeft);
-    if (i === this.verticalVideoCarouselContainer.nativeElement.scrollLeft) {
+    // this.log(i);
+    // this.log(this.verticalVideoCarouselContainer.nativeElement.scrollLeft);
+    if (Math.trunc(i) === Math.trunc(this.verticalVideoCarouselContainer.nativeElement.scrollLeft)) {
+      i = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
       i -= this.width/100*this.containerWidth;
     }
     this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
