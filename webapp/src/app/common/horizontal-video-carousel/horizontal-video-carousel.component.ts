@@ -48,7 +48,9 @@ export class HorizontalVideoCarouselComponent {
       i += this.width/100*this.containerWidth;
       this.log("scroll left 1")
     }
-    i -= this.width/100*this.containerWidth;
+    if (i === this.verticalVideoCarouselContainer.nativeElement.scrollLeft) {
+      i -= this.width/100*this.containerWidth;
+    }
     this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
     this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
   }
