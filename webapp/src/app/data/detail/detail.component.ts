@@ -55,7 +55,8 @@ export class DetailComponent {
     })
   }
 
-  holdToEdit(event, val) {
+  holdToEdit(event) {
+    let val = 'title&subtitle';
     switch (val) {
       case 'title&subtitle':
         this.titleHolding = event;

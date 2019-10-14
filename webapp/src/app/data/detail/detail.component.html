@@ -1,6 +1,6 @@
 <div class="container" *ngIf="this.data">
   <div fxLayout="row">
-    <div fxFlex="100" *ngIf="editableArea !== 'title&subtitle'" holdable (holdTime)="holdToEdit($event, 'title&subtitle')">
+    <div fxFlex="100" *ngIf="editableArea !== 'title&subtitle'" holdable (holdTime)="holdToEdit($event)">
       <h1 (mouseenter)="setHover('title')" (mouseleave)="setHover(null)">{{ this.data.title }}
         <ed-badge-button *ngIf="hoverArea === 'title'"
                          (onButtonClick)="setEditableArea('title&subtitle')" [fxHide.lt-sm]="true"></ed-badge-button>
