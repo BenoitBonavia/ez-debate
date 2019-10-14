@@ -13,9 +13,6 @@ user-select: none !important; /* Standard */
         <ed-badge-button *ngIf="hoverArea === 'subtitle'"
                          (onButtonClick)="setEditableArea('title&subtitle')" [fxHide.lt-sm]="true"></ed-badge-button>
       </h2>
-      <div>
-        {{ this.titleHolding }}
-      </div>
       <mat-progress-bar mode="determinate" [value]="titleHolding/EDIT_TIME*100" [fxHide.gt-md]="true" *ngIf="titleHolding != 0"></mat-progress-bar>
     </div>
   </div>
