@@ -44,6 +44,8 @@ import {CardSourceComponent} from "./data/source/card/card-source.component";
 import {SourceMasonryListingComponent} from "./data/source/masonry-listing/source-masonry-listing.component";
 import {MatBadgeModule} from "@angular/material/badge";
 import {BadgeButtonComponent} from "./common/badge-button/badge-button.component";
+import { HoldableDirective } from './holdable.directive';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -67,7 +69,8 @@ import {BadgeButtonComponent} from "./common/badge-button/badge-button.component
     EditIconComponent,
     CardSourceComponent,
     SourceMasonryListingComponent,
-    BadgeButtonComponent
+    BadgeButtonComponent,
+    HoldableDirective
   ],
   imports: [
     HttpClientModule,
@@ -89,6 +92,7 @@ import {BadgeButtonComponent} from "./common/badge-button/badge-button.component
     MatMenuModule,
     MatChipsModule,
     MatBadgeModule,
+    MatProgressBarModule,
 
   ],
   providers: [

@@ -9,10 +9,14 @@ import {DataModel} from "../../models/data.model";
 })
 export class DetailComponent {
 
+  EDIT_TIME: number = 500;
+
   data: DataModel;
   tempData: DataModel;
   hoverArea: string = null;
   editableArea: string = null;
+
+  titleHolding = 0;
 
   @ViewChild("verticalVideoCarouselContainer", {static: false}) verticalVideoCarouselContainer: ElementRef;
 
@@ -49,5 +53,15 @@ export class DetailComponent {
       this.tempData = this.data;
       this.editableArea = null;
     })
+  }
+
+  holdToEdit(event, val) {
+    switch (val) {
+      case 'title&subtitle':
+        this.titleHolding = event;
+        if (event === this.EDIT_TIME) {
+          this.setEditableArea('title&subtitle')
+        }
+    }
   }
 }
