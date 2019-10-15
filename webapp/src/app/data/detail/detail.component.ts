@@ -75,6 +75,7 @@ export class DetailComponent {
   }
 
   holdToEdit(event, val) {
+    console.log(event + ' ' + val);
     this.loadingArea = val;
     this.holding = event;
     if (event === this.EDIT_TIME) {

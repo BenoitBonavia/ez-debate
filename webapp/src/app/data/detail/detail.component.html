@@ -102,6 +102,11 @@
                          [fxHide.lt-sm]="true"></ed-badge-button>
       </h2>
     </div>
+    <div fxLayout="row">
+      <mat-progress-bar mode="determinate" [value]="holding/EDIT_TIME*100" [fxHide.gt-md]="true"
+                        *ngIf="holding !== 0 && loadingArea == EditableArea.SOURCE"
+                        class="margin-top-15 margin-bottom-15"></mat-progress-bar>
+    </div>
     <ed-masonry-source-listing [sources]="data.sources" *ngIf="data && data.sources"></ed-masonry-source-listing>
   </div>
   <div *ngIf="editableArea === EditableArea.SOURCE">
