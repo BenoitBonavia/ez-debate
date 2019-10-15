@@ -11,7 +11,7 @@ export class EditVideosComponent {
   @Output() videosChange = new EventEmitter<VideoModel[]>();
 
   addVideoLink(index) {
-    if (index == this.videos.length - 1 && this.videos[index].title !== undefined) {
+    if (index == this.videos.length - 1 && this.videos[index].link !== undefined && this.videos[index].link !== "") {
       this.videos.push(new VideoModel());
       this.videosChange.emit(this.videos);
     }
