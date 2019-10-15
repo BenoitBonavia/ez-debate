@@ -15,7 +15,7 @@
   <div fxLayout="row">
     <mat-chip-list>
       <mat-chip *ngFor="let tag of data.tags" style="font-size: 10px; min-height: 20px; padding: 3px 7px;"
-                [routerLink]="'/research/' + tag.tag" class="pointer">{{ tag.tag }}</mat-chip>
+                [routerLink]="'/research'" class="pointer">{{ tag.tag }}</mat-chip>
     </mat-chip-list>
     <div class="fill-remaining-space"></div>
     <button mat-mini-fab color="primary" class="right: 0px;"><i class="fas fa-angle-right"></i></button>
