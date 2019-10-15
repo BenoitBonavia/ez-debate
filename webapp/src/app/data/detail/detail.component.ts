@@ -8,13 +8,15 @@ export enum HoverArea {
   TITLE = 'title',
   SUBTITLE = 'subtitle',
   TAGS = 'tags',
-  TEXT = 'text'
+  TEXT = 'text',
+  SOURCE = 'source'
 }
 
 export enum EditableArea {
   TITLE_SUBTITLE = 'title&subtitle',
   TAGS = 'tags',
-  TEXT = 'text'
+  TEXT = 'text',
+  SOURCE = 'source'
 }
 
 @Component({

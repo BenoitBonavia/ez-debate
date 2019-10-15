@@ -1,8 +1,4 @@
-<div class="container" *ngIf="this.data" style="-webkit-user-select: none !important; /* Safari */
--moz-user-select: none !important; /* Firefox */
--ms-user-select: none !important; /* IE10+/Edge */
-user-select: none !important; /* Standard */
-">
+<div class="container unselectable" *ngIf="this.data">
   <div fxLayout="row">
     <div fxFlex="100" *ngIf="editableArea !== EditableArea.TITLE_SUBTITLE" holdable
          (holdTime)="holdToEdit($event, EditableArea.TITLE_SUBTITLE)">
@@ -98,9 +94,23 @@ user-select: none !important; /* Standard */
   </div>
 
 
-  <div>
-    <h2>Sources</h2>
+  <div *ngIf="editableArea !== EditableArea.SOURCE" holdable (holdTime)="holdToEdit($event, EditableArea.SOURCE)">
+    <div fxLayout="row">
+      <h2 fxFlex="100" (mouseenter)="setHover(HoverArea.SOURCE)" (mouseleave)="null">
+        Sources
+        <ed-badge-button *ngIf="hoverArea === HoverArea.SOURCE" (onButtonClick)="setEditableArea(EditableArea.SOURCE)"
+                         [fxHide.lt-sm]="true"></ed-badge-button>
+      </h2>
+    </div>
     <ed-masonry-source-listing [sources]="data.sources" *ngIf="data && data.sources"></ed-masonry-source-listing>
+  </div>
+  <div *ngIf="editableArea === EditableArea.SOURCE">
+    <ed-edit-sources [(sources)]="this.tempData.sources"></ed-edit-sources>
+    <div fxLayout="row">
+      <span class="fill-remaining-space"></span>
+      <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      <button mat-raised-button color="primary" (click)="saveData()" class="margin-left-15">Save</button>
+    </div>
   </div>
 </div>
 

@@ -4,6 +4,13 @@
 
 $primary-color: #3f51b5;
 
+.unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
 html, body {
   height: 100%;
 }
