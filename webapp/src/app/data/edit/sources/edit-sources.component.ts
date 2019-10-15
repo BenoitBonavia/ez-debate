@@ -16,4 +16,9 @@ export class EditSourcesComponent {
       this.sourcesChange.emit(this.sources);
     }
   }
+
+  removeSource(index) {
+    this.sources.splice(index, 1);
+    this.sourcesChange.emit(this.sources);
+  }
 }

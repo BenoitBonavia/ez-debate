@@ -1,17 +1,17 @@
-<div fxLayout="row" *ngFor="let source of this.sources; let i = index;">
-  <div fxFlex="6%">
-    <button mat-button color="warn" class="centered-block"
-            [ngClass]="{'display-none': source.title === undefined && source.link === undefined}"><i
-      class="fas fa-times"></i></button>
-  </div>
-  <div fxFlex="47%" class="padding-right-15">
+<mat-card fxLayout.gt-md="row" fxLayout.lt-md="column" *ngFor="let source of this.sources; let i = index;" class="margin-bottom-15">
+  <div fxFlex="45%" class="padding-right-15">
     <mat-form-field class="display-block">
       <input matInput placeholder="Title" [(ngModel)]="source.title" (keyup)="editTabOnType(i)">
     </mat-form-field>
   </div>
-  <div fxFlex="47%" class="padding-right-15">
+  <div fxFlex="55%" class="padding-right-15 position-relative">
     <mat-form-field class="display-block">
       <input matInput placeholder="Link" [(ngModel)]="source.link" (keyup)="editTabOnType(i)">
     </mat-form-field>
+    <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
+            *ngIf="source.link" (click)="removeSource(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
   </div>
-</div>
+</mat-card>
+

@@ -1,21 +1,23 @@
-<div fxLayout="row">
-  <mat-form-field class="example-chip-list w100">
-    <mat-chip-list #chipList aria-label="Fruit selection">
-      <mat-chip *ngFor="let tag of this.tags; let i = index;" [selectable]="selectable"
-                [removable]="removable" (removed)="remove(i)">
-        {{tag.tag}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
-      <input placeholder="New tag"
-             [matChipInputFor]="chipList"
-             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-             [matChipInputAddOnBlur]="addOnBlur"
-             (matChipInputTokenEnd)="add($event)">
+<mat-card class="margin-bottom-15">
+  <div fxLayout="row">
+    <mat-form-field class="example-chip-list w100">
+      <mat-chip-list #chipList aria-label="Fruit selection">
+        <mat-chip *ngFor="let tag of this.tags; let i = index;" [selectable]="selectable"
+                  [removable]="removable" (removed)="remove(i)">
+          {{tag.tag}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="New tag"
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row">
+    <mat-chip-list class="w100">
+      <mat-chip *ngFor="let tag of this.allTags" class="pointer" (click)="addOnClick(tag)">{{ tag.tag }}</mat-chip>
     </mat-chip-list>
-  </mat-form-field>
-</div>
-<div fxLayout="row">
-  <mat-chip-list class="w100">
-    <mat-chip *ngFor="let tag of this.allTags" class="pointer" (click)="addOnClick(tag)">{{ tag.tag }}</mat-chip>
-  </mat-chip-list>
-</div>
+  </div>
+</mat-card>

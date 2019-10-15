@@ -6,14 +6,17 @@
           <ed-edit-title-subtitle [(data)]="newData"></ed-edit-title-subtitle>
           <ed-edit-tags [(tags)]="newData.tags"></ed-edit-tags>
           <div fxLayout="row">
+            <span class="fill-remaining-space"></span>
             <button mat-button matStepperNext color="primary">Next</button>
           </div>
         </mat-step>
 
-        <mat-step label="Text" class="padding-top-15">
-          <mat-form-field class="example-full-width display-block">
-            <textarea matInput placeholder="Main content" rows="15" [(ngModel)]="newData.text"></textarea>
-          </mat-form-field>
+        <mat-step label="Text" extclass="padding-top-15">
+          <mat-card>
+            <mat-form-field class="example-full-width display-block">
+              <textarea matInput placeholder="Main content" rows="15" [(ngModel)]="newData.text"></textarea>
+            </mat-form-field>
+          </mat-card>
           <div fxLayout="row">
             <span class="fill-remaining-space"></span>
             <button mat-button matStepperNext color="primary">Next</button>
