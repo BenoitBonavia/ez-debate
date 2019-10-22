@@ -32,8 +32,13 @@ public class SearchController {
         return dataLightRepository.findAll();
     }
 
+    // On autorise 1 caractère de différence avec l'occurence et 2 si la recherche est plus longue que 4 char
+    private int getFuzzySize(String text) {
+        return text.length() > 4 ? 2 : 1;
+    }
+
     @GetMapping("/{text}")
-    public List<DataLightEntity> searchData(@PathVariable String text) {
+    public List searchData(@PathVariable String text) {
         Session session = em.unwrap(SessionFactory.class).openSession();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
 
@@ -42,22 +47,21 @@ public class SearchController {
 
         org.apache.lucene.search.Query query = qb
                 .bool()
-                // Recherche d'un mot clef modulo 2 lettres
-                .must(
-                        qb.keyword()
-                                .fuzzy()
-                                .withEditDistanceUpTo(2)
-                                .withPrefixLength(0)
-                                .onField("tags.tag")
-                                .andField("text")
-                                .andField("title")
-                                .matching(text)
-                                .createQuery()
-                ).createQuery();
+                .must(qb.keyword()
+                        .fuzzy()
+                        .withEditDistanceUpTo(this.getFuzzySize(text))
+                        .withPrefixLength(0)
+                        .onField("tags.tag").boostedTo(10f)
+                        .andField("title").boostedTo(5f)
+                        .andField("subtitle").boostedTo(3f)
+                        .andField("text").boostedTo(1f)
+                        .matching(text)
+                        .createQuery())
+                .createQuery();
 
         FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataLightEntity.class);
 
-        List<DataLightEntity> result = hibQuery.list();
+        List result = hibQuery.list();
 //        System.out.println(result);
 
         session.close();

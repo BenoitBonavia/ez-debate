@@ -1,3 +1,3 @@
 <mat-chip-list>
-  <mat-chip *ngFor="let tag of tags" class="pointer" color="primary" [routerLink]="'/research/'" [queryParams]="{ tag: tag.tag }">{{ tag.tag }}</mat-chip>
+  <mat-chip *ngFor="let tag of tags" class="pointer" color="primary" [routerLink]="'/research/'" [queryParams]="{ text: tag.tag }">{{ tag.tag }}</mat-chip>
 </mat-chip-list>

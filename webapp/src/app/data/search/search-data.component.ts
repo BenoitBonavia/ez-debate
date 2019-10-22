@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {SearchService} from "../../service/search.service";
 import {DataModel} from "../../models/data.model";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'ed-all-data',
@@ -19,7 +19,7 @@ export class SearchDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
-      let paramTag = params.tag;
+      let paramTag = params.text;
       if (paramTag) {
         this.params += paramTag + " ";
         this.searchService.search(paramTag).subscribe(response => {
@@ -38,8 +38,9 @@ export class SearchDataComponent implements OnInit {
 
   search() {
     this.searchService.search(this.params).subscribe(response => {
-      console.log("test1");
       this.datas = response;
+      // We change the url of the page to keep the research when we refresh the page
+      window.history.replaceState({}, '', `/research?text =` + this.params);
     })
   }
 }
