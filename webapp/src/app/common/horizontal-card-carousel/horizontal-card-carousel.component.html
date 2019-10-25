@@ -1,7 +1,7 @@
-<div #verticalVideoCarouselContainer class="vertical-video-carousel-container" [ngStyle]="{'height': this.containerWidth*(this.width/100)*(9/16) + 'px'}" (scroll)="scrolling($event)">
+<div #verticalVideoCarouselContainer [ngStyle]="{'height': this.containerWidth*(this.width/100)*(9/16) + 'px'}" (scroll)="scrolling($event)">
   <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
-  <div class="display-inline-block vertical-video-carousel-element h100" [ngStyle]="{'width': this.width + '%'}" *ngFor="let video of videos; let index = index;">
-    <ed-video-embed [link]="video.link" [filter]="getFilter(index)" [position]="'absolute'"></ed-video-embed>
+  <div class="display-inline-block vertical-video-carousel-element h100" [ngStyle]="{'width': this.width + '%'}" *ngFor="let data of datas; let index = index;">
+    <ed-card-data [data]="data"></ed-card-data>
   </div>
   <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
 </div>

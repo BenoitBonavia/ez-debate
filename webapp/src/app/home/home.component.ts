@@ -1,4 +1,6 @@
 import {Component, OnInit} from "@angular/core";
+import {DataModel} from "../models/data.model";
+import {DataService} from "../service/data.service";
 
 @Component({
   selector: 'ed-home',
@@ -7,7 +9,15 @@ import {Component, OnInit} from "@angular/core";
 })
 export class HomeComponent implements OnInit {
 
-  ngOnInit(): void {
+  dataFrance: DataModel[];
 
+  constructor(private dataService: DataService) {
+
+  }
+
+  ngOnInit(): void {
+    this.dataService.getAllByTag("France").subscribe(response => {
+      this.dataFrance = response;
+    })
   }
 }

@@ -1,17 +1,17 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
-import {VideoModel} from "../../models/video.model";
+import {Component, Input, ViewChild} from "@angular/core";
+import {DataModel} from "../../models/data.model";
 
 @Component({
-  selector: 'ed-horizontal-video-carousel',
-  templateUrl: 'horizontal-video-carousel.component.html',
-  styleUrls: ['horizontal-video-carousel.component.scss']
+  selector: 'ed-horizontal-card-carousel',
+  templateUrl: 'horizontal-card-carousel.component.html',
+  styleUrls: ['horizontal-card-carousel.component.scss']
 })
-export class HorizontalVideoCarouselComponent {
+export class HorizontalCardCarouselComponent {
 
   @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: any;
   @Input() containerWidth: number;
   @Input() width: number;
-  @Input() videos: VideoModel[];
+  @Input() datas: DataModel[];
 
   private margin: number = null;
 
@@ -22,6 +22,10 @@ export class HorizontalVideoCarouselComponent {
       this.margin = (100-this.width)/2;
     }
     return this.margin;
+  }
+
+  scrolling(arg) {
+    this.scrollLeft = arg.target.scrollLeft;
   }
 
   toRight() {
@@ -48,17 +52,5 @@ export class HorizontalVideoCarouselComponent {
     }
     this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
     this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
-  }
-
-  getFilter(arg) {
-      var middle = arg*this.width/100*this.containerWidth + (this.width/100*this.containerWidth)/2;
-      if (this.scrollLeft < middle && middle < this.scrollLeft + this.width/100*this.containerWidth) {
-        return false;
-      }
-      return true;
-  }
-
-  scrolling(arg) {
-    this.scrollLeft = arg.target.scrollLeft;
   }
 }

@@ -46,6 +46,7 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {BadgeButtonComponent} from "./common/badge-button/badge-button.component";
 import { HoldableDirective } from './holdable.directive';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     CardSourceComponent,
     SourceMasonryListingComponent,
     BadgeButtonComponent,
-    HoldableDirective
+    HoldableDirective,
+    HorizontalCardCarouselComponent,
   ],
   imports: [
     HttpClientModule,
