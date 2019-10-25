@@ -10,7 +10,6 @@ import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {HomeComponent} from "./home/home.component";
-import {DataDetailComponent} from "./data/card-detail/data-detail.component";
 import {MatCardModule} from "@angular/material/card";
 import {DataMasonryListingComponent} from "./data/masonry-listing/data-masonry-listing.component";
 import {CreateDataComponent} from "./data/create/create-data.component";
@@ -26,7 +25,7 @@ import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./service/icon.service";
 import {VideoEmbedComponent} from "./common/video-embed/video.embed.component";
 import {EmbedVideo} from 'ngx-embed-video';
-import {DetailComponent} from "./data/detail/detail.component";
+import {DataDetailComponent} from "./data/detail/data-detail.component";
 import {HorizontalVideoCarouselComponent} from "./common/horizontal-video-carousel/horizontal-video-carousel.component";
 import {SearchService} from "./service/search.service";
 import {MatIconModule} from "@angular/material/icon";
@@ -60,7 +59,6 @@ import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel
     SearchDataComponent,
     CardDataComponent,
     VideoEmbedComponent,
-    DetailComponent,
     HorizontalVideoCarouselComponent,
     TagListComponent,
     EditTitleSubtitleComponent,

@@ -21,9 +21,9 @@ export enum EditableArea {
 
 @Component({
   selector: 'detail',
-  templateUrl: 'detail.component.html'
+  templateUrl: 'data-detail.component.html'
 })
-export class DetailComponent {
+export class DataDetailComponent {
 
   EDIT_TIME: number = 1000;
 
