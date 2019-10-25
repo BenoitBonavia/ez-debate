@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.*;
 public class TagController {
 
     @Autowired
-    private TagRepository tagRepository;
+    private TagLightRepository tagLightRepository;
 
     @GetMapping("/all")
-    public Iterable<TagEntity> getAll() {
-        return tagRepository.findAll();
+    public Iterable<TagLightEntity> getAll() {
+        return tagLightRepository.findAll();
     }
 
     @PostMapping
     public @ResponseBody
-    TagEntity saveTag(@RequestBody TagEntity tag) {
-        return tagRepository.save(tag);
+    TagLightEntity saveTag(@RequestBody TagLightEntity tag) {
+        return tagLightRepository.save(tag);
     }
 }

@@ -31,7 +31,7 @@ public class DataEntity {
     private LocalDateTime date = LocalDateTime.now();
 
     @ManyToMany
-    @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "tag"))
+    @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
     private List<TagEntity> tags;
 
     @OneToMany(cascade = CascadeType.ALL)

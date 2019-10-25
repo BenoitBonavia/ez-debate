@@ -1,5 +1,7 @@
 package com.perso.ez.debate.tag;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.perso.ez.debate.data.DataLightEntity;
 import org.hibernate.search.annotations.Field;
 
 import javax.persistence.*;
@@ -29,7 +31,4 @@ public class TagEntity implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
