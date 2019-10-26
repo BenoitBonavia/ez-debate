@@ -1,14 +1,41 @@
 <div class="container">
-  <div fxLayout="column" style="justify-content: center">
-      <div fxFlex="50" style="justify-content: center">
-        <mat-card>
-          <form action="/">
-            <mat-form-field class="display-block">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Your name ...">
-            </mat-form-field>
-          </form>
-        </mat-card>
-      </div>
+  <div fxLayout="row" class="justify-content-center"
+       style="margin-top: calc(50vh - 100px); transform: translateY(-50%)">
+    <div fxFlex="50" fxFlex.lt-sm="80">
+      <mat-card>
+        <form action="/">
+          <mat-form-field class="w100">
+            <mat-label>First name</mat-label>
+            <input matInput placeholder="Your name ..." [formControl]="firstNameFormControl">
+            <mat-error *ngIf="firstNameFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w100">
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="Your name ..." [formControl]="lastNameFormControl">
+            <mat-error *ngIf="lastNameFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="w100">
+            <input matInput placeholder="Email" [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div fxLayout="row">
+            <span class="fill-remaining-space"></span>
+            <button mat-raised-button color="primary" type="subscribe">Sign up</button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
   </div>
 </div>
