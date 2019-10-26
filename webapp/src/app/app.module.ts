@@ -46,6 +46,7 @@ import {BadgeButtonComponent} from "./common/badge-button/badge-button.component
 import { HoldableDirective } from './holdable.directive';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
+import {RegisterComponent} from "./security/register/register.component";
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel
     BadgeButtonComponent,
     HoldableDirective,
     HorizontalCardCarouselComponent,
+    RegisterComponent
   ],
   imports: [
     HttpClientModule,

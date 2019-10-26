@@ -4,6 +4,7 @@ import {HomeComponent} from "./home/home.component";
 import {CreateDataComponent} from "./data/create/create-data.component";
 import {SearchDataComponent} from "./data/search/search-data.component";
 import {DataDetailComponent} from "./data/detail/data-detail.component";
+import {RegisterComponent} from "./security/register/register.component";
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'create', component: CreateDataComponent },
   { path: 'research', component: SearchDataComponent},
-  { path: 'detail/:id', component: DataDetailComponent}
+  { path: 'detail/:id', component: DataDetailComponent},
+  { path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
