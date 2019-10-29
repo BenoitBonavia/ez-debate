@@ -5,17 +5,15 @@
       <mat-card>
         <form action="/">
           <mat-form-field class="w100">
-            <mat-label>First name</mat-label>
-            <input matInput placeholder="Your name ..." [formControl]="firstNameFormControl">
+            <input matInput placeholder="First name" [formControl]="firstNameFormControl">
             <mat-error *ngIf="firstNameFormControl.hasError('required')">
-              Email is <strong>required</strong>
+              First name is <strong>required</strong>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="w100">
-            <mat-label>Last name</mat-label>
-            <input matInput placeholder="Your name ..." [formControl]="lastNameFormControl">
+            <input matInput placeholder="Last name" [formControl]="lastNameFormControl">
             <mat-error *ngIf="lastNameFormControl.hasError('required')">
-              Email is <strong>required</strong>
+              Last name is <strong>required</strong>
             </mat-error>
           </mat-form-field>
 
@@ -27,6 +25,26 @@
             </mat-error>
             <mat-error *ngIf="emailFormControl.hasError('required')">
               Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w100">
+            <input matInput placeholder="Password" [formControl]="passwordFormControl">
+            <mat-error *ngIf="passwordFormControl.hasError('pattern')">
+              Use lowercase, uppercase letters, numbers, and special characters
+            </mat-error>
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w100">
+            <input matInput placeholder="Confirm password" [formControl]="confirmPasswordFormControl">
+            <mat-error *ngIf="confirmPasswordFormControl.hasError('pattern')">
+              Use lowercase, uppercase letters, numbers, and special characters
+            </mat-error>
+            <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+              Password confirmation is <strong>required</strong>
             </mat-error>
           </mat-form-field>
 
