@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import {VideoModel} from "../../models/video.model";
 
 @Component({
@@ -6,7 +6,7 @@ import {VideoModel} from "../../models/video.model";
   templateUrl: 'horizontal-video-carousel.component.html',
   styleUrls: ['horizontal-video-carousel.component.scss']
 })
-export class HorizontalVideoCarouselComponent {
+export class HorizontalVideoCarouselComponent implements AfterViewInit {
 
   @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: any;
   @Input() containerWidth: number;
@@ -14,8 +14,9 @@ export class HorizontalVideoCarouselComponent {
   @Input() videos: VideoModel[];
 
   private margin: number = null;
-
+  private displayVideo: boolean = false;
   private scrollLeft: number = 0;
+  private inited = false;
 
   getMargin() {
     if (this.margin == null) {
@@ -24,12 +25,16 @@ export class HorizontalVideoCarouselComponent {
     return this.margin;
   }
 
+  ngAfterViewInit(): void {
+    this.inited = true;
+  }
+
   toRight() {
-    this.verticalVideoCarouselContainer.nativeElement.scrollLeft += this.width/100*this.containerWidth;
+    if (this.inited) this.verticalVideoCarouselContainer.nativeElement.scrollLeft += this.width/100*this.containerWidth;
   }
 
   toLeft() {
-    this.verticalVideoCarouselContainer.nativeElement.scrollLeft -= this.width/100*this.containerWidth;
+    if (this.inited) this.verticalVideoCarouselContainer.nativeElement.scrollLeft -= this.width/100*this.containerWidth;
   }
 
   // toRight() {

@@ -1,0 +1,11 @@
+<div [ngStyle]="{'position': 'fixed', 'top': '0', 'left': '0', 'width': '100vw', 'height': '100vh', 'z-index': this.zIndex"
+     (window:resize)="ngAfterViewInit()" #fullScreenContainer>
+  <div style="width: 100%; height: 100%;" *ngIf="_display">
+    <svg height="100%" width="100%">
+      <rect x="0" y="0" width="100%" height="100%" fill="rgba(0, 0, 0, 0.8)"></rect>
+    </svg>
+    {{ embed }}
+    <div class="position-fixed" [innerHtml]="embed"
+         [ngStyle]="{'width': embedWidth + 'px', 'height': embedHeight + 'px', 'left': (totalWidth - embedWidth)/2 + 'px', 'top': (totalHeight - embedHeight)/2 + 'px', 'z-index': '201'}"></div>
+  </div>
+</div>

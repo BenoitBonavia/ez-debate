@@ -47,6 +47,7 @@ import { HoldableDirective } from './holdable.directive';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
 import {RegisterComponent} from "./security/register/register.component";
+import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import {RegisterComponent} from "./security/register/register.component";
     BadgeButtonComponent,
     HoldableDirective,
     HorizontalCardCarouselComponent,
-    RegisterComponent
+    RegisterComponent,
+    FullScreenVideoComponent
   ],
   imports: [
     HttpClientModule,

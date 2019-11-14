@@ -1,12 +1,11 @@
 <div #verticalVideoCarouselContainer class="vertical-video-carousel-container hide-scroll" [ngStyle]="{'height': this.containerWidth*(this.width/100)*(9/16) + 'px'}" (scroll)="scrolling($event)" (swipeLeft)="toRight()" (swipeRight)="toLeft()">
   <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
   <div class="display-inline-block vertical-video-carousel-element h100" [ngStyle]="{'width': this.width + '%'}" *ngFor="let video of videos; let index = index;">
-    <ed-video-embed [link]="video.link" [filter]="getFilter(index)" [position]="'absolute'"></ed-video-embed>
-    {{ video.link }}
-
+    <ed-video-embed [link]="video.link" [filter]="getFilter(index)" [position]="'absolute'" class="pointer" (click)="this.displayVideo = true;"></ed-video-embed>
   </div>
   <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
 </div>
-<button mat-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toRight()" style="z-index: 150"><i class="fas fa-angle-right"></i></button>
-<button mat-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toLeft()" style="z-index: 150"><i class="fas fa-angle-left"></i></button>
+<button mat-mini-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toRight()" style="z-index: 150"><i class="fas fa-angle-right"></i></button>
+<button mat-mini-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toLeft()" style="z-index: 150"><i class="fas fa-angle-left"></i></button>
 
+<ed-full-screen-video  [video]="'https://www.youtube.com/watch?v=GBJBPmRhGmM'" [display]="displayVideo"></ed-full-screen-video>

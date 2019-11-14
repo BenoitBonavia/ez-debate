@@ -57,6 +57,7 @@ export class VideoEmbedComponent implements OnInit, AfterViewInit {
       this.embed = this.embedService.embed(this._link, {
         attr: {width: this.width, height: this.height}
       });
+      console.log(this.embed);
       this.cdRef.detectChanges();
     }
   }
