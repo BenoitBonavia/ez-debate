@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild} from "@angular/core";
 import {DataModel} from "../../models/data.model";
 
 @Component({
@@ -8,49 +8,30 @@ import {DataModel} from "../../models/data.model";
 })
 export class HorizontalCardCarouselComponent {
 
-  @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: any;
-  @Input() containerWidth: number;
-  @Input() width: number;
+  @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalCardCarouselContainer: ElementRef;
+  @Input() desktopWidth: number = 20;
+  @Input() tabletWidth: number = 60;
+  @Input() mobileWidth: number = 90;
   @Input() datas: DataModel[];
 
-  private margin: number = null;
+  maxHeight: number = 0;
 
-  private scrollLeft: number = 0;
+  constructor(private cdRef: ChangeDetectorRef) {
 
-  getMargin() {
-    if (this.margin == null) {
-      this.margin = (100-this.width)/2;
-    }
-    return this.margin;
   }
 
-  scrolling(arg) {
-    this.scrollLeft = arg.target.scrollLeft;
+  setMaxHeight(value) {
+    if (value > this.maxHeight) {
+      this.maxHeight = value;
+      this.cdRef.detectChanges();
+    }
   }
 
-  toRight() {
-    var i = 0;
-    while (i < this.scrollLeft) {
-      i += this.width/100*this.containerWidth;
-    }
-    if (i == this.scrollLeft) {
-      i += this.width/100*this.containerWidth;
-    }
-    this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
-    this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+  scrollLeft() {
+    console.log('scroll left');
   }
 
-  toLeft() {
-    var currentScrollLeft = this.scrollLeft - this.width/100*this.containerWidth;
-    var i = 0;
-    while (i < currentScrollLeft) {
-      i += this.width/100*this.containerWidth;
-    }
-    if (Math.trunc(i) === Math.trunc(this.verticalVideoCarouselContainer.nativeElement.scrollLeft)) {
-      i = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
-      i -= this.width/100*this.containerWidth;
-    }
-    this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
-    this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+  scrollRight() {
+    console.log('scroll right');
   }
 }

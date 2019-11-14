@@ -1,0 +1,7 @@
+.carousel-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    transition-delay: 800ms;
+    scroll-behavior: smooth;
+}

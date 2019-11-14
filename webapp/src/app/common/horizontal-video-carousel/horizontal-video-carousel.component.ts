@@ -25,30 +25,38 @@ export class HorizontalVideoCarouselComponent {
   }
 
   toRight() {
-    var i = 0;
-    while (i < this.scrollLeft) {
-      i += this.width/100*this.containerWidth;
-    }
-    if (i == this.scrollLeft) {
-      i += this.width/100*this.containerWidth;
-    }
-    this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
-    this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+    this.verticalVideoCarouselContainer.nativeElement.scrollLeft += this.width/100*this.containerWidth;
   }
 
   toLeft() {
-    var currentScrollLeft = this.scrollLeft - this.width/100*this.containerWidth;
-    var i = 0;
-    while (i < currentScrollLeft) {
-      i += this.width/100*this.containerWidth;
-    }
-    if (Math.trunc(i) === Math.trunc(this.verticalVideoCarouselContainer.nativeElement.scrollLeft)) {
-      i = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
-      i -= this.width/100*this.containerWidth;
-    }
-    this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
-    this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+    this.verticalVideoCarouselContainer.nativeElement.scrollLeft -= this.width/100*this.containerWidth;
   }
+
+  // toRight() {
+  //   var i = 0;
+  //   while (i < this.scrollLeft) {
+  //     i += this.width/100*this.containerWidth;
+  //   }
+  //   if (i == this.scrollLeft) {
+  //     i += this.width/100*this.containerWidth;
+  //   }
+  //   this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
+  //   this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+  // }
+  //
+  // toLeft() {
+  //   var currentScrollLeft = this.scrollLeft - this.width/100*this.containerWidth;
+  //   var i = 0;
+  //   while (i < currentScrollLeft) {
+  //     i -= this.width/100*this.containerWidth;
+  //   }
+  //   if (Math.trunc(i) === Math.trunc(this.verticalVideoCarouselContainer.nativeElement.scrollLeft)) {
+  //     i = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+  //     i -= this.width/100*this.containerWidth;
+  //   }
+  //   this.verticalVideoCarouselContainer.nativeElement.scrollLeft = i;
+  //   this.scrollLeft = this.verticalVideoCarouselContainer.nativeElement.scrollLeft;
+  // }
 
   getFilter(arg) {
       var middle = arg*this.width/100*this.containerWidth + (this.width/100*this.containerWidth)/2;

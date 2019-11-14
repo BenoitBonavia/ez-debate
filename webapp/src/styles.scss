@@ -55,6 +55,10 @@ h2 {
   background: $primary-color;
 }
 
+.hide-scroll::-webkit-scrollbar-thumb {
+  display: none;
+}
+
 .fill-remaining-space {
   flex: 1 1 auto;
 }
@@ -243,6 +247,10 @@ a.no-style {
   float: none !important;
   padding-top: 30px;
   padding-bottom: 30px;
+}
+
+.white-space-normal {
+  white-space: normal;
 }
 
 @media (max-width: 575.98px) {

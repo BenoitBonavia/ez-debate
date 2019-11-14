@@ -33,7 +33,5 @@ export class RegisterComponent implements OnInit {
 }
 
 function passwordMatchValidator(g: FormGroup) {
-  console.log("bonjour");
-  console.log(g.get('passwordFormControl').value === g.get('confirmPasswordFormControl').value ? null : {'mismatch': true});
   return g.get('passwordFormControl').value === g.get('confirmPasswordFormControl').value ? null : {'mismatch': true};
 }

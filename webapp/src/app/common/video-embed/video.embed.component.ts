@@ -32,7 +32,6 @@ export class VideoEmbedComponent implements OnInit, AfterViewInit {
     this._link = link;
     this.cdRef.detectChanges();
     this.setEmbed();
-    console.log("Set link");
   }
 
   embed: any;

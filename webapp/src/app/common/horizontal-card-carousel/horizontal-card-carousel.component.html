@@ -1,10 +1,6 @@
-<div #verticalVideoCarouselContainer [ngStyle]="{'height': this.containerWidth*(this.width/100)*(9/16) + 'px'}" (scroll)="scrolling($event)">
-  <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
-  <div class="display-inline-block vertical-video-carousel-element h100" [ngStyle]="{'width': this.width + '%'}" *ngFor="let data of datas; let index = index;">
-    <ed-card-data [data]="data"></ed-card-data>
+<div #verticalVideoCarouselContainer class="carousel-container" (swipeRight)="scrollLeft()" (swipeLeft)="scrollRight()">
+  <div *ngFor="let data of datas; let index = index;" class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}" [ngStyle.sm]="{'width': this.tabletWidth + '%'}" [ngStyle.md]="{'width': this.tabletWidth + '%'}" [ngStyle.gt-md]="{'width': this.desktopWidth + '%'}">
+    <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight"></ed-card-data>
   </div>
-  <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
+<!--  <div [ngStyle.lt-sm]="{'width': (100 - this.mobileWidth)/2 + '%'}" [ngStyle.sm]="{'width': (100 - this.tabletWidth)/2 + '%'}" [ngStyle.md]="{'width': (100 - this.tabletWidth)/2 + '%'}" [ngStyle.gt-md]="{'width': (100 - this.desktopWidth)/2 + '%'}" class="display-inline-block"></div>-->
 </div>
-<button mat-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toRight()" style="z-index: 150"><i class="fas fa-angle-right"></i></button>
-<button mat-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" [ngStyle]="{'top': -this.containerWidth*(this.width/100)*(9/16)/2 + 'px;'}" (click)="toLeft()" style="z-index: 150"><i class="fas fa-angle-left"></i></button>
-

@@ -22,10 +22,10 @@ public class DataController {
         return dataLightRepository.findAll();
     }
 
-//    @GetMapping("/light/tag/{tag}")
-//    public Iterable<DataLightEntity> getByTag(@PathVariable String tag) {
-//        return dataLightRepository.findAllByTags_TagContaining(tag);
-//    }:
+    @GetMapping("/light/tag/{tag}")
+    public Iterable<DataLightEntity> getByTag(@PathVariable String tag) {
+        return dataLightRepository.findAllByTags_TagContaining(tag);
+    }
 
     @PostMapping()
     public @ResponseBody
