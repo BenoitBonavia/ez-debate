@@ -55,8 +55,8 @@ h2 {
   background: $primary-color;
 }
 
-.hide-scroll::-webkit-scrollbar-thumb {
-  display: none;
+.hide-scroll::-webkit-scrollbar {
+  height: 0px;
 }
 
 .fill-remaining-space {

@@ -9,8 +9,8 @@ import {DataModel} from "../../models/data.model";
 export class HorizontalCardCarouselComponent {
 
   @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalCardCarouselContainer: ElementRef;
-  @Input() desktopWidth: number = 20;
-  @Input() tabletWidth: number = 60;
+  @Input() desktopWidth: number = 30;
+  @Input() tabletWidth: number = 50;
   @Input() mobileWidth: number = 90;
   @Input() datas: DataModel[];
 
@@ -27,11 +27,13 @@ export class HorizontalCardCarouselComponent {
     }
   }
 
-  scrollLeft() {
+  scrollLeft(mobile) {
+    console.log(mobile);
     console.log('scroll left');
   }
 
-  scrollRight() {
+  scrollRight(mobile) {
+    console.log(mobile);
     console.log('scroll right');
   }
 }

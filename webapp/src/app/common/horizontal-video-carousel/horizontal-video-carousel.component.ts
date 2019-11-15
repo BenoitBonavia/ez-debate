@@ -17,6 +17,7 @@ export class HorizontalVideoCarouselComponent implements AfterViewInit {
   private displayVideo: boolean = false;
   private scrollLeft: number = 0;
   private inited = false;
+  private currentVideoLink: string = "";
 
   getMargin() {
     if (this.margin == null) {
@@ -73,5 +74,10 @@ export class HorizontalVideoCarouselComponent implements AfterViewInit {
 
   scrolling(arg) {
     this.scrollLeft = arg.target.scrollLeft;
+  }
+
+  openFullSizeVideo(link) {
+    this.displayVideo = true;
+    this.currentVideoLink = link;
   }
 }

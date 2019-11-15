@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from "@angular/core";
 import {VideoModel} from "../../../models/video.model";
 
 @Component({
@@ -9,6 +9,7 @@ export class EditVideosComponent {
 
   @Input() videos: VideoModel[];
   @Output() videosChange = new EventEmitter<VideoModel[]>();
+  @ViewChild("videoContainer", {static: false}) card: ElementRef;
 
   addVideoLink(index) {
     if (index == this.videos.length - 1 && this.videos[index].link !== undefined && this.videos[index].link !== "") {

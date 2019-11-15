@@ -1,4 +1,4 @@
-<div #verticalVideoCarouselContainer class="carousel-container" (swipeRight)="scrollLeft()" (swipeLeft)="scrollRight()">
+<div #verticalVideoCarouselContainer class="carousel-container" (swipeRight)="scrollLeft('mobile')" (swipeLeft)="scrollRight('mobile')">
   <div *ngFor="let data of datas; let index = index;" class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}" [ngStyle.sm]="{'width': this.tabletWidth + '%'}" [ngStyle.md]="{'width': this.tabletWidth + '%'}" [ngStyle.gt-md]="{'width': this.desktopWidth + '%'}">
     <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight"></ed-card-data>
   </div>

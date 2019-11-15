@@ -23,7 +23,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Overlay} from "@angular/cdk/overlay";
 import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./service/icon.service";
-import {VideoEmbedComponent} from "./common/video-embed/video.embed.component";
 import {EmbedVideo} from 'ngx-embed-video';
 import {DataDetailComponent} from "./data/detail/data-detail.component";
 import {HorizontalVideoCarouselComponent} from "./common/horizontal-video-carousel/horizontal-video-carousel.component";
@@ -48,6 +47,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
 import {RegisterComponent} from "./security/register/register.component";
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
+import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
 
 
 @NgModule({
@@ -60,7 +60,6 @@ import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-v
     CreateDataComponent,
     SearchDataComponent,
     CardDataComponent,
-    VideoEmbedComponent,
     HorizontalVideoCarouselComponent,
     TagListComponent,
     EditTitleSubtitleComponent,
@@ -74,7 +73,8 @@ import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-v
     HoldableDirective,
     HorizontalCardCarouselComponent,
     RegisterComponent,
-    FullScreenVideoComponent
+    FullScreenVideoComponent,
+    VideoEmbederComponent,
   ],
   imports: [
     HttpClientModule,
