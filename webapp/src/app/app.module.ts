@@ -50,6 +50,20 @@ import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-v
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
 import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.component";
 
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
+export class MyHammerConfig extends HammerGestureConfig  {
+  overrides = <any>{
+    // override hammerjs default configuration
+    'pan': {threshold: 5},
+    'swipe': {
+      velocity: 0.4,
+      threshold: 20,
+      direction: 31 // /!\ ugly hack to allow swipe in all direction
+    }
+  }
+}
+
 
 @NgModule({
   declarations: [
@@ -107,7 +121,11 @@ import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.
     SearchService,
     MatSnackBar,
     TagService,
-    Overlay
+    Overlay,
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig
+    }
   ],
   bootstrap: [AppComponent]
 })
