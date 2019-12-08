@@ -45,7 +45,7 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
   }
 
   scrollLeft() {
-    let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/6;
+    let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/this.datas.length;
     // let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
     // let newScroll = 0;
     // while (newScroll < scroll) {
@@ -57,7 +57,7 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
   }
 
   scrollRight() {
-    let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/6;
+    let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/this.datas.length;
     // let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
     // let newScroll = 0;
     // while (newScroll <= scroll) {
