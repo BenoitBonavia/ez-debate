@@ -1,7 +1,12 @@
 .carousel-container {
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    transition-delay: 800ms;
-    scroll-behavior: smooth;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  transition-delay: 800ms;
+  scroll-behavior: smooth;
+  padding-bottom: 5px;
+}
+
+.translateY-50 {
+  transform: translateY(-50%);
 }

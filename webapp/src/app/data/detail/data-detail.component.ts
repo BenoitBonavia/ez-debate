@@ -1,5 +1,5 @@
-import {ChangeDetectorRef, Component, ElementRef, ViewChild} from "@angular/core";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {Component, ElementRef, ViewChild} from "@angular/core";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {DataService} from "../../service/data.service";
 import {DataModel} from "../../models/data.model";
 
@@ -39,7 +39,7 @@ export class DataDetailComponent {
 
   @ViewChild("verticalVideoCarouselContainer", {static: false}) verticalVideoCarouselContainer: ElementRef;
 
-  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService) {
+  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) {
 
   }
 
@@ -82,5 +82,11 @@ export class DataDetailComponent {
       this.setEditableArea(val);
       this.holding = 0;
     }
+  }
+
+  delete() {
+    this.dataService.deleteData(this.data.id).subscribe(() => {
+      this.router.navigate(["/home"]);
+    })
   }
 }

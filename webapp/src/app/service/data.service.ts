@@ -25,4 +25,8 @@ export class DataService {
   saveData(data: DataModel): Observable<DataModel> {
     return this.http.post('/api/data', data) as Observable<DataModel>;
   }
+
+  deleteData(dataId: number): Observable<any> {
+    return this.http.delete('/api/data/' + dataId) as Observable<any>;
+  }
 }

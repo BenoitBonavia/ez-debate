@@ -16,9 +16,7 @@ export class VideoEmbederComponent {
   _videoLink: SafeUrl = null;
   _videoData: any;
   _provider: string;
-
-  @Input() width: number;
-  @Input() height: number;
+  _videoId: string;
 
   @Output() toLeft = new EventEmitter();
   @Output() toRight = new EventEmitter();
@@ -28,6 +26,7 @@ export class VideoEmbederComponent {
     if (url == "") return;
     this._videoData = urlParser.parse(url);
     this._provider = this._videoData.provider;
+    this._videoId = this._videoData.id;
 
     console.log(this._videoData);
     this.setVideoLink();

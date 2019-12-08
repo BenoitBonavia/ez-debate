@@ -9,7 +9,7 @@
   </div>
   <div fxFlex="45%" class="padding-right-15 position-relative" #videoContainer>
 <!--    <ed-video-embed [link]="video.link" *ngIf="video.link != ''" [position]="'static'"></ed-video-embed>-->
-    <ed-video-embeder [video]="video.link" [width]="this.videoContainer.nativeElemen"></ed-video-embeder>
+    <ed-video-embeder [video]="video.link"></ed-video-embeder>
     <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
             *ngIf="video.link" (click)="removeVideo(i)">
       <mat-icon>delete</mat-icon>

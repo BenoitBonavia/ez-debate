@@ -48,6 +48,7 @@ import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel
 import {RegisterComponent} from "./security/register/register.component";
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
+import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.component";
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.compon
     RegisterComponent,
     FullScreenVideoComponent,
     VideoEmbederComponent,
+    VideoThumbnailComponent
   ],
   imports: [
     HttpClientModule,

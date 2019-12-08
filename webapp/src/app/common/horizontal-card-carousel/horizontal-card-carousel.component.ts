@@ -1,4 +1,13 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild} from "@angular/core";
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild
+} from "@angular/core";
 import {DataModel} from "../../models/data.model";
 
 @Component({
@@ -6,18 +15,26 @@ import {DataModel} from "../../models/data.model";
   templateUrl: 'horizontal-card-carousel.component.html',
   styleUrls: ['horizontal-card-carousel.component.scss']
 })
-export class HorizontalCardCarouselComponent {
+export class HorizontalCardCarouselComponent implements AfterViewChecked {
 
-  @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalCardCarouselContainer: ElementRef;
+  @ViewChild('carouselContainer', {static: false}) verticalCardCarouselContainer: ElementRef;
+  @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: ElementRef;
   @Input() desktopWidth: number = 30;
   @Input() tabletWidth: number = 50;
   @Input() mobileWidth: number = 90;
   @Input() datas: DataModel[];
+  buttonPosition: number = 0;
 
   maxHeight: number = 0;
 
   constructor(private cdRef: ChangeDetectorRef) {
+  }
 
+  ngAfterViewChecked(): void {
+    if (this.datas !== undefined) {
+      this.buttonPosition = this.verticalVideoCarouselContainer.nativeElement.offsetHeight/this.datas.length;
+      this.cdRef.detectChanges();
+    }
   }
 
   setMaxHeight(value) {
@@ -27,13 +44,26 @@ export class HorizontalCardCarouselComponent {
     }
   }
 
-  scrollLeft(mobile) {
-    console.log(mobile);
-    console.log('scroll left');
+  scrollLeft() {
+    let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/6;
+    let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
+    let newScroll = 0;
+    while (newScroll < scroll) {
+      newScroll += unitWidth;
+    }
+    newScroll -= unitWidth;
+    console.log(newScroll);
+    this.verticalCardCarouselContainer.nativeElement.scrollLeft = newScroll;
   }
 
-  scrollRight(mobile) {
-    console.log(mobile);
-    console.log('scroll right');
+  scrollRight() {
+    let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/6;
+    let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
+    let newScroll = 0;
+    while (newScroll <= scroll) {
+      newScroll += unitWidth;
+    }
+    console.log(newScroll);
+    this.verticalCardCarouselContainer.nativeElement.scrollLeft = newScroll;
   }
 }

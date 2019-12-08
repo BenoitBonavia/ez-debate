@@ -6,6 +6,9 @@
         <ed-badge-button *ngIf="hoverArea === HoverArea.TITLE"
                          (onButtonClick)="setEditableArea(EditableArea.TITLE_SUBTITLE)"
                          [fxHide.lt-sm]="true"></ed-badge-button>
+        <button mat-raised-button color="warn" style="float: right;" (click)="delete()">
+          Delete
+        </button>
       </h1>
       <h2 (mouseenter)="setHover(HoverArea.SUBTITLE)" (mouseleave)="setHover(null)">{{ this.data.subtitle }}
         <ed-badge-button *ngIf="hoverArea === HoverArea.SUBTITLE"

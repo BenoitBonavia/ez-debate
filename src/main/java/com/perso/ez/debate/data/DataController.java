@@ -47,4 +47,9 @@ public class DataController {
     public Optional<DataEntity> getDetail(@PathVariable Long id) {
         return dataRepository.findById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public @ResponseBody void delete(@PathVariable(name = "id") Long dataId) {
+        dataRepository.deleteById(dataId);
+    }
 }

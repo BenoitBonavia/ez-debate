@@ -1,6 +1,25 @@
-<div #verticalVideoCarouselContainer class="carousel-container" (swipeRight)="scrollLeft('mobile')" (swipeLeft)="scrollRight('mobile')">
-  <div *ngFor="let data of datas; let index = index;" class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}" [ngStyle.sm]="{'width': this.tabletWidth + '%'}" [ngStyle.md]="{'width': this.tabletWidth + '%'}" [ngStyle.gt-md]="{'width': this.desktopWidth + '%'}">
-    <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight"></ed-card-data>
+<div #verticalVideoCarouselContainer>
+  <div #carouselContainer class="carousel-container">
+    <div *ngFor="let data of datas; let index = index;"
+         class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}"
+         [ngStyle.sm]="{'width': this.tabletWidth + '%'}" [ngStyle.md]="{'width': this.tabletWidth + '%'}"
+         [ngStyle.gt-md]="{'width': this.desktopWidth + '%'}">
+      <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight"></ed-card-data>
+    </div>
+    <div *ngFor="let data of datas; let index = index;"
+         class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}"
+         [ngStyle.sm]="{'width': this.tabletWidth + '%'}" [ngStyle.md]="{'width': this.tabletWidth + '%'}"
+         [ngStyle.gt-md]="{'width': this.desktopWidth + '%'}">
+      <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight"></ed-card-data>
+    </div>
+    <div *ngFor="let data of datas; let index = index;"
+         class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}"
+         [ngStyle.sm]="{'width': this.tabletWidth + '%'}" [ngStyle.md]="{'width': this.tabletWidth + '%'}"
+         [ngStyle.gt-md]="{'width': this.desktopWidth + '%'}">
+      <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight"></ed-card-data>
+    </div>
+    <!--  <div [ngStyle.lt-sm]="{'width': (100 - this.mobileWidth)/2 + '%'}" [ngStyle.sm]="{'width': (100 - this.tabletWidth)/2 + '%'}" [ngStyle.md]="{'width': (100 - this.tabletWidth)/2 + '%'}" [ngStyle.gt-md]="{'width': (100 - this.desktopWidth)/2 + '%'}" class="display-inline-block"></div>-->
   </div>
-<!--  <div [ngStyle.lt-sm]="{'width': (100 - this.mobileWidth)/2 + '%'}" [ngStyle.sm]="{'width': (100 - this.tabletWidth)/2 + '%'}" [ngStyle.md]="{'width': (100 - this.tabletWidth)/2 + '%'}" [ngStyle.gt-md]="{'width': (100 - this.desktopWidth)/2 + '%'}" class="display-inline-block"></div>-->
+  <button mat-mini-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" (click)="scrollRight()" style="z-index: 10000" [ngStyle]="{'top': -this.buttonPosition + 'px;'}"><i class="fas fa-angle-right"></i></button>
+  <button mat-mini-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" (click)="scrollLeft()" style="z-index: 10000" [ngStyle]="{'top': -this.buttonPosition + 'px;'}"><i class="fas fa-angle-left"></i></button>
 </div>

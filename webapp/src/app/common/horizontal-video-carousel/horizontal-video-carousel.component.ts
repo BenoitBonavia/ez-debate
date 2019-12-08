@@ -31,10 +31,12 @@ export class HorizontalVideoCarouselComponent implements AfterViewInit {
   }
 
   toRight() {
+    console.log('left');
     if (this.inited) this.verticalVideoCarouselContainer.nativeElement.scrollLeft += this.width/100*this.containerWidth;
   }
 
   toLeft() {
+    console.log('right');
     if (this.inited) this.verticalVideoCarouselContainer.nativeElement.scrollLeft -= this.width/100*this.containerWidth;
   }
 
