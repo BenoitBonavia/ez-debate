@@ -22,6 +22,8 @@ export class EditSourcesComponent {
   }
 
   addNewSource() {
-    this.sources.push(new SourceModel());
+    if (this.sources[this.sources.length - 1].link) {
+      this.sources.push(new SourceModel());
+    }
   }
 }
