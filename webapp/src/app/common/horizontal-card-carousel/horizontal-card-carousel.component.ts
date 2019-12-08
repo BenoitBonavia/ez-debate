@@ -46,24 +46,24 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
 
   scrollLeft() {
     let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/6;
-    let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
-    let newScroll = 0;
-    while (newScroll < scroll) {
-      newScroll += unitWidth;
-    }
-    newScroll -= unitWidth;
-    console.log(newScroll);
-    this.verticalCardCarouselContainer.nativeElement.scrollLeft = newScroll;
+    // let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
+    // let newScroll = 0;
+    // while (newScroll < scroll) {
+    //   newScroll += unitWidth;
+    // }
+    // newScroll -= unitWidth;
+    // console.log(newScroll);
+    this.verticalCardCarouselContainer.nativeElement.scrollLeft += unitWidth;
   }
 
   scrollRight() {
     let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/6;
-    let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
-    let newScroll = 0;
-    while (newScroll <= scroll) {
-      newScroll += unitWidth;
-    }
-    console.log(newScroll);
-    this.verticalCardCarouselContainer.nativeElement.scrollLeft = newScroll;
+    // let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
+    // let newScroll = 0;
+    // while (newScroll <= scroll) {
+    //   newScroll += unitWidth;
+    // }
+    // console.log(newScroll);
+    this.verticalCardCarouselContainer.nativeElement.scrollLeft -= unitWidth;
   }
 }
