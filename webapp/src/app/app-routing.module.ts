@@ -5,6 +5,7 @@ import {CreateDataComponent} from "./data/create/create-data.component";
 import {SearchDataComponent} from "./data/search/search-data.component";
 import {DataDetailComponent} from "./data/detail/data-detail.component";
 import {RegisterComponent} from "./security/register/register.component";
+import {TagsComponent} from "./data/tags/tags.component";
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'create', component: CreateDataComponent },
   { path: 'research', component: SearchDataComponent},
   { path: 'detail/:id', component: DataDetailComponent},
+  { path: 'tags', component: TagsComponent},
   { path: 'register', component: RegisterComponent}
 ];
 

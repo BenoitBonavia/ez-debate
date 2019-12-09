@@ -19,8 +19,8 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
 
   @ViewChild('carouselContainer', {static: false}) verticalCardCarouselContainer: ElementRef;
   @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: ElementRef;
-  @Input() desktopWidth: number = 30;
-  @Input() tabletWidth: number = 50;
+  @Input() desktopWidth: number = 50;
+  @Input() tabletWidth: number = 70;
   @Input() mobileWidth: number = 90;
   @Input() datas: DataModel[];
   buttonPosition: number = 0;
@@ -44,26 +44,13 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
     }
   }
 
-  scrollLeft() {
+  scrollRight() {
     let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/this.datas.length;
-    // let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
-    // let newScroll = 0;
-    // while (newScroll < scroll) {
-    //   newScroll += unitWidth;
-    // }
-    // newScroll -= unitWidth;
-    // console.log(newScroll);
     this.verticalCardCarouselContainer.nativeElement.scrollLeft += unitWidth;
   }
 
-  scrollRight() {
+  scrollLeft() {
     let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/this.datas.length;
-    // let scroll = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
-    // let newScroll = 0;
-    // while (newScroll <= scroll) {
-    //   newScroll += unitWidth;
-    // }
-    // console.log(newScroll);
     this.verticalCardCarouselContainer.nativeElement.scrollLeft -= unitWidth;
   }
 }
