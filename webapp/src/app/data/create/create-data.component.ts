@@ -34,17 +34,15 @@ export class CreateDataComponent implements OnInit {
       title: ['', Validators.required],
       subtitle: ['', Validators.required]
     });
-    this.newData.sources.push(new SourceModel());
-    this.newData.videos.push(new VideoModel());
   }
 
   createData() {
-    this.newData.videos.splice(-1, 1);
-    this.newData.sources.splice(-1, 1);
     this.dataService.saveData(this.newData).subscribe(response => {
       this.newData = new DataModel();
       this.openSnackBar("New data created", null);
     })
+    console.log(this.newData);
+    this.newData = new DataModel();
   }
 
   openSnackBar(message: string, action: string) {

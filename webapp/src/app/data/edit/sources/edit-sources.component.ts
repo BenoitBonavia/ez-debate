@@ -11,7 +11,7 @@ export class EditSourcesComponent {
   @Output() sourcesChange = new EventEmitter<SourceModel[]>();
 
   editTabOnType(index) {
-    if (index == this.sources.length - 1 && this.sources[index].title !== undefined) {
+    if (this.sources[index].title !== undefined) {
       this.sourcesChange.emit(this.sources);
     }
   }
@@ -22,7 +22,7 @@ export class EditSourcesComponent {
   }
 
   addNewSource() {
-    if (this.sources[this.sources.length - 1].link) {
+    if (this.sources.length === 0 || this.sources[this.sources.length - 1].link) {
       this.sources.push(new SourceModel());
     }
   }

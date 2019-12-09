@@ -25,6 +25,7 @@ export class VideoEmbederComponent {
   @Input() set video(url) {
     if (url == "") return;
     this._videoData = urlParser.parse(url);
+    if (this._videoData === undefined) return;
     this._provider = this._videoData.provider;
     this._videoId = this._videoData.id;
 

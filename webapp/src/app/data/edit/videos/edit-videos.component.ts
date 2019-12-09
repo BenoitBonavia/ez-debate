@@ -1,5 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from "@angular/core";
 import {VideoModel} from "../../../models/video.model";
+import {SourceModel} from "../../../models/source.model";
 
 @Component({
   selector: 'ed-edit-videos',
@@ -13,7 +14,6 @@ export class EditVideosComponent {
 
   addVideoLink(index) {
     if (index == this.videos.length - 1 && this.videos[index].link !== undefined && this.videos[index].link !== "") {
-      this.videos.push(new VideoModel());
       this.videosChange.emit(this.videos);
     }
   }
@@ -21,5 +21,11 @@ export class EditVideosComponent {
   removeVideo(index) {
     this.videos.splice(index, 1);
     this.videosChange.emit(this.videos);
+  }
+
+  addNewVideo() {
+    if (this.videos.length === 0 || this.videos[this.videos.length - 1].link) {
+      this.videos.push(new VideoModel());
+    }
   }
 }
