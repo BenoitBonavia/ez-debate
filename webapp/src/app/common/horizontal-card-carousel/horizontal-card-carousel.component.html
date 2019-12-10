@@ -1,5 +1,5 @@
 <div #verticalVideoCarouselContainer>
-  <div #carouselContainer class="carousel-container" (swipeRight)="scrollRight()" (swipeLeft)="scrollLeft()">
+  <div #carouselContainer class="carousel-container" (swipeRight)="scrollLeft()" (swipeLeft)="scrollRight()">
     <div *ngFor="let data of datas; let index = index;"
          class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}"
          [ngStyle.sm]="{'width': this.tabletWidth + '%'}" [ngStyle.md]="{'width': this.tabletWidth + '%'}"
