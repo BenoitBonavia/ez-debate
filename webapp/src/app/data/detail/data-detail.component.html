@@ -85,7 +85,7 @@
     </div>
     <div fxLayout="row" *ngIf="this.data.videos.length > 0">
       <mat-progress-bar mode="determinate" [value]="holding/EDIT_TIME*100" [fxHide.gt-md]="true"
-                        *ngIf="holding !== 0 && loadingArea == EditableArea.SOURCE"
+                        *ngIf="holding !== 0 && loadingArea == EditableArea.VIDEO"
                         class="margin-top-15 margin-bottom-15"></mat-progress-bar>
       <div #verticalVideoCarouselContainer fxFlex="100">
         <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="70"
