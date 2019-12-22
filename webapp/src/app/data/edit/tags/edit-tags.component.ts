@@ -56,4 +56,8 @@ export class EditTagsComponent implements OnInit {
     this.tags.push(tag);
     this.tagsChange.emit(this.tags);
   }
+
+  filterTagsByType(tags: TagModel[], type: TagTypeModel) {
+    return tags.filter(tag => tag.type.id == type.id);
+  }
 }

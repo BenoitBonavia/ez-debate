@@ -9,9 +9,27 @@
     </mat-chip-list>
   </div>
   <div fxLayout="row">
-    <mat-chip-list class="w100">
-      <mat-chip *ngFor="let tag of this.allTags" class="pointer" (click)="addOnClick(tag)">{{ tag.tag }}</mat-chip>
-    </mat-chip-list>
+    <div fxFlex="100">
+      <div fxLayout.lt-md="row" fxFlex.gt-md="33" class="padding-left-15 padding-right-15"
+           *ngFor="let type of allTypes">
+        <div fxFlex="100">
+          <div fxLayout="row">
+            <div fxFlex="100">
+              <h4>{{ type.type }}</h4>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div fxFlex="100">
+              <mat-chip-list>
+                <mat-chip *ngFor="let tag of filterTagsByType(allTags, type);">
+                  {{tag.tag}}
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div fxLayout="row">
     <div fxFlex="100">
@@ -28,7 +46,8 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div fxLayout.lt-sm="row" fxFlex.gt-sm="10" class="padding-top-15 padding-right-15 padding-left-15 text-align-center">
+      <div fxLayout.lt-sm="row" fxFlex.gt-sm="10"
+           class="padding-top-15 padding-right-15 padding-left-15 text-align-center">
         <div class="fill-remaining-space"></div>
         <button mat-raised-button color="primary" (click)="saveNewTag()">Save</button>
       </div>
