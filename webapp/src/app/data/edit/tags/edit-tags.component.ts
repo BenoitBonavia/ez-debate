@@ -3,6 +3,7 @@ import {TagModel} from "../../../models/tag.model";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {TagService} from "../../../service/tag.service";
+import {TagTypeModel} from "../../../models/tag-type.model";
 
 @Component({
   selector: 'ed-edit-tags',
@@ -14,10 +15,10 @@ export class EditTagsComponent implements OnInit {
   @Output() tagsChange = new EventEmitter<TagModel[]>();
 
   allTags: TagModel[] = [];
-  selectable: boolean = true;
-  removable: boolean = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  addOnBlur: boolean = true;
+  allTypes: TagTypeModel[];
+
+  newTagType: TagTypeModel = null;
+  newTagName: string = "";
 
   constructor(private tagService: TagService) {
 
@@ -27,21 +28,22 @@ export class EditTagsComponent implements OnInit {
     this.tagService.getAll().subscribe(response => {
       this.allTags = response;
     });
+    this.tagService.getAllTypes().subscribe(response => {
+      this.allTypes = response;
+    })
   }
 
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-    if (value != "") {
-      let tag = new TagModel();
-      tag.tag = value;
-      this.tagService.saveTag(tag).subscribe(response => {
+  saveNewTag() {
+    if (this.newTagName != "" && this.newTagType != null) {
+      let newTag = new TagModel();
+      newTag.tag = this.newTagName;
+      newTag.type = this.newTagType;
+      this.tagService.saveTag(newTag).subscribe(response => {
         this.tags.push(response);
         this.tagsChange.emit(this.tags);
+        this.newTagName = "";
+        this.newTagType = null;
       })
-    }
-    if (input) {
-      input.value = '';
     }
   }
 

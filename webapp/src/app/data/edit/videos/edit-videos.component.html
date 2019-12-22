@@ -1,5 +1,5 @@
 <mat-card fxLayout.gt-md="row" fxLayout.lt-md="column" *ngFor="let video of this.videos; let i = index;" class="margin-bottom-15">
-  <div fxFlex="55%" class="padding-right-15">
+  <div fxFlex="55" class="padding-right-15">
     <mat-form-field class="display-block">
       <input matInput placeholder="Title" [(ngModel)]="video.title" (keyup)="addVideoLink(i)">
     </mat-form-field>
@@ -7,7 +7,7 @@
       <input matInput placeholder="Link" [(ngModel)]="video.link" (keyup)="addVideoLink(i)">
     </mat-form-field>
   </div>
-  <div fxFlex="45%" class="padding-right-15 position-relative" #videoContainer>
+  <div fxFlex="45" class="padding-right-15 position-relative" #videoContainer>
 <!--    <ed-video-embed [link]="video.link" *ngIf="video.link != ''" [position]="'static'"></ed-video-embed>-->
     <ed-video-embeder [video]="video.link"></ed-video-embeder>
     <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"

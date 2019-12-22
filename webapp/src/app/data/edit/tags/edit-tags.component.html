@@ -1,23 +1,37 @@
 <mat-card class="margin-bottom-15">
-  <div fxLayout="row">
-    <mat-form-field class="example-chip-list w100">
-      <mat-chip-list #chipList aria-label="Fruit selection">
-        <mat-chip *ngFor="let tag of this.tags; let i = index;" [selectable]="selectable"
-                  [removable]="removable" (removed)="remove(i)">
-          {{tag.tag}}
-          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-        </mat-chip>
-        <input placeholder="New tag"
-               [matChipInputFor]="chipList"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-               [matChipInputAddOnBlur]="addOnBlur"
-               (matChipInputTokenEnd)="add($event)">
-      </mat-chip-list>
-    </mat-form-field>
+  <div fxLayout="row" class="margin-bottom-15">
+    <mat-chip-list class="w100">
+      <mat-chip *ngFor="let tag of this.tags; let i = index;" [removable]="true" (removed)="remove(i)" color="primary"
+                selected>
+        {{tag.tag}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
   </div>
   <div fxLayout="row">
     <mat-chip-list class="w100">
       <mat-chip *ngFor="let tag of this.allTags" class="pointer" (click)="addOnClick(tag)">{{ tag.tag }}</mat-chip>
     </mat-chip-list>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="100">
+      <div fxLayout.lt-sm="row" fxFlex.gt-sm="60" class="padding-top-15 padding-right-15 padding-left-15">
+        <mat-form-field class="w100">
+          <input matInput placeholder="Name" [(ngModel)]="newTagName">
+        </mat-form-field>
+      </div>
+      <div fxLayout.lt-sm="row" fxFlex.gt-sm="30" class="padding-top-15 padding-right-15 padding-left-15">
+        <mat-form-field class="w100">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="newTagType">
+            <mat-option *ngFor="let type of this.allTypes">{{ type.type }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout.lt-sm="row" fxFlex.gt-sm="10" class="padding-top-15 padding-right-15 padding-left-15 text-align-center">
+        <div class="fill-remaining-space"></div>
+        <button mat-raised-button color="primary" (click)="saveNewTag()">Save</button>
+      </div>
+    </div>
   </div>
 </mat-card>

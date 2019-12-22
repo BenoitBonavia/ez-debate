@@ -1,4 +1,4 @@
-export class TagType {
+export class TagTypeModel {
   id: number;
   type: string;
 }

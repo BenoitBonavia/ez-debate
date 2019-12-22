@@ -53,6 +53,8 @@ import { MatSnackBarModule } from '@angular/material';
 
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { TagsComponent} from "./data/tags/tags.component";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -117,7 +119,9 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatChipsModule,
     MatBadgeModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [
     DataService,
