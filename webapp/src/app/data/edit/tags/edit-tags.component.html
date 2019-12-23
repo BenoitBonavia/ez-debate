@@ -42,7 +42,7 @@
         <mat-form-field class="w100">
           <mat-label>Select an option</mat-label>
           <mat-select [(value)]="newTagType">
-            <mat-option *ngFor="let type of this.allTypes">{{ type.type }}</mat-option>
+            <mat-option *ngFor="let type of this.allTypes" [value]="type">{{ type.type }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
