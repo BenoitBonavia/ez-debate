@@ -10,6 +10,7 @@ import {DataService} from "../service/data.service";
 export class HomeComponent implements OnInit {
 
   dataFrance: DataModel[];
+  dataUSA: DataModel[];
 
   constructor(private dataService: DataService) {
 
@@ -18,6 +19,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getAllByTag("France").subscribe(response => {
       this.dataFrance = response;
-    })
+    });
+    this.dataService.getAllByTag("USA").subscribe(response => {
+      this.dataUSA = response;
+      console.log(response);
+    });
   }
 }

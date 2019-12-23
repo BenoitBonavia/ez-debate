@@ -50,7 +50,14 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
   }
 
   scrollLeft() {
+    let scrollLeft = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
     let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/this.datas.length;
-    this.verticalCardCarouselContainer.nativeElement.scrollLeft -= unitWidth;
+    if (scrollLeft%unitWidth == 0) {
+      this.verticalCardCarouselContainer.nativeElement.scrollLeft -= unitWidth;
+    }
+    else {
+      console.log("bonjour");
+        this.verticalCardCarouselContainer.nativeElement.scrollLeft -= scrollLeft%unitWidth;
+    }
   }
 }
