@@ -17,8 +17,8 @@ import {DataModel} from "../../models/data.model";
 })
 export class HorizontalCardCarouselComponent implements AfterViewChecked {
 
-  @ViewChild('carouselContainer', {static: false}) verticalCardCarouselContainer: ElementRef;
-  @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: ElementRef;
+  @ViewChild('carouselContainer', {static: false}) carouselContainer: ElementRef;
+  @ViewChild('verticalCardCarouselContainer', {static: false}) verticalCardCarouselContainer: ElementRef;
   @Input() desktopWidth: number = 50;
   @Input() tabletWidth: number = 70;
   @Input() mobileWidth: number = 90;
@@ -32,7 +32,7 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
 
   ngAfterViewChecked(): void {
     if (this.datas !== undefined) {
-      this.buttonPosition = this.verticalVideoCarouselContainer.nativeElement.offsetHeight/this.datas.length;
+      this.buttonPosition = this.carouselContainer.nativeElement.offsetHeight/2;
       this.cdRef.detectChanges();
     }
   }
@@ -45,19 +45,18 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
   }
 
   scrollRight() {
-    let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/this.datas.length;
-    this.verticalCardCarouselContainer.nativeElement.scrollLeft += unitWidth;
+    let unitWidth = this.carouselContainer.nativeElement.scrollWidth/this.datas.length;
+    this.carouselContainer.nativeElement.scrollLeft += unitWidth;
   }
 
   scrollLeft() {
-    let scrollLeft = this.verticalCardCarouselContainer.nativeElement.scrollLeft;
-    let unitWidth = this.verticalCardCarouselContainer.nativeElement.scrollWidth/this.datas.length;
+    let scrollLeft = this.carouselContainer.nativeElement.scrollLeft;
+    let unitWidth = this.carouselContainer.nativeElement.scrollWidth/this.datas.length;
     if (scrollLeft%unitWidth == 0) {
-      this.verticalCardCarouselContainer.nativeElement.scrollLeft -= unitWidth;
+      this.carouselContainer.nativeElement.scrollLeft -= unitWidth;
     }
     else {
-      console.log("bonjour");
-        this.verticalCardCarouselContainer.nativeElement.scrollLeft -= scrollLeft%unitWidth;
+        this.carouselContainer.nativeElement.scrollLeft -= scrollLeft%unitWidth;
     }
   }
 }

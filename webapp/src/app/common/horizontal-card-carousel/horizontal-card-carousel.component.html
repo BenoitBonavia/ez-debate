@@ -1,4 +1,4 @@
-<div #verticalVideoCarouselContainer>
+<div #verticalCardCarouselContainer>
   <div #carouselContainer class="carousel-container" (swipeRight)="scrollLeft()" (swipeLeft)="scrollRight()">
     <div *ngFor="let data of datas; let index = index;"
          class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}"
@@ -7,6 +7,6 @@
       <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight"></ed-card-data>
     </div>
   </div>
-  <button mat-mini-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" (click)="scrollRight()" style="z-index: 10000" [ngStyle]="{'top': -this.buttonPosition + 'px;'}" [ngStyle.lt-sm]="{'display': 'none'}"><i class="fas fa-angle-right"></i></button>
-  <button mat-mini-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" (click)="scrollLeft()" style="z-index: 10000" [ngStyle]="{'top': -this.buttonPosition + 'px;'}" [ngStyle.lt-sm]="{'display': 'none'}"><i class="fas fa-angle-left"></i></button>
+  <button mat-mini-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" (click)="scrollRight()" style="z-index: 10000; transform: translateY(-50%);" [ngStyle]="{'top': -this.buttonPosition + 'px;'}" [ngStyle.lt-sm]="{'display': 'none'}"><i class="fas fa-angle-right"></i></button>
+  <button mat-mini-fab color="primary" class="translateY-50 position-relative float-left margin-left-15" (click)="scrollLeft()" style="z-index: 10000; transform: translateY(-50%);" [ngStyle]="{'top': -this.buttonPosition + 'px;'}" [ngStyle.lt-sm]="{'display': 'none'}"><i class="fas fa-angle-left"></i></button>
 </div>
