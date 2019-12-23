@@ -1,7 +1,7 @@
 package com.perso.ez.debate.data.search;
 
-import com.perso.ez.debate.data.DataLightEntity;
-import com.perso.ez.debate.data.DataLightRepository;
+import com.perso.ez.debate.data.DataEntity;
+import com.perso.ez.debate.data.DataRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.search.FullTextQuery;
@@ -25,11 +25,11 @@ public class SearchController {
     private EntityManagerFactory em;
 
     @Autowired
-    private DataLightRepository dataLightRepository;
+    private DataRepository dataRepository;
 
     @GetMapping
-    public Iterable<DataLightEntity> getAll() {
-        return dataLightRepository.findAll();
+    public Iterable<DataEntity> getAll() {
+        return dataRepository.findAll();
     }
 
     // On autorise 1 caractère de différence avec l'occurence et 2 si la recherche est plus longue que 4 char
@@ -43,7 +43,7 @@ public class SearchController {
         FullTextSession fullTextSession = Search.getFullTextSession(session);
 
         QueryBuilder qb = fullTextSession.getSearchFactory()
-                .buildQueryBuilder().forEntity(DataLightEntity.class).get();
+                .buildQueryBuilder().forEntity(DataEntity.class).get();
 
         org.apache.lucene.search.Query query = qb
                 .bool()
@@ -59,7 +59,7 @@ public class SearchController {
                         .createQuery())
                 .createQuery();
 
-        FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataLightEntity.class);
+        FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
 
         List result = hibQuery.list();
 //        System.out.println(result);

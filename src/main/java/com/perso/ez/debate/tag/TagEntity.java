@@ -1,7 +1,5 @@
 package com.perso.ez.debate.tag;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.perso.ez.debate.data.DataLightEntity;
 import com.perso.ez.debate.tag.type.TagTypeEntity;
 import org.hibernate.search.annotations.Field;
 

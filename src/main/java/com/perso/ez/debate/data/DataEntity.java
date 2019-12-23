@@ -1,46 +1,56 @@
 package com.perso.ez.debate.data;
 
+
 import com.perso.ez.debate.data.source.SourceEntity;
-import com.perso.ez.debate.tag.TagEntity;
 import com.perso.ez.debate.data.video.VideoEntity;
+import com.perso.ez.debate.tag.TagEntity;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Indexed
 @Table(name = "data")
 public class DataEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Field
     @Column(name = "title")
     private String title;
 
+    @Field
     @Column(name = "subtitle")
     private String subtitle;
 
+    @Field
     @Column(name = "text", columnDefinition = "TEXT")
     private String text;
+
+    @IndexedEmbedded
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
+    private List<TagEntity> tags;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "data_id", referencedColumnName = "id")
+    private Set<VideoEntity> videos;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "data_id", referencedColumnName = "id")
+    private Set<SourceEntity> sources;
 
     @Column(name = "icon")
     private String icon;
 
     @Column(name = "date")
     private LocalDateTime date = LocalDateTime.now();
-
-    @ManyToMany
-    @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
-    private List<TagEntity> tags;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "data_id", referencedColumnName = "id")
-    private List<VideoEntity> videos;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "data_id", referencedColumnName = "id")
-    private List<SourceEntity> sources;
 
     public Long getId() {
         return id;
@@ -64,14 +74,6 @@ public class DataEntity {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
-    }
-
-    public List<SourceEntity> getSources() {
-        return sources;
-    }
-
-    public void setSources(List<SourceEntity> sources) {
-        this.sources = sources;
     }
 
     public String getText() {
@@ -98,14 +100,6 @@ public class DataEntity {
         this.date = date;
     }
 
-    public List<VideoEntity> getVideos() {
-        return videos;
-    }
-
-    public void setVideos(List<VideoEntity> videos) {
-        this.videos = videos;
-    }
-
     public List<TagEntity> getTags() {
         return tags;
     }
@@ -121,10 +115,25 @@ public class DataEntity {
                 ", title='" + title + '\'' +
                 ", subtitle='" + subtitle + '\'' +
                 ", text='" + text + '\'' +
+                ", tags=" + tags +
                 ", icon='" + icon + '\'' +
                 ", date=" + date +
-                ", videos=" + videos +
-                ", sources=" + sources +
                 '}';
+    }
+
+    public Set<VideoEntity> getVideos() {
+        return videos;
+    }
+
+    public void setVideos(Set<VideoEntity> videos) {
+        this.videos = videos;
+    }
+
+    public Set<SourceEntity> getSources() {
+        return sources;
+    }
+
+    public void setSources(Set<SourceEntity> sources) {
+        this.sources = sources;
     }
 }
