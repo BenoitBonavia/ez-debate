@@ -36,6 +36,7 @@
 
   <div fxLayout="row" (mouseenter)="setHover(HoverArea.TAGS)" (mouseleave)="setHover(null)"
        *ngIf="editableArea !== EditableArea.TAGS" holdable (holdTime)="holdToEdit($event, EditableArea.TAGS)">
+    {{ this.data.tags | json }}
     <ed-tag-list [tags]="this.data.tags"></ed-tag-list>
     <ed-badge-button *ngIf="hoverArea === HoverArea.TAGS" (onButtonClick)="setEditableArea(EditableArea.TAGS)"
                      [fxHide.lt-sm]="true"></ed-badge-button>
