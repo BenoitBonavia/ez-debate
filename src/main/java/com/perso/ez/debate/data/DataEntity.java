@@ -38,11 +38,11 @@ public class DataEntity {
     @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<TagEntity> tags;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "data_id", referencedColumnName = "id")
     private Set<VideoEntity> videos;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "data_id", referencedColumnName = "id")
     private Set<SourceEntity> sources;
 
