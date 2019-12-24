@@ -36,13 +36,13 @@ public class DataEntity {
     @IndexedEmbedded
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<TagEntity> tags;
+    private Set<TagEntity> tags;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
     private Set<VideoEntity> videos;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
     private Set<SourceEntity> sources;
 
@@ -100,11 +100,11 @@ public class DataEntity {
         this.date = date;
     }
 
-    public List<TagEntity> getTags() {
+    public Set<TagEntity> getTags() {
         return tags;
     }
 
-    public void setTags(List<TagEntity> tags) {
+    public void setTags(Set<TagEntity> tags) {
         this.tags = tags;
     }
 
