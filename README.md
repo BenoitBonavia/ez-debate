@@ -10,6 +10,8 @@ The configuration of the database is made throw the environment variable
 `MYSQL_ADDON_ADDRESS` for the database host <br>
 `MYSQL_ADDON_USER` for the database user <br>
 `MYSQL_ADDON_PASSWORD` for the database password <br>
+`MYSQL_ADDON_PORT` for the database port <br>
+`MYSQL_ADDON_DB_NAME` for the database name <br>
 The database have to be named ez-debate <br>
 
 ### Usage Front
