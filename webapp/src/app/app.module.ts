@@ -45,7 +45,7 @@ import {BadgeButtonComponent} from "./common/badge-button/badge-button.component
 import { HoldableDirective } from './holdable.directive';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
-import {RegisterComponent} from "./security/register/register.component";
+import {RegisterComponent} from "./auth/register/register.component";
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
 import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.component";
@@ -55,6 +55,7 @@ import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-br
 import { TagsComponent} from "./data/tags/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {AuthService} from "./service/auth.service";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -129,6 +130,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     SearchService,
     MatSnackBar,
     TagService,
+    AuthService,
     Overlay,
     {
       provide: HAMMER_GESTURE_CONFIG,

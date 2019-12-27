@@ -4,7 +4,7 @@ import {HomeComponent} from "./home/home.component";
 import {CreateDataComponent} from "./data/create/create-data.component";
 import {SearchDataComponent} from "./data/search/search-data.component";
 import {DataDetailComponent} from "./data/detail/data-detail.component";
-import {RegisterComponent} from "./security/register/register.component";
+import {RegisterComponent} from "./auth/register/register.component";
 import {TagsComponent} from "./data/tags/tags.component";
 
 

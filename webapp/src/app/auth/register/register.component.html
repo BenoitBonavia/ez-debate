@@ -3,15 +3,15 @@
        style="margin-top: calc(50vh - 100px); transform: translateY(-50%)">
     <div fxFlex="50" fxFlex.lt-sm="80">
       <mat-card>
-        <form action="/" [formGroup]="registerForm">
+        <form (ngSubmit)="subscribe()" [formGroup]="registerForm">
           <mat-form-field class="w100">
-            <input matInput placeholder="First name" formControlName="firstNameFormControl">
+            <input matInput placeholder="First name" formControlName="firstNameFormControl" [(ngModel)]="registerDTO.firstname">
             <mat-error *ngIf="registerForm.get('firstNameFormControl').hasError('required')">
               First name is <strong>required</strong>
             </mat-error>
           </mat-form-field>
           <mat-form-field class="w100">
-            <input matInput placeholder="Last name" formControlName="lastNameFormControl">
+            <input matInput placeholder="Last name" formControlName="lastNameFormControl" [(ngModel)]="registerDTO.lastname">
             <mat-error *ngIf="registerForm.get('lastNameFormControl').hasError('required')">
               Last name is <strong>required</strong>
             </mat-error>
@@ -19,7 +19,7 @@
 
 
           <mat-form-field class="w100">
-            <input matInput placeholder="Email" formControlName="emailFormControl">
+            <input matInput placeholder="Email" formControlName="emailFormControl" [(ngModel)]="registerDTO.email">
             <mat-error *ngIf="registerForm.get('emailFormControl').hasError('email') && !registerForm.get('emailFormControl').hasError('required')">
               Please enter a valid email address
             </mat-error>
@@ -31,7 +31,7 @@
           <mat-form-field class="w100">
             <input matInput placeholder="Password" formControlName="passwordFormControl" type="password">
             <mat-error *ngIf="registerForm.get('passwordFormControl').hasError('pattern')">
-              Use lowercase, uppercase letters, numbers, and special characters
+              Use lowercase, uppercase, numbers and at least 8 caracters
             </mat-error>
             <mat-error *ngIf="registerForm.get('passwordFormControl').hasError('required')">
               Password is <strong>required</strong>
@@ -39,7 +39,7 @@
           </mat-form-field>
 
           <mat-form-field class="w100">
-            <input matInput placeholder="Confirm password" formControlName="confirmPasswordFormControl" type="password">
+            <input matInput placeholder="Confirm password" formControlName="confirmPasswordFormControl" type="password" [(ngModel)]="registerDTO.password">
             <mat-error *ngIf="registerForm.get('confirmPasswordFormControl').hasError('required')">
               Password is <strong>required</strong>
             </mat-error>
@@ -51,7 +51,7 @@
 
           <div fxLayout="row">
             <span class="fill-remaining-space"></span>
-            <button mat-raised-button color="primary" type="subscribe">Sign up</button>
+            <button mat-raised-button color="primary" type="subscribe" [disabled]="registerForm.invalid || registerForm.pristine">Sign up</button>
           </div>
         </form>
       </mat-card>
