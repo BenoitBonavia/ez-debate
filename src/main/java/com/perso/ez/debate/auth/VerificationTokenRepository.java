@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface VerificationTokenRepository extends CrudRepository<VerificationToken, Long> {
 
     VerificationToken findByToken(String token);
-    VerificationToken findByUser(RegisterUserEntity user);
+    VerificationToken findByUser(UserEntity user);
 }

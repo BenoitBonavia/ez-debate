@@ -16,17 +16,20 @@ public class VerificationToken {
 
     private String token;
 
-    @OneToOne(targetEntity = RegisterUserEntity.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = UserEntity.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
-    private RegisterUserEntity user;
+    private UserEntity user;
 
     private Date expiryDate;
 
-    public VerificationToken() {}
+    public VerificationToken() {
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+    }
 
-    public VerificationToken(String token, RegisterUserEntity user) {
+    public VerificationToken(String token, UserEntity user) {
         this.token = token;
         this.user = user;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
     private Date calculateExpiryDate(int expiryTimeInMinutes) {
@@ -52,11 +55,11 @@ public class VerificationToken {
         this.token = token;
     }
 
-    public RegisterUserEntity getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(RegisterUserEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 

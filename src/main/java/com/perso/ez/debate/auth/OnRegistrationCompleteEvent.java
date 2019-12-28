@@ -7,9 +7,9 @@ import java.util.Locale;
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
     private String appUrl;
     private Locale locale;
-    private RegisterUserEntity user;
+    private UserEntity user;
 
-    public OnRegistrationCompleteEvent(RegisterUserEntity user, Locale locale, String appUrl) {
+    public OnRegistrationCompleteEvent(UserEntity user, Locale locale, String appUrl) {
         super(user);
         this.user = user;
         this.locale = locale;
@@ -32,11 +32,11 @@ public class OnRegistrationCompleteEvent extends ApplicationEvent {
         this.appUrl = appUrl;
     }
 
-    public RegisterUserEntity getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(RegisterUserEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 }

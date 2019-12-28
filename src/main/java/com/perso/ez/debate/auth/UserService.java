@@ -7,21 +7,20 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
-public class UserService implements IUserService {
+public class UserService {
 
     @Autowired
-    private RegisterUserRepository repository;
+    private UserRepository repository;
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
 
     @Transactional
-    @Override
-    public RegisterUserEntity registerNewUserAccount(RegisterDTO accountDTO) {
+    public UserEntity registerNewUserAccount(RegisterDTO accountDTO) {
         if (emailExist(accountDTO.getEmail())) {
             throw new IllegalArgumentException("There is an account with that email address : " + accountDTO.getEmail());
         }
-        RegisterUserEntity userEntity = new RegisterUserEntity();
+        UserEntity userEntity = new UserEntity();
         userEntity.setEmail(accountDTO.getEmail());
         userEntity.setPasswordHash(new BCryptPasswordEncoder().encode(accountDTO.getPassword()));
         userEntity.setFirstname(accountDTO.getFirstname());
@@ -29,24 +28,21 @@ public class UserService implements IUserService {
         return repository.save(userEntity);
     }
 
-    @Override
-    public void createVerificationToken(RegisterUserEntity user, String token) {
+    public void createVerificationToken(UserEntity user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
     }
 
-    @Override
     public VerificationToken getVerificationToken(String verificationToken) {
         return tokenRepository.findByToken(verificationToken);
     }
 
-    @Override
-    public RegisterUserEntity getUser(String verificationToken) {
+    public UserEntity getUser(String verificationToken) {
         return tokenRepository.findByToken(verificationToken).getUser();
     }
 
     private boolean emailExist(String email) {
-        RegisterUserEntity user = repository.findByEmail(email);
+        UserEntity user = repository.findByEmail(email);
         return user != null;
     }
 }
