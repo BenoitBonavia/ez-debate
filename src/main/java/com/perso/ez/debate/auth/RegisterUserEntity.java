@@ -33,6 +33,9 @@ public class RegisterUserEntity {
     @Column(name = "role")
     private String role = "ROLE_MEMBER";
 
+    @Column(name = "enabled")
+    private boolean enabled = false;
+
     public Long getId() {
         return id;
     }
@@ -95,5 +98,13 @@ public class RegisterUserEntity {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

@@ -2,38 +2,55 @@ package com.perso.ez.debate.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 
 @RestController
 @RequestMapping("/api/register")
 public class AuthController {
 
-    private RegisterUserRepository registerUserRepository;
+    @Autowired
+    RegisterUserRepository registerUserRepository;
 
     @Autowired
-    public AuthController(RegisterUserRepository registerUserRepository) {
-        this.registerUserRepository = registerUserRepository;
-    }
+    UserService service;
+
+    @Autowired
+    ApplicationEventPublisher eventPublisher;
 
     @PostMapping
-    public void createAccount(@RequestBody RegisterDTO registerDTO) {
-        if (emailExist(registerDTO.getEmail())) {
-            return;
+    public void createAccount(@RequestBody RegisterDTO registerDTO, BindingResult result, WebRequest request, Errors erros) {
+        RegisterUserEntity registered = new RegisterUserEntity();
+        if (!result.hasErrors()) {
+            registered = createUserAccount(registerDTO, result);
         }
-        RegisterUserEntity userEntity = new RegisterUserEntity();
-        userEntity.setEmail(registerDTO.getEmail());
-        userEntity.setPasswordHash(new BCryptPasswordEncoder().encode(registerDTO.getPassword()));
-        userEntity.setFirstname(registerDTO.getFirstname());
-        userEntity.setLastname(registerDTO.getLastname());
-        registerUserRepository.save(userEntity);
+        if (registered == null) {
+            result.rejectValue("email", "message.regError");
+        }
+        try {
+            String appUrl = request.getContextPath();
+            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
+            System.err.println("CA PUBLIE");
+        } catch (Exception me) {
+            me.printStackTrace();
+            System.err.println("ERREUR");
+        }
     }
 
-    private boolean emailExist(String email) {
-        RegisterUserEntity user = registerUserRepository.findByEmail(email);
-        return user != null;
+    private RegisterUserEntity createUserAccount(RegisterDTO registerDTO, BindingResult result) {
+        RegisterUserEntity registered = null;
+        try {
+            registered = service.registerNewUserAccount(registerDTO);
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+        return registered;
     }
 }
