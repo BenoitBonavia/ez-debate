@@ -1,5 +1,6 @@
 package com.perso.ez.debate.auth;
 
+import com.perso.ez.debate.auth.register.SignUpForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class UserService {
     private VerificationTokenRepository tokenRepository;
 
     @Transactional
-    public UserEntity registerNewUserAccount(RegisterDTO accountDTO) {
+    public UserEntity registerNewUserAccount(SignUpForm accountDTO) {
         if (emailExist(accountDTO.getEmail())) {
             throw new IllegalArgumentException("There is an account with that email address : " + accountDTO.getEmail());
         }
@@ -35,10 +36,6 @@ public class UserService {
 
     public VerificationToken getVerificationToken(String verificationToken) {
         return tokenRepository.findByToken(verificationToken);
-    }
-
-    public UserEntity getUser(String verificationToken) {
-        return tokenRepository.findByToken(verificationToken).getUser();
     }
 
     private boolean emailExist(String email) {

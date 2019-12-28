@@ -1,5 +1,8 @@
-package com.perso.ez.debate.auth;
+package com.perso.ez.debate.auth.register;
 
+import com.perso.ez.debate.auth.UserEntity;
+import com.perso.ez.debate.auth.UserService;
+import com.perso.ez.debate.auth.register.OnRegistrationCompleteEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;

@@ -1,5 +1,6 @@
-package com.perso.ez.debate.auth;
+package com.perso.ez.debate.auth.register;
 
+import com.perso.ez.debate.auth.UserEntity;
 import org.springframework.context.ApplicationEvent;
 
 import java.util.Locale;

@@ -1,5 +1,6 @@
-package com.perso.ez.debate.auth;
+package com.perso.ez.debate.auth.register;
 
+import com.perso.ez.debate.auth.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.validation.BindingResult;
@@ -11,7 +12,7 @@ import java.util.Calendar;
 
 @RestController
 @RequestMapping("/api/register")
-public class AuthController {
+public class RegisterController {
 
     @Autowired
     UserRepository userRepository;
@@ -23,10 +24,10 @@ public class AuthController {
     ApplicationEventPublisher eventPublisher;
 
     @PostMapping
-    public void createAccount(@RequestBody RegisterDTO registerDTO, BindingResult result, WebRequest request, Errors erros) {
+    public void createAccount(@RequestBody SignUpForm signUpForm, BindingResult result, WebRequest request, Errors erros) {
         UserEntity registered = new UserEntity();
         if (!result.hasErrors()) {
-            registered = createUserAccount(registerDTO);
+            registered = createUserAccount(signUpForm);
         }
         if (registered == null) {
             result.rejectValue("email", "message.regError");
@@ -39,10 +40,10 @@ public class AuthController {
         }
     }
 
-    private UserEntity createUserAccount(RegisterDTO registerDTO) {
+    private UserEntity createUserAccount(SignUpForm signUpForm) {
         UserEntity registered;
         try {
-            registered = service.registerNewUserAccount(registerDTO);
+            registered = service.registerNewUserAccount(signUpForm);
         } catch (IllegalArgumentException e) {
             return null;
         }

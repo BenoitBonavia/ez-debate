@@ -1,6 +1,6 @@
-package com.perso.ez.debate.auth;
+package com.perso.ez.debate.auth.register;
 
-public class RegisterDTO {
+public class SignUpForm {
 
     private String email;
     private String firstname;
