@@ -27,7 +27,6 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     }
 
     public void confirmRegistration(OnRegistrationCompleteEvent event) {
-        System.err.println("COUCOU TOI");
         RegisterUserEntity user = event.getUser();
         String token = UUID.randomUUID().toString();
         service.createVerificationToken(user, token);
@@ -40,7 +39,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
-        email.setText(message + " rn" + "http://localhost:8080" + confirmationUrl);
+        email.setText(message + "rn " + "http://localhost:8080" + confirmationUrl);
         emailSender.send(email);
     }
 }

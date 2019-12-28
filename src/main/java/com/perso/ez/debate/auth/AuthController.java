@@ -37,10 +37,8 @@ public class AuthController {
         try {
             String appUrl = request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
-            System.err.println("CA PUBLIE");
         } catch (Exception me) {
             me.printStackTrace();
-            System.err.println("ERREUR");
         }
     }
 
