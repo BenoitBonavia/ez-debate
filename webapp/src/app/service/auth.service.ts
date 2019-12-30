@@ -12,4 +12,8 @@ export class AuthService {
   register(registerDTO: RegisterDTO) {
     return this.httpClient.post('/api/register', registerDTO);
   }
+
+  validateToken(token: string) {
+    return this.httpClient.get('/api/register/registrationConfirm/' + token);
+  }
 }

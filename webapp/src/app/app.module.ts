@@ -56,6 +56,9 @@ import { TagsComponent} from "./data/tags/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {AuthService} from "./service/auth.service";
+import {RegistrationConfirmComponent} from "./auth/registration-confirm/registration-confirm.component";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {LoginComponent} from "./auth/login/login.component";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -96,7 +99,9 @@ export class MyHammerConfig extends HammerGestureConfig  {
     FullScreenVideoComponent,
     VideoEmbederComponent,
     VideoThumbnailComponent,
+    RegistrationConfirmComponent,
     TagsComponent,
+    LoginComponent,
     AppComponent
   ],
   imports: [
@@ -122,7 +127,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatProgressBarModule,
     MatSnackBarModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     DataService,

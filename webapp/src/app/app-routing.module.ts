@@ -6,6 +6,8 @@ import {SearchDataComponent} from "./data/search/search-data.component";
 import {DataDetailComponent} from "./data/detail/data-detail.component";
 import {RegisterComponent} from "./auth/register/register.component";
 import {TagsComponent} from "./data/tags/tags.component";
+import {RegistrationConfirmComponent} from "./auth/registration-confirm/registration-confirm.component";
+import {LoginComponent} from "./auth/login/login.component";
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'research', component: SearchDataComponent},
   { path: 'detail/:id', component: DataDetailComponent},
   { path: 'tags', component: TagsComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'registrationConfirmation/:token', component: RegistrationConfirmComponent}
 ];
 
 @NgModule({

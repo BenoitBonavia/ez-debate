@@ -34,6 +34,11 @@ h2 {
   padding-right: 15px;
 }
 
+.main-row-vertical-center {
+  margin-top: calc(50vh - 100px);
+  transform: translateY(-50%)
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -119,6 +124,10 @@ a.no-style {
 }
 
 /* margin  -----------------------------------------------------------------------------------------------------------*/
+
+.margin-auto {
+  margin: auto !important;
+}
 
 .margin-0 {
   margin: 0 !important;

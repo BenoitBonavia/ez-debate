@@ -32,20 +32,21 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
     public void confirmRegistration(OnRegistrationCompleteEvent event) {
 
-        String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
+//        String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         UserEntity user = event.getUser();
         String token = UUID.randomUUID().toString();
         service.createVerificationToken(user, token);
 
         String recipientAddress = user.getEmail();
         String subject = "Registration Confirmation";
-        String confirmationUrl = event.getAppUrl() + "/api/register/registrationConfirm?token=" + token;
+//        String confirmationUrl = event.getAppUrl() + "/api/register/registrationConfirm?token=" + token;
+        String confirmationUrl = event.getAppUrl() + "/registrationConfirmation/" + token;
         String message = "Bonjour merci de confirmer votre adresse email";
 
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
-        email.setText(message + "rn " + baseUrl  + confirmationUrl);
+        email.setText(message + "rn "  + confirmationUrl);
         emailSender.send(email);
     }
 }

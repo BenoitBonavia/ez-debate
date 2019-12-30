@@ -1,0 +1,12 @@
+<div class="container">
+  <div fxLayout="row" class="main-row-vertical-center justify-content-center">
+    <div *ngIf="this.status === 'TOKEN_DOES_NOT_EXIST'">
+      <div class="margin-bottom-40">
+        The account your trying to activate doesn't seems to exist
+      </div>
+      <div class="text-align-center">
+        <a mat-raised-button [routerLink]="'/register'">Register</a>
+      </div>
+    </div>
+  </div>
+</div>

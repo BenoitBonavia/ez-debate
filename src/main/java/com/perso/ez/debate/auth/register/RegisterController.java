@@ -1,14 +1,24 @@
 package com.perso.ez.debate.auth.register;
 
-import com.perso.ez.debate.auth.*;
+import com.perso.ez.debate.auth.UserEntity;
+import com.perso.ez.debate.auth.UserRepository;
+import com.perso.ez.debate.auth.UserService;
+import com.perso.ez.debate.auth.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.Calendar;
+
+enum StatusCode {
+    TOKEN_ACTIVATED,
+    TOKEN_EXPIRED,
+    TOKEN_ALREADY_ACTIVATED,
+    TOKEN_DOES_NOT_EXIST
+}
 
 @RestController
 @RequestMapping("/api/register")
@@ -23,8 +33,11 @@ public class RegisterController {
     @Autowired
     ApplicationEventPublisher eventPublisher;
 
+    @Value("${redirectUrl}")
+    private String redirectUrl;
+
     @PostMapping
-    public void createAccount(@RequestBody SignUpForm signUpForm, BindingResult result, WebRequest request, Errors erros) {
+    public void createAccount(@RequestBody SignUpForm signUpForm, BindingResult result, WebRequest request) {
         UserEntity registered = new UserEntity();
         if (!result.hasErrors()) {
             registered = createUserAccount(signUpForm);
@@ -33,7 +46,8 @@ public class RegisterController {
             result.rejectValue("email", "message.regError");
         }
         try {
-            String appUrl = request.getContextPath();
+//            String appUrl = request.getContextPath(); TODO
+            String appUrl = redirectUrl;
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
         } catch (Exception me) {
             me.printStackTrace();
@@ -50,21 +64,26 @@ public class RegisterController {
         return registered;
     }
 
-    @GetMapping(value = "/registrationConfirm")
-    public String confirmRegistration(@RequestParam("token") String token) {
+    @CrossOrigin(origins = "localhost:4200", maxAge = 3600)
+    @GetMapping(value = "/registrationConfirm/{token}")
+    public StatusCode confirmRegistration(@PathVariable("token") String token) {
         VerificationToken verificationToken = service.getVerificationToken(token);
         if (verificationToken == null) {
-            return "Wrong";
+            return StatusCode.TOKEN_DOES_NOT_EXIST;
+        }
+        if (verificationToken.getUser().isEnabled()) {
+            return StatusCode.TOKEN_ALREADY_ACTIVATED;
         }
 
         UserEntity user = verificationToken.getUser();
         Calendar calendar = Calendar.getInstance();
         if ((verificationToken.getExpiryDate().getTime() - calendar.getTime().getTime()) <= 0) {
-            return "Expired";
+//            return "redirect:http://" + redirectUrl;
+            return StatusCode.TOKEN_EXPIRED;
         }
 
         user.setEnabled(true);
         userRepository.save(user);
-        return "Success";
+        return StatusCode.TOKEN_ACTIVATED;
     }
 }
