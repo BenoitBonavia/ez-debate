@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'tags', component: TagsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'resend-token', component: ResendTokenComponent },
+  { path: 'resend-token/:token', component: ResendTokenComponent },
   { path: 'registrationConfirmation/:token', component: RegistrationConfirmComponent}
 ];
 

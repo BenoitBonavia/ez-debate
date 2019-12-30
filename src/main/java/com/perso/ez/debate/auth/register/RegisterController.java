@@ -1,13 +1,12 @@
 package com.perso.ez.debate.auth.register;
 
 import antlr.Token;
-import com.perso.ez.debate.auth.UserEntity;
-import com.perso.ez.debate.auth.UserRepository;
-import com.perso.ez.debate.auth.UserService;
-import com.perso.ez.debate.auth.VerificationToken;
+import com.perso.ez.debate.auth.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
@@ -30,6 +29,9 @@ public class RegisterController {
     UserRepository userRepository;
 
     @Autowired
+    VerificationTokenRepository tokenRepository;
+
+    @Autowired
     UserService service;
 
     @Autowired
@@ -38,9 +40,15 @@ public class RegisterController {
     @Value("${redirectUrl}")
     private String redirectUrl;
 
+    @Autowired
+    private JavaMailSender emailSender;
+
+    private static final int EXPIRATION = 60 * 24;
+
     @PostMapping
-    public void createAccount(@RequestBody SignUpForm signUpForm, BindingResult result, WebRequest request) {
+    public VerificationToken createAccount(@RequestBody SignUpForm signUpForm, BindingResult result, WebRequest request) {
         UserEntity registered = new UserEntity();
+        VerificationToken verificationToken = new VerificationToken();
         if (!result.hasErrors()) {
             registered = createUserAccount(signUpForm);
         }
@@ -49,11 +57,26 @@ public class RegisterController {
         }
         try {
 //            String appUrl = request.getContextPath(); TODO
-            String appUrl = redirectUrl;
-            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
+
+            UserEntity user = registered;
+            String token = UUID.randomUUID().toString();
+            verificationToken = service.createVerificationToken(user, token);
+
+            sendVerificationMail(user, redirectUrl, token);
         } catch (Exception me) {
             me.printStackTrace();
         }
+        return verificationToken;
+    }
+
+    @PostMapping("/refreshToken")
+    public VerificationToken refreshToken(@RequestBody String token) {
+        VerificationToken newToken = service.getVerificationToken(token);
+        newToken.setToken(UUID.randomUUID().toString());
+        newToken.setExpiryDate(VerificationToken.calculateExpiryDate(EXPIRATION));
+        newToken = tokenRepository.save(newToken);
+        sendVerificationMail(newToken.getUser(), redirectUrl, token);
+        return newToken;
     }
 
     private UserEntity createUserAccount(SignUpForm signUpForm) {
@@ -87,5 +110,18 @@ public class RegisterController {
         user.setEnabled(true);
         userRepository.save(user);
         return StatusCode.TOKEN_ACTIVATED;
+    }
+
+    private void sendVerificationMail(UserEntity user, String appUrl, String token) {
+        String recipientAddress = user.getEmail();
+        String subject = "Registration Confirmation";
+        String confirmationUrl = appUrl + "/registrationConfirmation/" + token;
+        String message = "Hi, thanks to confirm your mailbox by clicking on the following link !";
+
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(recipientAddress);
+        email.setSubject(subject);
+        email.setText(message + "\n"  + confirmationUrl);
+        emailSender.send(email);
     }
 }

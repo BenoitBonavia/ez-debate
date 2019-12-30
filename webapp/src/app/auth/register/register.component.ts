@@ -38,8 +38,8 @@ export class RegisterComponent {
 
   subscribe() {
     this.authService.register(this.registerDTO).subscribe(
-      () => {
-        this.router.navigate(['/resend-token']);
+      response => {
+        this.router.navigate(['/resend-token/' + response.token]);
       },
       error => {
         console.log(error);

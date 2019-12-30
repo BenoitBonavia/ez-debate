@@ -29,9 +29,9 @@ public class UserService {
         return repository.save(userEntity);
     }
 
-    public void createVerificationToken(UserEntity user, String token) {
+    public VerificationToken createVerificationToken(UserEntity user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
-        tokenRepository.save(myToken);
+        return tokenRepository.save(myToken);
     }
 
     public VerificationToken getVerificationToken(String verificationToken) {
