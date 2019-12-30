@@ -59,6 +59,7 @@ import {AuthService} from "./service/auth.service";
 import {RegistrationConfirmComponent} from "./auth/registration-confirm/registration-confirm.component";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {LoginComponent} from "./auth/login/login.component";
+import {ResendTokenComponent} from "./auth/resend-token/resend-token.component";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -102,6 +103,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     RegistrationConfirmComponent,
     TagsComponent,
     LoginComponent,
+    ResendTokenComponent,
     AppComponent
   ],
   imports: [

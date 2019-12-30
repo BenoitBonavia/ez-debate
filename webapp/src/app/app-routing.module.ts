@@ -8,17 +8,19 @@ import {RegisterComponent} from "./auth/register/register.component";
 import {TagsComponent} from "./data/tags/tags.component";
 import {RegistrationConfirmComponent} from "./auth/registration-confirm/registration-confirm.component";
 import {LoginComponent} from "./auth/login/login.component";
+import {ResendTokenComponent} from "./auth/resend-token/resend-token.component";
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'create', component: CreateDataComponent },
-  { path: 'research', component: SearchDataComponent},
-  { path: 'detail/:id', component: DataDetailComponent},
-  { path: 'tags', component: TagsComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'research', component: SearchDataComponent },
+  { path: 'detail/:id', component: DataDetailComponent },
+  { path: 'tags', component: TagsComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'resend-token', component: ResendTokenComponent },
   { path: 'registrationConfirmation/:token', component: RegistrationConfirmComponent}
 ];
 

@@ -1,5 +1,6 @@
 package com.perso.ez.debate.auth.register;
 
+import antlr.Token;
 import com.perso.ez.debate.auth.UserEntity;
 import com.perso.ez.debate.auth.UserRepository;
 import com.perso.ez.debate.auth.UserService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.Calendar;
+import java.util.UUID;
 
 enum StatusCode {
     TOKEN_ACTIVATED,

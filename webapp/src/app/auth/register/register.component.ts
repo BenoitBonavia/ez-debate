@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RegisterDTO} from "../../models/auth.models";
 import {AuthService} from "../../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'ed-register',
@@ -9,7 +10,8 @@ import {AuthService} from "../../service/auth.service";
 })
 export class RegisterComponent {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
+
   }
 
   registerDTO = new RegisterDTO();
@@ -37,12 +39,12 @@ export class RegisterComponent {
   subscribe() {
     this.authService.register(this.registerDTO).subscribe(
       () => {
+        this.router.navigate(['/resend-token']);
+      },
+      error => {
+        console.log(error);
       },
       () => {
-        console.log("error");
-      },
-      () => {
-        console.log("success");
       })
   }
 }

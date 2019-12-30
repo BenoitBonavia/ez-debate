@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {LoginDTO} from "../../models/auth.models";
 
 @Component({
   selector: 'ed-login',
@@ -7,4 +8,10 @@ import {Component} from "@angular/core";
 export class LoginComponent {
 
   constructor() {}
+
+  loginDTO = new LoginDTO();
+
+  isFilled() {
+    return !(this.loginDTO.email && this.loginDTO.password);
+  }
 }
