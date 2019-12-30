@@ -36,10 +36,11 @@ export class RegisterComponent {
 
   subscribe() {
     this.authService.register(this.registerDTO).subscribe(
-      () => {},
+      () => {
+      },
       () => {
         console.log("error");
-    },
+      },
       () => {
         console.log("success");
       })
@@ -47,5 +48,8 @@ export class RegisterComponent {
 }
 
 function passwordMatchValidator(g: FormGroup) {
-  return g.get('passwordFormControl').value === g.get('confirmPasswordFormControl').value ? null : {'mismatch': true};
+  if (g.get('confirmPasswordFormControl').value && g.get('passwordFormControl').value && g.get('confirmPasswordFormControl').value !== g.get('passwordFormControl').value) {
+    return {'mismatch': true};
+  }
+  return null;
 }
