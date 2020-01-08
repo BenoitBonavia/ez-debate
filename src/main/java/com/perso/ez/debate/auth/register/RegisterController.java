@@ -72,6 +72,9 @@ public class RegisterController {
     @PostMapping("/refreshToken")
     public VerificationToken refreshToken(@RequestBody String token) {
         VerificationToken newToken = service.getVerificationToken(token);
+        if (newToken == null) {
+            return null;
+        }
         newToken.setToken(UUID.randomUUID().toString());
         newToken.setExpiryDate(VerificationToken.calculateExpiryDate(EXPIRATION));
         newToken = tokenRepository.save(newToken);

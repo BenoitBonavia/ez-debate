@@ -1,22 +1,18 @@
-<div class="container">
-  <div fxLayout="row" class="justify-content-center main-row-vertical-center">
-    <div fxFlex="50" fxFlex.lt-sm="80">
-      <mat-card>
-        <form>
-          <mat-form-field class="w100">
-            <input matInput placeholder="Email" [(ngModel)]="loginDTO.email" name="email"/>
-          </mat-form-field>
+<mat-card>
+  <h1 class="font-color-primary">Login</h1>
+  <form>
+    <mat-form-field class="w100">
+      <input matInput placeholder="Email" [(ngModel)]="loginDTO.email" name="email"/>
+    </mat-form-field>
 
-          <mat-form-field class="w100">
-            <input matInput placeholder="Password" type="password" [(ngModel)]="loginDTO.password" name="password"/>
-          </mat-form-field>
+    <mat-form-field class="w100">
+      <input matInput placeholder="Password" type="password" [(ngModel)]="loginDTO.password" name="password"/>
+    </mat-form-field>
+    <a [routerLink]="'/'" class="font-size-14 font-weight-bold no-style">Forgot your password ?</a>
+  </form>
 
-          <div fxLayout="row">
-            <span class="fill-remaining-space"></span>
-            <button mat-raised-button color="primary" type="subscribe" [disabled]="this.isFilled()">Sign up</button>
-          </div>
-        </form>
-      </mat-card>
-    </div>
+  <div fxLayout="row">
+    <span class="fill-remaining-space"></span>
+    <button mat-raised-button color="primary" [disabled]="this.isFilled()">Sign in</button>
   </div>
-</div>
+</mat-card>

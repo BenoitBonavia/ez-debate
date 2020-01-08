@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RegisterDTO} from "../../models/auth.models";
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'ed-register',
@@ -40,12 +41,7 @@ export class RegisterComponent {
     this.authService.register(this.registerDTO).subscribe(
       response => {
         this.router.navigate(['/resend-token/' + response.token]);
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-      })
+      });
   }
 }
 
