@@ -37,13 +37,12 @@ public class DataEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<TagEntity> tags;
-
-//    @OneToMany(fetch = FetchType.EAGER)
-    @OneToMany(cascade = CascadeType.ALL)
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
     private Set<VideoEntity> videos;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
     private Set<SourceEntity> sources;
 
