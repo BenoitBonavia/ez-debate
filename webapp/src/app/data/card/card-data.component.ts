@@ -1,5 +1,4 @@
 import {
-  AfterViewChecked,
   AfterViewInit, ChangeDetectorRef,
   Component,
   ElementRef,
@@ -11,8 +10,10 @@ import {
 import {DataModel} from "../../models/data.model";
 
 @Component({
-  selector: 'ed-card-data',
-  templateUrl: 'card-data.component.html'
+  selector: '' +
+    'ed-card-data',
+  templateUrl: 'card-data.component.html',
+  styleUrls: ['card-data.component.scss']
 })
 export class CardDataComponent implements AfterViewInit {
 
@@ -29,6 +30,7 @@ export class CardDataComponent implements AfterViewInit {
       this.text.nativeElement.style.height = this.diff + "px";
     }
   }
+  @Input() limitContentHeight: boolean = false;
   @Output() cardHeight = new EventEmitter<number>();
   @ViewChild("card", {static: false}) card: ElementRef;
   @ViewChild("text", {static: false}) text: ElementRef;

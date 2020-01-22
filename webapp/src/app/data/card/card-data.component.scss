@@ -1,0 +1,6 @@
+.limitHeight {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-height: 1.5em;
+}

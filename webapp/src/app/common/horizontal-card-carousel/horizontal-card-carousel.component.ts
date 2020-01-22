@@ -19,7 +19,7 @@ export class HorizontalCardCarouselComponent implements AfterViewChecked {
 
   @ViewChild('carouselContainer', {static: false}) carouselContainer: ElementRef;
   @ViewChild('verticalCardCarouselContainer', {static: false}) verticalCardCarouselContainer: ElementRef;
-  @Input() desktopWidth: number = 50;
+  @Input() desktopWidth: number = 40;
   @Input() tabletWidth: number = 70;
   @Input() mobileWidth: number = 90;
   @Input() datas: DataModel[];

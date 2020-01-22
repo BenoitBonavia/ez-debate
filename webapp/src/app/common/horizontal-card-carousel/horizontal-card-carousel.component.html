@@ -4,7 +4,7 @@
          class="padding-right-15 padding-left-15 display-inline-block" [ngStyle.lt-sm]="{'width': this.mobileWidth + '%'}"
          [ngStyle.sm]="{'width': this.tabletWidth + '%'}" [ngStyle.md]="{'width': this.tabletWidth + '%'}"
          [ngStyle.gt-md]="{'width': this.desktopWidth + '%'}">
-      <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight"></ed-card-data>
+      <ed-card-data [data]="data" (cardHeight)="setMaxHeight($event)" [minHeight]="maxHeight" [limitContentHeight]="true"></ed-card-data>
     </div>
   </div>
   <button mat-mini-fab color="primary" class="translateY-50 position-relative float-right margin-right-15" (click)="scrollRight()" style="z-index: 10000; transform: translateY(-50%);" [ngStyle]="{'top': -this.buttonPosition + 'px;'}" [ngStyle.lt-sm]="{'display': 'none'}"><i class="fas fa-angle-right"></i></button>

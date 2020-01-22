@@ -9,15 +9,15 @@
     </mat-card-header>
     <!--  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
     <mat-card-content>
-      <div #text>
-        {{ data.text }}
-      </div>
-    </mat-card-content>
-    <div fxLayout="row">
       <mat-chip-list>
         <mat-chip *ngFor="let tag of data.tags" style="font-size: 10px; min-height: 20px; padding: 3px 7px;"
                   [routerLink]="'/research'" [queryParams]="{ text: tag.tag }" class="pointer">{{ tag.tag }}</mat-chip>
       </mat-chip-list>
+    </mat-card-content>
+    <div fxLayout="row">
+      <div #text [ngClass]="{'limitHeight': this.limitContentHeight}">
+        {{ data.text }}
+      </div>
       <div class="fill-remaining-space"></div>
       <button mat-mini-fab color="primary" class="right: 0px;"><i class="fas fa-angle-right"></i></button>
     </div>
