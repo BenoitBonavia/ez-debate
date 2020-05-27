@@ -1,6 +1,8 @@
 package com.perso.ez.debate.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,9 +21,10 @@ public class DataController {
         return dataRepository.findAll();
     }
 
-    @GetMapping("/light/tag/{tag}")
-    public Iterable<DataEntity> getByTag(@PathVariable String tag) {
-        return dataRepository.findAllByTags_TagContainingOrderByDateDesc(tag);
+    @GetMapping("/light")
+    public Iterable<DataEntity> getByTag(@RequestParam String tag, @RequestParam int pageNumber) {
+        Pageable page = PageRequest.of(pageNumber, 10);
+        return dataRepository.findAllByTags_TagContainingOrderByDateDesc(tag, page);
     }
 
     @PostMapping()

@@ -18,8 +18,8 @@ export class DataService {
     return this.http.get('/api/data/light/all') as Observable<DataModel[]>;
   }
 
-  getAllByTag(tag: string): Observable<DataModel[]> {
-    return this.http.get('/api/data/light/tag/' + tag) as Observable<DataModel[]>;
+  getPageByTag(tag: string, pageNumber: string): Observable<DataModel[]> {
+    return this.http.get('/api/data/light', {params: {tag, pageNumber}}) as Observable<DataModel[]>;
   }
 
   saveData(data: DataModel): Observable<DataModel> {

@@ -17,11 +17,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataService.getAllByTag("France").subscribe(response => {
+    this.dataService.getPageByTag("France", '0').subscribe(response => {
       this.dataFrance = response;
       console.log(response);
     });
-    this.dataService.getAllByTag("USA").subscribe(response => {
+    this.dataService.getPageByTag("USA", '0').subscribe(response => {
       this.dataUSA = response;
       console.log(response);
     });
