@@ -3,10 +3,10 @@ import {DataService} from "../../service/data.service";
 import {DataModel} from "../../models/data.model";
 
 @Component({
-  selector: 'ed-masonry-data-listing',
-  templateUrl: 'data-masonry-listing.component.html'
+  selector: 'ed-data-listing',
+  templateUrl: 'data-listing.component.html'
 })
-export class DataMasonryListingComponent implements OnInit {
+export class DataListingComponent implements OnInit {
 
   @Input() datas: DataModel[];
 

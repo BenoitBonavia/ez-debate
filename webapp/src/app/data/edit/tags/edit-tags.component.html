@@ -8,25 +8,20 @@
       </mat-chip>
     </mat-chip-list>
   </div>
-  <div fxLayout="row">
+  <div fxLayout="row" *ngFor="let type of allTypes">
     <div fxFlex="100">
-      <div fxLayout.lt-md="row" fxFlex.gt-md="33" class="padding-left-15 padding-right-15"
-           *ngFor="let type of allTypes">
+      <div fxLayout="row">
         <div fxFlex="100">
-          <div fxLayout="row">
-            <div fxFlex="100">
-              <h4>{{ type.type }}</h4>
-            </div>
-          </div>
-          <div fxLayout="row">
-            <div fxFlex="100">
-              <mat-chip-list>
-                <mat-chip *ngFor="let tag of filterTagsByType(allTags, type);" (click)="addOnClick(tag)">
-                  {{tag.tag}}
-                </mat-chip>
-              </mat-chip-list>
-            </div>
-          </div>
+          <h4>{{ type.type }}</h4>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="100">
+          <mat-chip-list>
+            <mat-chip *ngFor="let tag of filterTagsByType(allTags, type);" (click)="addOnClick(tag)">
+              {{tag.tag}}
+            </mat-chip>
+          </mat-chip-list>
         </div>
       </div>
     </div>

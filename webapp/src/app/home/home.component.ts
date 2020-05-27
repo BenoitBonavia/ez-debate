@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getAllByTag("France").subscribe(response => {
       this.dataFrance = response;
+      console.log(response);
     });
     this.dataService.getAllByTag("USA").subscribe(response => {
       this.dataUSA = response;

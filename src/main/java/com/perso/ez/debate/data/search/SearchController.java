@@ -38,7 +38,7 @@ public class SearchController {
     }
 
     @GetMapping("/{text}")
-    public List searchData(@PathVariable String text) {
+    public List<DataEntity> searchData(@PathVariable String text) {
         Session session = em.unwrap(SessionFactory.class).openSession();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
 

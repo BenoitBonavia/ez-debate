@@ -10,8 +10,7 @@ import {
 import {DataModel} from "../../models/data.model";
 
 @Component({
-  selector: '' +
-    'ed-card-data',
+  selector: 'ed-card-data',
   templateUrl: 'card-data.component.html',
   styleUrls: ['card-data.component.scss']
 })

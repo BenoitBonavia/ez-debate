@@ -5,4 +5,5 @@ export class SourceModel {
   mTitle: string;
   mDescription: string;
   mImage: string;
+  loaded;
 }

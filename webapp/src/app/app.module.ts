@@ -11,7 +11,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {HomeComponent} from "./home/home.component";
 import {MatCardModule} from "@angular/material/card";
-import {DataMasonryListingComponent} from "./data/masonry-listing/data-masonry-listing.component";
+import {DataListingComponent} from "./data/data-listing/data-listing.component";
 import {CreateDataComponent} from "./data/create/create-data.component";
 import {MatStepperModule} from "@angular/material/stepper";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -61,6 +61,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {LoginComponent} from "./auth/login/login.component";
 import {ResendTokenComponent} from "./auth/resend-token/resend-token.component";
 import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
+import {HorizontalCardDataComponent} from "./data/horizontal-card/horizontal-card-data.component";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -81,7 +82,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     HeaderComponent,
     HomeComponent,
     DataDetailComponent,
-    DataMasonryListingComponent,
+    DataListingComponent,
     CreateDataComponent,
     SearchDataComponent,
     CardDataComponent,
@@ -106,7 +107,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     LoginComponent,
     ResendTokenComponent,
     LoginRegisterComponent,
-    AppComponent
+    AppComponent,
+    HorizontalCardDataComponent
   ],
   imports: [
     HttpClientModule,

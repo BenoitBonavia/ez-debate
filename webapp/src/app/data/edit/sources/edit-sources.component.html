@@ -6,7 +6,7 @@
   </div>
   <div fxFlex="55%" class="padding-right-15 position-relative">
     <mat-form-field class="display-block">
-      <input matInput placeholder="Link" [(ngModel)]="source.link" (keyup)="editTabOnType(i)">
+      <input matInput placeholder="Link" [(ngModel)]="source.link" (keyup)="editTabOnType(i)" (ngModelChange)="getMetaData(i, $event)" [disabled]="this.sources[i].loaded == false">
     </mat-form-field>
     <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
             *ngIf="source.link" (click)="removeSource(i)">

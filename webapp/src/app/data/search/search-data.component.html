@@ -1,10 +1,10 @@
 <div class="container">
-  <div fxLayout="row" class="padding-top-5vw padding-bottom-5vw">
+  <div fxLayout="row" class="padding-top-5vw padding-bottom-15">
     <div fxFlex="20"></div>
     <div fxFlex="60">
       <mat-form-field appearance="legacy" class="w100">
         <mat-label>Searching ...</mat-label>
-        <input matInput (keyup)="search()" [(ngModel)]="this.params" autocomplete="off">
+        <input matInput [(ngModel)]="this.params" autocomplete="off" (keyup.enter)="search()"> 
         <mat-icon matSuffix>
           <button mat-mini-fab color="primary" style="z-index: 15" (click)="search()">
             <mat-icon>search</mat-icon>
@@ -16,5 +16,6 @@
   <div fxLayout="row">
 
   </div>
-  <ed-masonry-data-listing [datas]="this.datas" *ngIf="inited === true"></ed-masonry-data-listing>
+<!--  <ed-masonry-data-listing [datas]="this.datas" *ngIf="inited === true"></ed-masonry-data-listing>-->
+  <ed-data-listing [datas]="this.datas"></ed-data-listing>
 </div>

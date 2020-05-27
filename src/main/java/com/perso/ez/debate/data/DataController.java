@@ -21,7 +21,7 @@ public class DataController {
 
     @GetMapping("/light/tag/{tag}")
     public Iterable<DataEntity> getByTag(@PathVariable String tag) {
-        return dataRepository.findAllByTags_TagContaining(tag);
+        return dataRepository.findAllByTags_TagContainingOrderByDateDesc(tag);
     }
 
     @PostMapping()

@@ -1,0 +1,26 @@
+<mat-card [routerLink]="'/detail/' + data.id">
+  <mat-card-content>
+    <div fxLayout="row">
+      <div fxFlex="100">
+        <div mat-card-avatar class="text-align-center display-inline-block"><i
+          [class]="data.icon + ' font-color-primary font-size-35 position-absolute'" style="top: 18px; left: 16px;"></i></div>
+        <div class="display-inline-block">
+          <mat-card-title>{{ data.title }}</mat-card-title>
+          <mat-card-subtitle>{{ data.subtitle }}</mat-card-subtitle>
+        </div>
+        <div>
+          <mat-chip-list>
+            <mat-chip *ngFor="let tag of data.tags" style="font-size: 10px; min-height: 20px; padding: 3px 7px;"
+                      [routerLink]="'/research'" [queryParams]="{ text: tag.tag }" class="pointer">{{ tag.tag }}</mat-chip>
+          </mat-chip-list>
+        </div>
+<!--        <div>-->
+<!--          {{ data.text }}-->
+<!--        </div>-->
+      </div>
+      <div class="fill-remaining-space"></div>
+      <button mat-mini-fab color="primary" class="bottom-0"><i class="fas fa-angle-right"></i></button>
+    </div>
+
+  </mat-card-content>
+</mat-card>

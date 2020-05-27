@@ -20,19 +20,11 @@ export class SearchDataComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       let paramTag = params.text;
-      if (paramTag) {
-        this.params += paramTag + " ";
-        this.searchService.search(paramTag).subscribe(response => {
-          this.datas = response;
-          this.inited = true;
-        })
-      }
-      else {
-        this.searchService.search(this.params).subscribe(response => {
-          this.datas = response;
-          this.inited = true;
-        })
-      }
+      if (paramTag) this.params = paramTag;
+      this.searchService.search(this.params).subscribe(response => {
+        this.datas = response;
+        this.inited = true;
+      })
     });
   }
 

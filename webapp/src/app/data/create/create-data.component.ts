@@ -31,11 +31,13 @@ export class CreateDataComponent implements OnInit {
   }
 
   createData() {
-    this.dataService.saveData(this.newData).subscribe(response => {
+    this.dataService.saveData(this.newData).subscribe(() => {
       this.newData = new DataModel();
       this.snackBar.open("New data created", null, {duration: 2000});
+      this.newData = new DataModel();
+    }, error => {
+      this.snackBar.open('Error during the creation', null, {duration: 2000});
     });
-    this.newData = new DataModel();
   }
 
   openSnackBar(message: string, action: string) {
