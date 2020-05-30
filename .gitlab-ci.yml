@@ -1,0 +1,43 @@
+#Variables globales
+variables:
+  APP_VERSION: "1.0"
+  GENERATED_JAR_NAME: "ez-debate-0.0.1-SNAPSHOT"
+  FRONTEND_PATH: "./webapp"
+
+#Etapes dans notre CI/CD
+stages:
+  #CI
+  - build
+  #CD
+  - deploy
+
+cache:
+  paths:
+    - ${FRONTEND_PATH}/node_modules
+
+build:
+  only:
+    - master
+  stage: build
+  before_script:
+    - cd ${FRONTEND_PATH}
+  script:
+    #Telecharger les dépendances
+    - npm install
+    #Genere les fichiers statiques et copie le tout dans /resources/static de springboot
+    - npm run deployapp
+    #Genere le jar dans /target
+    - mvn clean install
+  after_script:
+    - cd ..
+  artifacts:
+    paths:
+      - ./target/${GENERATED_JAR_NAME}.jar
+
+deploy:
+  only:
+    - master
+  stage: deploy
+  script:
+    #Lance le jar
+    - java -jar ./target/${GENERATED_JAR_NAME}.jar
