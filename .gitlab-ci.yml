@@ -31,10 +31,7 @@ build:
     - cd ..
     #Genere le jar dans /target
     - mvn clean install
-    - ls -l ./build/libs/
-  artifacts:
-    paths:
-      - /data/${GENERATED_JAR_NAME}.jar
+    - ls -l ./target
 
 deploy:
   only:
