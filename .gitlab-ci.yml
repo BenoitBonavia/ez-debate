@@ -33,6 +33,8 @@ build:
     - mvn clean install
     - cp -r ./target/ /data/
     - ls -l /data
+  artifacts:
+    name: ez-debate-${GENERATED_JAR_VERSION}.jar
 
 deploy:
   only:
