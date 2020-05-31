@@ -31,6 +31,7 @@ build:
     - cd ..
     #Genere le jar dans /target
     - mvn clean install
+    - ls -l
 
 deploy:
   only:
