@@ -27,10 +27,10 @@ build:
     - npm install
     #Genere les fichiers statiques et copie le tout dans /resources/static de springboot
     - npm run deployapp
+    #On retourne dans le projet mvn
+    - cd ..
     #Genere le jar dans /target
     - mvn clean install
-  after_script:
-    - cd ..
   artifacts:
     paths:
       - ./target/${GENERATED_JAR_NAME}.jar
