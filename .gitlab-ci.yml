@@ -31,7 +31,6 @@ build:
     - cd ..
     #Genere le jar dans /target
     - mvn clean install
-    - ls -l ./target
 
 deploy:
   only:
@@ -39,4 +38,5 @@ deploy:
   stage: deploy
   script:
     #Lance le jar
+    - ls -l
     - java -jar ./target/${GENERATED_JAR_NAME}
