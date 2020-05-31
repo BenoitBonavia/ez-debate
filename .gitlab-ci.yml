@@ -43,4 +43,4 @@ deploy:
   script:
     #Lance le jar
     - ls -l /data
-    - java -jar /data/ez-debate-${GENERATED_JAR_VERSION}.jar
+    - java -jar /data/demo-${GENERATED_JAR_VERSION}.jar
