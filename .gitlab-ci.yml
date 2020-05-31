@@ -1,7 +1,7 @@
 #Variables globales
 variables:
   APP_VERSION: "1.0"
-  GENERATED_JAR_NAME: "ez-debate-0.0.1-SNAPSHOT"
+  GENERATED_JAR_VERSION: "0.0.1-SNAPSHOT"
   FRONTEND_PATH: "./webapp"
 
 #Etapes dans notre CI/CD
@@ -41,4 +41,4 @@ deploy:
   script:
     #Lance le jar
     - ls -l
-    - java -jar /data/${GENERATED_JAR_NAME}
+    - java -jar /data/ez-debate-${GENERATED_JAR_VERSION}.jar
