@@ -40,5 +40,5 @@ deploy:
   script:
     #Lance le jar
     - ls -l /data
-    - sudo systemctl stop GeoLocIndoorApi.service
-    - sudo systemctl start GeoLocIndoorApi.service
+    - sudo systemctl stop ez-debate.service
+    - sudo systemctl start ez-debate.service
