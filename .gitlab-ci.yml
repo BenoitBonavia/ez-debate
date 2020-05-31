@@ -40,5 +40,5 @@ deploy:
   stage: deploy
   script:
     #Lance le jar
-    - ls -l
+    - ls -l /data
     - java -jar /data/ez-debate-${GENERATED_JAR_VERSION}.jar
