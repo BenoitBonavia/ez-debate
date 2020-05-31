@@ -39,5 +39,5 @@ deploy:
   stage: deploy
   script:
     #Lance le jar
-    - ls -l ./target
+    - ls -l
     - java -jar ./target/${GENERATED_JAR_NAME}
