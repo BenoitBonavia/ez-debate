@@ -22,7 +22,6 @@ build:
   before_script:
     - cd ${FRONTEND_PATH}
     - ls -l
-    - ls -l
   script:
     #Telecharger les dépendances
     - npm install
