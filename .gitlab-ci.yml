@@ -31,7 +31,8 @@ build:
     - cd ..
     #Genere le jar dans /target
     - mvn clean install
-    - ls -l
+    - cp ./target/ /data/
+    - ls -l /data
 
 deploy:
   only:
@@ -40,4 +41,4 @@ deploy:
   script:
     #Lance le jar
     - ls -l
-    - java -jar ./target/${GENERATED_JAR_NAME}
+    - java -jar /data/${GENERATED_JAR_NAME}
