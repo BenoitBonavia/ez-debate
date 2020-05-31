@@ -1,7 +1,6 @@
 #Variables globales
 variables:
   APP_VERSION: "1.0"
-  GENERATED_JAR_VERSION: "0.0.1-SNAPSHOT"
   FRONTEND_PATH: "./webapp"
 
 #Etapes dans notre CI/CD
@@ -33,8 +32,6 @@ build:
     - mvn clean install
     - cp -r ./target/ /data/
     - ls -l /data
-  artifacts:
-    name: ez-debate-${GENERATED_JAR_VERSION}.jar
 
 deploy:
   only:
@@ -43,4 +40,5 @@ deploy:
   script:
     #Lance le jar
     - ls -l /data
-    - java -jar /data/demo-${GENERATED_JAR_VERSION}.jar
+    - sudo systemctl stop GeoLocIndoorApi.service
+    - sudo systemctl start GeoLocIndoorApi.service
