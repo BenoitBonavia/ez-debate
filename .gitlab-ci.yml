@@ -30,8 +30,8 @@ build:
     - cd ..
     #Genere le jar dans /target
     - mvn clean install
-    - ls -l ./target
-    - cp -r ./target/ /data/
+    - ls -l ./target/
+    - cp -r ./target/demo-0.0.1-SNAPSHOT.jar /data/demo-0.0.1-SNAPSHOT.jar
     - ls -l /data
 
 deploy:
