@@ -30,6 +30,7 @@ build:
     - cd ..
     #Genere le jar dans /target
     - mvn clean install
+    - ls -l ./target
     - cp -r ./target/ /data/
     - ls -l /data
 
