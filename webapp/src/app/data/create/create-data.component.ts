@@ -5,7 +5,6 @@ import {DataService} from "../../service/data.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {IconService} from "../../service/icon.service";
 import {TagModel} from "../../models/tag.model";
-import {TagService} from "../../service/tag.service";
 
 @Component({
   selector: 'ed-create-data',

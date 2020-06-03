@@ -30,6 +30,10 @@ public class TagEntity implements Serializable {
     @JsonIgnore
     private Set<DataEntity> datas;
 
+    @Field
+    @Column(name = "favorite")
+    private boolean favorite = false;
+
     public String getTag() {
         return tag;
     }
@@ -56,5 +60,13 @@ public class TagEntity implements Serializable {
 
     public void setDatas(Set<DataEntity> datas) {
         this.datas = datas;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }

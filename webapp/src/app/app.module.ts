@@ -63,6 +63,7 @@ import {ResendTokenComponent} from "./auth/resend-token/resend-token.component";
 import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
 import {HorizontalCardDataComponent} from "./data/horizontal-card/horizontal-card-data.component";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatListModule} from "@angular/material/list";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -111,33 +112,34 @@ export class MyHammerConfig extends HammerGestureConfig  {
     AppComponent,
     HorizontalCardDataComponent
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatCardModule,
-        MatStepperModule,
-        FlexLayoutModule,
-        FormsModule,
-        NgxMasonryModule,
-        EmbedVideo.forRoot(),
-        MatIconModule,
-        MatDividerModule,
-        MatMenuModule,
-        MatChipsModule,
-        MatBadgeModule,
-        MatProgressBarModule,
-        MatSnackBarModule,
-        MatOptionModule,
-        MatSelectModule,
-        MatProgressSpinnerModule,
-        MatTabsModule
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
+    MatStepperModule,
+    FlexLayoutModule,
+    FormsModule,
+    NgxMasonryModule,
+    EmbedVideo.forRoot(),
+    MatIconModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatChipsModule,
+    MatBadgeModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatListModule
+  ],
   providers: [
     DataService,
     IconService,

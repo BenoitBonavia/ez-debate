@@ -22,5 +22,13 @@ export class TagService {
   getAllTypes(): Observable<TagTypeModel[]> {
     return this.httpClient.get('/api/tag/type/all') as Observable<TagTypeModel[]>;
   }
+
+  switchFavorite(id: number): Observable<TagModel> {
+    return this.httpClient.get('/api/tag/' + id + '/favorite') as Observable<TagModel>;
+  }
+
+  deleteTag(tag: TagModel): Observable<TagModel> {
+    return this.httpClient.delete('/api/tag/' + tag.id) as Observable<any>;
+  }
 }
 
