@@ -64,6 +64,7 @@ import {LoginRegisterComponent} from "./auth/login-register/login-register.compo
 import {HorizontalCardDataComponent} from "./data/horizontal-card/horizontal-card-data.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatListModule} from "@angular/material/list";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -138,7 +139,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatSelectModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    MatAutocompleteModule
   ],
   providers: [
     DataService,

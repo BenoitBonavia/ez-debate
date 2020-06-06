@@ -14,7 +14,9 @@ export class EditTagsComponent implements OnInit {
   @Input() tags: TagModel[];
   @Output() tagsChange = new EventEmitter<TagModel[]>();
 
-  allTags: TagModel[] = [];
+  allTags = {};
+  typeFavorite = {};
+
   allTypes: TagTypeModel[];
 
   newTagType: TagTypeModel = null;
@@ -25,11 +27,14 @@ export class EditTagsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tagService.getAll().subscribe(response => {
-      this.allTags = response;
-    });
     this.tagService.getAllTypes().subscribe(response => {
       this.allTypes = response;
+      this.allTypes.forEach(tagType => {
+        this.tagService.getTagsByType(tagType).subscribe(tagsResponse => {
+          this.allTags[tagType.type] = tagsResponse;
+          this.typeFavorite[tagType.type] = true;
+        })
+      })
     })
   }
 
@@ -57,7 +62,17 @@ export class EditTagsComponent implements OnInit {
     this.tagsChange.emit(this.tags);
   }
 
-  filterTagsByType(tags: TagModel[], type: TagTypeModel) {
-    return tags.filter(tag => tag.type.id == type.id);
+  filterTagsByType(tags: TagModel[], type: TagTypeModel, favorite: boolean) {
+    return tags.filter(tag => tag.type.id == type.id && tag.favorite == favorite);
   }
+
+  onlyFavorite(tags: TagModel[], filtered: boolean) {
+    if (tags) {
+      if (filtered === true) {
+        return tags.filter(tag => tag.favorite === true);
+      }
+      return tags;
+    }
+  }
+
 }

@@ -15,17 +15,24 @@
           <h4>{{ type.type }}</h4>
         </div>
       </div>
-      <div fxLayout="row">
+      <div fxLayout="row" class="margin-bottom-15">
         <div fxFlex="100">
           <mat-chip-list>
-            <mat-chip *ngFor="let tag of filterTagsByType(allTags, type);" (click)="addOnClick(tag)">
+            <mat-chip *ngFor="let tag of onlyFavorite(allTags[type.type], typeFavorite[type.type])" (click)="addOnClick(tag)">
               {{tag.tag}}
+            </mat-chip>
+            <mat-chip color="primary" selected class="pointer" (click)="typeFavorite[type.type] = !typeFavorite[type.type]">
+              <mat-icon *ngIf="typeFavorite[type.type] === true">add</mat-icon>
+              <mat-icon *ngIf="typeFavorite[type.type] === false">remove</mat-icon>
             </mat-chip>
           </mat-chip-list>
         </div>
       </div>
     </div>
   </div>
+
+
+
   <div fxLayout="row">
     <div fxFlex="100">
       <div fxLayout.lt-sm="row" fxFlex.gt-sm="60" class="padding-top-15 padding-right-15 padding-left-15">

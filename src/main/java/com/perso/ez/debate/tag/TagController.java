@@ -47,4 +47,9 @@ public class TagController {
     public @ResponseBody void delete(@PathVariable(name = "id") Long dataId) {
         tagRepository.deleteById(dataId);
     }
+
+    @GetMapping("/all/type/{id}")
+    public Iterable<TagEntity> getAllByType(@PathVariable("id") Long id) {
+        return tagRepository.findAllByTypeIdOrderByFavoriteDesc(id);
+    }
 }
