@@ -21,12 +21,10 @@ public class SourceEntity {
     @Column(name = "m_title")
     private String mTitle;
 
-    @Length(max = 10000)
-    @Column(name = "m_description")
+    @Column(name = "m_description", columnDefinition = "TEXT")
     private String mDescription;
 
-    @Length(max = 10000)
-    @Column(name = "m_image")
+    @Column(name = "m_image", columnDefinition = "TEXT")
     private String mImage;
 
     public Long getId() {
