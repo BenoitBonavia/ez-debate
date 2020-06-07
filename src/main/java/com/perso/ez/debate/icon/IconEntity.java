@@ -7,9 +7,6 @@ import javax.persistence.*;
 public class IconEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "icon")
     private String icon;
 
@@ -19,13 +16,5 @@ public class IconEntity {
 
     public void setIcon(String icon) {
         this.icon = icon;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
