@@ -19,7 +19,7 @@ import {DataService} from "./service/data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {SearchDataComponent} from "./data/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {Overlay} from "@angular/cdk/overlay";
 import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./service/icon.service";
@@ -45,22 +45,16 @@ import {BadgeButtonComponent} from "./common/badge-button/badge-button.component
 import { HoldableDirective } from './holdable.directive';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
-import {RegisterComponent} from "./auth/register/register.component";
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
 import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.component";
-import { MatSnackBarModule } from '@angular/material';
 
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { TagsComponent} from "./data/tags/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {AuthService} from "./service/auth.service";
-import {RegistrationConfirmComponent} from "./auth/registration-confirm/registration-confirm.component";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {LoginComponent} from "./auth/login/login.component";
-import {ResendTokenComponent} from "./auth/resend-token/resend-token.component";
-import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
 import {HorizontalCardDataComponent} from "./data/horizontal-card/horizontal-card-data.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatListModule} from "@angular/material/list";
@@ -101,15 +95,10 @@ export class MyHammerConfig extends HammerGestureConfig  {
     BadgeButtonComponent,
     HoldableDirective,
     HorizontalCardCarouselComponent,
-    RegisterComponent,
     FullScreenVideoComponent,
     VideoEmbederComponent,
     VideoThumbnailComponent,
-    RegistrationConfirmComponent,
     TagsComponent,
-    LoginComponent,
-    ResendTokenComponent,
-    LoginRegisterComponent,
     AppComponent,
     HorizontalCardDataComponent
   ],
