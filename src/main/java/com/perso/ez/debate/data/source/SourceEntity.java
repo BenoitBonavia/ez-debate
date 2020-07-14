@@ -21,11 +21,9 @@ public class SourceEntity {
     @Column(name = "m_title")
     private String mTitle;
 
-    @Length(max = 10000)
     @Column(name = "m_description")
     private String mDescription;
 
-    @Length(max = 10000)
     @Column(name = "m_image")
     private String mImage;
 
