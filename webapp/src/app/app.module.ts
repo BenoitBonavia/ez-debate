@@ -66,6 +66,7 @@ import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.g
 import {LoginComponent} from "./auth/login/login.component";
 import {NewDataButtonComponent} from "./new-data-button/new-data-button.component";
 import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -110,7 +111,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     LoginRegisterComponent,
     AppComponent,
     HorizontalCardDataComponent,
-    NewDataButtonComponent
+    NewDataButtonComponent,
+    PageNotFoundComponent
   ],
   imports: [
     HttpClientModule,

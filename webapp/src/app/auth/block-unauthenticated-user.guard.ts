@@ -16,6 +16,7 @@ export class BlockUnauthenticatedUserGuard implements CanActivateChild {
     return this.authenticatedUserService.authenticatedUser.pipe(
       filter(authenticated => authenticated !== undefined),
       map((authenticated: UserModel) => {
+        console.log('test si ça passe');
         if (!authenticated || !authenticated.role) {
           return this.router.parseUrl('/login');
         }

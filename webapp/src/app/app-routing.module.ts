@@ -8,6 +8,7 @@ import {TagsComponent} from "./data/tags/tags.component";
 import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
 import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
 import {RedirectAuthenticatedUserGuard} from "./auth/redirect-authenticated-user.guard";
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
     ]
   },
   {path: 'login', component: LoginRegisterComponent, canActivateChild: [RedirectAuthenticatedUserGuard]},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

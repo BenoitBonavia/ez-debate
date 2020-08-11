@@ -68,6 +68,10 @@ h2 {
   flex: 1 1 auto;
 }
 
+.background-primary {
+  background: $primary-color;
+}
+
 /* cursor ------------------------------------------------------------------------------------------------------------*/
 
 .pointer {
@@ -109,6 +113,10 @@ h2 {
 }
 
 .font-size-100 {
+  font-size: 100px;
+}
+
+.font-size-100-percent {
   font-size: 100%;
 }
 
@@ -316,6 +324,10 @@ a.no-style {
 
 .white-space-normal {
   white-space: normal;
+}
+
+.full-width-container {
+  width: 100vw;
 }
 
 @media (max-width: 575.98px) {
