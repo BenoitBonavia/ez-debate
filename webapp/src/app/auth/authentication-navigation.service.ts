@@ -26,6 +26,12 @@ export class AuthenticationNavigationService {
     }, onError)
   }
 
+  signOut() {
+    this.authenticationService.signOut().subscribe(() => {
+      this.router.navigate(['/login']);
+    })
+  }
+
   private onNavigationRejected() {
     return e => {
       console.error(e);

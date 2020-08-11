@@ -7,7 +7,9 @@
     <a [routerLink]="['/home']" mat-button color="link" class="font-rubik">Home</a>
     <a [routerLink]="['/research']" mat-button color="link" class="font-rubik">Consult</a>
     <a [routerLink]="['/tags']" mat-button color="link" class="font-rubik">Tags</a>
-    <a [routerLink]="['/create']" mat-raised-button color="link" class="font-rubik"><i class="fas fa-plus"></i> Add data</a>
+    <a [routerLink]="['/create']" mat-button color="link" class="font-rubik">Create data</a>
+<!--    <button [routerLink]="['/login']" mat-raised-button color="link" class="font-rubik square-button"><mat-icon class="font-color-primary">login</mat-icon></button>-->
+    <button [routerLink]="['/login']" mat-mini-fab color="link" class="font-rubik square-button"><mat-icon class="font-color-primary">login</mat-icon></button>
   </span>
   <span ngClass.gt-sm="display-none">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">

@@ -20,4 +20,8 @@ export class AuthenticationService {
     let body = 'username=' + loginDTO.email + '&password=' + loginDTO.password;
     return this.http.post('/api/login', body, {headers: header, responseType: 'text'});
   }
+
+  signOut() {
+    return this.http.get('/api/logout', {responseType: 'text'});
+  }
 }

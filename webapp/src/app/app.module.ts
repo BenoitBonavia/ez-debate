@@ -64,6 +64,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {AuthenticationService} from "./auth/authentication.service";
 import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
 import {AuthenticatedUserService} from "./auth/authenticated-user.service";
+import {NewDataButtonComponent} from "./new-data-button/new-data-button.component";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -107,7 +108,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     LoginComponent,
     LoginRegisterComponent,
     AppComponent,
-    HorizontalCardDataComponent
+    HorizontalCardDataComponent,
+    NewDataButtonComponent
   ],
   imports: [
     HttpClientModule,
@@ -135,7 +137,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatProgressSpinnerModule,
     MatTabsModule,
     MatListModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   providers: [
     DataService,

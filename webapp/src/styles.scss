@@ -61,7 +61,7 @@ h2 {
 }
 
 .hide-scroll::-webkit-scrollbar {
-  height: 0px;
+  height: 0;
 }
 
 .fill-remaining-space {
@@ -98,6 +98,10 @@ h2 {
 
 .font-size-20 {
   font-size: 20px !important;
+}
+
+.font-size-24 {
+  font-size: 24px !important;
 }
 
 .font-size-35 {
@@ -196,15 +200,23 @@ a.no-style {
 }
 
 .padding-left-15 {
-  padding-left: 15px;
+  padding-left: 15px !important;
 }
 
 .padding-right-15 {
-  padding-right: 15px;
+  padding-right: 15px !important;
 }
 
 .padding-30 {
   padding: 30px;
+}
+
+.padding-left-20 {
+  padding-left: 20px !important;
+}
+
+.padding-right-20 {
+  padding-right: 20px !important;
 }
 
 .padding-top-30 {
