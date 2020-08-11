@@ -347,3 +347,58 @@ a.no-style {
     max-width: 1140px;
   }
 }
+
+/* buttons animation -------------------------------------------------------------------------------------------------------*/
+
+.mat-fab.animated {
+  width: 56px !important;
+  height: 56px !important;
+  transition: width .5s !important;
+  border-radius: 56px !important;
+}
+
+.mat-fab.animated label {
+  font-size: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity .5s linear, font-size .5s linear !important;
+  margin-left: 0 !important;
+}
+
+.mat-fab.animated:hover {
+  width: 200px !important;
+}
+
+.mat-fab.animated:hover label {
+  opacity: 1 !important;
+  font-size: 20px !important;
+  visibility: visible !important;
+  margin-left: 10px !important;
+  transition: opacity .5s linear, margin-left .5s !important;
+}
+
+.mat-mini-fab.animated {
+  width: 40px !important;
+  transition: width .5s !important;
+  border-radius: 40px !important;
+}
+
+.mat-mini-fab.animated label {
+  font-size: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity .5s linear, font-size .5s linear !important;
+  margin-left: 0 !important;
+}
+
+.mat-mini-fab.animated:hover {
+  width: 130px !important;
+}
+
+.mat-mini-fab.animated:hover label {
+  opacity: 1 !important;
+  font-size: 16px !important;
+  visibility: visible !important;
+  margin-left: 10px !important;
+  transition: opacity .5s linear, margin-left .5s !important;
+}

@@ -2,30 +2,5 @@
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 56px;
-  height: 56px;
-  transition: width 1s;
-  border-radius: 56px;
 }
-
-.floating-create-button label {
-  font-size: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1s linear, font-size 0.5s linear;
-  margin-left: 0;
-}
-
-.floating-create-button:hover {
-  width: 200px;
-}
-
-.floating-create-button:hover label {
-  opacity: 1;
-  font-size: 20px;
-  visibility: visible;
-  margin-left: 10px;
-  transition: opacity 1s linear, margin-left .5s;
-}
-
 
