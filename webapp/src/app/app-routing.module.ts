@@ -5,19 +5,31 @@ import {CreateDataComponent} from "./data/create/create-data.component";
 import {SearchDataComponent} from "./data/search/search-data.component";
 import {DataDetailComponent} from "./data/detail/data-detail.component";
 import {TagsComponent} from "./data/tags/tags.component";
+import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
+import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
+import {RedirectAuthenticatedUserGuard} from "./auth/redirect-authenticated-user.guard";
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'create', component: CreateDataComponent },
-  { path: 'research', component: SearchDataComponent },
-  { path: 'detail/:id', component: DataDetailComponent },
-  { path: 'tags', component: TagsComponent }
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: '',
+    canActivateChild: [BlockUnauthenticatedUserGuard],
+    children: [
+      {path: 'home', component: HomeComponent},
+      {path: 'create', component: CreateDataComponent},
+      {path: 'research', component: SearchDataComponent},
+      {path: 'detail/:id', component: DataDetailComponent},
+      {path: 'tags', component: TagsComponent},
+      {path: 'register', component: LoginRegisterComponent},
+    ]
+  },
+  {path: 'login', component: LoginRegisterComponent, canActivateChild: [RedirectAuthenticatedUserGuard]},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

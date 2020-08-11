@@ -55,10 +55,17 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {AuthService} from "./service/auth.service";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {LoginComponent} from "./auth/login/login.component";
+import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
 import {HorizontalCardDataComponent} from "./data/horizontal-card/horizontal-card-data.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatListModule} from "@angular/material/list";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {AuthenticationService} from "./auth/authentication.service";
+import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
+import {AuthenticatedUserService} from "./auth/authenticated-user.service";
+import {NewDataButtonComponent} from "./new-data-button/new-data-button.component";
+import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -99,8 +106,11 @@ export class MyHammerConfig extends HammerGestureConfig  {
     VideoEmbederComponent,
     VideoThumbnailComponent,
     TagsComponent,
+    LoginComponent,
+    LoginRegisterComponent,
     AppComponent,
-    HorizontalCardDataComponent
+    HorizontalCardDataComponent,
+    NewDataButtonComponent
   ],
   imports: [
     HttpClientModule,
@@ -123,13 +133,12 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatChipsModule,
     MatBadgeModule,
     MatProgressBarModule,
-    MatSnackBarModule,
     MatOptionModule,
     MatSelectModule,
     MatProgressSpinnerModule,
     MatTabsModule,
     MatListModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   providers: [
     DataService,
@@ -138,6 +147,10 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatSnackBar,
     TagService,
     AuthService,
+    AuthenticationService,
+    AuthenticationNavigationService,
+    AuthenticatedUserService,
+    BlockUnauthenticatedUserGuard,
     Overlay,
     {
       provide: HAMMER_GESTURE_CONFIG,

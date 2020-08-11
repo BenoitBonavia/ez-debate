@@ -3,12 +3,14 @@ package com.perso.ez.debate.data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
 
+@PreAuthorize("hasRole('ROLE_MEMBER')")
 @RestController
 @RequestMapping("/api/data")
 public class DataController {

@@ -1,13 +1,24 @@
 <mat-toolbar color="primary" class="position-fixed z-index-1000000">
-  <a [routerLink]="['/home']" mat-button color="link" class="font-size-100"><mat-icon>gavel</mat-icon> ezDebate</a>
+  <a [routerLink]="['/home']" mat-button color="link" class="font-size-100">
+    <mat-icon>gavel</mat-icon>
+    ezDebate</a>
 
   <span class="fill-remaining-space"></span>
 
   <span ngClass.lt-md="display-none">
-    <a [routerLink]="['/home']" mat-button color="link" class="font-rubik">Home</a>
-    <a [routerLink]="['/research']" mat-button color="link" class="font-rubik">Consult</a>
-    <a [routerLink]="['/tags']" mat-button color="link" class="font-rubik">Tags</a>
-    <a [routerLink]="['/create']" mat-raised-button color="link" class="font-rubik"><i class="fas fa-plus"></i> Add data</a>
+    <a [routerLink]="['/home']" mat-button color="link" class="font-rubik">
+      <mat-icon>home</mat-icon>
+    </a>
+    <a [routerLink]="['/research']" mat-button color="link" class="font-rubik">
+      <mat-icon>search</mat-icon>
+    </a>
+    <a [routerLink]="['/tags']" mat-button color="link" class="font-rubik">
+      <mat-icon>label</mat-icon>
+    </a>
+    <button mat-mini-fab color="link" class="font-rubik animated margin-left-15" (click)="signOut()">
+      <mat-icon class="font-color-primary">login</mat-icon>
+      <label class="pointer font-color-primary">Logout</label>
+    </button>
   </span>
   <span ngClass.gt-sm="display-none">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
