@@ -15,11 +15,14 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="ezdebate@localhost" uuid="7191af4e-73e6-434c-8dcd-918e3bde8859">
+    <data-source source="LOCAL" name="MySQL - ez_debate@localhost" uuid="75016726-7aeb-48f3-a515-2ad8ab24380e">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/ezdebate</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/ez_debate</jdbc-url>
+      <driver-properties>
+        <property name="serverTimezone" value="UTC" />
+      </driver-properties>
     </data-source>
   </component>
 </project>

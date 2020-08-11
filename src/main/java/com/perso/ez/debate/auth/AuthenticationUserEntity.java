@@ -2,39 +2,41 @@ package com.perso.ez.debate.auth;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "user")
-public class UserEntity {
+@Table(name = "user_account")
+public class AuthenticationUserEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     @NotNull
     private String email;
 
     @Column(name = "firstname")
-    private String firstname;
+    private String firstName;
 
     @Column(name = "lastname")
-    private String lastname;
+    private String lastName;
 
     @Column(name = "password")
     private String passwordHash;
 
     @Column(name = "valid")
-    private boolean valid = false;
+    private Boolean valid;
+
+    @Column(name = "end_validity")
+    private LocalDateTime endValidity;
 
     @Column(name = "ban")
-    private boolean ban = false;
+    private Boolean ban = false;
 
     @Column(name = "role")
-    private String role = "ROLE_MEMBER";
-
-    @Column(name = "enabled")
-    private boolean enabled = false;
+    private String role;
 
     public Long getId() {
         return id;
@@ -52,20 +54,20 @@ public class UserEntity {
         this.email = email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPasswordHash() {
@@ -76,19 +78,27 @@ public class UserEntity {
         this.passwordHash = passwordHash;
     }
 
-    public boolean isValid() {
+    public Boolean getValid() {
         return valid;
     }
 
-    public void setValid(boolean valid) {
+    public void setValid(Boolean valid) {
         this.valid = valid;
     }
 
-    public boolean isBan() {
+    public LocalDateTime getEndValidity() {
+        return endValidity;
+    }
+
+    public void setEndValidity(LocalDateTime endValidity) {
+        this.endValidity = endValidity;
+    }
+
+    public Boolean getBan() {
         return ban;
     }
 
-    public void setBan(boolean ban) {
+    public void setBan(Boolean ban) {
         this.ban = ban;
     }
 
@@ -98,13 +108,5 @@ public class UserEntity {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 }
