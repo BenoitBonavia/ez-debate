@@ -40,13 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.antMatcher("/api/**")
-//                .formLogin().loginPage("/api/login").successHandler(authenticationSuccessHandler).failureHandler(authenticationFailureHandler).and()
-//                .logout().logoutUrl("/api/logout").logoutSuccessHandler(logoutSuccessHandler).and()
-//                .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).and()
-//                .csrf().disable();
-//        http.headers().frameOptions().disable();
-
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/**").authenticated().and().formLogin()

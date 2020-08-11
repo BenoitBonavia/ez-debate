@@ -1,18 +1,31 @@
-<mat-card>
-  <h1 class="font-color-primary">Login</h1>
-  <form>
-    <mat-form-field class="w100">
-      <input matInput placeholder="Email" [(ngModel)]="loginDTO.email" name="email"/>
-    </mat-form-field>
+<!--<mat-card>-->
+<!--<h1 class="font-color-primary">Login</h1>-->
+<form>
+  <mat-form-field class="w100">
+    <input matInput
+           type="email" id="inputeEmail"
+           placeholder="Email"
+           required
+           autofocus
+           autocomplete="Email"
+           name="email" #email [(ngModel)]="loginDTO.email"/>
+  </mat-form-field>
 
-    <mat-form-field class="w100">
-      <input matInput placeholder="Password" type="password" [(ngModel)]="loginDTO.password" name="password"/>
-    </mat-form-field>
-    <a [routerLink]="'/'" class="font-size-14 font-weight-bold no-style">Forgot your password ?</a>
-  </form>
+  <mat-form-field class="w100">
+    <input matInput
+           [type]="visiblePassword ? 'text' : 'password'" id="inputPassword"
+           placeholder="Password"
+           required
+           autocomplete="current-password"
+           name="password" [(ngModel)]="loginDTO.password"/>
+    <mat-icon matSuffix
+              (click)="visiblePassword = !visiblePassword" class="pointer font-size-20 font-color-grey">{{visiblePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </mat-form-field>
+<!--  <a [routerLink]="'/'" class="font-size-14 font-weight-bold no-style">Forgot your password ?</a>-->
+</form>
 
-  <div fxLayout="row">
-    <span class="fill-remaining-space"></span>
-    <button mat-raised-button color="primary" [disabled]="this.isFilled()">Sign in</button>
-  </div>
-</mat-card>
+<div fxLayout="row">
+  <span class="fill-remaining-space"></span>
+  <button mat-raised-button color="primary" [disabled]="this.isFilled()" (click)="signIn(loginDTO)">Sign in</button>
+</div>
+<!--</mat-card>-->
