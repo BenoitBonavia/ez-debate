@@ -19,7 +19,7 @@ import {DataService} from "./service/data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {SearchDataComponent} from "./data/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {Overlay} from "@angular/cdk/overlay";
 import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./service/icon.service";
@@ -55,17 +55,17 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {AuthService} from "./service/auth.service";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {LoginComponent} from "./auth/login/login.component";
 import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
 import {HorizontalCardDataComponent} from "./data/horizontal-card/horizontal-card-data.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatListModule} from "@angular/material/list";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {AuthenticationService} from "./auth/authentication.service";
-import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
 import {AuthenticatedUserService} from "./auth/authenticated-user.service";
-import {NewDataButtonComponent} from "./new-data-button/new-data-button.component";
 import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
+import {LoginComponent} from "./auth/login/login.component";
+import {NewDataButtonComponent} from "./new-data-button/new-data-button.component";
+import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
