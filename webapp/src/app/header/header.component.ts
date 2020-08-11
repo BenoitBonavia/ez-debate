@@ -1,5 +1,4 @@
 import {Component} from "@angular/core";
-import {Router} from "@angular/router";
 import {AuthenticationNavigationService} from "../auth/authentication-navigation.service";
 
 @Component({
@@ -8,7 +7,8 @@ import {AuthenticationNavigationService} from "../auth/authentication-navigation
 })
 export class HeaderComponent {
 
-  constructor(private authenticationNavigationService: AuthenticationNavigationService, private router: Router) {
+  constructor(private authenticationNavigationService: AuthenticationNavigationService) {
+
   }
 
   signOut() {
