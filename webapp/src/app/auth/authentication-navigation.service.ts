@@ -28,6 +28,7 @@ export class AuthenticationNavigationService {
 
   signOut() {
     this.authenticationService.signOut().subscribe(() => {
+      this.authenticatedUserService.removeAuthenticatedUserAndRole();
       this.router.navigate(['/login']);
     })
   }

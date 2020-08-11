@@ -65,6 +65,7 @@ import {AuthenticationService} from "./auth/authentication.service";
 import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
 import {AuthenticatedUserService} from "./auth/authenticated-user.service";
 import {NewDataButtonComponent} from "./new-data-button/new-data-button.component";
+import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -149,6 +150,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     AuthenticationService,
     AuthenticationNavigationService,
     AuthenticatedUserService,
+    BlockUnauthenticatedUserGuard,
     Overlay,
     {
       provide: HAMMER_GESTURE_CONFIG,

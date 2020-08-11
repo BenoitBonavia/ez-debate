@@ -22,10 +22,9 @@
               (click)="visiblePassword = !visiblePassword" class="pointer font-size-20 font-color-grey">{{visiblePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
   </mat-form-field>
 <!--  <a [routerLink]="'/'" class="font-size-14 font-weight-bold no-style">Forgot your password ?</a>-->
+  <div fxLayout="row">
+    <span class="fill-remaining-space"></span>
+    <button mat-raised-button color="primary" [disabled]="this.isFilled()" (click)="signIn()" type="submit">Sign in</button>
+  </div>
 </form>
-
-<div fxLayout="row">
-  <span class="fill-remaining-space"></span>
-  <button mat-raised-button color="primary" [disabled]="this.isFilled()" (click)="signIn(loginDTO)">Sign in</button>
-</div>
 <!--</mat-card>-->

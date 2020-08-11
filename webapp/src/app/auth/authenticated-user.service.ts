@@ -24,4 +24,8 @@ export class AuthenticatedUserService {
   isUserAuthenticated(authenticatedUser: UserModel): boolean {
     return authenticatedUser != null && authenticatedUser.email != null && authenticatedUser.role != null;
   }
+
+  removeAuthenticatedUserAndRole() {
+    this.authenticatedUserSource.next(noAuthenticatedUser);
+  }
 }

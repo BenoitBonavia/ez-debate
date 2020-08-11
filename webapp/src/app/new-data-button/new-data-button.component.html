@@ -1,4 +1,8 @@
-<button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="floating-create-button animated" [routerLink]="['/create']">
+
+
+
+
+<button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="floating-create-button animated" [routerLink]="['/create']" *ngIf="this.isAuthenticated">
   <mat-icon>add</mat-icon>
   <label class="pointer">Create Data</label>
 </button>

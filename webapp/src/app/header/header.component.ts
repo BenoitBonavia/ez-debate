@@ -1,6 +1,8 @@
 import {Component} from "@angular/core";
 import {AuthenticationService} from "../auth/authentication.service";
 import {Router} from "@angular/router";
+import {AuthenticatedUserService} from "../auth/authenticated-user.service";
+import {AuthenticationNavigationService} from "../auth/authentication-navigation.service";
 
 @Component({
   selector: 'ed-header',
@@ -8,12 +10,10 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent {
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private authenticationNavigationService: AuthenticationNavigationService, private router: Router) {
   }
 
   signOut() {
-    this.authenticationService.signOut().subscribe(() => {
-      this.router.navigate(['/login']);
-    });
+    this.authenticationNavigationService.signOut();
   }
 }
