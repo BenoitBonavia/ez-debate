@@ -1,7 +1,5 @@
 import {Component} from "@angular/core";
-import {AuthenticationService} from "../auth/authentication.service";
 import {Router} from "@angular/router";
-import {AuthenticatedUserService} from "../auth/authenticated-user.service";
 import {AuthenticationNavigationService} from "../auth/authentication-navigation.service";
 
 @Component({
