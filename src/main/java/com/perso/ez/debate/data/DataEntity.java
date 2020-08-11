@@ -32,7 +32,6 @@ public class DataEntity {
     @Column(name = "text", columnDefinition = "TEXT")
     private String text;
 
-    @IndexedEmbedded
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<TagEntity> tags;
