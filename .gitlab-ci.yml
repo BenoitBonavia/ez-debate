@@ -6,7 +6,8 @@ variables:
 #Etapes dans notre CI/CD
 stages:
   #CI
-  - build
+  - build_front
+  - build_back
   #CD
   - deploy
 
@@ -14,25 +15,27 @@ cache:
   paths:
     - ${FRONTEND_PATH}/node_modules
 
-build:
+build_front:
   only:
     - master
-  stage: build
+  stage: build_front
   before_script:
     - cd ${FRONTEND_PATH}
     - ls -l
   script:
-    #Telecharger les dépendances
     - npm install
-    #Genere les fichiers statiques et copie le tout dans /resources/static de springboot
     - npm run deployapp
-    #On retourne dans le projet mvn
+  after_script:
     - cd ..
-    #Genere le jar dans /target
+
+build_back:
+  only:
+    - master
+  stage: build_back
+  script:
     - mvn clean install
-    - ls -l ./target/
+  after_script:
     - cp ./target/demo-0.0.1-SNAPSHOT.jar /data/demo-0.0.1-SNAPSHOT.jar
-    - ls -l /data
 
 deploy:
   only:
