@@ -9,7 +9,7 @@
     <div mat-line>Search</div>
   </mat-list-item>
   <mat-divider></mat-divider>
-  <mat-list-item [routerLink]="'/tags'" (click)="closeMenu()">
+  <mat-list-item [routerLink]="'/tags'" (click)="closeMenu()" *ngIf="isAdmin()">
     <mat-icon mat-list-icon class="font-color-primary">label</mat-icon>
     <div mat-line>Tags</div>
   </mat-list-item>

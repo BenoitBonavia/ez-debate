@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Output} from "@angular/core";
 import {AuthenticationNavigationService} from "../../auth/authentication-navigation.service";
+import {AuthenticatedUserService} from "../../auth/authenticated-user.service";
 
 @Component({
   selector: 'ed-mobile-menu-links',
@@ -10,7 +11,7 @@ export class MobileMenuLinksComponent {
 
   @Output() closeMenuButton = new EventEmitter();
 
-  constructor(private authenticationNavigationService: AuthenticationNavigationService) {
+  constructor(private authenticationNavigationService: AuthenticationNavigationService, private authenticatedUserService: AuthenticatedUserService) {
 
   }
 
@@ -20,5 +21,9 @@ export class MobileMenuLinksComponent {
 
   closeMenu() {
     this.closeMenuButton.emit();
+  }
+
+  isAdmin() {
+    return this.authenticatedUserService.isUserAuthenticatedAdmin();
   }
 }
