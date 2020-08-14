@@ -26,4 +26,8 @@ export class MobileMenuLinksComponent {
   isAdmin() {
     return this.authenticatedUserService.isUserAuthenticatedAdmin();
   }
+
+  isConnected() {
+    return this.authenticatedUserService.isAuthenticated();
+  }
 }

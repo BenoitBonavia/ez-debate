@@ -1,4 +1,4 @@
-<mat-list>
+<mat-list cdkFocusInitial>
   <mat-list-item [routerLink]="'/home'" (click)="closeMenu()">
     <mat-icon mat-list-icon class="font-color-primary">home</mat-icon>
     <div mat-line>Home</div>
@@ -13,9 +13,12 @@
     <mat-icon mat-list-icon class="font-color-primary">label</mat-icon>
     <div mat-line>Tags</div>
   </mat-list-item>
-  <mat-divider></mat-divider>
+  <mat-divider *ngIf="isAdmin()"></mat-divider>
 
-  <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" class="margin-15 mobile-sign-out-button position-fixed bottom-0" style="width: 170px !important;" (click)="signOut()">
-    <mat-icon class="margin-right-7">login</mat-icon> Sign Out
+  <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon"
+          class="margin-15 mobile-sign-out-button position-fixed bottom-0" style="width: 170px !important;"
+          (click)="signOut(); closeMenu();" *ngIf="isConnected()">
+    <mat-icon class="margin-right-7">login</mat-icon>
+    Sign Out
   </button>
 </mat-list>

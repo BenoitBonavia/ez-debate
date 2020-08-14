@@ -25,6 +25,10 @@ export class AuthenticatedUserService {
     return authenticatedUser != null && authenticatedUser.email != null && authenticatedUser.role != null;
   }
 
+  isAuthenticated() {
+    return this.authenticatedUserSource.value;
+  }
+
   removeAuthenticatedUserAndRole() {
     this.authenticatedUserSource.next(noAuthenticatedUser);
   }
