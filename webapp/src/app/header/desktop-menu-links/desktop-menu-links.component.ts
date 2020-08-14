@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {AuthenticatedUserService} from "../../auth/authenticated-user.service";
+import {AuthenticationNavigationService} from "../../auth/authentication-navigation.service";
 
 @Component({
   selector: 'ed-desktop-menu-links',
@@ -7,11 +8,15 @@ import {AuthenticatedUserService} from "../../auth/authenticated-user.service";
 })
 export class DesktopMenuLinksComponent {
 
-  constructor(private authenticatedUserService: AuthenticatedUserService) {
+  constructor(private authenticatedUserService: AuthenticatedUserService, private authenticationNavigationService: AuthenticationNavigationService) {
 
   }
 
   isAdmin() {
     return this.authenticatedUserService.isUserAuthenticatedAdmin();
+  }
+
+  signOut() {
+    this.authenticationNavigationService.signOut();
   }
 }

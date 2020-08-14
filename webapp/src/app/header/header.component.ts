@@ -9,12 +9,8 @@ export class HeaderComponent {
 
   @Output() openMenuButton = new EventEmitter();
 
-  constructor(private authenticationNavigationService: AuthenticationNavigationService) {
+  constructor() {
 
-  }
-
-  signOut() {
-    this.authenticationNavigationService.signOut();
   }
 
   openMenu() {
