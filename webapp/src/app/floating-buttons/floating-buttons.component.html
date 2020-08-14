@@ -1,4 +1,4 @@
-<div class="floating-buttons z-index-1000000">
+<div class="floating-buttons z-index-1000000" [ngClass]="'mobile-position'" [ngClass.gt-sm]="'desktop-position'">
   <button mat-mini-fab color="warn" class="margin-right-15 animated" *ngIf="router.url.includes('/detail/') && !this.isInEditMod" (click)="delete()">
     <mat-icon>delete</mat-icon>
     <label class="pointer">Delete</label>
