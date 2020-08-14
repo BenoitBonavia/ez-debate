@@ -34,6 +34,7 @@ public class DataEntity {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "data_tags", joinColumns = @JoinColumn(name = "data_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    @IndexedEmbedded
     private Set<TagEntity> tags;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

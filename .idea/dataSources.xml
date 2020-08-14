@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ez-debate@192.168.1.14" uuid="ca87597d-150f-4ebe-af7c-79562f7394db">
+    <data-source source="LOCAL" name="MySQL - ezdebate@localhost" uuid="cbf3c031-b3e6-4166-ab3f-70985a12698e">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://192.168.1.14:3306/ez-debate?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDateTimeCode=false&amp;serverTimezone=UTC</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="MySQL - ez_debate@localhost" uuid="75016726-7aeb-48f3-a515-2ad8ab24380e">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/ez_debate</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/ezdebate</jdbc-url>
       <driver-properties>
         <property name="serverTimezone" value="UTC" />
       </driver-properties>

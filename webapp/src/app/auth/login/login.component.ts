@@ -21,9 +21,9 @@ export class LoginComponent {
   signIn() {
     const onError = (response) => {
       if (response.status === 412) {
-        this.snackBar.open("This user is not valid", null, {duration: 2000});
+        this.snackBar.open("This user is not valid", 'Ok', {duration: 2000});
       } else {
-        this.snackBar.open("Login Failure", null, {duration: 2000});
+        this.snackBar.open("Login Failure", 'Ok', {duration: 2000});
       }
     };
 
