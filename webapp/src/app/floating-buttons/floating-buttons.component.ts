@@ -20,7 +20,7 @@ export class FloatingButtonsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.floatingButtons.editButtonValue.subscribe(response => {
+    this.floatingButtons.editButtonValue.asObservable().subscribe(response => {
       this.isInEditMod = response;
     })
   }
@@ -31,5 +31,13 @@ export class FloatingButtonsComponent implements OnInit {
 
   toggletEditButtonValue() {
     this.floatingButtons.toggleEditButtonValue();
+  }
+
+  save() {
+    this.floatingButtons.saveButtonEmitter.next();
+  }
+
+  delete() {
+    this.floatingButtons.deleteButtonEmitter.next();
   }
 }

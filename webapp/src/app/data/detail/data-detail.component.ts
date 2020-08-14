@@ -31,7 +31,7 @@ export class DataDetailComponent {
         this.data = response;
       })
     })
-    this.floatingButtonsService.editButtonValue.subscribe(response => {
+    this.floatingButtonsService.editButtonValue.asObservable().subscribe(response => {
       this.editMod = response;
       if (this.data && this.editMod) {
         Object.assign(this.dataSave, this.data);
@@ -39,11 +39,19 @@ export class DataDetailComponent {
         Object.assign(this.data, this.dataSave);
       }
     });
+    this.floatingButtonsService.saveButtonEmitter.asObservable().subscribe(() => {
+      this.saveData();
+    });
+    this.floatingButtonsService.deleteButtonEmitter.asObservable().subscribe(() => {
+      this.delete();
+    })
   }
 
   saveData() {
     this.dataService.saveData(this.data).subscribe(response => {
-      this.data = response;
+      Object.assign(this.data, response);
+      Object.assign(this.dataSave, response);
+      this.floatingButtonsService.toggleEditButtonValue();
     })
   }
 

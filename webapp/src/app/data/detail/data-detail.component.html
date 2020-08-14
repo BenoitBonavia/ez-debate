@@ -1,15 +1,11 @@
 <div class="container unselectable" *ngIf="this.data">
   <div fxLayout="row">
     <div fxFlex="100" *ngIf="this.editMod === false">
-      <h1>{{ this.data.title }}
-        <button mat-raised-button color="warn" style="float: right;" (click)="delete()">
-          Delete
-        </button>
-      </h1>
+      <h1>{{ this.data.title }}</h1>
       <h2>{{ this.data.subtitle }}</h2>
-
     </div>
   </div>
+
   <div *ngIf="this.editMod === true" class="margin-bottom-15">
     <div fxLayout="row">
       <h2 fxFlex="100">
@@ -21,12 +17,6 @@
         <ed-edit-title-subtitle [(data)]="data"></ed-edit-title-subtitle>
       </div>
     </div>
-  </div>
-
-  <div fxLayout="row">
-    {{ this.data.title }}
-    <br>
-    {{ this.dataSave?.title }}
   </div>
 
   <div fxLayout="row">

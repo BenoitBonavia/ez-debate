@@ -1,13 +1,14 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 
 @Injectable()
 export class FloatingButtonsService {
 
-  private editButtonValueSource: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public readonly editButtonValue: Observable<boolean> = this.editButtonValueSource.asObservable();
+  public readonly editButtonValue: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public readonly saveButtonEmitter: Subject<any> = new Subject<any>();
+  public readonly deleteButtonEmitter: Subject<any> = new Subject<any>();
 
   toggleEditButtonValue() {
-    this.editButtonValueSource.next(!this.editButtonValueSource.value)
+    this.editButtonValue.next(!this.editButtonValue.value)
   }
 }

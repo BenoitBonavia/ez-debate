@@ -1,14 +1,21 @@
 <div class="floating-buttons z-index-1000000">
-  <button mat-mini-fab color="primary" class="margin-right-15" *ngIf="router.url.includes('/detail/') && this.isInEditMod">
+  <button mat-mini-fab color="warn" class="margin-right-15 animated" *ngIf="router.url.includes('/detail/') && !this.isInEditMod" (click)="delete()">
+    <mat-icon>delete</mat-icon>
+    <label class="pointer">Delete</label>
+  </button>
+  <button mat-mini-fab color="primary" class="margin-right-15 animated" *ngIf="(router.url.includes('/detail/') && this.isInEditMod) || router.url.includes('/create')" (click)="this.save()">
     <mat-icon>save</mat-icon>
+    <label class="pointer">Save</label>
   </button>
-  <button mat-mini-fab color="warn" class="margin-right-15" *ngIf="router.url.includes('/detail/') && this.isInEditMod" (click)="this.toggletEditButtonValue()">
+  <button mat-mini-fab color="warn" class="margin-right-15 animated" *ngIf="router.url.includes('/detail/') && this.isInEditMod" (click)="this.toggletEditButtonValue()">
     <mat-icon>clear</mat-icon>
+    <label class="pointer">Cancel</label>
   </button>
-  <button mat-mini-fab color="primary" class="margin-right-15" *ngIf="router.url.includes('/detail/') && !this.isInEditMod" (click)="this.toggletEditButtonValue()">
+  <button mat-mini-fab color="primary" class="margin-right-15 animated" *ngIf="router.url.includes('/detail/') && !this.isInEditMod" (click)="this.toggletEditButtonValue()">
     <mat-icon>create</mat-icon>
+    <label class="pointer">Edit</label>
   </button>
-  <button mat-fab color="primary" class=" animated" [routerLink]="['/create']" *ngIf="isUserAuthenticatedAdmin()">
+  <button mat-fab color="primary" class="animated" [routerLink]="['/create']" *ngIf="isUserAuthenticatedAdmin()">
     <mat-icon>add</mat-icon>
     <label class="pointer">Create Data</label>
   </button>

@@ -425,7 +425,9 @@ a.no-style {
 }
 
 .mat-mini-fab.animated:hover {
-  width: 130px !important;
+  width: 120px !important;
+  padding-left: 15px;
+  padding-right: 20px;
 }
 
 .mat-mini-fab.animated:hover label {

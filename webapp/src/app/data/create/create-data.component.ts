@@ -5,6 +5,7 @@ import {DataService} from "../../service/data.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {IconService} from "../../service/icon.service";
 import {TagModel} from "../../models/tag.model";
+import {FloatingButtonsService} from "../../floating-buttons/floating-buttons.service";
 
 @Component({
   selector: 'ed-create-data',
@@ -13,7 +14,7 @@ import {TagModel} from "../../models/tag.model";
 })
 export class CreateDataComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private iconService: IconService, private snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private iconService: IconService, private snackBar: MatSnackBar, private floatingButtonsService: FloatingButtonsService) {
   }
 
   newData: DataModel = new DataModel();
@@ -27,6 +28,9 @@ export class CreateDataComponent implements OnInit {
       title: ['', Validators.required],
       subtitle: ['', Validators.required]
     });
+    this.floatingButtonsService.saveButtonEmitter.asObservable().subscribe(() => {
+      this.createData();
+    })
   }
 
   createData() {
