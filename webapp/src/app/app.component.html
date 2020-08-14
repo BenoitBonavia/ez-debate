@@ -2,7 +2,7 @@
 
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav padding-top-56 w200 h100vh position-fixed top-0" mode="push" [position]="'end'">
-    <ed-mobile-menu-links></ed-mobile-menu-links>
+    <ed-mobile-menu-links (closeMenuButton)="drawer.toggle()"></ed-mobile-menu-links>
   </mat-drawer>
 
   <div class="example-sidenav-content">

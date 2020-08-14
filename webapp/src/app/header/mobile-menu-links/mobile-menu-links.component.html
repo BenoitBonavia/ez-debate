@@ -1,15 +1,15 @@
 <mat-list>
-  <mat-list-item [routerLink]="'/home'">
+  <mat-list-item [routerLink]="'/home'" (click)="closeMenu()">
     <mat-icon mat-list-icon class="font-color-primary">home</mat-icon>
     <div mat-line>Home</div>
   </mat-list-item>
   <mat-divider></mat-divider>
-  <mat-list-item [routerLink]="'/research'">
+  <mat-list-item [routerLink]="'/research'" (click)="closeMenu()">
     <mat-icon mat-list-icon class="font-color-primary">search</mat-icon>
     <div mat-line>Search</div>
   </mat-list-item>
   <mat-divider></mat-divider>
-  <mat-list-item [routerLink]="'/tags'">
+  <mat-list-item [routerLink]="'/tags'" (click)="closeMenu()">
     <mat-icon mat-list-icon class="font-color-primary">label</mat-icon>
     <div mat-line>Tags</div>
   </mat-list-item>
