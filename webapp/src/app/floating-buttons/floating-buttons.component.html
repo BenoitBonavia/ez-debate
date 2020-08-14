@@ -1,0 +1,15 @@
+<div class="floating-buttons z-index-1000000">
+  <button mat-mini-fab color="primary" class="margin-right-15" *ngIf="router.url.includes('/detail/') && this.isInEditMod">
+    <mat-icon>save</mat-icon>
+  </button>
+  <button mat-mini-fab color="warn" class="margin-right-15" *ngIf="router.url.includes('/detail/') && this.isInEditMod" (click)="this.toggletEditButtonValue()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button mat-mini-fab color="primary" class="margin-right-15" *ngIf="router.url.includes('/detail/') && !this.isInEditMod" (click)="this.toggletEditButtonValue()">
+    <mat-icon>create</mat-icon>
+  </button>
+  <button mat-fab color="primary" class=" animated" [routerLink]="['/create']" *ngIf="isUserAuthenticatedAdmin()">
+    <mat-icon>add</mat-icon>
+    <label class="pointer">Create Data</label>
+  </button>
+</div>

@@ -1,75 +1,56 @@
 <div class="container unselectable" *ngIf="this.data">
   <div fxLayout="row">
-    <div fxFlex="100" *ngIf="editableArea !== EditableArea.TITLE_SUBTITLE" holdable
-         (holdTime)="holdToEdit($event, EditableArea.TITLE_SUBTITLE)">
-      <h1 (mouseenter)="setHover(HoverArea.TITLE)" (mouseleave)="setHover(null)">{{ this.data.title }}
-        <ed-badge-button *ngIf="hoverArea === HoverArea.TITLE"
-                         (onButtonClick)="setEditableArea(EditableArea.TITLE_SUBTITLE)"
-                         [fxHide.lt-sm]="true"></ed-badge-button>
+    <div fxFlex="100" *ngIf="this.editMod === false">
+      <h1>{{ this.data.title }}
         <button mat-raised-button color="warn" style="float: right;" (click)="delete()">
           Delete
         </button>
       </h1>
-      <h2 (mouseenter)="setHover(HoverArea.SUBTITLE)" (mouseleave)="setHover(null)">{{ this.data.subtitle }}
-        <ed-badge-button *ngIf="hoverArea === HoverArea.SUBTITLE"
-                         (onButtonClick)="setEditableArea(EditableArea.TITLE_SUBTITLE)"
-                         [fxHide.lt-sm]="true"></ed-badge-button>
-      </h2>
-      <mat-progress-bar mode="determinate" [value]="holding/EDIT_TIME*100" [fxHide.gt-md]="true"
-                        *ngIf="holding !== 0 && loadingArea == EditableArea.TITLE_SUBTITLE"
-                        class="margin-bottom-15"></mat-progress-bar>
+      <h2>{{ this.data.subtitle }}</h2>
+
     </div>
   </div>
-  <div *ngIf="editableArea === EditableArea.TITLE_SUBTITLE" class="margin-bottom-15">
+  <div *ngIf="this.editMod === true" class="margin-bottom-15">
+    <div fxLayout="row">
+      <h2 fxFlex="100">
+        Titre & Subtitle
+      </h2>
+    </div>
     <div fxLayout="row">
       <div fxFlex="100" class="padding-top-15">
-        <ed-edit-title-subtitle [(data)]="tempData"></ed-edit-title-subtitle>
+        <ed-edit-title-subtitle [(data)]="data"></ed-edit-title-subtitle>
       </div>
-    </div>
-    <div fxLayout="row">
-      <span class="fill-remaining-space"></span>
-      <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
-      <button mat-raised-button color="primary" (click)="saveData()" class="margin-left-15">Save</button>
     </div>
   </div>
 
-  <div fxLayout="row" (mouseenter)="setHover(HoverArea.TAGS)" (mouseleave)="setHover(null)"
-       *ngIf="editableArea !== EditableArea.TAGS" holdable (holdTime)="holdToEdit($event, EditableArea.TAGS)">
-    <ed-tag-list [tags]="this.data.tags"></ed-tag-list>
-    <ed-badge-button *ngIf="hoverArea === HoverArea.TAGS" (onButtonClick)="setEditableArea(EditableArea.TAGS)"
-                     [fxHide.lt-sm]="true"></ed-badge-button>
-  </div>
   <div fxLayout="row">
-    <mat-progress-bar mode="determinate" [value]="holding/EDIT_TIME*100" [fxHide.gt-md]="true"
-                      *ngIf="holding !== 0 && loadingArea == EditableArea.TAGS"
-                      class="margin-top-15 margin-bottom-15"></mat-progress-bar>
+    {{ this.data.title }}
+    <br>
+    {{ this.dataSave?.title }}
   </div>
-  <div *ngIf="editableArea === EditableArea.TAGS">
+
+  <div fxLayout="row">
+    <h2 fxFlex="100">
+      Tags
+    </h2>
+  </div>
+  <div fxLayout="row" *ngIf="this.editMod === false">
+    <ed-tag-list [tags]="this.data.tags"></ed-tag-list>
+  </div>
+  <div *ngIf="this.editMod === true">
     <div fxLayout="row">
       <div fxFlex="100" class="padding-top-15 padding-bottom-15">
-        <ed-edit-tags [(tags)]="tempData.tags"></ed-edit-tags>
+        <ed-edit-tags [(tags)]="data.tags"></ed-edit-tags>
       </div>
-    </div>
-    <div fxLayout="row">
-      <span class="fill-remaining-space"></span>
-      <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
-      <button mat-raised-button color="primary" (click)="saveData()" class="margin-left-15">Save</button>
     </div>
   </div>
 
-  <div *ngIf="editableArea !== EditableArea.VIDEO" holdable (holdTime)="holdToEdit($event, EditableArea.VIDEO)">
-    <div fxLayout="row">
-      <h2 fxFlex="100" (mouseenter)="setHover(HoverArea.VIDEO)" (mouseleave)="null">
-        Videos
-        <ed-badge-button *ngIf="hoverArea === HoverArea.VIDEO" (onButtonClick)="setEditableArea(EditableArea.VIDEO)"
-                         [fxHide.lt-sm]="true"></ed-badge-button>
-      </h2>
-    </div>
-    <div fxLayout="row">
-      <mat-progress-bar fxFlex="100" mode="determinate" [value]="holding/EDIT_TIME*100" [fxHide.gt-md]="true"
-                        *ngIf="holding !== 0 && loadingArea == EditableArea.VIDEO"
-                        class="margin-top-15 margin-bottom-15"></mat-progress-bar>
-    </div>
+  <div fxLayout="row">
+    <h2 fxFlex="100">
+      Videos
+    </h2>
+  </div>
+  <div *ngIf="this.editMod === false">
     <div fxLayout="row" *ngIf="this.data.videos.length > 0">
       <div #verticalVideoCarouselContainer fxFlex="100">
         <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="70"
@@ -77,66 +58,49 @@
       </div>
     </div>
   </div>
-  <div *ngIf="editableArea === EditableArea.VIDEO" class="margin-top-15">
-    <ed-edit-videos [(videos)]="this.tempData.videos"></ed-edit-videos>
+  <div *ngIf="this.editMod === true" class="margin-top-15">
+    <ed-edit-videos [(videos)]="this.data.videos"></ed-edit-videos>
     <div fxLayout="row">
       <span class="fill-remaining-space"></span>
-      <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
-      <button mat-raised-button color="primary" (click)="saveData()" class="margin-left-15">Save</button>
     </div>
   </div>
 
 
-  <div fxLayout="row" class="padding-bottom-15 padding-top-15" (mouseenter)="setHover(HoverArea.TEXT)"
-       (mouseleave)="setHover(null)"
-       *ngIf="editableArea !== EditableArea.TEXT" holdable (holdTime)="holdToEdit($event, EditableArea.TEXT)">
-    <div style="min-height: 30px;">
-      {{ this.data.text }}
-      <ed-badge-button *ngIf="hoverArea === HoverArea.TEXT" (onButtonClick)="setEditableArea(EditableArea.TEXT)"
-                       [fxHide.lt-sm]="true"></ed-badge-button>
+  <div fxLayout="row" class="padding-bottom-15 padding-top-15" *ngIf="this.editMod === false">
+    <div style="min-height: 30px;">{{ this.data.text }}</div>
+  </div>
+  <div *ngIf="this.editMod === true">
+    <div fxLayout="row">
+      <h2 fxFlex="100">
+        Content
+      </h2>
     </div>
-  </div>
-  <div fxLayout="row">
-    <mat-progress-bar mode="determinate" [value]="holding/EDIT_TIME*100" [fxHide.gt-md]="true"
-                      *ngIf="holding !== 0 && loadingArea == EditableArea.TEXT"
-                      class="margin-top-15 margin-bottom-15"></mat-progress-bar>
-  </div>
-  <div *ngIf="editableArea === EditableArea.TEXT">
     <div fxLayout="row">
       <div fxFlex="100" class="padding-top-15">
         <mat-form-field class="example-full-width display-block">
-          <textarea matInput placeholder="Main content" rows="8" [(ngModel)]="tempData.text"></textarea>
+          <textarea matInput placeholder="Main content" rows="8" [(ngModel)]="data.text"></textarea>
         </mat-form-field>
       </div>
     </div>
     <div fxLayout="row">
       <span class="fill-remaining-space"></span>
-      <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
-      <button mat-raised-button color="primary" (click)="saveData()" class="margin-left-15">Save</button>
     </div>
   </div>
 
 
-  <div *ngIf="editableArea !== EditableArea.SOURCE" holdable (holdTime)="holdToEdit($event, EditableArea.SOURCE)">
-    <div fxLayout="row">
-      <h2 fxFlex="100" (mouseenter)="setHover(HoverArea.SOURCE)" (mouseleave)="null">
-        Sources
-        <ed-badge-button *ngIf="hoverArea === HoverArea.SOURCE" (onButtonClick)="setEditableArea(EditableArea.SOURCE)"
-                         [fxHide.lt-sm]="true"></ed-badge-button>
-      </h2>
-    </div>
-    <div fxLayout="row">
-      <mat-progress-bar mode="determinate" [value]="holding/EDIT_TIME*100" [fxHide.gt-md]="true"
-                        *ngIf="holding !== 0 && loadingArea == EditableArea.SOURCE"
-                        class="margin-top-15 margin-bottom-15"></mat-progress-bar>
-    </div>
+  <div fxLayout="row">
+    <h2 fxFlex="100">
+      Sources
+    </h2>
+  </div>
+  <div *ngIf="this.editMod === false">
     <ed-masonry-source-listing [sources]="data.sources" *ngIf="data && data.sources"></ed-masonry-source-listing>
   </div>
-  <div *ngIf="editableArea === EditableArea.SOURCE">
-    <ed-edit-sources [(sources)]="this.tempData.sources"></ed-edit-sources>
+
+  <div *ngIf="this.editMod === true" class="margin-top-15">
+    <ed-edit-sources [(sources)]="this.data.sources"></ed-edit-sources>
     <div fxLayout="row">
       <span class="fill-remaining-space"></span>
-      <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
       <button mat-raised-button color="primary" (click)="saveData()" class="margin-left-15">Save</button>
     </div>
   </div>

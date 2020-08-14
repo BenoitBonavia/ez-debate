@@ -64,11 +64,12 @@ import {AuthenticationService} from "./auth/authentication.service";
 import {AuthenticatedUserService} from "./auth/authenticated-user.service";
 import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
 import {LoginComponent} from "./auth/login/login.component";
-import {NewDataButtonComponent} from "./new-data-button/new-data-button.component";
+import {FloatingButtonsComponent} from "./floating-buttons/floating-buttons.component";
 import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MobileMenuLinksComponent} from "./header/mobile-menu-links/mobile-menu-links.component";
+import {FloatingButtonsService} from "./floating-buttons/floating-buttons.service";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -113,7 +114,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     LoginRegisterComponent,
     AppComponent,
     HorizontalCardDataComponent,
-    NewDataButtonComponent,
+    FloatingButtonsComponent,
     PageNotFoundComponent,
     MobileMenuLinksComponent
   ],
@@ -153,6 +154,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatSnackBar,
     TagService,
     AuthService,
+    FloatingButtonsService,
     AuthenticationService,
     AuthenticationNavigationService,
     AuthenticatedUserService,
