@@ -57,23 +57,6 @@
     </div>
   </div>
 
-
-  <!--  <div *ngIf="editableArea !== EditableArea.SOURCE" holdable (holdTime)="holdToEdit($event, EditableArea.SOURCE)">-->
-  <!--    <div fxLayout="row">-->
-  <!--      <h2 fxFlex="100" (mouseenter)="setHover(HoverArea.SOURCE)" (mouseleave)="null">-->
-  <!--        Sources-->
-  <!--        <ed-badge-button *ngIf="hoverArea === HoverArea.SOURCE" (onButtonClick)="setEditableArea(EditableArea.SOURCE)"-->
-  <!--                         [fxHide.lt-sm]="true"></ed-badge-button>-->
-  <!--      </h2>-->
-  <!--    </div>-->
-  <!--    <div fxLayout="row">-->
-  <!--      <mat-progress-bar mode="determinate" [value]="holding/EDIT_TIME*100" [fxHide.gt-md]="true"-->
-  <!--                        *ngIf="holding !== 0 && loadingArea == EditableArea.SOURCE"-->
-  <!--                        class="margin-top-15 margin-bottom-15"></mat-progress-bar>-->
-  <!--    </div>-->
-  <!--    <ed-masonry-source-listing [sources]="data.sources" *ngIf="data && data.sources"></ed-masonry-source-listing>-->
-  <!--  </div>-->
-
   <div *ngIf="editableArea !== EditableArea.VIDEO" holdable (holdTime)="holdToEdit($event, EditableArea.VIDEO)">
     <div fxLayout="row">
       <h2 fxFlex="100" (mouseenter)="setHover(HoverArea.VIDEO)" (mouseleave)="null">
