@@ -30,6 +30,6 @@ export class AuthenticatedUserService {
   }
 
   isUserAuthenticatedAdmin() {
-    return this.authenticatedUserSource.value.role === 'ROLE_ADMIN';
+    return this.authenticatedUserSource?.value?.role === 'ROLE_ADMIN';
   }
 }

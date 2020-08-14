@@ -157,8 +157,16 @@ a.no-style {
   margin-top: 7px !important;
 }
 
+.margin-right-7 {
+  margin-right: 7px !important;
+}
+
 .margin-bottom-7 {
   margin-bottom: 7px !important;
+}
+
+.margin-15 {
+  margin: 15px !important;
 }
 
 .margin-left-15 {
@@ -235,6 +243,10 @@ a.no-style {
   padding-top: 40px;
 }
 
+.padding-top-56 {
+  padding-top: 56px;
+}
+
 
 
 .padding-top-5vw {
@@ -247,12 +259,20 @@ a.no-style {
 
 /* sizing ------------------------------------------------------------------------------------------------------------*/
 
+.w200 {
+  width: 200px;
+}
+
 .w100 {
   width: 100%;
 }
 
 .h100 {
   height: 100%;
+}
+
+.h100vh {
+  height: 100vh;
 }
 
 .icon-button {

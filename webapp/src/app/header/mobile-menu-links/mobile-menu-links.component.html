@@ -1,0 +1,21 @@
+<mat-list>
+  <mat-list-item [routerLink]="'/home'">
+    <mat-icon mat-list-icon class="font-color-primary">home</mat-icon>
+    <div mat-line>Home</div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item [routerLink]="'/research'">
+    <mat-icon mat-list-icon class="font-color-primary">search</mat-icon>
+    <div mat-line>Search</div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item [routerLink]="'/tags'">
+    <mat-icon mat-list-icon class="font-color-primary">label</mat-icon>
+    <div mat-line>Tags</div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" class="margin-15 mobile-sign-out-button position-absolute bottom-0" (click)="signOut()">
+    <mat-icon class="margin-right-7">login</mat-icon> Sign Out
+  </button>
+</mat-list>

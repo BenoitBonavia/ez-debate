@@ -67,6 +67,8 @@ import {LoginComponent} from "./auth/login/login.component";
 import {NewDataButtonComponent} from "./new-data-button/new-data-button.component";
 import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MobileMenuLinksComponent} from "./header/mobile-menu-links/mobile-menu-links.component";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -112,7 +114,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     AppComponent,
     HorizontalCardDataComponent,
     NewDataButtonComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MobileMenuLinksComponent
   ],
   imports: [
     HttpClientModule,
@@ -141,6 +144,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatTabsModule,
     MatListModule,
     MatAutocompleteModule,
+    MatSidenavModule,
   ],
   providers: [
     DataService,

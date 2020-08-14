@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
 import {AuthenticationNavigationService} from "../auth/authentication-navigation.service";
 
 @Component({
@@ -7,11 +7,17 @@ import {AuthenticationNavigationService} from "../auth/authentication-navigation
 })
 export class HeaderComponent {
 
+  @Output() openMenuButton = new EventEmitter();
+
   constructor(private authenticationNavigationService: AuthenticationNavigationService) {
 
   }
 
   signOut() {
     this.authenticationNavigationService.signOut();
+  }
+
+  openMenu() {
+    this.openMenuButton.emit();
   }
 }
