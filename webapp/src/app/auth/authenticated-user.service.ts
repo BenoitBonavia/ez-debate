@@ -28,4 +28,8 @@ export class AuthenticatedUserService {
   removeAuthenticatedUserAndRole() {
     this.authenticatedUserSource.next(noAuthenticatedUser);
   }
+
+  isUserAuthenticatedAdmin() {
+    return this.authenticatedUserSource.value.role === 'ROLE_ADMIN';
+  }
 }

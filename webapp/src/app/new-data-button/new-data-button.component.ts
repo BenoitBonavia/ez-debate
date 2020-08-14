@@ -12,14 +12,14 @@ import {Router} from "@angular/router";
 })
 export class NewDataButtonComponent implements OnInit {
 
-  isAuthenticated: boolean;
 
-  constructor(private authenticatedUserService: AuthenticatedUserService, private router: Router) {
+  constructor(private authenticatedUserService: AuthenticatedUserService) {
   }
 
   ngOnInit(): void {
-    this.authenticatedUserService.authenticatedUser.subscribe(response => {
-      this.isAuthenticated = !!response;
-    });
+  }
+
+  isUserAuthenticatedAdmin() {
+    return this.authenticatedUserService.isUserAuthenticatedAdmin();
   }
 }
