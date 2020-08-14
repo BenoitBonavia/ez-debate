@@ -5,21 +5,7 @@
 
   <span class="fill-remaining-space"></span>
 
-  <span ngClass.lt-md="display-none">
-    <a [routerLink]="['/home']" mat-button color="link" class="font-rubik">
-      <mat-icon>home</mat-icon>
-    </a>
-    <a [routerLink]="['/tags']" mat-button color="link" class="font-rubik">
-      <mat-icon>label</mat-icon>
-    </a>
-    <a [routerLink]="['/research']" mat-button color="link" class="font-rubik">
-      <mat-icon>search</mat-icon>
-    </a>
-    <button mat-mini-fab color="link" class="font-rubik animated margin-left-15" (click)="signOut()">
-      <mat-icon class="font-color-primary">login</mat-icon>
-      <label class="pointer font-color-primary">Logout</label>
-    </button>
-  </span>
+  <ed-desktop-menu-links></ed-desktop-menu-links>
 
 
   <span ngClass.gt-sm="display-none">

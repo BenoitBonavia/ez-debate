@@ -1,0 +1,19 @@
+<span ngClass.lt-md="display-none">
+  <a [routerLink]="['/home']" mat-button color="link">
+    <mat-icon>home</mat-icon>
+  </a>
+  <a [routerLink]="['/tags']" mat-button color="link" *ngIf="isAdmin()">
+    <mat-icon>label</mat-icon>
+  </a>
+  <a [routerLink]="['/research']" mat-button color="link">
+    <mat-icon>search</mat-icon>
+  </a>
+  <a [routerLink]="['/settings']" mat-button color="link" *ngIf="isAdmin()">
+    <mat-icon>settings</mat-icon>
+  </a>
+
+  <button mat-mini-fab color="link" class="font-rubik animated margin-left-15" (click)="signOut()">
+    <mat-icon class="font-color-primary">login</mat-icon>
+    <label class="pointer font-color-primary">Logout</label>
+  </button>
+</span>

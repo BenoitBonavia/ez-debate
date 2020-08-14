@@ -1,17 +1,26 @@
 <mat-list cdkFocusInitial>
+
   <mat-list-item [routerLink]="'/home'" (click)="closeMenu()">
     <mat-icon mat-list-icon class="font-color-primary">home</mat-icon>
     <div mat-line>Home</div>
   </mat-list-item>
   <mat-divider></mat-divider>
+
   <mat-list-item [routerLink]="'/research'" (click)="closeMenu()">
     <mat-icon mat-list-icon class="font-color-primary">search</mat-icon>
     <div mat-line>Search</div>
   </mat-list-item>
   <mat-divider></mat-divider>
+
   <mat-list-item [routerLink]="'/tags'" (click)="closeMenu()" *ngIf="isAdmin()">
     <mat-icon mat-list-icon class="font-color-primary">label</mat-icon>
     <div mat-line>Tags</div>
+  </mat-list-item>
+  <mat-divider *ngIf="isAdmin()"></mat-divider>
+
+  <mat-list-item [routerLink]="'/settings'" (click)="closeMenu()" *ngIf="isAdmin()">
+    <mat-icon mat-list-icon class="font-color-primary">settings</mat-icon>
+    <div mat-line>Settings</div>
   </mat-list-item>
   <mat-divider *ngIf="isAdmin()"></mat-divider>
 
