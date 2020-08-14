@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Optional;
 
 
-@PreAuthorize("hasRole('ROLE_MEMBER')")
 @RestController
 @RequestMapping("/api/data")
 public class DataController {

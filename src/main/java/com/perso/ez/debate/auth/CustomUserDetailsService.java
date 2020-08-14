@@ -31,7 +31,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             return null;
         } else {
             logger.info("Known user in DB for {}", email);
-            logger.info("Know password : {}", registeredUser.getPasswordHash());
             return new User(
                     registeredUser.getEmail(),
                     registeredUser.getPasswordHash(),

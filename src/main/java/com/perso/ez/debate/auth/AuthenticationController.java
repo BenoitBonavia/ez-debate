@@ -1,6 +1,5 @@
 package com.perso.ez.debate.auth;
 
-import com.perso.ez.debate.data.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;

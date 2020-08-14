@@ -3,6 +3,8 @@ package com.perso.ez.debate.tag;
 import com.perso.ez.debate.tag.type.TagTypeEntity;
 import com.perso.ez.debate.tag.type.TagTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -29,7 +31,9 @@ public class TagController {
     }
 
     @GetMapping("/type/all")
-    public Iterable<TagTypeEntity> getAllTypes() { return tagTypeRepository.findAll(); }
+    public Iterable<TagTypeEntity> getAllTypes() {
+        return tagTypeRepository.findAll();
+    }
 
     @ResponseBody
     @GetMapping("/{id}/favorite")
@@ -44,7 +48,8 @@ public class TagController {
     }
 
     @DeleteMapping("/{id}")
-    public @ResponseBody void delete(@PathVariable(name = "id") Long dataId) {
+    public @ResponseBody
+    void delete(@PathVariable(name = "id") Long dataId) {
         tagRepository.deleteById(dataId);
     }
 
