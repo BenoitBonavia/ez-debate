@@ -48,6 +48,9 @@ export class DataDetailComponent {
   }
 
   saveData() {
+    if (this.data.videos.length === 1 && this.data.videos[0].link === '') {
+      this.data.videos = [];
+    }
     this.dataService.saveData(this.data).subscribe(response => {
       Object.assign(this.data, response);
       Object.assign(this.dataSave, response);
