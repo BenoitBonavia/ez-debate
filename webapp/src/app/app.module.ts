@@ -72,6 +72,9 @@ import {MobileMenuLinksComponent} from "./header/mobile-menu-links/mobile-menu-l
 import {FloatingButtonsService} from "./floating-buttons/floating-buttons.service";
 import {DesktopMenuLinksComponent} from "./header/desktop-menu-links/desktop-menu-links.component";
 import {SettingsComponent} from "./settings/settings.component";
+import {ThemeService} from "./theme.service";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -150,6 +153,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     MatListModule,
     MatAutocompleteModule,
     MatSidenavModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule,
   ],
   providers: [
     DataService,
@@ -163,6 +168,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     AuthenticationNavigationService,
     AuthenticatedUserService,
     BlockUnauthenticatedUserGuard,
+    ThemeService,
     Overlay,
     {
       provide: HAMMER_GESTURE_CONFIG,

@@ -5,28 +5,26 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 @include mat-core();
+//
+//$primary-color: #3f51b5;
+//
+//
+$custom-dark-theme: mat-dark-theme(mat-palette($mat-blue, 800, 800, 800), mat-palette($mat-blue, 50, 50, 50), mat-palette($mat-red));
 
-$candy-app-primary: mat-palette($mat-indigo);
-$candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
+@mixin custom-theme-mixin($theme) {
+  $primary-color: map-get($theme, primary);
+}
 
-$candy-app-warn: mat-palette($mat-red);
-
-$custom-dark-theme: mat-dark-theme((
-  color: (
-    primary: mat-palette($mat-indigo),
-    accent: $candy-app-accent,
-    warn: mat-palette($mat-red, 900),
-  ),
-  background: (
-    default: $mat-dark-theme-background
-  )
-));
-
-$primary-color: $light-primary-text;
+$custom-light-theme: mat-light-theme(mat-palette($mat-indigo), mat-palette($mat-indigo, 50, 50, 50), mat-palette($mat-red, 900));
 
 
-  //
-@include angular-material-theme($custom-dark-theme);
+@include angular-material-theme($custom-light-theme);
+@include custom-theme-mixin($custom-light-theme);
+//@include angular-material-typography($custom-dark-theme-typography)
+
+.dark-theme {
+  @include angular-material-color($custom-dark-theme);
+}
 
 .unselectable {
   -webkit-user-select: none !important;
@@ -49,8 +47,12 @@ h1 {
 }
 
 h2 {
-  color: $primary-color;
+  //color: $primary-color;
   font-weight: 500;
+}
+
+.full-height-container {
+  min-height: 100vh;
 }
 
 .container {
@@ -75,13 +77,13 @@ h2 {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $primary-color;
+  //background: $primary-color;
   border-radius: 15px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $primary-color;
+  //background: $primary-color;
 }
 
 .hide-scroll::-webkit-scrollbar {
@@ -93,7 +95,7 @@ h2 {
 }
 
 .background-primary {
-  background: $primary-color;
+  //background: $primary-color;
 }
 
 /* cursor ------------------------------------------------------------------------------------------------------------*/
@@ -109,7 +111,7 @@ h2 {
 }
 
 .font-color-primary {
-  color: $primary-color;
+  //color: $primary-color;
 }
 
 .font-color-grey {
@@ -219,8 +221,12 @@ a.no-style {
 
 /* padding -----------------------------------------------------------------------------------------------------------*/
 
+.padding-0 {
+  padding: 0 !important;
+}
+
 .padding-15 {
-  padding: 15px;
+  padding: 15px !important;
 }
 
 .padding-left-5 {
@@ -367,10 +373,6 @@ a.no-style {
 
 .white-space-normal {
   white-space: normal;
-}
-
-.full-height-container {
-  min-height: 100vh;
 }
 
 .full-width-container {

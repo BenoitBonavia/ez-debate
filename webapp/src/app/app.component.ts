@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ThemeService} from "./theme.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'webapp';
+  title = 'ezDebate';
+
+  constructor(private themeService: ThemeService) {
+
+  }
+
+  isCurrentlyDarkTheme() {
+    return this.themeService.isCurrentTheme('dark');
+  }
 }

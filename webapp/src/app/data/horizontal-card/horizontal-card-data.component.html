@@ -11,8 +11,9 @@
         <div>
           <mat-chip-list>
             <mat-chip *ngFor="let tag of data.tags" style="font-size: 10px; min-height: 20px; padding: 3px 7px;"
-                      [routerLink]="'/research'" [queryParams]="{ text: tag.tag }" class="pointer">{{ tag.tag }}</mat-chip>
+                      [routerLink]="'/research'" [queryParams]="{ text: tag.tag }" class="pointer" color="primary" selected>{{ tag.tag }}</mat-chip>
           </mat-chip-list>
+
         </div>
 <!--        <div>-->
 <!--          {{ data.text }}-->

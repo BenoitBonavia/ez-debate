@@ -1,12 +1,16 @@
 <mat-toolbar color="primary" class="position-fixed z-index-1000000">
-  <a [routerLink]="['/home']" mat-button color="link" class="font-size-100-percent font-rubik font-weight-bold">
-    <i class="fas fa-balance-scale-right"></i>
-    ezDebate
-  </a>
+  <div class="w100">
+    <div class="container">
+      <a [routerLink]="['/home']" mat-button color="link" class="font-size-100-percent font-rubik font-weight-bold padding-0">
+        <i class="fas fa-balance-scale-right"></i>
+        ezDebate
+      </a>
 
-  <span class="fill-remaining-space"></span>
+      <span class="fill-remaining-space"></span>
 
-  <ed-desktop-menu-links></ed-desktop-menu-links>
+      <ed-desktop-menu-links class="float-right"></ed-desktop-menu-links>
+    </div>
+  </div>
 
   <span ngClass.gt-sm="display-none">
     <button mat-icon-button aria-label="Example icon-button with a menu" (click)="openMenu()">
