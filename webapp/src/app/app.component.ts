@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ThemeService} from "./theme.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-root',
@@ -10,16 +9,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class AppComponent {
   title = 'ezDebate';
 
-  constructor(private themeService: ThemeService, private snackBar: MatSnackBar) {
+  constructor(private themeService: ThemeService) {
 
   }
 
   isCurrentlyDarkTheme() {
     return this.themeService.isCurrentTheme('dark');
-  }
-
-  consoleLog() {
-    console.log('Blbalbalbalbal');
-    this.snackBar.open("message");
   }
 }

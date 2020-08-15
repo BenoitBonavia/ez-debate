@@ -42,15 +42,13 @@ import {CardSourceComponent} from "./data/source/card/card-source.component";
 import {SourceMasonryListingComponent} from "./data/source/masonry-listing/source-masonry-listing.component";
 import {MatBadgeModule} from "@angular/material/badge";
 import {BadgeButtonComponent} from "./common/badge-button/badge-button.component";
-import { HoldableDirective } from './holdable.directive';
+import {HoldableDirective} from './holdable.directive';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
 import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.component";
-
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { TagsComponent} from "./data/tags/tags.component";
+import {TagsComponent} from "./data/tags/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {AuthService} from "./service/auth.service";
@@ -75,7 +73,6 @@ import {SettingsComponent} from "./settings/settings.component";
 import {ThemeService} from "./theme.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-
 
 @NgModule({
   declarations: [
@@ -143,7 +140,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatSidenavModule,
     MatButtonToggleModule,
     MatSlideToggleModule,
-    HammerModule
+    HammerModule,
   ],
   providers: [
     DataService,
