@@ -43,8 +43,8 @@
   <div *ngIf="this.editMod === false">
     <div fxLayout="row" *ngIf="this.data.videos.length > 0">
       <div #verticalVideoCarouselContainer fxFlex="100">
-        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="70"
-                                      [videos]="this.data.videos"></ed-horizontal-video-carousel>
+        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="100" [videos]="this.data.videos" [fxHide.gt-sm]="true"></ed-horizontal-video-carousel>
+        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="80" [videos]="this.data.videos" [fxHide.lt-md]="true"></ed-horizontal-video-carousel>
       </div>
     </div>
   </div>

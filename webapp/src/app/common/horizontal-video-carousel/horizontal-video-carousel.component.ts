@@ -15,7 +15,7 @@ export class HorizontalVideoCarouselComponent implements AfterViewInit {
 
   private margin: number = null;
   private displayVideo: boolean = false;
-  private scrollLeft: number = 0;
+  scrollLeft: number = 0;
   private inited = false;
   private currentVideoLink: string = "";
 
@@ -28,6 +28,8 @@ export class HorizontalVideoCarouselComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.inited = true;
+    console.log(this.width);
+    console.log(this.containerWidth);
   }
 
   toRight() {
@@ -38,6 +40,14 @@ export class HorizontalVideoCarouselComponent implements AfterViewInit {
   toLeft() {
     console.log('right');
     if (this.inited) this.verticalVideoCarouselContainer.nativeElement.scrollLeft -= this.width/100*this.containerWidth;
+  }
+
+  displayLeftButton() {
+    return this.scrollLeft > 0;
+  }
+
+  displayRightButton() {
+    return this.scrollLeft < (this.videos.length - 1) * this.width/100*this.containerWidth;
   }
 
   // toRight() {
