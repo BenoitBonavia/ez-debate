@@ -48,12 +48,4 @@ export class VideoEmbederComponent {
   constructor(private sanitizer: DomSanitizer) {
 
   }
-
-  left() {
-    console.log("to left");
-  }
-
-  right() {
-    console.log("to right");
-  }
 }

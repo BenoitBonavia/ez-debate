@@ -76,18 +76,6 @@ import {ThemeService} from "./theme.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
-export class MyHammerConfig extends HammerGestureConfig  {
-  overrides = <any>{
-    // override hammerjs default configuration
-    'pan': {threshold: 5},
-    'swipe': {
-      velocity: 0.4,
-      threshold: 20,
-      direction: 31 // /!\ ugly hack to allow swipe in all direction
-    }
-  }
-}
-
 
 @NgModule({
   declarations: [
@@ -170,11 +158,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     AuthenticatedUserService,
     BlockUnauthenticatedUserGuard,
     ThemeService,
-    Overlay,
-    {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: MyHammerConfig
-    }
+    Overlay
   ],
   bootstrap: [AppComponent]
 })
