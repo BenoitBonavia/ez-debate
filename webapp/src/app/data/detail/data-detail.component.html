@@ -2,6 +2,7 @@
   <div fxLayout="row">
     <div fxFlex="100" *ngIf="this.editMod === false">
       <h1>{{ this.data.title }}</h1>
+      <mat-divider class="border-primary-color"></mat-divider>
       <h2>{{ this.data.subtitle }}</h2>
     </div>
   </div>
@@ -19,7 +20,7 @@
     </div>
   </div>
 
-  <div fxLayout="row">
+  <div fxLayout="row" *ngIf="this.editMod === true">
     <h2 fxFlex="100">
       Tags
     </h2>
@@ -35,12 +36,12 @@
     </div>
   </div>
 
-  <div fxLayout="row">
+  <div fxLayout="row" *ngIf="data.videos.length > 0 && this.editMod === true">
     <h2 fxFlex="100">
       Videos
     </h2>
   </div>
-  <div *ngIf="this.editMod === false">
+  <div *ngIf="this.editMod === false" class="margin-top-40">
     <div fxLayout="row" *ngIf="this.data.videos.length > 0">
       <div #verticalVideoCarouselContainer fxFlex="100">
         <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="100" [videos]="this.data.videos" [fxHide.gt-sm]="true"></ed-horizontal-video-carousel>
