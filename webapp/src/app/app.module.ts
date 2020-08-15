@@ -71,6 +71,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MobileMenuLinksComponent} from "./header/mobile-menu-links/mobile-menu-links.component";
 import {FloatingButtonsService} from "./floating-buttons/floating-buttons.service";
 import {DesktopMenuLinksComponent} from "./header/desktop-menu-links/desktop-menu-links.component";
+import {SettingsComponent} from "./settings/settings.component";
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -118,7 +119,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     FloatingButtonsComponent,
     PageNotFoundComponent,
     MobileMenuLinksComponent,
-    DesktopMenuLinksComponent
+    DesktopMenuLinksComponent,
+    SettingsComponent
   ],
   imports: [
     HttpClientModule,

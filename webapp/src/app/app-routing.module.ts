@@ -9,6 +9,7 @@ import {LoginRegisterComponent} from "./auth/login-register/login-register.compo
 import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
 import {RedirectAuthenticatedUserGuard} from "./auth/redirect-authenticated-user.guard";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {SettingsComponent} from "./settings/settings.component";
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
       {path: 'detail/:id', component: DataDetailComponent},
       {path: 'tags', component: TagsComponent},
       {path: 'register', component: LoginRegisterComponent},
+      {path: 'settings', component: SettingsComponent}
     ]
   },
   {path: 'login', component: LoginRegisterComponent, canActivateChild: [RedirectAuthenticatedUserGuard]},

@@ -1,8 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+//@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+//@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import '~@angular/material/theming';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
-$primary-color: #3f51b5;
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$candy-app-warn: mat-palette($mat-red);
+
+$custom-dark-theme: mat-dark-theme((
+  color: (
+    primary: mat-palette($mat-indigo),
+    accent: $candy-app-accent,
+    warn: mat-palette($mat-red, 900),
+  ),
+  background: (
+    default: $mat-dark-theme-background
+  )
+));
+
+$primary-color: $light-primary-text;
+
+
+  //
+@include angular-material-theme($custom-dark-theme);
 
 .unselectable {
   -webkit-user-select: none !important;
@@ -248,7 +272,6 @@ a.no-style {
 }
 
 
-
 .padding-top-5vw {
   padding-top: 5vw;
 }
@@ -344,6 +367,10 @@ a.no-style {
 
 .white-space-normal {
   white-space: normal;
+}
+
+.full-height-container {
+  min-height: 100vh;
 }
 
 .full-width-container {
