@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from "@angular/core";
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from "@angular/core";
 import urlParser from 'js-video-url-parser/dist/jsVideoUrlParser';
-import Hammer from 'hammerjs';
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
