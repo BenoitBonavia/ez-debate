@@ -4,10 +4,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthenticationNavigationService} from "../authentication-navigation.service";
 
 @Component({
-  selector: 'ed-login',
-  templateUrl: 'login.component.html'
+  selector: 'ed-login-form',
+  templateUrl: 'login-form.component.html'
 })
-export class LoginComponent {
+export class LoginFormComponent {
 
   constructor(private authenticationNavigationService: AuthenticationNavigationService, private snackBar: MatSnackBar) {}
 

@@ -61,7 +61,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {AuthenticationService} from "./auth/authentication.service";
 import {AuthenticatedUserService} from "./auth/authenticated-user.service";
 import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
-import {LoginComponent} from "./auth/login/login.component";
+import {LoginFormComponent} from "./auth/login-form/login-form.component";
 import {FloatingButtonsComponent} from "./floating-buttons/floating-buttons.component";
 import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
@@ -73,6 +73,8 @@ import {SettingsComponent} from "./settings/settings.component";
 import {ThemeService} from "./theme.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {SignupComponent} from "./auth/signup/signup.component";
+import {SignupFormComponent} from "./auth/signup-form/signup-form.component";
 
 @NgModule({
   declarations: [
@@ -100,7 +102,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     VideoEmbederComponent,
     VideoThumbnailComponent,
     TagsComponent,
-    LoginComponent,
+    LoginFormComponent,
     LoginRegisterComponent,
     AppComponent,
     HorizontalCardDataComponent,
@@ -108,7 +110,9 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     PageNotFoundComponent,
     MobileMenuLinksComponent,
     DesktopMenuLinksComponent,
-    SettingsComponent
+    SettingsComponent,
+    SignupComponent,
+    SignupFormComponent
   ],
   imports: [
     HttpClientModule,

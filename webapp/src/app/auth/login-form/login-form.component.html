@@ -1,5 +1,6 @@
 <!--<mat-card>-->
 <!--<h1 class="font-color-primary">Login</h1>-->
+<h1 class="font-weight-bold">Login</h1>
 <form>
   <mat-form-field class="w100">
     <input matInput
@@ -24,6 +25,7 @@
 <!--  <a [routerLink]="'/'" class="font-size-14 font-weight-bold no-style">Forgot your password ?</a>-->
   <div fxLayout="row">
     <span class="fill-remaining-space"></span>
+    <button mat-button color="link" [routerLink]="['/signup']">Sign Up</button>
     <button mat-raised-button color="primary" [disabled]="this.isFilled()" (click)="signIn()" type="submit">Sign in</button>
   </div>
 </form>
