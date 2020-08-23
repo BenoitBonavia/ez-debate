@@ -28,6 +28,7 @@ public class DataController {
         return dataRepository.findAllByTags_TagContainingOrderByDateDesc(tag, page);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping()
     public @ResponseBody
     DataEntity saveData(@RequestBody DataEntity data) {
@@ -49,6 +50,7 @@ public class DataController {
         return dataRepository.findById(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public @ResponseBody void delete(@PathVariable(name = "id") Long dataId) {
         dataRepository.deleteById(dataId);

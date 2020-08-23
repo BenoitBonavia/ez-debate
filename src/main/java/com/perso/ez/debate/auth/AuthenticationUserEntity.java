@@ -24,7 +24,7 @@ public class AuthenticationUserEntity implements Serializable {
     private String lastName;
 
     @Column(name = "password")
-    private String passwordHash;
+    private String password;
 
     @Column(name = "valid")
     private Boolean valid;
@@ -70,12 +70,12 @@ public class AuthenticationUserEntity implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String passwordHash) {
+        this.password = passwordHash;
     }
 
     public Boolean getValid() {

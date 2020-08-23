@@ -1,4 +1,4 @@
-import {LoginDTO} from "../models/auth.models";
+import {LoginDTO, RegisterDTO} from "../models/auth.models";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserModel} from "../models/user.model";
@@ -19,6 +19,10 @@ export class AuthenticationService {
 
     let body = 'username=' + loginDTO.email + '&password=' + loginDTO.password;
     return this.http.post('/api/login', body, {headers: header, responseType: 'text'});
+  }
+
+  signUp(signupDTO: RegisterDTO) {
+    return this.http.post('/api/authentication/register', signupDTO);
   }
 
   signOut() {

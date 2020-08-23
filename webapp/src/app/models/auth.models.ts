@@ -2,8 +2,8 @@ import {UserModel} from "./user.model";
 
 export class RegisterDTO {
   email: string;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   password: string;
 }
 

@@ -2,19 +2,19 @@
 <form [formGroup]="this.registerForm">
   <mat-form-field class="w100">
     <input type="text" matInput id="firstName" placeholder="First name" required autofocus autocomplete="firstName"
-           name="firsName" [formControl]="firstName">
+           name="firsName" [formControl]="firstName" [(ngModel)]="signupDTO.firstName">
     <mat-error *ngIf="this.firstName.invalid">First name is required</mat-error>
   </mat-form-field>
 
   <mat-form-field class="w100">
     <input type="text" matInput id="lastName" placeholder="Last name" required autofocus autocomplete="lastName"
-           name="lastName" [formControl]="lastName">
+           name="lastName" [formControl]="lastName" [(ngModel)]="signupDTO.lastName">
     <mat-error *ngIf="this.lastName.invalid">Last name is required</mat-error>
   </mat-form-field>
 
   <mat-form-field class="w100">
     <input type="email" matInput id="inputEmail" placeholder="Email" required autofocus autocomplete="Email"
-           name="email" [formControl]="email">
+           name="email" [formControl]="email" [(ngModel)]="signupDTO.email">
     <mat-error *ngIf="this.email.invalid">This email isn't valid</mat-error>
   </mat-form-field>
 
@@ -24,8 +24,8 @@
            placeholder="Password"
            required
            autocomplete="current-password"
-           name="password" [(ngModel)]="signupDTO.password" [formControl]="passwordControl"/>
-    <mat-error *ngIf="this.passwordControl.invalid">You need at least 8 characters</mat-error>
+           name="password" [(ngModel)]="signupDTO.password" [formControl]="password"/>
+    <mat-error *ngIf="this.password.invalid">You need at least 8 characters</mat-error>
     <mat-icon matSuffix
               (click)="visiblePassword = !visiblePassword" class="pointer font-size-20 font-color-grey">{{visiblePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
   </mat-form-field>
@@ -36,14 +36,14 @@
            placeholder="Password confirmation"
            required
            autocomplete="current-password"
-           name="password confirmation" [formControl]="confirmPasswordControl"/>
+           name="password confirmation" [formControl]="confirmPassword"/>
     <mat-error *ngIf="this.registerForm.invalid">Passwords doesn't match</mat-error>
     <mat-icon matSuffix
               (click)="visiblePasswordConfirmation = !visiblePasswordConfirmation" class="pointer font-size-20 font-color-grey">{{visiblePasswordConfirmation ? 'visibility_off' : 'visibility'}}</mat-icon>
   </mat-form-field>
   <div fxLayout="row">
     <span class="fill-remaining-space"></span>
-    <button mat-button color="link" [routerLink]="['/login']">Login</button>
-    <button mat-raised-button color="primary" [disabled]="canSignUp()" type="submit">Sign up</button>
+    <a color="link" [routerLink]="['/login']">Login</a>
+    <button mat-raised-button color="primary" [disabled]="canSignUp()" (click)="signUp()" type="submit" class="float-right">Sign up</button>
   </div>
 </form>

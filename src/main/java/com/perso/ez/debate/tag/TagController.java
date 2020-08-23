@@ -24,6 +24,7 @@ public class TagController {
         return tagRepository.findAll();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public @ResponseBody
     TagEntity saveTag(@RequestBody TagEntity tag) {
@@ -36,6 +37,7 @@ public class TagController {
     }
 
     @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{id}/favorite")
     public TagEntity switchFavorite(@PathVariable("id") Long id) {
         Optional<TagEntity> optionalTagEntity = tagRepository.findById(id);
@@ -47,6 +49,7 @@ public class TagController {
         return null;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public @ResponseBody
     void delete(@PathVariable(name = "id") Long dataId) {

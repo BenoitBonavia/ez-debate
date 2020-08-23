@@ -33,7 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             logger.info("Known user in DB for {}", email);
             return new User(
                     registeredUser.getEmail(),
-                    registeredUser.getPasswordHash(),
+                    registeredUser.getPassword(),
                     registeredUser.getValid(),
                     registeredUser.getEndValidity() == null || registeredUser.getEndValidity().isAfter(LocalDateTime.now()),
                     true,
