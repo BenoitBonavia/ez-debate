@@ -38,26 +38,41 @@ public class SearchController {
         return text.length() > 4 ? 2 : 1;
     }
 
-    @GetMapping("={keyword}")
+    @GetMapping("/keyword={keyword}")
     public List<DataEntity> searchData(@PathVariable String keyword) {
+        if (keyword.equals("")) {
+            return null;
+        }
         Session session = em.unwrap(SessionFactory.class).openSession();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
 
         QueryBuilder qb = fullTextSession.getSearchFactory()
                 .buildQueryBuilder().forEntity(DataEntity.class).get();
 
+//        Query query = qb
+//                .bool()
+//                .must(qb.keyword()
+//                        .fuzzy()
+//                        .withEditDistanceUpTo(this.getFuzzySize(keyword))
+//                        .withPrefixLength(0)
+//                        .onField("tags.tag").boostedTo(10f)
+//                        .andField("title").boostedTo(5f)
+//                        .andField("subtitle").boostedTo(3f)
+//                        .andField("text").boostedTo(1f)
+//                        .matching(keyword)
+//                        .createQuery())
+//                .createQuery();
+
         Query query = qb
-                .bool()
-                .must(qb.keyword()
-                        .fuzzy()
-                        .withEditDistanceUpTo(this.getFuzzySize(keyword))
-                        .withPrefixLength(0)
-                        .onField("tags.tag").boostedTo(10f)
-                        .andField("title").boostedTo(5f)
-                        .andField("subtitle").boostedTo(3f)
-                        .andField("text").boostedTo(1f)
-                        .matching(keyword)
-                        .createQuery())
+                .keyword()
+                .fuzzy()
+                .withEditDistanceUpTo(this.getFuzzySize(keyword))
+                .withPrefixLength(0)
+                .onField("tags.tag").boostedTo(10f)
+                .andField("title").boostedTo(5f)
+                .andField("subtitle").boostedTo(3f)
+                .andField("text").boostedTo(1f)
+                .matching(keyword)
                 .createQuery();
 
         FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
@@ -68,8 +83,8 @@ public class SearchController {
         return result;
     }
 
-    @GetMapping("/tags={tags}")
-    public List<DataEntity> searchTags(@PathVariable String tags) {
+    @GetMapping("/tags={tags}&page={page}")
+    public List<DataEntity> searchTags(@PathVariable String tags, @PathVariable int page) {
         Session session = em.unwrap(SessionFactory.class).openSession();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
 
@@ -79,6 +94,9 @@ public class SearchController {
         Query query = qb.keyword().onField("tags.tag").matching(tags).createQuery();
 
         FullTextQuery jpaQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
+        jpaQuery.setFirstResult(3 * page);
+        jpaQuery.setMaxResults(3);
+
 
         List<DataEntity> results = jpaQuery.getResultList();
         return results;

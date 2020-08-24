@@ -15,6 +15,7 @@ export class UsersAdministrationComponent implements OnInit {
 
   users: UserModel[];
   displayedColumns: string[] = ['id', 'firstname', "lastname", 'email', 'valid', 'ban', 'role'];
+  displayedColumnsMobile: string[] = ['id', 'email', 'valid', 'ban', 'role'];
 
   ngOnInit() {
     this.usersService.getAll().subscribe(response => {

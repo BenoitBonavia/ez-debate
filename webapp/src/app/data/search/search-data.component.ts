@@ -5,7 +5,8 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'ed-all-data',
-  templateUrl: 'search-data.component.html'
+  templateUrl: 'search-data.component.html',
+  styleUrls: ['search-data.component.scss']
 })
 export class SearchDataComponent implements OnInit {
 

@@ -11,10 +11,10 @@ export class SearchService {
   }
 
   search(params: string): Observable<DataModel[]> {
-    return this.httpClient.get('/api/search=' + params) as Observable<DataModel[]>;
+    return this.httpClient.get('/api/search/keyword=' + params) as Observable<DataModel[]>;
   }
 
-  searchByTag(tag: string): Observable<any> {
-    return this.httpClient.get('/api/search/tags=' + tag) as Observable<any>;
+  searchByTag(tag: string, page: number): Observable<any> {
+    return this.httpClient.get('/api/search/tags=' + tag + '&page=' + page) as Observable<any>;
   }
 }
