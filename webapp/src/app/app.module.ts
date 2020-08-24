@@ -75,6 +75,9 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {SignupFormComponent} from "./auth/signup-form/signup-form.component";
+import {UsersAdministrationComponent} from "./users-administration/users-administration.component";
+import {UsersService} from "./service/users.service";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -112,7 +115,8 @@ import {SignupFormComponent} from "./auth/signup-form/signup-form.component";
     DesktopMenuLinksComponent,
     SettingsComponent,
     SignupComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    UsersAdministrationComponent
   ],
   imports: [
     HttpClientModule,
@@ -145,6 +149,7 @@ import {SignupFormComponent} from "./auth/signup-form/signup-form.component";
     MatButtonToggleModule,
     MatSlideToggleModule,
     HammerModule,
+    MatTableModule,
   ],
   providers: [
     DataService,
@@ -153,6 +158,7 @@ import {SignupFormComponent} from "./auth/signup-form/signup-form.component";
     MatSnackBar,
     TagService,
     AuthService,
+    UsersService,
     FloatingButtonsService,
     AuthenticationService,
     AuthenticationNavigationService,

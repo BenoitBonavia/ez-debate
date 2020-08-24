@@ -18,6 +18,11 @@
   </mat-list-item>
   <mat-divider *ngIf="isAdmin()"></mat-divider>
 
+  <mat-list-item [routerLink]="'/users'" (click)="closeMenu()" *ngIf="isAdmin()">
+    <mat-icon mat-list-icon class="font-color-primary">group</mat-icon>
+    <div mat-line>Users</div>
+  </mat-list-item>
+
   <mat-list-item [routerLink]="'/settings'" (click)="closeMenu()" *ngIf="isAdmin()">
     <mat-icon mat-list-icon class="font-color-primary">settings</mat-icon>
     <div mat-line>Settings</div>

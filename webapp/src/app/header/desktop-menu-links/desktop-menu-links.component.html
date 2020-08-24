@@ -8,6 +8,9 @@
   <a [routerLink]="['/research']" mat-button color="link">
     <mat-icon>search</mat-icon>
   </a>
+  <a [routerLink]="['/users']" mat-button color="link" *ngIf="isAdmin()">
+    <mat-icon>group</mat-icon>
+  </a>
   <a [routerLink]="['/settings']" mat-button color="link" *ngIf="isAdmin()">
     <mat-icon>settings</mat-icon>
   </a>

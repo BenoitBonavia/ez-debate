@@ -11,6 +11,7 @@ import {RedirectAuthenticatedUserGuard} from "./auth/redirect-authenticated-user
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {SignupComponent} from "./auth/signup/signup.component";
+import {UsersAdministrationComponent} from "./users-administration/users-administration.component";
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: 'tags', component: TagsComponent},
       {path: 'register', component: LoginRegisterComponent},
       {path: 'settings', component: SettingsComponent},
+      {path: 'users', component: UsersAdministrationComponent}
     ]
   },
   {path: 'login', component: LoginRegisterComponent, canActivateChild: [RedirectAuthenticatedUserGuard]},
