@@ -68,7 +68,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "webapp:build"
+            "browserTarget": "webapp:build",
+            "port": 3100,
+            "proxyConfig": "src/proxy.conf.js"
           },
           "configurations": {
             "production": {

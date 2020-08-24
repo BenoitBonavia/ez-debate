@@ -2,6 +2,7 @@ package com.perso.ez.debate.data.search;
 
 import com.perso.ez.debate.data.DataEntity;
 import com.perso.ez.debate.data.DataRepository;
+import org.apache.lucene.search.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.search.FullTextQuery;
@@ -37,34 +38,49 @@ public class SearchController {
         return text.length() > 4 ? 2 : 1;
     }
 
-    @GetMapping("/{text}")
-    public List<DataEntity> searchData(@PathVariable String text) {
+    @GetMapping("={keyword}")
+    public List<DataEntity> searchData(@PathVariable String keyword) {
         Session session = em.unwrap(SessionFactory.class).openSession();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
 
         QueryBuilder qb = fullTextSession.getSearchFactory()
                 .buildQueryBuilder().forEntity(DataEntity.class).get();
 
-        org.apache.lucene.search.Query query = qb
+        Query query = qb
                 .bool()
                 .must(qb.keyword()
                         .fuzzy()
-                        .withEditDistanceUpTo(this.getFuzzySize(text))
+                        .withEditDistanceUpTo(this.getFuzzySize(keyword))
                         .withPrefixLength(0)
                         .onField("tags.tag").boostedTo(10f)
                         .andField("title").boostedTo(5f)
                         .andField("subtitle").boostedTo(3f)
                         .andField("text").boostedTo(1f)
-                        .matching(text)
+                        .matching(keyword)
                         .createQuery())
                 .createQuery();
 
         FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
 
-        List result = hibQuery.list();
-//        System.out.println(result);
+        List<DataEntity> result = hibQuery.list();
 
         session.close();
         return result;
+    }
+
+    @GetMapping("/tags={tags}")
+    public List<DataEntity> searchTags(@PathVariable String tags) {
+        Session session = em.unwrap(SessionFactory.class).openSession();
+        FullTextSession fullTextSession = Search.getFullTextSession(session);
+
+        QueryBuilder qb = fullTextSession.getSearchFactory()
+                .buildQueryBuilder().forEntity(DataEntity.class).get();
+
+        Query query = qb.keyword().onField("tags.tag").matching(tags).createQuery();
+
+        FullTextQuery jpaQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
+
+        List<DataEntity> results = jpaQuery.getResultList();
+        return results;
     }
 }
