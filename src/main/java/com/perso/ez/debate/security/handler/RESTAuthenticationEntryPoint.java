@@ -1,4 +1,4 @@
-package com.perso.ez.debate.auth.handler;
+package com.perso.ez.debate.security.handler;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

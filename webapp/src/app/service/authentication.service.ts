@@ -10,7 +10,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
   }
 
-  getUser(): Observable<UserModel> {
+  getCurrentUser(): Observable<UserModel> {
     return this.http.get('/api/authentication') as Observable<UserModel>
   }
 

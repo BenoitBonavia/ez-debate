@@ -14,6 +14,8 @@ export class EditTagsComponent implements OnInit {
   @Input() tags: TagModel[];
   @Output() tagsChange = new EventEmitter<TagModel[]>();
 
+  @Input() createNewTags: boolean = false;
+
   allTags = {};
   typeFavorite = {};
 

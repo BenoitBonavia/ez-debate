@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {Observable, of} from "rxjs";
-import {AuthenticatedUserService} from "./authenticated-user.service";
+import {AuthenticatedUserService} from "../service/authenticated-user.service";
 import {UserModel} from "../models/user.model";
 import {catchError, map} from "rxjs/operators";
 

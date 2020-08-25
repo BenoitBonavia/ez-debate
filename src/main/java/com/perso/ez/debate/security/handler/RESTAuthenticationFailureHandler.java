@@ -1,4 +1,4 @@
-package com.perso.ez.debate.auth.handler;
+package com.perso.ez.debate.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

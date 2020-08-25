@@ -1,6 +1,6 @@
-<mat-card class="margin-bottom-15">
-  <div fxLayout="row" class="margin-bottom-15">
-    <mat-chip-list class="w100">
+<div class="margin-bottom-15">
+  <div fxLayout="row">
+    <mat-chip-list class="w100 padding-top-15">
       <mat-chip *ngFor="let tag of this.tags; let i = index;" [removable]="true" (removed)="remove(i)" color="primary"
                 selected>
         {{tag.tag}}
@@ -18,7 +18,7 @@
       <div fxLayout="row" class="margin-bottom-15">
         <div fxFlex="100">
           <mat-chip-list>
-            <mat-chip *ngFor="let tag of onlyFavorite(allTags[type.type], typeFavorite[type.type])" (click)="addOnClick(tag)">
+            <mat-chip *ngFor="let tag of onlyFavorite(allTags[type.type], typeFavorite[type.type])" (click)="addOnClick(tag)" class="pointer">
               {{tag.tag}}
             </mat-chip>
             <mat-chip color="primary" selected class="pointer" (click)="typeFavorite[type.type] = !typeFavorite[type.type]">
@@ -33,7 +33,7 @@
 
 
 
-  <div fxLayout="row">
+  <div fxLayout="row" *ngIf="this.createNewTags">
     <div fxFlex="100">
       <div fxLayout.lt-sm="row" fxFlex.gt-sm="60" class="padding-top-15 padding-right-15 padding-left-15">
         <mat-form-field class="w100">
@@ -55,4 +55,4 @@
       </div>
     </div>
   </div>
-</mat-card>
+</div>

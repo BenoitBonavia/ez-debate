@@ -16,7 +16,7 @@ export class AuthenticatedUserService {
   }
 
   storeAuthenticatedUserAndRoles() {
-    this.authHttpService.getUser().subscribe((user) => {
+    this.authHttpService.getCurrentUser().subscribe((user) => {
       this.authenticatedUserSource.next(user);
     }, error => console.error('probably network error', error));
   }

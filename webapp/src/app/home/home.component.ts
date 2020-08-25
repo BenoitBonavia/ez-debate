@@ -3,6 +3,8 @@ import {DataModel} from "../models/data.model";
 import {DataService} from "../service/data.service";
 import {SearchService} from "../service/search.service";
 import {TagService} from "../service/tag.service";
+import {AuthenticatedUserService} from "../service/authenticated-user.service";
+import {UserModel} from "../models/user.model";
 
 @Component({
   selector: 'ed-home',
@@ -11,28 +13,27 @@ import {TagService} from "../service/tag.service";
 })
 export class HomeComponent implements OnInit {
 
+  currentUser: UserModel;
+  datas: DataModel[][] = [];
+  pages: number[] = [];
   dataFrance: DataModel[];
   dataUSA: DataModel[];
   page = 0;
 
-  constructor(private dataService: DataService, private searchService: SearchService, private tagService: TagService) {
+  constructor(private dataService: DataService, private searchService: SearchService, private tagService: TagService, private authenticatedUserService: AuthenticatedUserService) {
 
   }
 
   ngOnInit(): void {
-    this.searchService.searchByTag("France", this.page).subscribe(response => {
-      this.dataFrance = response;
+    this.authenticatedUserService.authenticatedUser.subscribe(response => {
+      this.currentUser = response;
     })
-    this.searchService.searchByTag("USA", this.page).subscribe(response => {
-      this.dataUSA = response;
-    })
-    // this.dataService.getPageByTag("France", '0').subscribe(response => {
-    //   this.dataFrance = response;
-    //   console.log(response);
-    // });
-    // this.dataService.getPageByTag("USA", '0').subscribe(response => {
-    //   this.dataUSA = response;
-    //   console.log(response);
-    // });
+    for (let i = 0; i < this.currentUser.prefHome.length; i++) {
+      this.pages[i] = 0;
+      this.searchService.searchByTag(this.currentUser.prefHome[i].tag, this.pages[i]).subscribe(response => {
+        this.datas[i] = response;
+        console.log(response);
+      })
+    }
   }
 }

@@ -1,20 +1,27 @@
-package com.perso.ez.debate.auth;
+package com.perso.ez.debate.user;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import com.perso.ez.debate.tag.TagEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "user_account")
-public class AuthenticationUserEntity implements Serializable {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "email", unique = true)
-    @NotNull
     private String email;
 
     @Column(name = "firstname")
@@ -23,20 +30,18 @@ public class AuthenticationUserEntity implements Serializable {
     @Column(name = "lastname")
     private String lastName;
 
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "valid")
     private Boolean valid;
 
-    @Column(name = "end_validity")
-    private LocalDateTime endValidity;
-
     @Column(name = "ban")
-    private Boolean ban = false;
+    private Boolean ban;
 
     @Column(name = "role")
     private String role;
+
+    @ManyToMany
+    @JoinTable(name = "pref_home", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<TagEntity> prefHome;
 
     public Long getId() {
         return id;
@@ -70,28 +75,12 @@ public class AuthenticationUserEntity implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String passwordHash) {
-        this.password = passwordHash;
-    }
-
     public Boolean getValid() {
         return valid;
     }
 
     public void setValid(Boolean valid) {
         this.valid = valid;
-    }
-
-    public LocalDateTime getEndValidity() {
-        return endValidity;
-    }
-
-    public void setEndValidity(LocalDateTime endValidity) {
-        this.endValidity = endValidity;
     }
 
     public Boolean getBan() {
@@ -108,5 +97,13 @@ public class AuthenticationUserEntity implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<TagEntity> getPrefHome() {
+        return prefHome;
+    }
+
+    public void setPrefHome(List<TagEntity> pref_home) {
+        this.prefHome = pref_home;
     }
 }

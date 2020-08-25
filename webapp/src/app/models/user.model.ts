@@ -1,3 +1,5 @@
+import {TagModel} from "./tag.model";
+
 export class UserModel {
   id: number;
   email: string;
@@ -6,4 +8,5 @@ export class UserModel {
   role: string;
   valid: boolean;
   ban: boolean;
+  prefHome: TagModel[];
 }

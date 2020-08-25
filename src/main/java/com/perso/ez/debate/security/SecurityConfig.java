@@ -1,9 +1,9 @@
-package com.perso.ez.debate.auth;
+package com.perso.ez.debate.security;
 
-import com.perso.ez.debate.auth.handler.RESTAuthenticationEntryPoint;
-import com.perso.ez.debate.auth.handler.RESTAuthenticationFailureHandler;
-import com.perso.ez.debate.auth.handler.RESTAuthenticationSuccessHandler;
-import com.perso.ez.debate.auth.handler.RESTLogoutSuccessHandler;
+import com.perso.ez.debate.security.handler.RESTAuthenticationEntryPoint;
+import com.perso.ez.debate.security.handler.RESTAuthenticationFailureHandler;
+import com.perso.ez.debate.security.handler.RESTAuthenticationSuccessHandler;
+import com.perso.ez.debate.security.handler.RESTLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

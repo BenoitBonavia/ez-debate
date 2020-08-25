@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {LoginDTO} from "../../models/auth.models";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AuthenticationNavigationService} from "../authentication-navigation.service";
+import {AuthenticationNavigationService} from "../../service/authentication-navigation.service";
 
 @Component({
   selector: 'ed-login-form',

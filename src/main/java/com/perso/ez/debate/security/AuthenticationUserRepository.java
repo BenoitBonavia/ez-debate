@@ -1,4 +1,4 @@
-package com.perso.ez.debate.auth;
+package com.perso.ez.debate.security;
 
 import org.springframework.data.repository.CrudRepository;
 
