@@ -1,8 +1,6 @@
-package com.perso.ez.debate.tag;
+package com.perso.ez.debate.persistence;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.perso.ez.debate.data.DataEntity;
-import com.perso.ez.debate.tag.type.TagTypeEntity;
 import org.hibernate.search.annotations.Field;
 
 import javax.persistence.Column;

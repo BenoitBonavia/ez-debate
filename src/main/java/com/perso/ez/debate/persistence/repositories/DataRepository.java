@@ -1,5 +1,6 @@
-package com.perso.ez.debate.data;
+package com.perso.ez.debate.persistence.repositories;
 
+import com.perso.ez.debate.persistence.DataEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import org.springframework.data.domain.Pageable;

@@ -1,5 +1,6 @@
-package com.perso.ez.debate.tag;
+package com.perso.ez.debate.persistence.repositories;
 
+import com.perso.ez.debate.persistence.TagEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

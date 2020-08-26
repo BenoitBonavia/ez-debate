@@ -1,9 +1,6 @@
-package com.perso.ez.debate.data;
+package com.perso.ez.debate.persistence;
 
 
-import com.perso.ez.debate.data.source.SourceEntity;
-import com.perso.ez.debate.data.video.VideoEntity;
-import com.perso.ez.debate.tag.TagEntity;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.IndexedEmbedded;

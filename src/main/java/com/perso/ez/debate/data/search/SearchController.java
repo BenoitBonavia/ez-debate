@@ -1,7 +1,7 @@
 package com.perso.ez.debate.data.search;
 
-import com.perso.ez.debate.data.DataEntity;
-import com.perso.ez.debate.data.DataRepository;
+import com.perso.ez.debate.persistence.DataEntity;
+import com.perso.ez.debate.persistence.repositories.DataRepository;
 import org.apache.lucene.search.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,5 +1,7 @@
 package com.perso.ez.debate.security;
 
+import com.perso.ez.debate.persistence.UserEntity;
+import com.perso.ez.debate.persistence.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +18,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
-    private final AuthenticationUserRepository authenticationUserRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public CustomUserDetailsService(AuthenticationUserRepository authenticationUserRepository) {
-        this.authenticationUserRepository = authenticationUserRepository;
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) {
-        AuthenticationUserEntity registeredUser = authenticationUserRepository.findByEmailIgnoreCase(email);
+        UserEntity registeredUser = userRepository.findByEmailIgnoreCase(email);
         if (registeredUser == null) {
             logger.warn("Unknown user in DB for {}", email);
             return null;

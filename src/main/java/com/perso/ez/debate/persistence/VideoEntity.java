@@ -1,4 +1,4 @@
-package com.perso.ez.debate.data.video;
+package com.perso.ez.debate.persistence;
 
 import javax.persistence.*;
 

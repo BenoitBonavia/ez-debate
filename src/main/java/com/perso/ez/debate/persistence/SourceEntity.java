@@ -1,4 +1,4 @@
-package com.perso.ez.debate.data.source;
+package com.perso.ez.debate.persistence;
 
 import org.hibernate.validator.constraints.Length;
 

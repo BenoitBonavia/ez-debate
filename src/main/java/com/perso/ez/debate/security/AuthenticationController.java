@@ -1,5 +1,7 @@
 package com.perso.ez.debate.security;
 
+import com.perso.ez.debate.persistence.UserEntity;
+import com.perso.ez.debate.persistence.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,22 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
     @Autowired
-    private AuthenticationUserRepository authenticationUserRepository;
+    private UserRepository userRepository;
 
     @GetMapping
     @ResponseBody
-    public AuthenticationUserEntity getUser(Authentication authentication) {
+    public UserEntity getUser(Authentication authentication) {
         if (authentication == null) {
             return null;
         }
-        return authenticationUserRepository.findByEmailIgnoreCase(authentication.getName());
+        return userRepository.findByEmailIgnoreCase(authentication.getName());
     }
 
     @PostMapping("/register")
     @ResponseBody
-    AuthenticationUserEntity registerNewUser(@RequestBody AuthenticationUserEntity userEntity) {
+    UserEntity registerNewUser(@RequestBody UserEntity userEntity) {
         System.out.println(userEntity);
-        AuthenticationUserEntity newUser = new AuthenticationUserEntity();
+        UserEntity newUser = new UserEntity();
         newUser.setFirstName(userEntity.getFirstName());
         newUser.setLastName(userEntity.getLastName());
         newUser.setEmail(userEntity.getEmail());
@@ -38,6 +40,6 @@ public class AuthenticationController {
         newUser.setValid(true);
         newUser.setRole("ROLE_MEMBER");
         newUser.setPassword(new BCryptPasswordEncoder().encode(userEntity.getPassword()));
-        return authenticationUserRepository.save(newUser);
+        return userRepository.save(newUser);
     }
 }

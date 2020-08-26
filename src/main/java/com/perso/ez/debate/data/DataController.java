@@ -1,5 +1,7 @@
 package com.perso.ez.debate.data;
 
+import com.perso.ez.debate.persistence.DataEntity;
+import com.perso.ez.debate.persistence.repositories.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

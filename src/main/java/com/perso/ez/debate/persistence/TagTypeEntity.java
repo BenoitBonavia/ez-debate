@@ -1,4 +1,4 @@
-package com.perso.ez.debate.tag.type;
+package com.perso.ez.debate.persistence;
 
 import javax.persistence.*;
 

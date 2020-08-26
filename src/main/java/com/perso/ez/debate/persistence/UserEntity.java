@@ -1,6 +1,4 @@
-package com.perso.ez.debate.security;
-
-import com.perso.ez.debate.tag.TagEntity;
+package com.perso.ez.debate.persistence;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "user_account")
-public class AuthenticationUserEntity implements Serializable {
+public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,10 +1,11 @@
 package com.perso.ez.debate.tag;
 
-import com.perso.ez.debate.tag.type.TagTypeEntity;
-import com.perso.ez.debate.tag.type.TagTypeRepository;
+import com.perso.ez.debate.persistence.TagEntity;
+import com.perso.ez.debate.persistence.repositories.TagRepository;
+import com.perso.ez.debate.persistence.TagTypeEntity;
+import com.perso.ez.debate.persistence.repositories.TagTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;

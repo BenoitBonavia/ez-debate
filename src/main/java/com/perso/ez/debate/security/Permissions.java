@@ -1,7 +1,7 @@
 package com.perso.ez.debate.security;
 
-import com.perso.ez.debate.user.UserEntity;
-import com.perso.ez.debate.user.UserRepository;
+import com.perso.ez.debate.persistence.UserEntity;
+import com.perso.ez.debate.persistence.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -18,7 +18,7 @@ public class Permissions {
     public boolean isCurrentUser(Authentication authentication, Long id) {
         User principal = (User)authentication.getPrincipal();
         Optional<UserEntity> paramUser = userRepository.findById(id);
-        Optional<UserEntity> principalUser = userRepository.findByEmail(principal.getUsername());
-        return paramUser.isPresent() && principalUser.isPresent() && paramUser.get().getId().equals(principalUser.get().getId());
+        UserEntity principalUser = userRepository.findByEmailIgnoreCase(principal.getUsername());
+        return paramUser.isPresent() && paramUser.get().getId().equals(principalUser.getId());
     }
 }

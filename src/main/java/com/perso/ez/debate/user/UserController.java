@@ -1,6 +1,8 @@
 package com.perso.ez.debate.user;
 
-import com.perso.ez.debate.tag.TagEntity;
+import com.perso.ez.debate.persistence.UserEntity;
+import com.perso.ez.debate.persistence.TagEntity;
+import com.perso.ez.debate.persistence.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
