@@ -78,6 +78,7 @@ import {UsersAdministrationComponent} from "./users-administration/users-adminis
 import {UserService} from "./service/user.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {LoadMoreButtonComponent} from "./common/load-more-button/load-more-button.component";
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
     SettingsComponent,
     SignupComponent,
     SignupFormComponent,
-    UsersAdministrationComponent
+    UsersAdministrationComponent,
+    LoadMoreButtonComponent
   ],
   imports: [
     HttpClientModule,

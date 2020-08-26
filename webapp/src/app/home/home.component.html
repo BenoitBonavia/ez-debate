@@ -1,12 +1,13 @@
 <div class="container" *ngIf="this.currentUser && this.currentUser.prefHome && this.currentUser.prefHome.length > 0">
   <h1 class="text-align-center margin-top-40 font-weight-bold">Actualité</h1>
-  <mat-tab-group>
+  <mat-tab-group (selectedTabChange)="changeCurrentTag($event)">
     <mat-tab [label]="this.currentUser.prefHome[i].tag" *ngFor="let data of this.currentUser.prefHome; let i = index;">
       <div class="padding-left-5 padding-right-5 padding-top-15">
         <ed-data-listing [datas]="datas[i]"></ed-data-listing>
       </div>
     </mat-tab>
   </mat-tab-group>
+  <ed-load-more-button [displayLoading]="this.loading" (clickButton)="extendData()"></ed-load-more-button>
 </div>
 
 <div class="container" *ngIf="!this.currentUser.prefHome || this.currentUser.prefHome.length === 0">

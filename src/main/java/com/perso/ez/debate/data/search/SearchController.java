@@ -99,6 +99,7 @@ public class SearchController {
 
 
         List<DataEntity> results = jpaQuery.getResultList();
+        session.close();
         return results;
     }
 }
