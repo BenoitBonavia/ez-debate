@@ -1,5 +1,7 @@
 package com.perso.ez.debate.icon;
 
+import com.perso.ez.debate.persistence.IconEntity;
+import com.perso.ez.debate.persistence.repositories.IconRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

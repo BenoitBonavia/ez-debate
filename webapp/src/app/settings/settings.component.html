@@ -19,11 +19,21 @@
           </div>
         </mat-list-item>
         <mat-divider></mat-divider>
-<!--        <mat-list-item class="padding-15">-->
-<!--          <div mat-line>-->
-<!--            <h2 class="font-weight-bold">Homepage</h2>-->
-<!--          </div>-->
-<!--        </mat-list-item>-->
+        <mat-list-item class="padding-15">
+          <div mat-line>
+            <h2 class="font-weight-bold">Homepage</h2>
+          </div>
+          <div>
+            <button mat-stroked-button (click)="this.editHomePref = !this.editHomePref" class="h48px"><mat-icon>edit</mat-icon></button>
+          </div>
+        </mat-list-item>
+        <mat-expansion-panel [(expanded)]="editHomePref">
+          <ed-edit-tags [(tags)]="tags"></ed-edit-tags>
+          <div fxLayout="row">
+            <div class="fill-remaining-space"></div>
+            <button mat-raised-button color="primary" (click)="saveHomePref()">Save</button>
+          </div>
+        </mat-expansion-panel>
       </mat-list>
     </div>
   </div>

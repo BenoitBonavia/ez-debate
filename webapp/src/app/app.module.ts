@@ -51,19 +51,18 @@ import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.
 import {TagsComponent} from "./data/tags/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-import {AuthService} from "./service/auth.service";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
 import {HorizontalCardDataComponent} from "./data/horizontal-card/horizontal-card-data.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatListModule} from "@angular/material/list";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {AuthenticationService} from "./auth/authentication.service";
-import {AuthenticatedUserService} from "./auth/authenticated-user.service";
+import {AuthenticationService} from "./service/authentication.service";
+import {AuthenticatedUserService} from "./service/authenticated-user.service";
 import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
 import {LoginFormComponent} from "./auth/login-form/login-form.component";
 import {FloatingButtonsComponent} from "./floating-buttons/floating-buttons.component";
-import {AuthenticationNavigationService} from "./auth/authentication-navigation.service";
+import {AuthenticationNavigationService} from "./service/authentication-navigation.service";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MobileMenuLinksComponent} from "./header/mobile-menu-links/mobile-menu-links.component";
@@ -76,8 +75,10 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {SignupFormComponent} from "./auth/signup-form/signup-form.component";
 import {UsersAdministrationComponent} from "./users-administration/users-administration.component";
-import {UsersService} from "./service/users.service";
+import {UserService} from "./service/user.service";
 import {MatTableModule} from "@angular/material/table";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {LoadMoreButtonComponent} from "./common/load-more-button/load-more-button.component";
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import {MatTableModule} from "@angular/material/table";
     SettingsComponent,
     SignupComponent,
     SignupFormComponent,
-    UsersAdministrationComponent
+    UsersAdministrationComponent,
+    LoadMoreButtonComponent
   ],
   imports: [
     HttpClientModule,
@@ -150,6 +152,7 @@ import {MatTableModule} from "@angular/material/table";
     MatSlideToggleModule,
     HammerModule,
     MatTableModule,
+    MatExpansionModule,
   ],
   providers: [
     DataService,
@@ -157,8 +160,7 @@ import {MatTableModule} from "@angular/material/table";
     SearchService,
     MatSnackBar,
     TagService,
-    AuthService,
-    UsersService,
+    UserService,
     FloatingButtonsService,
     AuthenticationService,
     AuthenticationNavigationService,

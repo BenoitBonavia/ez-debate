@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {AuthenticatedUserService} from "../auth/authenticated-user.service";
+import {AuthenticatedUserService} from "../service/authenticated-user.service";
 import {UserModel} from "../models/user.model";
 import {catchError, map} from "rxjs/operators";
 import {of} from "rxjs";

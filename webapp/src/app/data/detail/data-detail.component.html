@@ -31,7 +31,9 @@
   <div *ngIf="this.editMod === true">
     <div fxLayout="row">
       <div fxFlex="100" class="padding-top-15 padding-bottom-15">
-        <ed-edit-tags [(tags)]="data.tags"></ed-edit-tags>
+        <mat-card>
+          <ed-edit-tags [(tags)]="data.tags" [createNewTags]="true"></ed-edit-tags>
+        </mat-card>
       </div>
     </div>
   </div>

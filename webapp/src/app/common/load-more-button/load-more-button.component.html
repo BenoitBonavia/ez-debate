@@ -1,0 +1,9 @@
+<div class="text-align-center">
+  <button mat-mini-fab color="primary" class="load-more-button" *ngIf="!displayLoading && displayButton" (click)="clickButton.emit()">
+    Load More
+  </button>
+  <div *ngIf="displayLoading">
+    <mat-spinner [diameter]="40" class="display-inline-block"></mat-spinner>
+  </div>
+</div>
+

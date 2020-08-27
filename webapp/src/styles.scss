@@ -310,6 +310,10 @@ a.no-style {
   width: 100%;
 }
 
+.h48px {
+  height: 48px;
+}
+
 .h100 {
   height: 100%;
 }
@@ -426,7 +430,7 @@ a.no-style {
   }
 }
 
-/* buttons animation -------------------------------------------------------------------------------------------------------*/
+/* animation -------------------------------------------------------------------------------------------------------*/
 
 .mat-fab.animated {
   width: 56px !important;
@@ -481,4 +485,14 @@ a.no-style {
   visibility: visible !important;
   margin-left: 10px !important;
   transition: opacity .5s linear, margin-left .5s !important;
+}
+
+.entrance-animation-bounce-in {
+  animation-duration: 1s;
+  animation-name: fadein;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

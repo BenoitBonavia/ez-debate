@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {Observable, of} from "rxjs";
-import {AuthenticatedUserService} from "./authenticated-user.service";
+import {AuthenticatedUserService} from "../service/authenticated-user.service";
 import {UserModel} from "../models/user.model";
 import {catchError, filter, map} from "rxjs/operators";
-import {AuthenticationNavigationService} from "./authentication-navigation.service";
+import {AuthenticationNavigationService} from "../service/authentication-navigation.service";
 
 @Injectable()
 export class BlockUnauthenticatedUserGuard implements CanActivateChild {

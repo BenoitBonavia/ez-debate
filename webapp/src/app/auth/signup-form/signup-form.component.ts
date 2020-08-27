@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {RegisterDTO} from "../../models/auth.models";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthenticationService} from "../authentication.service";
+import {AuthenticationService} from "../../service/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 

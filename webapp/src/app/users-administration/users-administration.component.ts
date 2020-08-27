@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {UsersService} from "../service/users.service";
+import {UserService} from "../service/user.service";
 import {UserModel} from "../models/user.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -9,7 +9,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class UsersAdministrationComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private snackBar: MatSnackBar) {
+  constructor(private usersService: UserService, private snackBar: MatSnackBar) {
 
   }
 
