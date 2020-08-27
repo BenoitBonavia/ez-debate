@@ -1,5 +1,5 @@
 <div class="text-align-center">
-  <button mat-mini-fab color="primary" class="load-more-button" *ngIf="!displayLoading" (click)="clickButton.emit()">
+  <button mat-mini-fab color="primary" class="load-more-button" *ngIf="!displayLoading && displayButton" (click)="clickButton.emit()">
     Load More
   </button>
   <div *ngIf="displayLoading">

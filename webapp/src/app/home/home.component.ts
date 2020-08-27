@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   currentUser: UserModel;
   datas: DataModel[][] = [];
   pages: number[] = [];
+  over: boolean[] = [];
 
   currentTag: number = 0;
 
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
       this.searchService.searchByTag(this.currentUser.prefHome[i].tag, 0).subscribe(response => {
         this.datas[i] = response;
       })
+      this.over[i] = false;
     }
   }
 
@@ -48,6 +50,9 @@ export class HomeComponent implements OnInit {
       if (response.length > 0) {
         this.addResults(response, 0, this.currentTag);
         this.pages[this.currentTag]++;
+      }
+      if (response.length < 3) {
+        this.over[this.currentTag] = true;
       }
       this.loading = false;
     })

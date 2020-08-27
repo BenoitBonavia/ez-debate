@@ -8,6 +8,7 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 export class LoadMoreButtonComponent {
 
   @Input() displayLoading: boolean;
+  @Input() displayButton: boolean = true;
   @Output() clickButton = new EventEmitter()
 
 }
