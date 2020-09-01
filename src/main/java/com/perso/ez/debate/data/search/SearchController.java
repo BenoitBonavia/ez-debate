@@ -97,13 +97,13 @@ public class SearchController {
         Query query = qb.keyword().onField("tags.tag").matching(tags).createQuery();
 
         FullTextQuery jpaQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
-        Sort sort = new Sort(SortField.FIELD_SCORE, new SortField("date", SortField.Type.STRING, true));
+        Sort sort = qb.sort().byField("date").desc().createSort();
         jpaQuery.setSort(sort);
         jpaQuery.setFirstResult(3 * page);
         jpaQuery.setMaxResults(3);
 
 
-        List<DataEntity> results = jpaQuery.getResultList();
+        List<DataEntity> results = jpaQuery.list();
         results.forEach(result -> {
             System.out.println(result.getTitle());
         });
