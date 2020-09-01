@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - ezdebate@localhost" uuid="cbf3c031-b3e6-4166-ab3f-70985a12698e">
+    <data-source source="LOCAL" name="ez" uuid="14a2b53a-d91f-4790-9341-9649e56cd5f9">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/ezdebate</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/ez_debate</jdbc-url>
       <driver-properties>
+        <property name="useOnlyServerErrorMessages" value="TRUE" />
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
     </data-source>

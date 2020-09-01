@@ -1,12 +1,11 @@
 package com.perso.ez.debate.persistence;
 
 
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -45,6 +44,9 @@ public class DataEntity {
     @Column(name = "icon")
     private String icon;
 
+    @Field
+    @SortableField
+    @DateBridge(resolution = Resolution.DAY)
     @Column(name = "date")
     private LocalDateTime date = LocalDateTime.now();
 

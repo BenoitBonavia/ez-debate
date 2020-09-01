@@ -1,8 +1,11 @@
 package com.perso.ez.debate.data.search;
 
+import com.mysql.cj.xdevapi.Type;
 import com.perso.ez.debate.persistence.DataEntity;
 import com.perso.ez.debate.persistence.repositories.DataRepository;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.Sort;
+import org.apache.lucene.search.SortField;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.search.FullTextQuery;
@@ -94,11 +97,16 @@ public class SearchController {
         Query query = qb.keyword().onField("tags.tag").matching(tags).createQuery();
 
         FullTextQuery jpaQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
+        Sort sort = new Sort(SortField.FIELD_SCORE, new SortField("date", SortField.Type.STRING, true));
+        jpaQuery.setSort(sort);
         jpaQuery.setFirstResult(3 * page);
         jpaQuery.setMaxResults(3);
 
 
         List<DataEntity> results = jpaQuery.getResultList();
+        results.forEach(result -> {
+            System.out.println(result.getTitle());
+        });
         session.close();
         return results;
     }
