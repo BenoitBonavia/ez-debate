@@ -52,20 +52,6 @@ public class SearchController {
         QueryBuilder qb = fullTextSession.getSearchFactory()
                 .buildQueryBuilder().forEntity(DataEntity.class).get();
 
-//        Query query = qb
-//                .bool()
-//                .must(qb.keyword()
-//                        .fuzzy()
-//                        .withEditDistanceUpTo(this.getFuzzySize(keyword))
-//                        .withPrefixLength(0)
-//                        .onField("tags.tag").boostedTo(10f)
-//                        .andField("title").boostedTo(5f)
-//                        .andField("subtitle").boostedTo(3f)
-//                        .andField("text").boostedTo(1f)
-//                        .matching(keyword)
-//                        .createQuery())
-//                .createQuery();
-
         Query query = qb
                 .keyword()
                 .fuzzy()
@@ -99,8 +85,8 @@ public class SearchController {
         FullTextQuery jpaQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
         Sort sort = qb.sort().byField("date").desc().createSort();
         jpaQuery.setSort(sort);
-        jpaQuery.setFirstResult(3 * page);
-        jpaQuery.setMaxResults(3);
+        jpaQuery.setFirstResult(15 * page);
+        jpaQuery.setMaxResults(15);
 
 
         List<DataEntity> results = jpaQuery.list();

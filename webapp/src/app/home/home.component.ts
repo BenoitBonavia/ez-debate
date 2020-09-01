@@ -35,6 +35,9 @@ export class HomeComponent implements OnInit {
       this.pages[i] = 1;
       this.searchService.searchByTag(this.currentUser.prefHome[i].tag, 0).subscribe(response => {
         this.datas[i] = response;
+        if (response.length < 15) {
+          this.over[this.currentTag] = true;
+        }
       })
       this.over[i] = false;
     }
@@ -51,7 +54,7 @@ export class HomeComponent implements OnInit {
         this.addResults(response, 0, this.currentTag);
         this.pages[this.currentTag]++;
       }
-      if (response.length < 3) {
+      if (response.length < 15) {
         this.over[this.currentTag] = true;
       }
       this.loading = false;

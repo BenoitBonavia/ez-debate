@@ -35,13 +35,15 @@ public class DataController {
     public @ResponseBody
     DataEntity saveData(@RequestBody DataEntity data) {
         data.getSources().forEach(sourceEntity -> {
-            String link = "http://api.linkpreview.net/?key=5da039a275619ab6fe89d793b5a3c4153692779cb0680&q=" + sourceEntity.getLink();
-            RestTemplate restTemplate = new RestTemplate();
-            LinkPreview linkPreview = restTemplate.getForObject(link, LinkPreview.class);
-            if (linkPreview != null) {
-                sourceEntity.setmDescription(linkPreview.getDescription());
-                sourceEntity.setmImage(linkPreview.getImage());
-                sourceEntity.setmTitle(linkPreview.getTitle());
+            if (sourceEntity.getmTitle().isEmpty() && sourceEntity.getmDescription().isEmpty() && sourceEntity.getmImage().isEmpty()) {
+                String link = "http://api.linkpreview.net/?key=5da039a275619ab6fe89d793b5a3c4153692779cb0680&q=" + sourceEntity.getLink();
+                RestTemplate restTemplate = new RestTemplate();
+                LinkPreview linkPreview = restTemplate.getForObject(link, LinkPreview.class);
+                if (linkPreview != null) {
+                    sourceEntity.setmDescription(linkPreview.getDescription());
+                    sourceEntity.setmImage(linkPreview.getImage());
+                    sourceEntity.setmTitle(linkPreview.getTitle());
+                }
             }
         });
         return dataRepository.save(data);
