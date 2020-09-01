@@ -47,7 +47,7 @@
         <ng-container matColumnDef="ban">
           <mat-header-cell *matHeaderCellDef> Ban </mat-header-cell>
           <mat-cell *matCellDef="let user">
-            <mat-slide-toggle [(ngModel)]="user.ban" color="primary" (change)="saveUser(user)"></mat-slide-toggle>
+            <mat-slide-toggle [(ngModel)]="user.ban" color="primary" (change)="saveUser(user)" color="warn"></mat-slide-toggle>
           </mat-cell>
         </ng-container>
 
