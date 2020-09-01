@@ -104,9 +104,6 @@ public class SearchController {
 
 
         List<DataEntity> results = jpaQuery.list();
-        results.forEach(result -> {
-            System.out.println(result.getTitle());
-        });
         session.close();
         return results;
     }
