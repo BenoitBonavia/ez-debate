@@ -6,4 +6,5 @@ export class SourceModel {
   mDescription: string;
   mImage: string;
   loaded;
+  archives: any;
 }

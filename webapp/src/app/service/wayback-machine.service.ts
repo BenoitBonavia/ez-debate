@@ -12,9 +12,7 @@ export class WaybackMachineService {
     window.open('https://web.archive.org/save' + url);
   }
 
-  getLastLink(url) {
-    this.httpClient.get('http://archive.org/wayback/available?url=' + url).subscribe(response => {
-      console.log(response);
-    })
+  getLinks(url) {
+    return this.httpClient.get('/wayback/available?url=' + url);
   }
 }

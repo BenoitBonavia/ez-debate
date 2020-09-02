@@ -81,6 +81,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {LoadMoreButtonComponent} from "./common/load-more-button/load-more-button.component";
 import {PaginationService} from "./service/pagination.service";
 import {WaybackMachineService} from "./service/wayback-machine.service";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -155,6 +156,7 @@ import {WaybackMachineService} from "./service/wayback-machine.service";
     HammerModule,
     MatTableModule,
     MatExpansionModule,
+    MatTooltipModule,
   ],
   providers: [
     DataService,

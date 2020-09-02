@@ -18,6 +18,13 @@
   <div fxLayout="row">
     <div class="fill-remaining-space"></div>
     <div>
+      <button mat-stroked-button color="warn" *ngIf="sources[i].archives && !sources[i].archives.closest" class="margin-right-15">
+        No backup for this page
+      </button>
+      <button mat-raised-button color="primary" *ngIf="sources[i].archives && sources[i].archives.closest" matTooltip="Last save of this page" class="margin-right-15" (click)="goToLink(sources[i]?.archives?.closest?.url)">
+<!--        {{ getDateByTimestamp(sources[i]?.archives?.closest?.timestamp) | date:'dd LLLL yyyy':'UTC':"fr" }}-->
+        {{ getDateByTimestamp(sources[i]?.archives?.closest?.timestamp) | date:'dd LLLL yyyy':'UTC' }}
+      </button>
       <button mat-stroked-button [disabled]="!this.sources[i].link" (click)="saveOnInternetArchive(i)"><mat-icon>account_balance</mat-icon> Save in archives</button>
     </div>
   </div>

@@ -1,21 +1,25 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {SourceModel} from "../../../models/source.model";
-import {getLinkPreview} from 'link-preview-js';
-import {fromPromise} from "rxjs/internal-compatibility";
 import {HttpClient} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {WaybackMachineService} from "../../../service/wayback-machine.service";
+// import localeFr from '@angular/common/locales/fr';
+// import {registerLocaleData} from "@angular/common";
+// registerLocaleData(localeFr, 'fr');
 
 @Component({
   selector: 'ed-edit-sources',
   templateUrl: 'edit-sources.component.html'
 })
-export class EditSourcesComponent {
+export class EditSourcesComponent implements OnInit {
 
   @Input() sources: SourceModel[];
   @Output() sourcesChange = new EventEmitter<SourceModel[]>();
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar, private waybackMachineService: WaybackMachineService) {
+  }
+
+  ngOnInit() {
   }
 
   editTabOnType(index) {
@@ -44,6 +48,9 @@ export class EditSourcesComponent {
       this.sources[id].mDescription = response['description'];
       this.sources[id].mImage = response['image'];
       this.sources[id].loaded = true;
+      this.waybackMachineService.getLinks(this.sources[id].link).subscribe(response => {
+        this.sources[id].archives = response['archived_snapshots'];
+      });
     }, error => {
       this.sources.splice(id, 1);
       this.snackBar.open('This link isn\'t authorized', 'ok', {
@@ -53,7 +60,20 @@ export class EditSourcesComponent {
   }
 
   saveOnInternetArchive(sourceId: number) {
-    // this.waybackMachineService.save(this.sources[sourceId].link);
-    this.waybackMachineService.getLastLink(this.sources[sourceId].link);
+    this.waybackMachineService.save(this.sources[sourceId].link);
+    // this.waybackMachineService.getLinks(this.sources[sourceId].link);
+  }
+
+  getDateByTimestamp(timestamp) {
+    let date = new Date();
+    if (timestamp) {
+      console.log(timestamp.substring(6, 8) + '/' + timestamp.substring(4, 6) + '/' + timestamp.substring(0, 4));
+      date.setFullYear(timestamp.substring(0, 4), timestamp.substring(4, 6) - 1, timestamp.substring(6, 8))
+    }
+    return date;
+  }
+
+  goToLink(url) {
+    window.open(url);
   }
 }
