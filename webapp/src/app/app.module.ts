@@ -80,6 +80,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {LoadMoreButtonComponent} from "./common/load-more-button/load-more-button.component";
 import {PaginationService} from "./service/pagination.service";
+import {WaybackMachineService} from "./service/wayback-machine.service";
 
 @NgModule({
   declarations: [
@@ -169,6 +170,7 @@ import {PaginationService} from "./service/pagination.service";
     BlockUnauthenticatedUserGuard,
     ThemeService,
     PaginationService,
+    WaybackMachineService,
     Overlay
   ],
   bootstrap: [AppComponent]

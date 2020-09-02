@@ -1,17 +1,25 @@
-<mat-card fxLayout.gt-md="row" fxLayout.lt-md="column" *ngFor="let source of this.sources; let i = index;" class="margin-bottom-15">
-  <div fxFlex="45%" class="padding-right-15">
-    <mat-form-field class="display-block">
-      <input matInput placeholder="Title" [(ngModel)]="source.title" (keyup)="editTabOnType(i)">
-    </mat-form-field>
+<mat-card *ngFor="let source of this.sources; let i = index;" class="margin-bottom-15">
+  <div fxLayout.gt-md="row" fxLayout.lt-md="column" >
+    <div fxFlex="45" class="padding-right-15">
+      <mat-form-field class="display-block">
+        <input matInput placeholder="Title" [(ngModel)]="source.title" (keyup)="editTabOnType(i)">
+      </mat-form-field>
+    </div>
+    <div fxFlex="55" class="padding-right-15 position-relative">
+      <mat-form-field class="display-block">
+        <input matInput placeholder="Link" [(ngModel)]="source.link" (keyup)="editTabOnType(i)" (ngModelChange)="getMetaData(i, $event)" [disabled]="this.sources[i].loaded == false">
+      </mat-form-field>
+      <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
+              *ngIf="source.link" (click)="removeSource(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </div>
-  <div fxFlex="55%" class="padding-right-15 position-relative">
-    <mat-form-field class="display-block">
-      <input matInput placeholder="Link" [(ngModel)]="source.link" (keyup)="editTabOnType(i)" (ngModelChange)="getMetaData(i, $event)" [disabled]="this.sources[i].loaded == false">
-    </mat-form-field>
-    <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
-            *ngIf="source.link" (click)="removeSource(i)">
-      <mat-icon>delete</mat-icon>
-    </button>
+  <div fxLayout="row">
+    <div class="fill-remaining-space"></div>
+    <div>
+      <button mat-stroked-button [disabled]="!this.sources[i].link" (click)="saveOnInternetArchive(i)"><mat-icon>account_balance</mat-icon> Save in archives</button>
+    </div>
   </div>
 </mat-card>
 <mat-card fxLayout="row" class="margin-bottom-15 pointer" style="justify-content: center" (click)="addNewSource()">

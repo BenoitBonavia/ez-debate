@@ -4,6 +4,7 @@ import {getLinkPreview} from 'link-preview-js';
 import {fromPromise} from "rxjs/internal-compatibility";
 import {HttpClient} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {WaybackMachineService} from "../../../service/wayback-machine.service";
 
 @Component({
   selector: 'ed-edit-sources',
@@ -14,7 +15,7 @@ export class EditSourcesComponent {
   @Input() sources: SourceModel[];
   @Output() sourcesChange = new EventEmitter<SourceModel[]>();
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
+  constructor(private http: HttpClient, private snackBar: MatSnackBar, private waybackMachineService: WaybackMachineService) {
   }
 
   editTabOnType(index) {
@@ -38,7 +39,6 @@ export class EditSourcesComponent {
     if (event) {
       this.sources[id].loaded = false;
     }
-    console.log(this.sources[id]);
     this.http.get('http://api.linkpreview.net/?key=5da039a275619ab6fe89d793b5a3c4153692779cb0680&q=' + event).subscribe(response => {
       this.sources[id].mTitle = response['title'];
       this.sources[id].mDescription = response['description'];
@@ -50,5 +50,10 @@ export class EditSourcesComponent {
         duration: 2000,
       });
     });
+  }
+
+  saveOnInternetArchive(sourceId: number) {
+    // this.waybackMachineService.save(this.sources[sourceId].link);
+    this.waybackMachineService.getLastLink(this.sources[sourceId].link);
   }
 }

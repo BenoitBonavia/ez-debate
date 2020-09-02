@@ -13,7 +13,7 @@
           </div>
         </mat-step>
 
-        <mat-step label="Text" extclass="padding-top-15">
+        <mat-step label="Text" class="padding-top-15">
           <mat-card>
             <mat-form-field class="example-full-width display-block">
               <textarea matInput placeholder="Main content" rows="15" [(ngModel)]="newData.text"></textarea>
@@ -52,7 +52,7 @@
           </div>
           <div fxLayout="row">
             <div class="fill-remaining-space"></div>
-            <button mat-button color="primary" type="subsribe" (click)="createData()">Validate</button>
+            <button (click)="createData()" color="primary" mat-button type="subsribe">Validate</button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
