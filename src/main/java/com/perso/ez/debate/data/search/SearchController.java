@@ -36,13 +36,15 @@ public class SearchController {
         return dataRepository.findAll();
     }
 
+    private final int NB_POST_PER_PAGE = 15;
+
     // On autorise 1 caractère de différence avec l'occurence et 2 si la recherche est plus longue que 4 char
     private int getFuzzySize(String text) {
         return text.length() > 4 ? 2 : 1;
     }
 
-    @GetMapping("/keyword={keyword}")
-    public List<DataEntity> searchData(@PathVariable String keyword) {
+    @GetMapping("/keyword={keyword}&page={page}")
+    public List<DataEntity> searchData(@PathVariable String keyword, @PathVariable int page) {
         if (keyword.equals("")) {
             return null;
         }
@@ -65,9 +67,10 @@ public class SearchController {
                 .createQuery();
 
         FullTextQuery hibQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
+        hibQuery.setFirstResult(NB_POST_PER_PAGE * page);
+        hibQuery.setMaxResults(NB_POST_PER_PAGE);
 
         List<DataEntity> result = hibQuery.list();
-
         session.close();
         return result;
     }
@@ -85,8 +88,8 @@ public class SearchController {
         FullTextQuery jpaQuery = fullTextSession.createFullTextQuery(query, DataEntity.class);
         Sort sort = qb.sort().byField("date").desc().createSort();
         jpaQuery.setSort(sort);
-        jpaQuery.setFirstResult(15 * page);
-        jpaQuery.setMaxResults(15);
+        jpaQuery.setFirstResult(NB_POST_PER_PAGE * page);
+        jpaQuery.setMaxResults(NB_POST_PER_PAGE);
 
 
         List<DataEntity> results = jpaQuery.list();

@@ -79,6 +79,7 @@ import {UserService} from "./service/user.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {LoadMoreButtonComponent} from "./common/load-more-button/load-more-button.component";
+import {PaginationService} from "./service/pagination.service";
 
 @NgModule({
   declarations: [
@@ -167,6 +168,7 @@ import {LoadMoreButtonComponent} from "./common/load-more-button/load-more-butto
     AuthenticatedUserService,
     BlockUnauthenticatedUserGuard,
     ThemeService,
+    PaginationService,
     Overlay
   ],
   bootstrap: [AppComponent]

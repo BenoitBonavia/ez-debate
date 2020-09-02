@@ -17,6 +17,6 @@
   <div fxLayout="row">
 
   </div>
-<!--  <ed-masonry-data-listing [datas]="this.datas" *ngIf="inited === true"></ed-masonry-data-listing>-->
   <ed-data-listing [datas]="this.datas"></ed-data-listing>
+  <ed-load-more-button [displayLoading]="this.loading" (clickButton)="extendData()" [displayButton]="!this.over"></ed-load-more-button>
 </div>

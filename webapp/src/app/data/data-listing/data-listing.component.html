@@ -1,4 +1,13 @@
-<div fxLayout="row" *ngFor="let data of datas" class="margin-top-7 margin-bottom-7">
-  <ed-horizontal-card [data]="data" class="w100 entrance-animation-bounce-in"></ed-horizontal-card>
+<div *ngFor="let data of datas; let index = index" class="margin-top-7 margin-bottom-7">
+  <div fxLayout="row" class="margin-top-15 margin-bottom-15" *ngIf="index !== 0 && index % getPostPerPage() === 0">
+    <div fxFlex="100">
+      <mat-divider color="primary"></mat-divider>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="100">
+      <ed-horizontal-card [data]="data" class="w100 entrance-animation-bounce-in"></ed-horizontal-card>
+    </div>
+  </div>
 </div>
 

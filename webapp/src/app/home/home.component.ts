@@ -6,6 +6,7 @@ import {TagService} from "../service/tag.service";
 import {AuthenticatedUserService} from "../service/authenticated-user.service";
 import {UserModel} from "../models/user.model";
 import {delay} from "rxjs/operators";
+import {PaginationService} from "../service/pagination.service";
 
 @Component({
   selector: 'ed-home',
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   loading = false;
 
-  constructor(private dataService: DataService, private searchService: SearchService, private tagService: TagService, private authenticatedUserService: AuthenticatedUserService) {
+  constructor(private dataService: DataService, private searchService: SearchService, private tagService: TagService, private authenticatedUserService: AuthenticatedUserService, private paginationService: PaginationService) {
 
   }
 
@@ -33,13 +34,13 @@ export class HomeComponent implements OnInit {
     });
     for (let i = 0; i < this.currentUser.prefHome.length; i++) {
       this.pages[i] = 1;
+      this.over[i] = false;
       this.searchService.searchByTag(this.currentUser.prefHome[i].tag, 0).subscribe(response => {
         this.datas[i] = response;
-        if (response.length < 15) {
-          this.over[this.currentTag] = true;
+        if (response.length < this.paginationService.getPostPerPage()) {
+          this.over[i] = true;
         }
-      })
-      this.over[i] = false;
+      });
     }
   }
 
@@ -54,11 +55,11 @@ export class HomeComponent implements OnInit {
         this.addResults(response, 0, this.currentTag);
         this.pages[this.currentTag]++;
       }
-      if (response.length < 15) {
+      if (response.length < this.paginationService.getPostPerPage()) {
         this.over[this.currentTag] = true;
       }
       this.loading = false;
-    })
+    });
   }
 
   addResults(response, index, currentTag) {
