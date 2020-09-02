@@ -70,7 +70,7 @@
           "options": {
             "browserTarget": "webapp:build",
             "port": 3100,
-            "proxyConfig": "src/proxy.conf.js"
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
