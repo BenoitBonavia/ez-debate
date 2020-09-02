@@ -62,8 +62,7 @@
                   "maximumError": "10kb"
                 }
               ]
-            },
-            "proxyConfig": "src/proxy-prod.conf.json"
+            }
           }
         },
         "serve": {
