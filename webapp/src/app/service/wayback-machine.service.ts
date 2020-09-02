@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class WaybackMachineService {
@@ -13,6 +13,6 @@ export class WaybackMachineService {
   }
 
   getLinks(url) {
-    return this.httpClient.get('http://archive.org/wayback/available?url=' + url);
+    return this.httpClient.get('/waybackmachine/wayback/available?url==' + url);
   }
 }
