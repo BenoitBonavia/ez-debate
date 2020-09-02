@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "buildapp": "ng build --prod --proxy-conf src/proxy-prod.conf.json",
+    "buildapp": "ng build --prod",
     "copy": "rm -rf ../src/main/resources/static && cp -r dist/webapp ../src/main/resources/static",
     "deployapp": "npm run buildapp && npm run copy"
   },
