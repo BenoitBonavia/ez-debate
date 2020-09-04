@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 @Component({

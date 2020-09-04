@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {SourceModel} from "../../../models/source.model";
+import {SourceModel} from "../../models/source.model";
 
 @Component({
   selector: 'ed-card-source',

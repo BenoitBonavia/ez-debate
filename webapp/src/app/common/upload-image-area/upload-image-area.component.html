@@ -1,0 +1,15 @@
+<div fxLayout="row">
+  <div class="dropzone margin-bottom-15" dropZone (fileDropped)="addFilesInToUploadFiles($event)">
+    <input type="file" #fileDropRef id="fileDropRef" multiple/>
+    <mat-icon class="font-size-35">backup</mat-icon>
+    <h3>Drag and drop file here <br> or </h3>
+    <button mat-raised-button color="primary">Browse for file</button>
+  </div>
+</div>
+<div *ngFor="let file of toUploadFiles" fxLayout="row" class="margin-bottom-15">
+  <mat-card fxFlex="100">
+    <mat-icon class="font-size-35 margin-right-15">photo</mat-icon>
+    <span class="text-vertical-align-35">{{ file.name }}</span>
+    <mat-spinner [diameter]="35" class="display-inline-block float-right margin-right-15" color="accent"></mat-spinner>
+  </mat-card>
+</div>

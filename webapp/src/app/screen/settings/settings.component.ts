@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {ThemeService} from "../theme.service";
-import {TagModel} from "../models/tag.model";
-import {UserService} from "../service/user.service";
+import {ThemeService} from "../../theme.service";
+import {TagModel} from "../../models/tag.model";
+import {UserService} from "../../service/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AuthenticatedUserService} from "../service/authenticated-user.service";
+import {AuthenticatedUserService} from "../../service/authenticated-user.service";
 
 @Component({
   selector: 'ed-settings',

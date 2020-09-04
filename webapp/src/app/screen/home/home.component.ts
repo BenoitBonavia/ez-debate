@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core";
-import {DataModel} from "../models/data.model";
-import {DataService} from "../service/data.service";
-import {SearchService} from "../service/search.service";
-import {TagService} from "../service/tag.service";
-import {AuthenticatedUserService} from "../service/authenticated-user.service";
-import {UserModel} from "../models/user.model";
+import {DataModel} from "../../models/data.model";
+import {DataService} from "../../service/data.service";
+import {SearchService} from "../../service/search.service";
+import {TagService} from "../../service/tag.service";
+import {AuthenticatedUserService} from "../../service/authenticated-user.service";
+import {UserModel} from "../../models/user.model";
 import {delay} from "rxjs/operators";
-import {PaginationService} from "../service/pagination.service";
+import {PaginationService} from "../../service/pagination.service";
 
 @Component({
   selector: 'ed-home',

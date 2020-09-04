@@ -2,7 +2,7 @@ import {Component, ElementRef, ViewChild} from "@angular/core";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {DataService} from "../../service/data.service";
 import {DataModel} from "../../models/data.model";
-import {FloatingButtonsService} from "../../floating-buttons/floating-buttons.service";
+import {FloatingButtonsService} from "../../service/floating-buttons.service";
 
 @Component({
   selector: 'detail',

@@ -9,19 +9,18 @@ import {HeaderComponent} from "./header/header.component";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
-import {HomeComponent} from "./home/home.component";
+import {HomeComponent} from "./screen/home/home.component";
 import {MatCardModule} from "@angular/material/card";
 import {DataListingComponent} from "./data/data-listing/data-listing.component";
-import {CreateDataComponent} from "./data/create/create-data.component";
+import {CreateDataComponent} from "./screen/create-data/create-data.component";
 import {MatStepperModule} from "@angular/material/stepper";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {DataService} from "./service/data.service";
 import {HttpClientModule} from "@angular/common/http";
-import {SearchDataComponent} from "./data/search/search-data.component";
+import {SearchDataComponent} from "./screen/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Overlay} from "@angular/cdk/overlay";
-import {NgxMasonryModule} from "ngx-masonry";
 import {IconService} from "./service/icon.service";
 import {EmbedVideo} from 'ngx-embed-video';
 import {DataDetailComponent} from "./data/detail/data-detail.component";
@@ -38,8 +37,7 @@ import {EditTagsComponent} from "./data/edit/edit-tags/edit-tags.component";
 import {EditVideosComponent} from "./data/edit/edit-videos/edit-videos.component";
 import {EditSourcesComponent} from "./data/edit/edit-sources/edit-sources.component";
 import {EditIconComponent} from "./data/edit/edit-icon/edit-icon.component";
-import {CardSourceComponent} from "./data/source/card/card-source.component";
-import {SourceMasonryListingComponent} from "./data/source/masonry-listing/source-masonry-listing.component";
+import {CardSourceComponent} from "./data/source-card/card-source.component";
 import {MatBadgeModule} from "@angular/material/badge";
 import {BadgeButtonComponent} from "./common/badge-button/badge-button.component";
 import {HoldableDirective} from './holdable.directive';
@@ -48,7 +46,7 @@ import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
 import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.component";
-import {TagsComponent} from "./data/tags/tags.component";
+import {TagsComponent} from "./screen/tags/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
@@ -63,18 +61,18 @@ import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.g
 import {LoginFormComponent} from "./auth/login-form/login-form.component";
 import {FloatingButtonsComponent} from "./floating-buttons/floating-buttons.component";
 import {AuthenticationNavigationService} from "./service/authentication-navigation.service";
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {PageNotFoundComponent} from "./screen/page-not-found/page-not-found.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MobileMenuLinksComponent} from "./header/mobile-menu-links/mobile-menu-links.component";
-import {FloatingButtonsService} from "./floating-buttons/floating-buttons.service";
+import {FloatingButtonsService} from "./service/floating-buttons.service";
 import {DesktopMenuLinksComponent} from "./header/desktop-menu-links/desktop-menu-links.component";
-import {SettingsComponent} from "./settings/settings.component";
+import {SettingsComponent} from "./screen/settings/settings.component";
 import {ThemeService} from "./theme.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {SignupFormComponent} from "./auth/signup-form/signup-form.component";
-import {UsersAdministrationComponent} from "./users-administration/users-administration.component";
+import {UsersAdministrationComponent} from "./screen/users-administration/users-administration.component";
 import {UserService} from "./service/user.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatExpansionModule} from "@angular/material/expansion";
@@ -85,6 +83,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import {EditTextComponent} from "./data/edit/edit-text/edit-text.component";
 import {UploadImageAreaComponent} from "./common/upload-image-area/upload-image-area.component";
+import {DropZoneDirective} from "./directives/drop-zone.directive";
 
 @NgModule({
   declarations: [
@@ -105,7 +104,6 @@ import {UploadImageAreaComponent} from "./common/upload-image-area/upload-image-
     EditIconComponent,
     EditTextComponent,
     CardSourceComponent,
-    SourceMasonryListingComponent,
     BadgeButtonComponent,
     HoldableDirective,
     HorizontalCardCarouselComponent,
@@ -126,7 +124,9 @@ import {UploadImageAreaComponent} from "./common/upload-image-area/upload-image-
     SignupFormComponent,
     UsersAdministrationComponent,
     LoadMoreButtonComponent,
-    UploadImageAreaComponent
+    UploadImageAreaComponent,
+
+    DropZoneDirective
   ],
   imports: [
     HttpClientModule,
@@ -141,7 +141,6 @@ import {UploadImageAreaComponent} from "./common/upload-image-area/upload-image-
     MatStepperModule,
     FlexLayoutModule,
     FormsModule,
-    NgxMasonryModule,
     EmbedVideo.forRoot(),
     MatIconModule,
     MatDividerModule,
