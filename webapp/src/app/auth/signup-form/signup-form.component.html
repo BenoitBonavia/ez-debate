@@ -43,7 +43,7 @@
   </mat-form-field>
   <div fxLayout="row">
     <span class="fill-remaining-space"></span>
-    <a color="link" [routerLink]="['/login']">Login</a>
+    <a mat-button color="link" [routerLink]="['/login']">Login</a>
     <button mat-raised-button color="primary" [disabled]="canSignUp()" (click)="signUp()" type="submit" class="float-right">Sign up</button>
   </div>
 </form>
