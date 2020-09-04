@@ -67,7 +67,6 @@ export class EditSourcesComponent implements OnInit {
   getDateByTimestamp(timestamp) {
     let date = new Date();
     if (timestamp) {
-      console.log(timestamp.substring(6, 8) + '/' + timestamp.substring(4, 6) + '/' + timestamp.substring(0, 4));
       date.setFullYear(timestamp.substring(0, 4), timestamp.substring(4, 6) - 1, timestamp.substring(6, 8))
     }
     return date;
