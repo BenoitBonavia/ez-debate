@@ -34,10 +34,10 @@ import {MatChipsModule} from "@angular/material/chips";
 import {TagService} from "./service/tag.service";
 import {TagListComponent} from "./data/tag-list/tag-list.component";
 import {EditTitleSubtitleComponent} from "./data/edit/title-subtitle/edit-title-subtitle.component";
-import {EditTagsComponent} from "./data/edit/tags/edit-tags.component";
-import {EditVideosComponent} from "./data/edit/videos/edit-videos.component";
-import {EditSourcesComponent} from "./data/edit/sources/edit-sources.component";
-import {EditIconComponent} from "./data/edit/icon/edit-icon.component";
+import {EditTagsComponent} from "./data/edit/edit-tags/edit-tags.component";
+import {EditVideosComponent} from "./data/edit/edit-videos/edit-videos.component";
+import {EditSourcesComponent} from "./data/edit/edit-sources/edit-sources.component";
+import {EditIconComponent} from "./data/edit/edit-icon/edit-icon.component";
 import {CardSourceComponent} from "./data/source/card/card-source.component";
 import {SourceMasonryListingComponent} from "./data/source/masonry-listing/source-masonry-listing.component";
 import {MatBadgeModule} from "@angular/material/badge";
@@ -82,6 +82,8 @@ import {LoadMoreButtonComponent} from "./common/load-more-button/load-more-butto
 import {PaginationService} from "./service/pagination.service";
 import {WaybackMachineService} from "./service/wayback-machine.service";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
+import {EditTextComponent} from "./data/edit/edit-text/edit-text.component";
 
 @NgModule({
   declarations: [
@@ -100,6 +102,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     EditVideosComponent,
     EditSourcesComponent,
     EditIconComponent,
+    EditTextComponent,
     CardSourceComponent,
     SourceMasonryListingComponent,
     BadgeButtonComponent,
@@ -157,6 +160,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatTableModule,
     MatExpansionModule,
     MatTooltipModule,
+    CKEditorModule
   ],
   providers: [
     DataService,

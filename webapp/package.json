@@ -26,6 +26,8 @@
     "@angular/platform-browser": "10.0.9",
     "@angular/platform-browser-dynamic": "10.0.9",
     "@angular/router": "10.0.9",
+    "@ckeditor/ckeditor5-angular": "^1.2.3",
+    "@ckeditor/ckeditor5-build-decoupled-document": "^22.0.0",
     "js-video-url-parser": "0.4.1",
     "link-preview-js": "^2.0.4",
     "masonry-layout": "^4.2.2",

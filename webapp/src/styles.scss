@@ -18,13 +18,19 @@ $custom-dark-theme: mat-dark-theme(mat-palette($mat-blue, 800, 800, 800), mat-pa
     background-color: mat-color($primary-color);
     color: mat-contrast($primary-color, 600) !important;
   }
-
-  .border-primary-color {
-  }
 }
 
 $custom-light-theme: mat-light-theme(mat-palette($mat-indigo), mat-palette($mat-indigo, 50, 50, 50), mat-palette($mat-red, 900));
 
+.ck-content {
+  border-bottom: solid 1px white !important;
+}
+
+.ck-content:focus {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
 
 @include angular-material-theme($custom-light-theme);
 @include custom-theme-mixin($custom-light-theme);
@@ -91,13 +97,11 @@ h3 {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  //background: $primary-color;
   border-radius: 15px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  //background: $primary-color;
 }
 
 .hide-scroll::-webkit-scrollbar {

@@ -46,8 +46,10 @@
   <div *ngIf="this.editMod === false" class="margin-top-40">
     <div fxLayout="row" *ngIf="this.data.videos.length > 0">
       <div #verticalVideoCarouselContainer fxFlex="100">
-        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="100" [videos]="this.data.videos" [fxHide.gt-sm]="true"></ed-horizontal-video-carousel>
-        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="80" [videos]="this.data.videos" [fxHide.lt-md]="true"></ed-horizontal-video-carousel>
+        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="100"
+                                      [videos]="this.data.videos" [fxHide.gt-sm]="true"></ed-horizontal-video-carousel>
+        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="80"
+                                      [videos]="this.data.videos" [fxHide.lt-md]="true"></ed-horizontal-video-carousel>
       </div>
     </div>
   </div>
@@ -60,7 +62,7 @@
 
 
   <div fxLayout="row" class="padding-bottom-15 padding-top-15" *ngIf="this.editMod === false">
-    <div style="min-height: 30px;">{{ this.data.text }}</div>
+    <div style="min-height: 30px;" [innerHTML]="this.data.text"></div>
   </div>
   <div *ngIf="this.editMod === true">
     <div fxLayout="row">
@@ -70,9 +72,7 @@
     </div>
     <div fxLayout="row">
       <div fxFlex="100" class="padding-top-15">
-        <mat-form-field class="example-full-width display-block">
-          <textarea matInput placeholder="Main content" rows="8" [(ngModel)]="data.text"></textarea>
-        </mat-form-field>
+        <ed-edit-text [(text)]="data.text"></ed-edit-text>
       </div>
     </div>
     <div fxLayout="row">
@@ -81,7 +81,7 @@
   </div>
 
 
-  <div fxLayout="row" *ngIf="data.sources.length > 0">
+  <div fxLayout="row" *ngIf="data.sources.length > 0 || editMod == true">
     <h2 fxFlex="100">
       Sources
     </h2>

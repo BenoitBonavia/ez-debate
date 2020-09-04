@@ -18,9 +18,7 @@ export class CreateDataComponent implements OnInit {
   }
 
   newData: DataModel = new DataModel();
-
   firstFormGroup: FormGroup;
-
   tags: TagModel[];
 
   ngOnInit() {

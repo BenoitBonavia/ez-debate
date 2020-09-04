@@ -7,7 +7,7 @@ export class DataModel {
   title: string;
   subtitle: string;
   icon: string = "fas fa-question";
-  text: string;
+  text: string = '';
   sources: SourceModel[] =[];
   tags: TagModel[] = [];
   videos: VideoModel[] = [];
