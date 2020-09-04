@@ -84,6 +84,7 @@ import {WaybackMachineService} from "./service/wayback-machine.service";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import {EditTextComponent} from "./data/edit/edit-text/edit-text.component";
+import {UploadImageAreaComponent} from "./common/upload-image-area/upload-image-area.component";
 
 @NgModule({
   declarations: [
@@ -124,7 +125,8 @@ import {EditTextComponent} from "./data/edit/edit-text/edit-text.component";
     SignupComponent,
     SignupFormComponent,
     UsersAdministrationComponent,
-    LoadMoreButtonComponent
+    LoadMoreButtonComponent,
+    UploadImageAreaComponent
   ],
   imports: [
     HttpClientModule,
