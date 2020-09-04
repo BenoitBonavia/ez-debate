@@ -3,11 +3,5 @@
     "target": "http://localhost:8080",
     "secure": false,
     "changeOrigin": true
-  },
-  "/waybackmachine": {
-    "target": "https://archive.org/",
-    "secure": false,
-    "changeOrigin": true,
-    "pathRewrite": {"^/waybackmachine":  ""}
   }
 }

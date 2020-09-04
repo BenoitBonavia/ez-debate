@@ -13,6 +13,6 @@ export class WaybackMachineService {
   }
 
   getLinks(url) {
-    return this.httpClient.get('/waybackmachine/wayback/available?url==' + url);
+    return this.httpClient.get('https://community-wayback-machine.p.rapidapi.com/available?url=' + url, {headers: {"X-RapidAPI-Key": "2b1a895973msh6de5f43ff8cd111p1d623cjsn20a1696180ec"}});
   }
 }

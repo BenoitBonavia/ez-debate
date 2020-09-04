@@ -1,3 +1,4 @@
 com.perso.ez.debate.data.DataEntity
 target
 node_modules
+src/main/resources/static
