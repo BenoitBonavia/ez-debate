@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from "@angular/core";
+import {Component, ElementRef, OnDestroy, ViewChild} from "@angular/core";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {DataService} from "../../service/data.service";
 import {DataModel} from "../../models/data.model";
@@ -8,7 +8,7 @@ import {FloatingButtonsService} from "../../service/floating-buttons.service";
   selector: 'detail',
   templateUrl: 'data-detail.component.html'
 })
-export class DataDetailComponent {
+export class DataDetailComponent implements OnDestroy {
 
   EDIT_TIME: number = 1000;
 
@@ -47,9 +47,13 @@ export class DataDetailComponent {
     })
   }
 
+  ngOnDestroy() {
+    this.floatingButtonsService.resetEditButtonToFalse();
+  }
+
   saveData() {
-    if (this.data.videos.length === 1 && this.data.videos[0].link === '') {
-      this.data.videos = [];
+    if (this.data.medias.length === 1 && this.data.medias[0].link === '') {
+      this.data.medias = [];
     }
     this.dataService.saveData(this.data).subscribe(response => {
       Object.assign(this.data, response);

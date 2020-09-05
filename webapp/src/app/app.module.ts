@@ -85,6 +85,8 @@ import {EditTextComponent} from "./data/edit/edit-text/edit-text.component";
 import {UploadImageAreaComponent} from "./common/upload-image-area/upload-image-area.component";
 import {DropZoneDirective} from "./directives/drop-zone.directive";
 import {AwsS3Service} from "./service/aws-s3.service";
+import {SourceMasonryListingComponent} from "./data/source-grid/source-masonry.listing.component";
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
   declarations: [
@@ -126,7 +128,7 @@ import {AwsS3Service} from "./service/aws-s3.service";
     UsersAdministrationComponent,
     LoadMoreButtonComponent,
     UploadImageAreaComponent,
-
+    SourceMasonryListingComponent,
     DropZoneDirective
   ],
   imports: [
@@ -162,7 +164,8 @@ import {AwsS3Service} from "./service/aws-s3.service";
     MatTableModule,
     MatExpansionModule,
     MatTooltipModule,
-    CKEditorModule
+    CKEditorModule,
+    NgxMasonryModule
   ],
   providers: [
     DataService,

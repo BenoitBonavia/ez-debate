@@ -38,30 +38,32 @@
     </div>
   </div>
 
-  <div fxLayout="row" *ngIf="data.videos.length > 0 && this.editMod === true">
+  <div fxLayout="row" *ngIf="data?.medias?.length > 0 && this.editMod === true">
     <h2 fxFlex="100">
       Videos
     </h2>
   </div>
-  <div *ngIf="this.editMod === false" class="margin-top-40">
-    <div fxLayout="row" *ngIf="this.data.videos.length > 0">
+
+  {{ this.data.medias | json }}
+  <div *ngIf="this.editMod === false" class="margin-top-40 margin-bottom-40">
+    <div fxLayout="row" *ngIf="this.data?.medias?.length > 0">
       <div #verticalVideoCarouselContainer fxFlex="100">
         <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="100"
-                                      [videos]="this.data.videos" [fxHide.gt-sm]="true"></ed-horizontal-video-carousel>
+                                      [videos]="this.data.medias" [fxHide.gt-sm]="true"></ed-horizontal-video-carousel>
         <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="80"
-                                      [videos]="this.data.videos" [fxHide.lt-md]="true"></ed-horizontal-video-carousel>
+                                      [videos]="this.data.medias" [fxHide.lt-md]="true"></ed-horizontal-video-carousel>
       </div>
     </div>
   </div>
   <div *ngIf="this.editMod === true" class="margin-top-15">
-    <ed-edit-videos [(videos)]="this.data.videos"></ed-edit-videos>
+    <ed-edit-videos [(medias)]="this.data.medias"></ed-edit-videos>
     <div fxLayout="row">
       <span class="fill-remaining-space"></span>
     </div>
   </div>
 
 
-  <div fxLayout="row" class="padding-bottom-15 padding-top-15" *ngIf="this.editMod === false">
+  <div fxLayout="row" class="padding-bottom-15" *ngIf="this.editMod === false">
     <div style="min-height: 30px;" [innerHTML]="this.data.text"></div>
   </div>
   <div *ngIf="this.editMod === true">

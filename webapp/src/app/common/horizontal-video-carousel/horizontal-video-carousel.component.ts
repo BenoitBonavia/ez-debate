@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from "@angular/core";
-import {VideoModel} from "../../models/video.model";
+import {MediaModel} from "../../models/media.model";
 
 @Component({
   selector: 'ed-horizontal-video-carousel',
@@ -11,7 +11,7 @@ export class HorizontalVideoCarouselComponent implements AfterViewInit {
   @ViewChild('verticalVideoCarouselContainer', {static: false}) verticalVideoCarouselContainer: any;
   @Input() containerWidth: number;
   @Input() width: number;
-  @Input() videos: VideoModel[];
+  @Input() videos: MediaModel[];
 
   private margin: number = null;
   private displayVideo: boolean = false;

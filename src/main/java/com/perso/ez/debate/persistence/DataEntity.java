@@ -5,7 +5,6 @@ import org.hibernate.search.annotations.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -35,7 +34,7 @@ public class DataEntity {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
-    private Set<VideoEntity> videos;
+    private Set<MediaEntity> medias;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
@@ -106,6 +105,22 @@ public class DataEntity {
         this.tags = tags;
     }
 
+    public Set<MediaEntity> getMedias() {
+        return medias;
+    }
+
+    public void setMedias(Set<MediaEntity> medias) {
+        this.medias = medias;
+    }
+
+    public Set<SourceEntity> getSources() {
+        return sources;
+    }
+
+    public void setSources(Set<SourceEntity> sources) {
+        this.sources = sources;
+    }
+
     @Override
     public String toString() {
         return "DataEntity{" +
@@ -117,21 +132,5 @@ public class DataEntity {
                 ", icon='" + icon + '\'' +
                 ", date=" + date +
                 '}';
-    }
-
-    public Set<VideoEntity> getVideos() {
-        return videos;
-    }
-
-    public void setVideos(Set<VideoEntity> videos) {
-        this.videos = videos;
-    }
-
-    public Set<SourceEntity> getSources() {
-        return sources;
-    }
-
-    public void setSources(Set<SourceEntity> sources) {
-        this.sources = sources;
     }
 }

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {AwsS3Service} from "../../service/aws-s3.service";
 import {ProgressBarMode} from '@angular/material/progress-bar';
+import {UploadResponseModel} from "../../models/upload-response.model";
 
 // export enum ProgressionForm {
 //   Circle = "CIRCLE",
@@ -14,7 +15,7 @@ import {ProgressBarMode} from '@angular/material/progress-bar';
 })
 export class UploadImageAreaComponent {
 
-  @Output() uploadedFileChange = new EventEmitter();
+  @Output() uploadedFileChange = new EventEmitter<UploadResponseModel>();
 
   @Input() displayFiles: boolean = true;
   @Input() hideWhenLoaded: boolean = true;
@@ -34,7 +35,7 @@ export class UploadImageAreaComponent {
         this.keySet.add(image.name);
         this.awsS3Service.uploadFile(image).subscribe(response => {
           this.uploadStatus.set(image.name, response);
-          if (response.link) {
+          if (response.data && response.type) {
             this.uploadedFileChange.emit(response);
           }
         })

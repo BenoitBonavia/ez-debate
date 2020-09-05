@@ -3,8 +3,8 @@ package com.perso.ez.debate.persistence;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "video")
-public class VideoEntity {
+@Table(name = "media")
+public class MediaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,6 +15,9 @@ public class VideoEntity {
 
     @Column(name = "link")
     private String link;
+
+    @Column(name = "type")
+    private String type;
 
     public Long getId() {
         return id;
@@ -38,5 +41,13 @@ public class VideoEntity {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import * as S3 from 'aws-sdk/clients/s3';
 import {AuthenticatedUserService} from "./authenticated-user.service";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
+import {UploadResponseModel} from "../models/upload-response.model";
 
 @Injectable()
 export class AwsS3Service {
@@ -10,8 +11,8 @@ export class AwsS3Service {
 
   }
 
-  uploadFile(file) {
-    let returnValue = new BehaviorSubject({progression: null, link: null});
+  uploadFile(file): Observable<UploadResponseModel> {
+    let returnValue = new BehaviorSubject(new UploadResponseModel(null, null, null));
 
     if (!this.authenticatedUserService.isUserAuthenticatedAdmin()) {
       throw new Error('You\'re not allowed to use this feature. It request admin privileges.')
@@ -35,14 +36,14 @@ export class AwsS3Service {
     }
 
     bucket.upload(params).on('httpUploadProgress', (event) => {
-      returnValue.next({progression: (event.loaded/event.total)*100, link: null})
+      returnValue.next(new UploadResponseModel((event.loaded/event.total)*100, null, null));
     }).send((err, data) => {
       if (err) {
         console.log('There was an error uploading your file : ', err);
-        returnValue.next({progression: null, link: null});
+        returnValue.next(new UploadResponseModel(null, null, null));
       }
       console.log('Successfully uploaded file.', data);
-      returnValue.next({progression: 100, link: data.url});
+      returnValue.next(new UploadResponseModel(100, data, file.type))
     });
 
     return returnValue.asObservable();

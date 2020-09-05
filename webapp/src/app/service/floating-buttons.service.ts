@@ -11,4 +11,8 @@ export class FloatingButtonsService {
   toggleEditButtonValue() {
     this.editButtonValue.next(!this.editButtonValue.value)
   }
+
+  resetEditButtonToFalse() {
+    this.editButtonValue.next(false);
+  }
 }

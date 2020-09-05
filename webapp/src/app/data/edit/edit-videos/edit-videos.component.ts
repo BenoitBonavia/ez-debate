@@ -1,5 +1,5 @@
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from "@angular/core";
-import {VideoModel} from "../../../models/video.model";
+import {MediaModel} from "../../../models/media.model";
 import {SourceModel} from "../../../models/source.model";
 
 @Component({
@@ -8,24 +8,36 @@ import {SourceModel} from "../../../models/source.model";
 })
 export class EditVideosComponent {
 
-  @Input() videos: VideoModel[];
-  @Output() videosChange = new EventEmitter<VideoModel[]>();
+  @Input() medias: MediaModel[];
+  @Output() mediasChange = new EventEmitter<MediaModel[]>();
+
   @ViewChild("videoContainer", {static: false}) card: ElementRef;
 
+  handleUploadedFile(event) {
+    if (event.type.includes("image")) {
+      if (this.medias[this.medias.length-1].link !== "" && this.medias[this.medias.length-1].title !== "") {
+        this.medias.push(new MediaModel());
+      }
+      this.medias[this.medias.length-1].link = event.data.Location;
+      this.medias[this.medias.length-1].type = event.type;
+      this.mediasChange.emit(this.medias);
+    }
+  }
+
   addVideoLink(index) {
-    if (index == this.videos.length - 1 && this.videos[index].link !== undefined && this.videos[index].link !== "") {
-      this.videosChange.emit(this.videos);
+    if (index == this.medias.length - 1 && this.medias[index].link !== undefined && this.medias[index].link !== "") {
+      this.mediasChange.emit(this.medias);
     }
   }
 
   removeVideo(index) {
-    this.videos.splice(index, 1);
-    this.videosChange.emit(this.videos);
+    this.medias.splice(index, 1);
+    this.mediasChange.emit(this.medias);
   }
 
   addNewVideo() {
-    if (this.videos.length === 0 || this.videos[this.videos.length - 1].link) {
-      this.videos.push(new VideoModel());
+    if (this.medias.length === 0 || this.medias[this.medias.length - 1].link) {
+      this.medias.push(new MediaModel());
     }
   }
 }

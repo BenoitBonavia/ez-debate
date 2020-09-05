@@ -1,5 +1,5 @@
 import {SourceModel} from "./source.model";
-import {VideoModel} from "./video.model";
+import {MediaModel} from "./media.model";
 import {TagModel} from "./tag.model";
 
 export class DataModel {
@@ -10,6 +10,6 @@ export class DataModel {
   text: string = '';
   sources: SourceModel[] =[];
   tags: TagModel[] = [];
-  videos: VideoModel[] = [];
+  medias: MediaModel[] = [];
   date: Date;
 }
