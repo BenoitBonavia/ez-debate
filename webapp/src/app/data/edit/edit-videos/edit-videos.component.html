@@ -8,8 +8,7 @@
     </mat-form-field>
   </div>
   <div fxFlex="45" class="padding-right-15 position-relative" #videoContainer *ngIf="media.type.includes('video')">
-<!--    <ed-video-embed [link]="video.link" *ngIf="video.link != ''" [position]="'static'"></ed-video-embed>-->
-    <ed-video-embeder [video]="media.link"></ed-video-embeder>
+    <ed-youtube-embeder [url]="media.link" [fullHeight]="false"></ed-youtube-embeder>
     <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
             *ngIf="media.link" (click)="removeVideo(i)">
       <mat-icon>delete</mat-icon>

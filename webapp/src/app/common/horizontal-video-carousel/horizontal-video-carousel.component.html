@@ -1,7 +1,9 @@
 <div #verticalVideoCarouselContainer class="vertical-video-carousel-container hide-scroll overflow-hidden" [ngStyle]="{'height': this.containerWidth*(this.width/100)*(9/16) + 'px'}" (scroll)="scrolling($event)" (swipeleft)="toRight()" (swiperight)="toLeft()">
   <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
-  <div class="display-inline-block vertical-video-carousel-element h100" [ngStyle]="{'width': this.width + '%'}" *ngFor="let media of videos; let index = index;">
-    <ed-video-embeder [video]="media.link" class="pointer" (click)="openFullSizeVideo(media.link)" *ngIf="media.type === 'video'"></ed-video-embeder>
+  <div class="display-inline-block h100" [ngStyle]="{'width': this.width + '%'}" *ngFor="let media of videos; let index = index;" style="vertical-align: top;">
+<!--    <ed-video-embeder [video]="media.link" class="pointer" (click)="openFullSizeVideo(media.link)" *ngIf="media.type === 'video'"></ed-video-embeder>-->
+    <ed-youtube-embeder [url]="media.link" *ngIf="media.type === 'video'" class="w100 h100"></ed-youtube-embeder>
+    <img [src]="media.link" *ngIf="media.type.includes('image')" class="w100">
   </div>
   <div [ngStyle]="{'width': getMargin() + '%'}" class="display-inline-block"></div>
 </div>

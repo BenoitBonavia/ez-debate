@@ -45,7 +45,6 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
-import {VideoThumbnailComponent} from "./common/video-thumbnail/video.thumbnail.component";
 import {TagsComponent} from "./screen/tags/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
@@ -87,6 +86,8 @@ import {DropZoneDirective} from "./directives/drop-zone.directive";
 import {AwsS3Service} from "./service/aws-s3.service";
 import {SourceMasonryListingComponent} from "./data/source-grid/source-masonry.listing.component";
 import { NgxMasonryModule } from 'ngx-masonry';
+import {YoutubeEmbederComponent} from "./common/youtube-embeder/youtube-embeder.component";
+import {YouTubePlayerModule} from "@angular/youtube-player";
 
 @NgModule({
   declarations: [
@@ -112,7 +113,6 @@ import { NgxMasonryModule } from 'ngx-masonry';
     HorizontalCardCarouselComponent,
     FullScreenVideoComponent,
     VideoEmbederComponent,
-    VideoThumbnailComponent,
     TagsComponent,
     LoginFormComponent,
     LoginRegisterComponent,
@@ -129,6 +129,8 @@ import { NgxMasonryModule } from 'ngx-masonry';
     LoadMoreButtonComponent,
     UploadImageAreaComponent,
     SourceMasonryListingComponent,
+    YoutubeEmbederComponent,
+
     DropZoneDirective
   ],
   imports: [
@@ -165,7 +167,8 @@ import { NgxMasonryModule } from 'ngx-masonry';
     MatExpansionModule,
     MatTooltipModule,
     CKEditorModule,
-    NgxMasonryModule
+    NgxMasonryModule,
+    YouTubePlayerModule,
   ],
   providers: [
     DataService,
