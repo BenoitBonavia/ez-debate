@@ -11,8 +11,6 @@ export class EditVideosComponent {
   @Input() medias: MediaModel[];
   @Output() mediasChange = new EventEmitter<MediaModel[]>();
 
-  @ViewChild("videoContainer", {static: false}) card: ElementRef;
-
   handleUploadedFile(event) {
     if (event.type.includes("image")) {
       console.log(this.medias);

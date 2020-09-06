@@ -1,0 +1,15 @@
+.vertical-video-carousel-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  transition-delay: 800ms;
+  scroll-behavior: smooth;
+}
+
+.overlay {
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+}

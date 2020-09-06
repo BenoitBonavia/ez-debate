@@ -7,15 +7,13 @@
       <input matInput placeholder="Link" [(ngModel)]="media.link" (keyup)="addVideoLink(i)">
     </mat-form-field>
   </div>
-  <div fxFlex="45" class="padding-right-15 position-relative" #videoContainer *ngIf="media.type.includes('video')">
-    <ed-youtube-embeder [url]="media.link" [fullHeight]="false"></ed-youtube-embeder>
+  <div fxFlex="45" class="padding-right-15 position-relative">
+    <ed-youtube-embeder [url]="media.link" [fullHeight]="false" *ngIf="media.type.includes('video')"></ed-youtube-embeder>
+    <img [src]="media.link" *ngIf="media.type.includes('image')" style="max-width: 100%">
     <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
             *ngIf="media.link" (click)="removeVideo(i)">
       <mat-icon>delete</mat-icon>
     </button>
-  </div>
-  <div fxFlex="45" class="padding-right-15 position-relative" *ngIf="media.type.includes('image')">
-    <img [src]="media.link" style="max-width: 100%">
   </div>
 </mat-card>
 

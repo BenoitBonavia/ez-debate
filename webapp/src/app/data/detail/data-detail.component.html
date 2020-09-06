@@ -45,12 +45,17 @@
   </div>
 
   <div *ngIf="this.editMod === false" class="margin-top-40 margin-bottom-40">
+<!--    <div fxLayout="row" *ngIf="this.data?.medias?.length > 0">-->
+<!--      <div #verticalVideoCarouselContainer fxFlex="100">-->
+<!--        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="100"-->
+<!--                                      [videos]="this.data.medias" [fxHide.gt-sm]="true"></ed-horizontal-video-carousel>-->
+<!--        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="80"-->
+<!--                                      [videos]="this.data.medias" [fxHide.lt-md]="true"></ed-horizontal-video-carousel>-->
+<!--      </div>-->
+<!--    </div>-->
     <div fxLayout="row" *ngIf="this.data?.medias?.length > 0">
-      <div #verticalVideoCarouselContainer fxFlex="100">
-        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="100"
-                                      [videos]="this.data.medias" [fxHide.gt-sm]="true"></ed-horizontal-video-carousel>
-        <ed-horizontal-video-carousel [containerWidth]="verticalVideoCarouselContainer.offsetWidth" [width]="80"
-                                      [videos]="this.data.medias" [fxHide.lt-md]="true"></ed-horizontal-video-carousel>
+      <div fxFlex="100" style="height: 500px;">
+        <ed-media-carousel [medias]="this.data.medias"></ed-media-carousel>
       </div>
     </div>
   </div>

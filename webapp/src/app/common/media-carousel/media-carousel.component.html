@@ -1,0 +1,22 @@
+<div class="vertical-video-carousel-container position-relative hide-scroll overflow-hidden h100 w100" #container>
+  <div [ngStyle]="{'width': leftMargin + 'px'}" class="display-inline-block" *ngIf="this.leftMargin"></div>
+  <div class="h100 display-inline-block position-relative" *ngFor="let media of medias; let i = index;" #element>
+    <img [src]="media.link" *ngIf="media.type.includes('image')" class="h100">
+    <div *ngIf="media.type.includes('video') && videoWidth" class="h100" [ngStyle]="{'width': videoWidth + 'px'}">
+      <ed-youtube-embeder [url]="media.link"></ed-youtube-embeder>
+    </div>
+    <div class="position-absolute overlay"
+         *ngIf="elementsArray && elementsArray[i] !== elementsArray[currentElementIndex]"></div>
+  </div>
+  <div [ngStyle]="{'width': rightMargin + 'px'}" class="display-inline-block" *ngIf="this.rightMargin"></div>
+</div>
+<button mat-mini-fab color="primary"
+        class="float-right margin-right-15 z-index-1000000"
+        (click)="next()">
+  <mat-icon>keyboard_arrow_right</mat-icon>
+</button>
+<button mat-mini-fab color="primary"
+        class="float-right margin-right-15 z-index-1000000"
+        (click)="prev()">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</button>

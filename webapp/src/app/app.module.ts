@@ -88,6 +88,7 @@ import {SourceMasonryListingComponent} from "./data/source-grid/source-masonry.l
 import { NgxMasonryModule } from 'ngx-masonry';
 import {YoutubeEmbederComponent} from "./common/youtube-embeder/youtube-embeder.component";
 import {YouTubePlayerModule} from "@angular/youtube-player";
+import {MediaCarouselComponent} from "./common/media-carousel/media-carousel.component";
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import {YouTubePlayerModule} from "@angular/youtube-player";
     UploadImageAreaComponent,
     SourceMasonryListingComponent,
     YoutubeEmbederComponent,
+    MediaCarouselComponent,
 
     DropZoneDirective
   ],
