@@ -54,7 +54,7 @@
 <!--      </div>-->
 <!--    </div>-->
     <div fxLayout="row" *ngIf="this.data?.medias?.length > 0">
-      <div fxFlex="100" style="height: 500px;">
+      <div fxFlex="100" style="height: 200px;" [ngStyle.lt-md]="{'height': '200px'}" [ngStyle.gt-sm]="{'height': '500px'}">
         <ed-media-carousel [medias]="this.data.medias"></ed-media-carousel>
       </div>
     </div>
