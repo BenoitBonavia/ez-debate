@@ -29,12 +29,12 @@ export class UploadImageAreaComponent {
   }
 
   addFilesInToUploadFiles(files: [File]) {
-    for (let image of files) {
-      if (image.type.includes("image")) {
-        this.uploadStatus.set(image.name, null);
-        this.keySet.add(image.name);
-        this.awsS3Service.uploadFile(image).subscribe(response => {
-          this.uploadStatus.set(image.name, response);
+    for (let file of files) {
+      if (file.type.includes("image")) {
+        this.uploadStatus.set(file.name, null);
+        this.keySet.add(file.name);
+        this.awsS3Service.uploadFile(file).subscribe(response => {
+          this.uploadStatus.set(file.name, response);
           if (response.data && response.type) {
             this.uploadedFileChange.emit(response);
           }
