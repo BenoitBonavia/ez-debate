@@ -15,7 +15,8 @@ export class EditVideosComponent {
 
   handleUploadedFile(event) {
     if (event.type.includes("image")) {
-      if (this.medias[this.medias.length-1].link !== "" && this.medias[this.medias.length-1].title !== "") {
+      console.log(this.medias);
+      if (this.medias.length === 0 || this.medias[this.medias.length-1].link !== "" && this.medias[this.medias.length-1].title !== "") {
         this.medias.push(new MediaModel());
       }
       this.medias[this.medias.length-1].link = event.data.Location;
