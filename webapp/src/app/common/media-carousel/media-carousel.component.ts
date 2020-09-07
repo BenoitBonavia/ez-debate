@@ -86,7 +86,7 @@ export class MediaCarouselComponent implements AfterViewChecked{
       })
     } else {
       this.copyText(url);
-      this.snackBar.open('Link copied to clipboard !');
+      this.snackBar.open('Link copied to clipboard !', null, {duration: 2000});
     }
   }
 
