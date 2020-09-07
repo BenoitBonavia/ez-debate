@@ -85,8 +85,9 @@ export class MediaCarouselComponent implements AfterViewChecked{
         console.log('Content shared');
       })
     } else {
-      this.copyText(url);
-      this.snackBar.open('Link copied to clipboard !', null, {duration: 2000});
+      navigator.clipboard.writeText(url).then(() => {
+        this.snackBar.open('Link copied to clipboard !', null, {duration: 2000});
+      });
     }
   }
 
