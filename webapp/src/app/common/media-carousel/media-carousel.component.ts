@@ -10,6 +10,7 @@ import {
   ViewChildren
 } from "@angular/core";
 import {MediaModel} from "../../models/media.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'ed-media-carousel',
@@ -36,9 +37,7 @@ export class MediaCarouselComponent implements AfterViewChecked{
   leftMargin: number;
   rightMargin: number;
 
-  navigator = navigator;
-
-  constructor(private cdRef: ChangeDetectorRef) {
+  constructor(private cdRef: ChangeDetectorRef, private snackBar: MatSnackBar) {
 
   }
 
@@ -78,11 +77,30 @@ export class MediaCarouselComponent implements AfterViewChecked{
   }
 
   share(title, url) {
-    navigator.share({
-      title: title,
-      url: url
-    }).then(() => {
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        url: url
+      }).then(() => {
+        console.log('Content shared');
+      })
+    } else {
+      this.copyText(url);
+      this.snackBar.open('Link copied to clipboard !');
+    }
+  }
 
-    })
+  copyText(text) {
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = text;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 }
