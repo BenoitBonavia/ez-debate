@@ -16,14 +16,13 @@ The configuration of the database is made throw the environment variables
 `MYSQL_ADDON_PORT` for the database port <br>
 `MYSQL_ADDON_DB_NAME` for the database name <br>
 
-#### SMTP Mail Configuration
+#### S3 Bucket Configuration
 
-The smtp configuration is made throw the environment variables
+The upload feature require the amazon s3 configuration 
 
-`MAIL_HOST` for the smtp mail host *(for default google smtp server : **smtp.gmail.com**)* <br>
-`MAIL_PORT` for the smtp port *(for the default google smtp server : **587**)*<br>
-`MAIL_USERNAME` for the smtp username *(for the default google smtp server : **your_email_address@gmail.com**)*<br>
-`MAIL_PASSWORD` for the smtp password *(for the default google smtp server : **your_email_password**)*<br>
+`S3_BUCKET_NAME` <br>
+`S3_ACCESS_KEY` <br>
+`S3_SECRET_KEY` <br>
 
 ### Usage Front
 

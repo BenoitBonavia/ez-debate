@@ -28,7 +28,7 @@ public class RESTAuthenticationFailureHandler extends SimpleUrlAuthenticationFai
         String errorMessage = exception.getMessage();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        logger.info(format("Authentication failed because of '%s' : { 'username': '%s'; 'password': '%s'}", errorMessage, username, password));
+        logger.info(format("Authentication failed because of '%s'}", errorMessage));
         if (exception instanceof DisabledException) {
             response.setStatus(HttpStatus.PRECONDITION_FAILED.value());
         } else {

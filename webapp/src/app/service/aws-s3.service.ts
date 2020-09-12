@@ -3,12 +3,23 @@ import * as S3 from 'aws-sdk/clients/s3';
 import {AuthenticatedUserService} from "./authenticated-user.service";
 import {BehaviorSubject, Observable} from "rxjs";
 import {UploadResponseModel} from "../models/upload-response.model";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class AwsS3Service {
 
-  constructor(private authenticatedUserService: AuthenticatedUserService) {
+  private bucketName: string;
+  private accessKey: string;
+  private secretKey: string;
 
+  constructor(private httpClient: HttpClient, private authenticatedUserService: AuthenticatedUserService) {
+    this.initUploadConfig();
+  }
+
+  initUploadConfig() {
+    this.httpClient.get("/api/s3/bucket", {responseType: 'text'}).subscribe(response => this.bucketName = response);
+    this.httpClient.get("/api/s3/accessKey", {responseType: 'text'}).subscribe(response => this.accessKey = response);
+    this.httpClient.get("/api/s3/secretKey", {responseType: 'text'}).subscribe(response => this.secretKey = response);
   }
 
   uploadFile(file): Observable<UploadResponseModel> {
@@ -21,14 +32,14 @@ export class AwsS3Service {
 
     const bucket = new S3(
       {
-        accessKeyId: 'AKIA2OS43LYJVVA5QX76',
-        secretAccessKey: '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',
+        accessKeyId: this.accessKey,
+        secretAccessKey: this.secretKey,
         region: 'eu-west-3'
       }
     );
 
     const params = {
-      Bucket: 'ezdebate',
+      Bucket: this.bucketName,
       Key: file.name,
       Body: file,
       ACL: 'public-read',
