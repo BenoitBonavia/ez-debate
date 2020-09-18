@@ -91,7 +91,7 @@ export class EditSourcesComponent implements OnInit {
   autoRefreshAfterSave(sourceId) {
     setTimeout(() => {
       this.refreshArchives(sourceId);
-      if (!this.sources[sourceId].archives.closest) {
+      if (!this.sources[sourceId]?.archives?.closest) {
         this.autoRefreshAfterSave(sourceId);
       }
     }, 1000);
