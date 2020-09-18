@@ -18,8 +18,8 @@
   <div fxLayout="row">
     <div class="fill-remaining-space"></div>
     <div>
-      <button mat-stroked-button color="warn" *ngIf="sources[i].archives && !sources[i].archives.closest" class="margin-right-15">
-        No backup for this page
+      <button mat-stroked-button color="warn" *ngIf="sources[i].archives && !sources[i].archives.closest" class="margin-right-15" (click)="refreshArchives(i)" >
+        No backup for this page <mat-icon>find_replace</mat-icon>
       </button>
       <button mat-raised-button color="primary" *ngIf="sources[i].archives && sources[i].archives.closest" matTooltip="Last save of this page" class="margin-right-15" (click)="goToLink(sources[i]?.archives?.closest?.url)">
 <!--        {{ getDateByTimestamp(sources[i]?.archives?.closest?.timestamp) | date:'dd LLLL yyyy':'UTC':"fr" }}-->

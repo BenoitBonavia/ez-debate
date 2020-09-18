@@ -61,6 +61,7 @@ export class EditSourcesComponent implements OnInit {
 
   saveOnInternetArchive(sourceId: number) {
     this.waybackMachineService.save(this.sources[sourceId].link);
+    this.autoRefreshAfterSave(sourceId)
     // this.waybackMachineService.getLinks(this.sources[sourceId].link);
   }
 
@@ -74,5 +75,20 @@ export class EditSourcesComponent implements OnInit {
 
   goToLink(url) {
     window.open(url);
+  }
+
+  refreshArchives(id) {
+    this.waybackMachineService.getLinks(this.sources[id].link).subscribe(response => {
+      this.sources[id].archives = response['archived_snapshots'];
+    });
+  }
+
+  autoRefreshAfterSave(sourceId) {
+    setTimeout(() => {
+      this.refreshArchives(sourceId);
+      if (!this.sources[sourceId].archives.closest) {
+        this.autoRefreshAfterSave(sourceId);
+      }
+    }, 1000);
   }
 }

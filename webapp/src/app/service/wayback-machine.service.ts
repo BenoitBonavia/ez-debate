@@ -9,7 +9,7 @@ export class WaybackMachineService {
   }
 
   save(url) {
-    window.open('https://web.archive.org/save' + url);
+    window.open('https://web.archive.org/save/' + url);
   }
 
   getLinks(url) {
