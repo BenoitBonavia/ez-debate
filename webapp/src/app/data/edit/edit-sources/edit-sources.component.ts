@@ -20,6 +20,11 @@ export class EditSourcesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sources.forEach(source => {
+      this.waybackMachineService.getLinks(source.link).subscribe(response => {
+        source.archives = response['archived_snapshots'];
+      });
+    })
   }
 
   editTabOnType(index) {
