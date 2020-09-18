@@ -24,7 +24,6 @@ import {Overlay} from "@angular/cdk/overlay";
 import {IconService} from "./service/icon.service";
 import {EmbedVideo} from 'ngx-embed-video';
 import {DataDetailComponent} from "./data/detail/data-detail.component";
-import {HorizontalVideoCarouselComponent} from "./common/horizontal-video-carousel/horizontal-video-carousel.component";
 import {SearchService} from "./service/search.service";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
@@ -34,7 +33,7 @@ import {TagService} from "./service/tag.service";
 import {TagListComponent} from "./data/tag-list/tag-list.component";
 import {EditTitleSubtitleComponent} from "./data/edit/title-subtitle/edit-title-subtitle.component";
 import {EditTagsComponent} from "./data/edit/edit-tags/edit-tags.component";
-import {EditVideosComponent} from "./data/edit/edit-videos/edit-videos.component";
+import {EditMediasComponent} from "./data/edit/edit-medias/edit-medias.component";
 import {EditSourcesComponent} from "./data/edit/edit-sources/edit-sources.component";
 import {EditIconComponent} from "./data/edit/edit-icon/edit-icon.component";
 import {CardSourceComponent} from "./data/source-card/card-source.component";
@@ -100,11 +99,10 @@ import {MediaCarouselComponent} from "./common/media-carousel/media-carousel.com
     CreateDataComponent,
     SearchDataComponent,
     CardDataComponent,
-    HorizontalVideoCarouselComponent,
     TagListComponent,
     EditTitleSubtitleComponent,
     EditTagsComponent,
-    EditVideosComponent,
+    EditMediasComponent,
     EditSourcesComponent,
     EditIconComponent,
     EditTextComponent,

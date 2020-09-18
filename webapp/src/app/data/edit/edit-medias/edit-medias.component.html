@@ -4,7 +4,7 @@
       <input matInput placeholder="Title" [(ngModel)]="media.title" (keyup)="addVideoLink(i)">
     </mat-form-field>
     <mat-form-field class="display-block">
-      <input matInput placeholder="Link" [(ngModel)]="media.link" (keyup)="addVideoLink(i)">
+      <input matInput placeholder="Link" [(ngModel)]="media.link" (keyup)="addVideoLink(i); setType(media, i);">
     </mat-form-field>
   </div>
   <div fxFlex="45" class="padding-right-15 position-relative">
