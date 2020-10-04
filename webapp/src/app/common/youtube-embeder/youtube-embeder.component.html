@@ -1,4 +1,4 @@
 <div #youtubeContainer class="w100 h100">
   <youtube-player [videoId]="this.videoId" suggestedQuality="highres" [width]="width" [height]="height" *ngIf="this.fullHeight && width && height"></youtube-player>
-  <youtube-player [videoId]="this.videoId" suggestedQuality="highres" [width]="width" *ngIf="!this.fullHeight && width"></youtube-player>
+  <youtube-player [videoId]="this.videoId" suggestedQuality="highres" [width]="width" [height]="fixedHeight" *ngIf="!this.fullHeight && width"></youtube-player>
 </div>

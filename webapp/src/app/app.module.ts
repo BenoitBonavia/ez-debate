@@ -80,7 +80,7 @@ import {WaybackMachineService} from "./service/wayback-machine.service";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
 import {EditTextComponent} from "./data/edit/edit-text/edit-text.component";
-import {UploadImageAreaComponent} from "./common/upload-image-area/upload-image-area.component";
+import {UploadMediaAreaComponent} from "./common/upload-media-area/upload-media-area.component";
 import {DropZoneDirective} from "./directives/drop-zone.directive";
 import {AwsS3Service} from "./service/aws-s3.service";
 import {SourceMasonryListingComponent} from "./data/source-grid/source-masonry.listing.component";
@@ -88,6 +88,9 @@ import { NgxMasonryModule } from 'ngx-masonry';
 import {YoutubeEmbederComponent} from "./common/youtube-embeder/youtube-embeder.component";
 import {YouTubePlayerModule} from "@angular/youtube-player";
 import {MediaCarouselComponent} from "./common/media-carousel/media-carousel.component";
+import {RutubeService} from "./service/rutube.service";
+import {RutubeEmbederComponent} from "./common/rutube-embeder/rutube-embeder.component";
+import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
 
 @NgModule({
   declarations: [
@@ -126,12 +129,13 @@ import {MediaCarouselComponent} from "./common/media-carousel/media-carousel.com
     SignupFormComponent,
     UsersAdministrationComponent,
     LoadMoreButtonComponent,
-    UploadImageAreaComponent,
+    UploadMediaAreaComponent,
     SourceMasonryListingComponent,
     YoutubeEmbederComponent,
     MediaCarouselComponent,
-
-    DropZoneDirective
+    RutubeEmbederComponent,
+    DropZoneDirective,
+    UrlSanitizePipe
   ],
   imports: [
     HttpClientModule,
@@ -177,6 +181,7 @@ import {MediaCarouselComponent} from "./common/media-carousel/media-carousel.com
     MatSnackBar,
     TagService,
     UserService,
+    RutubeService,
     FloatingButtonsService,
     AuthenticationService,
     AuthenticationNavigationService,

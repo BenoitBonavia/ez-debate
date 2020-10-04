@@ -1,3 +1,2 @@
-<div style="left: 0; width: 100%; height: 0; position: relative;" *ngIf="_videoLink != null">
-  <iframe [src]="_videoLink" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen allow="encrypted-media"></iframe>
-</div>
+<ed-rutube-embeder *ngIf="video.link.includes('rutube')" [url]="video.link" (sizeChange)="detectChanges()" [fullHeight]="false"></ed-rutube-embeder>
+<ed-youtube-embeder *ngIf="video.link.includes('youtu')" [url]="video.link" (sizeChange)="detectChanges()" [fullHeight]="false"></ed-youtube-embeder>

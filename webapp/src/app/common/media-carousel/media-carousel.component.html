@@ -4,7 +4,9 @@
     <button mat-mini-fab color="primary" class="share-button position-absolute" *ngIf="this.shareButton" (click)="share(media.title, media.link)"><mat-icon>share</mat-icon></button>
     <img [src]="media.link" *ngIf="media.type.includes('image')" class="h100">
     <div *ngIf="media.type.includes('video') && videoWidth" class="h100" [ngStyle]="{'width': videoWidth + 'px'}">
-      <ed-youtube-embeder [url]="media.link"></ed-youtube-embeder>
+<!--      <ed-youtube-embeder [url]="media.link"></ed-youtube-embeder>-->
+<!--      <ed-rutube-embeder [url]="media.link"></ed-rutube-embeder>-->
+        <ed-video-embeder [video]="media"></ed-video-embeder>
     </div>
     <div class="position-absolute overlay"
          *ngIf="elementsArray && elementsArray[i] !== elementsArray[currentElementIndex]"></div>
@@ -15,7 +17,7 @@
   <button mat-mini-fab color="primary"
           class="translateY-100 float-right margin-right-15 z-index-1000000"
           (click)="next()">
-    <mat-icon>keyboard_arrow_right</mat-icon> 
+    <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
   <button mat-mini-fab color="primary"
           class="translateY-100 float-right margin-right-15 z-index-1000000"

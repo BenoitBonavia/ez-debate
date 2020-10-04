@@ -3,8 +3,8 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
-  ElementRef,
-  Input,
+  ElementRef, EventEmitter,
+  Input, Output,
   ViewChild
 } from "@angular/core";
 
@@ -15,8 +15,14 @@ import {
 export class YoutubeEmbederComponent implements AfterViewChecked {
 
   videoId: string = '';
+
   width: number = undefined;
   height: number = undefined;
+
+  newOffsetHeight: number = undefined;
+  newOffsetWidth: number = undefined;
+
+  fixedHeight: number = undefined;
 
   @Input()
   set url(url) {
@@ -27,6 +33,7 @@ export class YoutubeEmbederComponent implements AfterViewChecked {
     }
   }
 
+  @Output() sizeChange = new EventEmitter();
   @Input() fullHeight: boolean = true;
 
   @ViewChild('youtubeContainer', {static: false}) youtubeContainer: ElementRef;
@@ -36,8 +43,14 @@ export class YoutubeEmbederComponent implements AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    this.width = this.youtubeContainer.nativeElement.offsetWidth;
-    this.height = this.youtubeContainer.nativeElement.offsetHeight;
-    this.cdRef.detectChanges();
+    this.newOffsetWidth = this.youtubeContainer.nativeElement.offsetWidth;
+    this.newOffsetHeight = this.youtubeContainer.nativeElement.offsetHeight;
+    if (!this.newOffsetHeight || !this.newOffsetWidth || this.newOffsetHeight !== this.height || this.newOffsetWidth !== this.width) {
+      this.width = this.newOffsetWidth;
+      this.height = this.newOffsetHeight;
+      this.fixedHeight = (this.newOffsetWidth / 16) * 9;
+      this.sizeChange.emit();
+      this.cdRef.detectChanges();
+    }
   }
 }

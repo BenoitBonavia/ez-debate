@@ -8,7 +8,9 @@
     </mat-form-field>
   </div>
   <div fxFlex="45" class="padding-right-15 position-relative">
-    <ed-youtube-embeder [url]="media.link" [fullHeight]="false" *ngIf="media.type.includes('video')"></ed-youtube-embeder>
+<!--    <ed-youtube-embeder [url]="media.link" [fullHeight]="false" *ngIf="media.type.includes('video')"></ed-youtube-embeder>-->
+<!--    <ed-rutube-embeder [url]="media.link" *ngIf="media.type.includes('video')" (sizeChange)="detectChanges()"></ed-rutube-embeder>-->
+    <ed-video-embeder [video]="media" (sizeChange)="detectChanges()"></ed-video-embeder>
     <img [src]="media.link" *ngIf="media.type.includes('image')" style="max-width: 100%">
     <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
             *ngIf="media.link" (click)="removeVideo(i)">

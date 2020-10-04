@@ -1,7 +1,8 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from "@angular/core";
+import {ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from "@angular/core";
 import {MediaModel} from "../../../models/media.model";
 import {SourceModel} from "../../../models/source.model";
 import {MatSnackBar, matSnackBarAnimations} from "@angular/material/snack-bar";
+import {RutubeService} from "../../../service/rutube.service";
 
 @Component({
   selector: 'ed-edit-medias',
@@ -12,18 +13,26 @@ export class EditMediasComponent {
   @Input() medias: MediaModel[];
   @Output() mediasChange = new EventEmitter<MediaModel[]>();
 
-  constructor(private matSnackBar: MatSnackBar) {
+  constructor(private matSnackBar: MatSnackBar, private rutubeService: RutubeService, private cdRef: ChangeDetectorRef) {
   }
 
   handleUploadedFile(event) {
     if (event.type.includes("image")) {
-      console.log(this.medias);
       if (this.medias.length === 0 || this.medias[this.medias.length - 1].link !== "" && this.medias[this.medias.length - 1].title !== "") {
         this.medias.push(new MediaModel());
       }
       this.medias[this.medias.length - 1].link = event.data.Location;
       this.medias[this.medias.length - 1].type = event.type;
       this.mediasChange.emit(this.medias);
+    } else if (event.type.includes("video")) {
+      this.rutubeService.uploadVideo(event.data.Location).subscribe(response => {
+        if (this.medias.length === 0 || this.medias[this.medias.length - 1].link !== "" && this.medias[this.medias.length - 1].title !== "") {
+          this.medias.push(new MediaModel());
+        }
+        this.medias[this.medias.length - 1].link = "https://rutube.ru/play/embed/" + response.videoId + "?isfulltab=true";
+        this.medias[this.medias.length - 1].type = "video";
+        this.mediasChange.emit(this.medias);
+      })
     }
   }
 
@@ -59,5 +68,9 @@ export class EditMediasComponent {
       this.matSnackBar.open("Handled links : youtube, jpeg, jpg, gif or png image", "Ok", {duration: 4000});
       this.medias = (this.medias.length === 1) ? [] : this.medias.slice(index - 1, 1);
     }
+  }
+
+  detectChanges() {
+    this.cdRef.detectChanges();
   }
 }
