@@ -6,31 +6,31 @@ import {RutubeService} from "../../../service/rutube.service";
 
 @Component({
   selector: 'ed-edit-medias',
-  templateUrl: 'edit-medias.component.html'
+  templateUrl: 'edit-medias.component.html',
+  styleUrls: ['edit-medias.component.scss']
 })
 export class EditMediasComponent {
 
-  @Input() medias: MediaModel[];
+  @Input() medias: MediaModel[] = [];
   @Output() mediasChange = new EventEmitter<MediaModel[]>();
 
   constructor(private matSnackBar: MatSnackBar, private rutubeService: RutubeService, private cdRef: ChangeDetectorRef) {
   }
 
   handleUploadedFile(event) {
+    if (this.medias.length === 0 || this.medias[this.medias.length - 1].link !== "" || this.medias[this.medias.length - 1].title !== "" || this.medias[this.medias.length - 1].uploaded === false) {
+      this.medias.push(new MediaModel());
+    }
     if (event.type.includes("image")) {
-      if (this.medias.length === 0 || this.medias[this.medias.length - 1].link !== "" && this.medias[this.medias.length - 1].title !== "") {
-        this.medias.push(new MediaModel());
-      }
       this.medias[this.medias.length - 1].link = event.data.Location;
       this.medias[this.medias.length - 1].type = event.type;
       this.mediasChange.emit(this.medias);
     } else if (event.type.includes("video")) {
-      this.rutubeService.uploadVideo(event.data.Location).subscribe(response => {
-        if (this.medias.length === 0 || this.medias[this.medias.length - 1].link !== "" && this.medias[this.medias.length - 1].title !== "") {
-          this.medias.push(new MediaModel());
-        }
+      this.medias[this.medias.length - 1].uploaded = false;
+      this.rutubeService.uploadVideo(event.data.Location, event.data.Key).subscribe(response => {
         this.medias[this.medias.length - 1].link = "https://rutube.ru/play/embed/" + response.videoId + "?isfulltab=true";
         this.medias[this.medias.length - 1].type = "video";
+        this.medias[this.medias.length - 1].uploaded = true;
         this.mediasChange.emit(this.medias);
       })
     }
@@ -54,7 +54,7 @@ export class EditMediasComponent {
   }
 
   setType(media, index) {
-    if (media.link.includes('youtu')) {
+    if (media.link.includes('youtu') || media.link.includes('rutube')) {
       media.type = "video";
     } else if (media.link.match(/\.(jpeg)$/) != null) {
       media.type = "image/jpeg";

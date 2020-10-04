@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.scheduler.Schedulers;
 
 @Service
 public class RutubeService {
@@ -30,6 +31,7 @@ public class RutubeService {
                 .body(BodyInserters.fromFormData(credentials.getAsLinkedMultiValueMap()))
                 .retrieve()
                 .bodyToMono(RutubeTokenModel.class)
+                .subscribeOn(Schedulers.elastic())
                 .block();
     }
 
@@ -41,7 +43,7 @@ public class RutubeService {
                 .body(BodyInserters.fromFormData(video.getAsLinkedMultiValueMap()))
                 .retrieve()
                 .bodyToMono(RutubeUploadedVideoModel.class)
-                .doOnError(System.out::println)
+                .subscribeOn(Schedulers.elastic())
                 .block();
     }
 }

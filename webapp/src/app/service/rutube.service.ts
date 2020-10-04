@@ -9,7 +9,7 @@ export class RutubeService {
 
   }
 
-  uploadVideo(url: string): Observable<any> {
-    return this.httpClient.post('/api/rutube/upload/video', url) as Observable<any>;
+  uploadVideo(url: string, title: string): Observable<any> {
+    return this.httpClient.post('/api/rutube/upload/video', {url, title}) as Observable<any>;
   }
 }

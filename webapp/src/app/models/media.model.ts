@@ -3,4 +3,5 @@ export class MediaModel {
   title: string = "";
   link: string = "";
   type: string = "";
+  uploaded: boolean = true;
 }

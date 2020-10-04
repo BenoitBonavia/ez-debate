@@ -18,9 +18,10 @@ public class RutubeController {
 
     @PostMapping(value = "/upload/video")
     @ResponseBody
-    RutubeUploadedVideoModel uploadVideoToRutube(@RequestBody String url) {
+    RutubeUploadedVideoModel uploadVideoToRutube(@RequestBody RutubeUploadVideoModel uploadVideo) {
+        System.out.println(uploadVideo.getTitle());
         RutubeTokenModel token = rutubeService.fetchRutubeAuthToken();
-        RutubeUploadVideoModel video = new RutubeUploadVideoModel(url, "Titre de la video", "Description de la vidéo");
+        RutubeUploadVideoModel video = new RutubeUploadVideoModel(uploadVideo.getUrl(), uploadVideo.getTitle(), uploadVideo.getTitle());
         return rutubeService.uploadVideo(video, token);
     }
 }

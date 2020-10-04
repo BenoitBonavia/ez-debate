@@ -7,9 +7,10 @@
       <input matInput placeholder="Link" [(ngModel)]="media.link" (keyup)="addVideoLink(i); setType(media, i);">
     </mat-form-field>
   </div>
-  <div fxFlex="45" class="padding-right-15 position-relative">
+  <div fxFlex="45" class="padding-right-15 position-relative text-align-center">
 <!--    <ed-youtube-embeder [url]="media.link" [fullHeight]="false" *ngIf="media.type.includes('video')"></ed-youtube-embeder>-->
 <!--    <ed-rutube-embeder [url]="media.link" *ngIf="media.type.includes('video')" (sizeChange)="detectChanges()"></ed-rutube-embeder>-->
+    <mat-spinner *ngIf="media.uploaded === false" class="margin-auto centrate-spinner" color="accent" [diameter]="50"></mat-spinner>
     <ed-video-embeder [video]="media" (sizeChange)="detectChanges()"></ed-video-embeder>
     <img [src]="media.link" *ngIf="media.type.includes('image')" style="max-width: 100%">
     <button mat-mini-fab color="warn" class="position-absolute" style="right: 0; bottom: 0;"
