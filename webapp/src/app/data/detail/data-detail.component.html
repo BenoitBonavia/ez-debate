@@ -90,6 +90,10 @@
 
   <div *ngIf="this.editMod === true" class="margin-top-15">
     <ed-edit-sources [(sources)]="this.data.sources"></ed-edit-sources>
+  </div>
+
+  <div *ngIf="this.editMod === true" class="margin-top-15">
+    <ed-edit-icon [(icon)]="data.icon"></ed-edit-icon>
     <div fxLayout="row">
       <span class="fill-remaining-space"></span>
       <button mat-raised-button color="primary" (click)="saveData()" class="margin-left-15">Save</button>
