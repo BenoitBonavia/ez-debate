@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
-import {AuthenticatedUserService} from "../../service/authenticated-user.service";
-import {AuthenticationNavigationService} from "../../service/authentication-navigation.service";
+import {AuthenticatedUserService} from "../../../service/authenticated-user.service";
+import {AuthenticationNavigationService} from "../../../service/authentication-navigation.service";
 
 @Component({
   selector: 'ed-desktop-menu-links',
