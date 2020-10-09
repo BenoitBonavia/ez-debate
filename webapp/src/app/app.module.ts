@@ -20,7 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {SearchDataComponent} from "./screen/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Overlay} from "@angular/cdk/overlay";
+import {Overlay, OverlayContainer} from "@angular/cdk/overlay";
 import {IconService} from "./service/icon.service";
 import {EmbedVideo} from 'ngx-embed-video';
 import {DataDetailComponent} from "./data/detail/data-detail.component";
@@ -91,6 +91,11 @@ import {MediaCarouselComponent} from "./common/media-carousel/media-carousel.com
 import {RutubeService} from "./service/rutube.service";
 import {RutubeEmbederComponent} from "./common/rutube-embeder/rutube-embeder.component";
 import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
+import {
+  ConfirmationDialogComponent,
+  ConfirmationDialogContentComponent
+} from "./common/confirmation-dialog/confirmation-dialog.component";
+import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -134,6 +139,7 @@ import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
     YoutubeEmbederComponent,
     MediaCarouselComponent,
     RutubeEmbederComponent,
+    ConfirmationDialogContentComponent,
     DropZoneDirective,
     UrlSanitizePipe
   ],
@@ -173,6 +179,7 @@ import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
     CKEditorModule,
     NgxMasonryModule,
     YouTubePlayerModule,
+    MatDialogModule,
   ],
   providers: [
     DataService,
@@ -191,9 +198,13 @@ import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
     PaginationService,
     WaybackMachineService,
     AwsS3Service,
-    Overlay
+    Overlay,
+    ConfirmationDialogComponent,
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(overlayContainer: OverlayContainer) {
+    overlayContainer.getContainerElement().classList.add('dark-theme');
+  }
 }

@@ -9,11 +9,13 @@
             <form class="w100">
               <div fxFlex class="margin-right-15">
                 <mat-form-field class="display-block">
-                  <input matInput placeholder="Master tag name" [(ngModel)]="newType.type" [ngModelOptions]="{standalone: true}">
+                  <input matInput placeholder="Master tag name" [(ngModel)]="newType.type"
+                         [ngModelOptions]="{standalone: true}">
                 </mat-form-field>
               </div>
               <div>
-                <button mat-raised-button color="primary" class="centered-block" (click)="saveNewTagType()" type="submit">
+                <button mat-raised-button color="primary" class="centered-block" (click)="saveNewTagType()"
+                        type="submit">
                   <mat-icon>save</mat-icon>
                 </button>
               </div>
@@ -34,12 +36,14 @@
             <form class="w100">
               <div fxFlex class="margin-right-15">
                 <mat-form-field class="display-block">
-                  <input matInput placeholder="Master tag name" [(ngModel)]="newTags[typeIndex].tag" [ngModelOptions]="{standalone: true}">
+                  <input matInput placeholder="Master tag name" [(ngModel)]="newTags[typeIndex].tag"
+                         [ngModelOptions]="{standalone: true}">
                 </mat-form-field>
               </div>
               <div>
                 <div class="float-right h100">
-                  <button mat-raised-button color="primary" class="centered-block" (click)="saveTagNewTag(typeIndex)" type="submit">
+                  <button mat-raised-button color="primary" class="centered-block" (click)="saveTagNewTag(typeIndex)"
+                          type="submit">
                     <mat-icon>save</mat-icon>
                   </button>
                 </div>
@@ -58,28 +62,41 @@
 
 
       <div class="padding-left-5 padding-right-5">
-<!--        <mat-card class="margin-top-7 margin-bottom-7">-->
-<!--          <div fxLayout="row">-->
-<!--            <div fxFlex class="padding-right-15">-->
-<!--              <mat-form-field class="display-block">-->
-<!--                <input matInput placeholder="New tag" [(ngModel)]="newTags[typeIndex].tag">-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="margin-right-15">-->
-<!--              <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon"-->
-<!--                      class="centered-block" (click)="newTags[typeIndex].favorite = !newTags[typeIndex].favorite">-->
-<!--                <mat-icon *ngIf="newTags[typeIndex].favorite">star</mat-icon>-->
-<!--                <mat-icon *ngIf="!newTags[typeIndex].favorite">star_border</mat-icon>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"-->
-<!--                      class="centered-block" (click)="saveTagNewTag(typeIndex)">-->
-<!--                <mat-icon>save</mat-icon>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </mat-card>-->
+        <mat-list>
+          <h3 matSubheader>Tags</h3>
+          <mat-list-item *ngFor="let tag of filterTagsByType(allTags, type); let i = index;" class="mat-2-line">
+            <mat-icon matListIcon *ngIf="tag.id !== this.editedTag.id">label</mat-icon>
+            <mat-icon matListIcon *ngIf="tag.id === this.editedTag.id">edit</mat-icon>
+            <p matLine *ngIf="tag.id === this.editedTag.id"></p>
+            <input matLine matInput placeholder="Tag" [(ngModel)]="editedTag.tag" *ngIf="tag.id === this.editedTag.id">
+            <p matLine *ngIf="tag.id !== this.editedTag.id"> #{{tag.id}} </p>
+            <h4 matLine *ngIf="tag.id !== this.editedTag.id">{{tag.tag}}</h4>
+            <div class="float-right">
+              <button mat-icon-button color="warn" (click)="switchFavorite(tag)" *ngIf="tag.id !== this.editedTag.id">
+                <mat-icon *ngIf="tag.favorite">favorite</mat-icon>
+                <mat-icon *ngIf="!tag.favorite">favorite_border</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" class="margin-left-15" *ngIf="tag.id !== this.editedTag.id" (click)="askForDelete(tag)">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" class="margin-left-15" (click)="setInEdit(tag)"
+                      *ngIf="tag.id !== this.editedTag.id">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" class="margin-left-15" (click)="clearEdit()"
+                      *ngIf="tag.id === this.editedTag.id">
+                <mat-icon>clear</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" class="margin-left-15" (click)="saveEditedTag(i)"
+                      *ngIf="tag.id === this.editedTag.id">
+                <mat-icon>save</mat-icon>
+              </button>
+            </div>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+
+
         <mat-card *ngFor="let tag of filterTagsByType(allTags, type); let i = index;"
                   class="margin-top-7 margin-bottom-7">
           <div fxLayout="row">

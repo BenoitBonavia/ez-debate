@@ -3,6 +3,8 @@ import {TagService} from "../../service/tag.service";
 import {TagModel} from "../../models/tag.model";
 import {TagTypeModel} from "../../models/tag-type.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ConfirmationDialogComponent} from "../../common/confirmation-dialog/confirmation-dialog.component";
+import {ConfirmationDialogConfigModel} from "../../common/confirmation-dialog/confirmation-dialog-config.model";
 
 @Component({
   selector: 'ed-tags',
@@ -10,13 +12,15 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class TagsComponent {
 
+  allTypes: TagTypeModel[];
   newType: TagTypeModel = new TagTypeModel();
 
   allTags: TagModel[] = [];
-  allTypes: TagTypeModel[];
   newTags: TagModel[] = [];
 
-  constructor(private tagService: TagService, private snackBar: MatSnackBar) {
+  editedTag: TagModel = new TagModel();
+
+  constructor(private tagService: TagService, private snackBar: MatSnackBar, private confirmationDialog: ConfirmationDialogComponent) {
   }
 
   ngOnInit() {
@@ -80,5 +84,31 @@ export class TagsComponent {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+
+  askForDelete(tag) {
+    const config = new ConfirmationDialogConfigModel();
+    config.question = "Do you really want to remove this tag ?"
+    config.swapColors = true;
+    this.confirmationDialog.openDialog(config);
+    this.confirmationDialog.onClickYes.subscribe(() => {
+      this.deleteTag(tag);
+    })
+  }
+
+  setInEdit(tag: TagModel) {
+    this.editedTag = Object.assign({}, tag);
+  }
+
+  clearEdit() {
+    this.editedTag = new TagModel();
+  }
+
+  saveEditedTag(index) {
+    this.tagService.saveTag(this.editedTag).subscribe(response => {
+      this.allTags[index] = response;
+      this.editedTag = new TagModel();
+      this.openSnackBar('Modification saved', 'Ok');
+    })
   }
 }
