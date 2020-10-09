@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from "@angular/core";
-import {AuthenticationNavigationService} from "../../service/authentication-navigation.service";
-import {AuthenticatedUserService} from "../../service/authenticated-user.service";
+import {AuthenticationNavigationService} from "../../../service/authentication-navigation.service";
+import {AuthenticatedUserService} from "../../../service/authenticated-user.service";
 
 @Component({
   selector: 'ed-mobile-menu-links',

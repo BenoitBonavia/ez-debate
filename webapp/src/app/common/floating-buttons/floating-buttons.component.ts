@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {AuthenticatedUserService} from "../service/authenticated-user.service";
+import {AuthenticatedUserService} from "../../service/authenticated-user.service";
 import {Router} from "@angular/router";
-import {FloatingButtonsService} from "../service/floating-buttons.service";
+import {FloatingButtonsService} from "../../service/floating-buttons.service";
 
 @Component({
   selector: 'ed-new-data-button',

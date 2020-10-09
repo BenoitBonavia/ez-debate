@@ -3,9 +3,6 @@ import {SourceModel} from "../../../models/source.model";
 import {HttpClient} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {WaybackMachineService} from "../../../service/wayback-machine.service";
-// import localeFr from '@angular/common/locales/fr';
-// import {registerLocaleData} from "@angular/common";
-// registerLocaleData(localeFr, 'fr');
 
 @Component({
   selector: 'ed-edit-sources',

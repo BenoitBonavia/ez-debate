@@ -1,0 +1,11 @@
+<div>
+  {{question}}
+  <div fxLayout="row" class="margin-top-15">
+    <div fxFlex="50" class="text-align-center padding-left-5 padding-right-5">
+      <button mat-flat-button [color]="this.swapColor ? 'warn' : 'primary'" class="w100" (click)="clickYes()">Yes</button>
+    </div>
+    <div fxFlex="50" class="text-align-center padding-left-5 padding-right-5">
+      <button mat-flat-button [color]="this.swapColor ? 'primary' : 'warn'" class="w100" (click)="clickNo()">No</button>
+    </div>
+  </div>
+</div>

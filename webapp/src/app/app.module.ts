@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {HeaderComponent} from "./header/header.component";
+import {HeaderComponent} from "./common/header/header.component";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
@@ -19,8 +19,8 @@ import {DataService} from "./service/data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {SearchDataComponent} from "./screen/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Overlay} from "@angular/cdk/overlay";
+import {MatSnackBar, MatSnackBarContainer} from "@angular/material/snack-bar";
+import {Overlay, OverlayContainer} from "@angular/cdk/overlay";
 import {IconService} from "./service/icon.service";
 import {EmbedVideo} from 'ngx-embed-video';
 import {DataDetailComponent} from "./data/detail/data-detail.component";
@@ -44,32 +44,32 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
-import {TagsComponent} from "./screen/tags/tags.component";
+import {TagsComponent} from "./screen/tags-screen/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
+import {LoginRegisterComponent} from "./security/login-register/login-register.component";
 import {HorizontalCardDataComponent} from "./data/horizontal-card/horizontal-card-data.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatListModule} from "@angular/material/list";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {AuthenticationService} from "./service/authentication.service";
 import {AuthenticatedUserService} from "./service/authenticated-user.service";
-import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
-import {LoginFormComponent} from "./auth/login-form/login-form.component";
-import {FloatingButtonsComponent} from "./floating-buttons/floating-buttons.component";
+import {BlockUnauthenticatedUserGuard} from "./security/block-unauthenticated-user.guard";
+import {LoginFormComponent} from "./security/login-form/login-form.component";
+import {FloatingButtonsComponent} from "./common/floating-buttons/floating-buttons.component";
 import {AuthenticationNavigationService} from "./service/authentication-navigation.service";
 import {PageNotFoundComponent} from "./screen/page-not-found/page-not-found.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import {MobileMenuLinksComponent} from "./header/mobile-menu-links/mobile-menu-links.component";
+import {MobileMenuLinksComponent} from "./common/header/mobile-menu-links/mobile-menu-links.component";
 import {FloatingButtonsService} from "./service/floating-buttons.service";
-import {DesktopMenuLinksComponent} from "./header/desktop-menu-links/desktop-menu-links.component";
-import {SettingsComponent} from "./screen/settings/settings.component";
+import {DesktopMenuLinksComponent} from "./common/header/desktop-menu-links/desktop-menu-links.component";
+import {SettingsComponent} from "./screen/settings-screen/settings.component";
 import {ThemeService} from "./theme.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {SignupComponent} from "./auth/signup/signup.component";
-import {SignupFormComponent} from "./auth/signup-form/signup-form.component";
+import {SignupComponent} from "./security/signup/signup.component";
+import {SignupFormComponent} from "./security/signup-form/signup-form.component";
 import {UsersAdministrationComponent} from "./screen/users-administration/users-administration.component";
 import {UserService} from "./service/user.service";
 import {MatTableModule} from "@angular/material/table";
@@ -84,13 +84,20 @@ import {UploadMediaAreaComponent} from "./common/upload-media-area/upload-media-
 import {DropZoneDirective} from "./directives/drop-zone.directive";
 import {AwsS3Service} from "./service/aws-s3.service";
 import {SourceMasonryListingComponent} from "./data/source-grid/source-masonry.listing.component";
-import { NgxMasonryModule } from 'ngx-masonry';
+import {NgxMasonryModule} from 'ngx-masonry';
 import {YoutubeEmbederComponent} from "./common/youtube-embeder/youtube-embeder.component";
 import {YouTubePlayerModule} from "@angular/youtube-player";
 import {MediaCarouselComponent} from "./common/media-carousel/media-carousel.component";
 import {RutubeService} from "./service/rutube.service";
 import {RutubeEmbederComponent} from "./common/rutube-embeder/rutube-embeder.component";
 import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
+import {
+  ConfirmationDialogComponent,
+  ConfirmationDialogContentComponent
+} from "./common/confirmation-dialog/confirmation-dialog.component";
+import {MatDialogModule,} from "@angular/material/dialog";
+import { EditTypeComponent } from './screen/tags-screen/edit-type/edit-type.component';
+import { EditTagComponent } from './screen/tags-screen/edit-tag/edit-tag.component';
 
 @NgModule({
   declarations: [
@@ -134,8 +141,11 @@ import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
     YoutubeEmbederComponent,
     MediaCarouselComponent,
     RutubeEmbederComponent,
+    ConfirmationDialogContentComponent,
     DropZoneDirective,
-    UrlSanitizePipe
+    UrlSanitizePipe,
+    EditTypeComponent,
+    EditTagComponent,
   ],
   imports: [
     HttpClientModule,
@@ -173,6 +183,7 @@ import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
     CKEditorModule,
     NgxMasonryModule,
     YouTubePlayerModule,
+    MatDialogModule,
   ],
   providers: [
     DataService,
@@ -191,7 +202,8 @@ import {UrlSanitizePipe} from "./common/url-sanitize.pipe";
     PaginationService,
     WaybackMachineService,
     AwsS3Service,
-    Overlay
+    Overlay,
+    ConfirmationDialogComponent,
   ],
   bootstrap: [AppComponent]
 })

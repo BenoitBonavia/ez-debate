@@ -1,0 +1,11 @@
+<div class="container">
+  <h1 class="text-align-center margin-top-40 font-rubik font-weight-bold font-color-primary">Tags</h1>
+  <mat-tab-group>
+    <mat-tab label="Master Tags">
+      <ed-edit-type [(allTypes)]="allTypes"></ed-edit-type>
+    </mat-tab>
+    <mat-tab [label]="type.type" *ngFor="let type of allTypes; let typeIndex = index">
+      <ed-edit-tag [tagType]="type"></ed-edit-tag>
+    </mat-tab>
+  </mat-tab-group>
+</div>

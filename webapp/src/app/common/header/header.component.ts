@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from "@angular/core";
-import {AuthenticationNavigationService} from "../service/authentication-navigation.service";
+import {AuthenticationNavigationService} from "../../service/authentication-navigation.service";
 
 @Component({
   selector: 'ed-header',

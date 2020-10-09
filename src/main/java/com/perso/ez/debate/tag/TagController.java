@@ -57,8 +57,22 @@ public class TagController {
         tagRepository.deleteById(dataId);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/type/{id}")
+    public @ResponseBody
+    void deleteType(@PathVariable(name = "id") Long typeId) {
+        tagTypeRepository.deleteById(typeId);
+    }
+
     @GetMapping("/all/type/{id}")
     public Iterable<TagEntity> getAllByType(@PathVariable("id") Long id) {
         return tagRepository.findAllByTypeIdOrderByFavoriteDesc(id);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/type")
+    public @ResponseBody
+    TagTypeEntity saveTagType(@RequestBody TagTypeEntity type) {
+        return tagTypeRepository.save(type);
     }
 }

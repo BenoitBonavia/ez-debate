@@ -19,6 +19,10 @@ export class TagService {
     return this.httpClient.get('/api/tag/all/type/' + type.id) as Observable<TagModel[]>;
   }
 
+  saveTagType(tagType: TagTypeModel): Observable<TagTypeModel> {
+    return this.httpClient.post('/api/tag/type', tagType) as Observable<TagTypeModel>
+  }
+
   saveTag(tag: TagModel): Observable<TagModel> {
     return this.httpClient.post('/api/tag', tag) as Observable<TagModel>;
   }
@@ -32,7 +36,11 @@ export class TagService {
   }
 
   deleteTag(tag: TagModel): Observable<TagModel> {
-    return this.httpClient.delete('/api/tag/' + tag.id) as Observable<any>;
+    return this.httpClient.delete('/api/tag/' + tag.id) as Observable<TagModel>;
+  }
+
+  deleteTagType(tagType: TagTypeModel): Observable<TagTypeModel> {
+    return this.httpClient.delete('/api/tag/type/' + tagType.id) as Observable<TagTypeModel>;
   }
 }
 
