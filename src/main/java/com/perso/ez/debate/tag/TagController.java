@@ -25,6 +25,11 @@ public class TagController {
         return tagRepository.findAll();
     }
 
+    @GetMapping("/favorite/all")
+    public Iterable<TagEntity> getAllFavorite() {
+        return tagRepository.findAllByFavoriteIsTrue();
+    }
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public @ResponseBody

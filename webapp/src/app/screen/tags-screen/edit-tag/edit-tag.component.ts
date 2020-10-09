@@ -24,6 +24,7 @@ export class EditTagComponent {
     this.tagService.getTagsByType(this.tagType).subscribe(response => {
       this.allTags = response;
     })
+    this.newTag.type = this.tagType;
   }
 
   filterTagsByType(tags: TagModel[], type: TagTypeModel) {

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TagRepository extends CrudRepository<TagEntity, Long> {
     List<TagEntity> findAllByTypeIdOrderByFavoriteDesc(Long id);
+    List<TagEntity> findAllByFavoriteIsTrue();
 }

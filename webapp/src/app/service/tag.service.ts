@@ -15,6 +15,10 @@ export class TagService {
     return this.httpClient.get('/api/tag/all') as Observable<TagModel[]>;
   }
 
+  getAllFavorites(): Observable<TagModel[]> {
+    return this.httpClient.get('/api/tag/favorite/all') as Observable<TagModel[]>
+  }
+
   getTagsByType(type: TagTypeModel): Observable<TagModel[]> {
     return this.httpClient.get('/api/tag/all/type/' + type.id) as Observable<TagModel[]>;
   }
