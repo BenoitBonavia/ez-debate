@@ -19,7 +19,7 @@ import {DataService} from "./service/data.service";
 import {HttpClientModule} from "@angular/common/http";
 import {SearchDataComponent} from "./screen/search/search-data.component";
 import {CardDataComponent} from "./data/card/card-data.component";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar, MatSnackBarContainer} from "@angular/material/snack-bar";
 import {Overlay, OverlayContainer} from "@angular/cdk/overlay";
 import {IconService} from "./service/icon.service";
 import {EmbedVideo} from 'ngx-embed-video';
@@ -44,7 +44,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {HorizontalCardCarouselComponent} from "./common/horizontal-card-carousel/horizontal-card-carousel.component";
 import {FullScreenVideoComponent} from "./common/full-screen-video/full-screen-video.component";
 import {VideoEmbederComponent} from "./common/video-embeder/video.embeder.component";
-import {TagsComponent} from "./screen/tags/tags.component";
+import {TagsComponent} from "./screen/tags-screen/tags.component";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
@@ -64,7 +64,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MobileMenuLinksComponent} from "./header/mobile-menu-links/mobile-menu-links.component";
 import {FloatingButtonsService} from "./service/floating-buttons.service";
 import {DesktopMenuLinksComponent} from "./header/desktop-menu-links/desktop-menu-links.component";
-import {SettingsComponent} from "./screen/settings/settings.component";
+import {SettingsComponent} from "./screen/settings-screen/settings.component";
 import {ThemeService} from "./theme.service";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
@@ -84,7 +84,7 @@ import {UploadMediaAreaComponent} from "./common/upload-media-area/upload-media-
 import {DropZoneDirective} from "./directives/drop-zone.directive";
 import {AwsS3Service} from "./service/aws-s3.service";
 import {SourceMasonryListingComponent} from "./data/source-grid/source-masonry.listing.component";
-import { NgxMasonryModule } from 'ngx-masonry';
+import {NgxMasonryModule} from 'ngx-masonry';
 import {YoutubeEmbederComponent} from "./common/youtube-embeder/youtube-embeder.component";
 import {YouTubePlayerModule} from "@angular/youtube-player";
 import {MediaCarouselComponent} from "./common/media-carousel/media-carousel.component";
@@ -95,7 +95,7 @@ import {
   ConfirmationDialogComponent,
   ConfirmationDialogContentComponent
 } from "./common/confirmation-dialog/confirmation-dialog.component";
-import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MatDialogModule,} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -204,7 +204,4 @@ import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(overlayContainer: OverlayContainer) {
-    overlayContainer.getContainerElement().classList.add('dark-theme');
-  }
 }

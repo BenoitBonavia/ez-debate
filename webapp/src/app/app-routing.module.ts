@@ -4,12 +4,12 @@ import {HomeComponent} from "./screen/home/home.component";
 import {CreateDataComponent} from "./screen/create-data/create-data.component";
 import {SearchDataComponent} from "./screen/search/search-data.component";
 import {DataDetailComponent} from "./data/detail/data-detail.component";
-import {TagsComponent} from "./screen/tags/tags.component";
+import {TagsComponent} from "./screen/tags-screen/tags.component";
 import {LoginRegisterComponent} from "./auth/login-register/login-register.component";
 import {BlockUnauthenticatedUserGuard} from "./auth/block-unauthenticated-user.guard";
 import {RedirectAuthenticatedUserGuard} from "./auth/redirect-authenticated-user.guard";
 import {PageNotFoundComponent} from "./screen/page-not-found/page-not-found.component";
-import {SettingsComponent} from "./screen/settings/settings.component";
+import {SettingsComponent} from "./screen/settings-screen/settings.component";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {UsersAdministrationComponent} from "./screen/users-administration/users-administration.component";
 

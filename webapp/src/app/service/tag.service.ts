@@ -36,7 +36,11 @@ export class TagService {
   }
 
   deleteTag(tag: TagModel): Observable<TagModel> {
-    return this.httpClient.delete('/api/tag/' + tag.id) as Observable<any>;
+    return this.httpClient.delete('/api/tag/' + tag.id) as Observable<TagModel>;
+  }
+
+  deleteTagType(tagType: TagTypeModel): Observable<TagTypeModel> {
+    return this.httpClient.delete('/api/tag/type/' + tagType.id) as Observable<TagTypeModel>;
   }
 }
 
