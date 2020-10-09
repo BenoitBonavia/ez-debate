@@ -98,6 +98,7 @@ import {
 import {MatDialogModule,} from "@angular/material/dialog";
 import { EditTypeComponent } from './screen/tags-screen/edit-type/edit-type.component';
 import { EditTagComponent } from './screen/tags-screen/edit-tag/edit-tag.component';
+import { TagsV2Component } from './data/edit/tags-v2/tags-v2.component';
 
 @NgModule({
   declarations: [
@@ -146,6 +147,7 @@ import { EditTagComponent } from './screen/tags-screen/edit-tag/edit-tag.compone
     UrlSanitizePipe,
     EditTypeComponent,
     EditTagComponent,
+    TagsV2Component
   ],
   imports: [
     HttpClientModule,
