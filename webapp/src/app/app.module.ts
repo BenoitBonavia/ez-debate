@@ -96,6 +96,8 @@ import {
   ConfirmationDialogContentComponent
 } from "./common/confirmation-dialog/confirmation-dialog.component";
 import {MatDialogModule,} from "@angular/material/dialog";
+import { EditTypeComponent } from './screen/tags-screen/edit-type/edit-type.component';
+import { EditTagComponent } from './screen/tags-screen/edit-tag/edit-tag.component';
 
 @NgModule({
   declarations: [
@@ -141,7 +143,9 @@ import {MatDialogModule,} from "@angular/material/dialog";
     RutubeEmbederComponent,
     ConfirmationDialogContentComponent,
     DropZoneDirective,
-    UrlSanitizePipe
+    UrlSanitizePipe,
+    EditTypeComponent,
+    EditTagComponent,
   ],
   imports: [
     HttpClientModule,
