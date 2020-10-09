@@ -10,6 +10,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class TagsComponent {
 
+  newType: TagTypeModel = new TagTypeModel();
+
   allTags: TagModel[] = [];
   allTypes: TagTypeModel[];
   newTags: TagModel[] = [];
@@ -29,6 +31,16 @@ export class TagsComponent {
     this.tagService.getAll().subscribe(response => {
       this.allTags = response;
     });
+  }
+
+  saveNewTagType() {
+    if (!this.newType.type) return;
+    return this.tagService.saveTagType(this.newType).subscribe(response => {
+      this.allTypes.push(response);
+      this.newType = new TagTypeModel();
+      this.newTags.push(new TagModel());
+      this.openSnackBar('Master tag created', 'Ok')
+    })
   }
 
   filterTagsByType(tags: TagModel[], type: TagTypeModel) {

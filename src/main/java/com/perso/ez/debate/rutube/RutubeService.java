@@ -5,6 +5,7 @@ import com.perso.ez.debate.rutube.models.RutubeTokenModel;
 import com.perso.ez.debate.rutube.models.RutubeUploadVideoModel;
 import com.perso.ez.debate.rutube.models.RutubeUploadedVideoModel;
 import org.apache.http.HttpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class RutubeService {
     private final WebClient webClient = WebClient.create(BASE_URL);
     private final RutubeCredentialsModel credentials;
 
+    @Autowired
     public RutubeService(@Value("${rutube.username}") String username, @Value("${rutube.password}") String password) {
         credentials = new RutubeCredentialsModel(username, password);
     }

@@ -61,4 +61,11 @@ public class TagController {
     public Iterable<TagEntity> getAllByType(@PathVariable("id") Long id) {
         return tagRepository.findAllByTypeIdOrderByFavoriteDesc(id);
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/type")
+    public @ResponseBody
+    TagTypeEntity saveTagType(@RequestBody TagTypeEntity type) {
+        return tagTypeRepository.save(type);
+    }
 }
