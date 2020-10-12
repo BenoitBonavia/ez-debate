@@ -45,15 +45,13 @@ export class TagsV2Component implements OnInit {
     })
   }
 
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
+  addOption(event: MatChipInputEvent): void {
     const value = event.value;
 
     if (value) {
       const result = this.allTags.filter(tag => tag.tag.toLowerCase().trim() === value.toLowerCase().trim());
       if (result.length === 1) {
-        this.tags.push(result[0]);
-        input.value = '';
+        this.addTag(result[0]);
       }
     }
   }
@@ -61,8 +59,8 @@ export class TagsV2Component implements OnInit {
   addTag(tag: TagModel) {
     if (!this.tags.includes(tag)) {
       this.tags.push(tag);
-      this.tagCtrl.setValue('');
-      this.fruitInput.nativeElement.value = '';
+      this.tagCtrl.setValue(null);
+      this.fruitInput.nativeElement.value = null;
     }
   }
 
@@ -75,18 +73,24 @@ export class TagsV2Component implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.value);
-    this.fruitInput.nativeElement.value = '';
-    this.tagCtrl.setValue(null);
+    const value = event.option.value;
+
+    if (value) {
+      this.addTag(value);
+    }
   }
 
-  private _filter(value: string): TagModel[] {
-    if (!value) return [];
-    const result = this.allTags.filter(tag => tag.tag.toLowerCase().includes(value.toLowerCase()))
+  private _filter(value): TagModel[] {
+    if (value.tag) { // TODO trouver une proprication
+      value = value.tag;
+    }
+    const lowerCaseValue = value.toLowerCase();
+    const result = this.allTags.filter(tag => tag.tag.toLowerCase().includes(lowerCaseValue))
     if (result.length === 1) {
-      // if (result[0].tag.toLowerCase().trim() === value.toLowerCase().trim()) TODO pour avoir une valeur absolue
-      this.addTag(result[0]);
-      return [];
+      if (result[0].tag.toLowerCase().trim() === value.toLowerCase().trim()) { // pour avoir une valeur absolue
+        this.addTag(result[0]);
+        return [];
+      }
     }
     return result;
   }
