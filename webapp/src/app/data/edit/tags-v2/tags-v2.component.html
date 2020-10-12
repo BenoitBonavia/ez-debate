@@ -18,16 +18,17 @@
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="addOption($event)">
     </mat-chip-list>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
       <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
         {{tag.tag}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <div fxLayout="row">
+  <div fxLayout="row" *ngFor="let type of allTypes">
     <div fxFlex="100">
+      <h5>#{{ type.type }}</h5>
       <mat-chip-list>
-        <mat-chip *ngFor="let tag of favorites" (click)="addTag(tag)" class="pointer">
+        <mat-chip *ngFor="let tag of this.filterTagsByType(favorites, type)" (click)="addTag(tag)" class="pointer">
           {{tag.tag}}
         </mat-chip>
       </mat-chip-list>

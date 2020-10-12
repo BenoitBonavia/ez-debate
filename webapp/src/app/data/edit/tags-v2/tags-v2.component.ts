@@ -7,6 +7,7 @@ import {map, startWith} from "rxjs/operators";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {TagModel} from "../../../models/tag.model";
 import {TagService} from "../../../service/tag.service";
+import {TagTypeModel} from "../../../models/tag-type.model";
 
 @Component({
   selector: 'ed-edit-tags-v2',
@@ -24,6 +25,7 @@ export class TagsV2Component implements OnInit {
 
   tags: TagModel[] = [];
 
+  allTypes: TagTypeModel[] = [];
   allTags: TagModel[] = [];
   favorites: TagModel[] = [];
 
@@ -34,50 +36,6 @@ export class TagsV2Component implements OnInit {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
-  }
-
-  ngOnInit() {
-    this.tagService.getAll().subscribe(response => {
-      this.allTags = response;
-    })
-    this.tagService.getAllFavorites().subscribe(response => {
-      this.favorites = response;
-    })
-  }
-
-  addOption(event: MatChipInputEvent): void {
-    const value = event.value;
-
-    if (value) {
-      const result = this.allTags.filter(tag => tag.tag.toLowerCase().trim() === value.toLowerCase().trim());
-      if (result.length === 1) {
-        this.addTag(result[0]);
-      }
-    }
-  }
-
-  addTag(tag: TagModel) {
-    if (!this.tags.includes(tag)) {
-      this.tags.push(tag);
-      this.tagCtrl.setValue(null);
-      this.tagInput.nativeElement.value = null;
-    }
-  }
-
-  remove(tag: TagModel): void {
-    const index = this.tags.indexOf(tag);
-
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    const value = event.option.value;
-
-    if (value) {
-      this.addTag(value);
-    }
   }
 
   private _filter(value): TagModel[] {
@@ -93,5 +51,57 @@ export class TagsV2Component implements OnInit {
       }
     }
     return result;
+  }
+
+  ngOnInit() {
+    this.tagService.getAll().subscribe(response => {
+      this.allTags = response;
+      this.favorites = this.allTags.filter(tag => tag.favorite === true);
+    })
+    // this.tagService.getAllFavorites().subscribe(response => {
+    //   this.favorites = response;
+    // })
+    this.tagService.getAllTypes().subscribe(response => {
+      this.allTypes = response;
+    })
+  }
+
+  addOption(event: MatChipInputEvent): void {
+    const value = event.value;
+
+    if (value) {
+      const result = this.allTags.filter(tag => tag.tag.toLowerCase().trim() === value.toLowerCase().trim());
+      if (result.length === 1) {
+        this.addTag(result[0]);
+      }
+    }
+  }
+
+  remove(tag: TagModel): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+  select(event: MatAutocompleteSelectedEvent): void {
+    const value = event.option.value;
+
+    if (value) {
+      this.addTag(value);
+    }
+  }
+
+  addTag(tag: TagModel) {
+    if (!this.tags.includes(tag)) {
+      this.tags.push(tag);
+      this.tagCtrl.setValue(null);
+      this.tagInput.nativeElement.value = null;
+    }
+  }
+
+  filterTagsByType(tags: TagModel[], type: TagTypeModel) {
+    return tags.filter(tag => tag.type.id == type.id);
   }
 }
