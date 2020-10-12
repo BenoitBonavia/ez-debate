@@ -27,7 +27,7 @@ export class TagsV2Component implements OnInit {
   allTags: TagModel[] = [];
   favorites: TagModel[] = [];
 
-  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(private tagService: TagService) {
@@ -60,7 +60,7 @@ export class TagsV2Component implements OnInit {
     if (!this.tags.includes(tag)) {
       this.tags.push(tag);
       this.tagCtrl.setValue(null);
-      this.fruitInput.nativeElement.value = null;
+      this.tagInput.nativeElement.value = null;
     }
   }
 
