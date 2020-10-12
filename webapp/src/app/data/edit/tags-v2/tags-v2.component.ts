@@ -11,8 +11,7 @@ import {TagTypeModel} from "../../../models/tag-type.model";
 
 @Component({
   selector: 'ed-edit-tags-v2',
-  templateUrl: './tags-v2.component.html',
-  styleUrls: ['./tags-v2.component.scss']
+  templateUrl: './tags-v2.component.html'
 })
 export class TagsV2Component implements OnInit {
 
