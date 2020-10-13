@@ -3,24 +3,24 @@
     <h4 class="margin-0">New tag</h4>
     <div fxLayout="row">
       <form class="w100">
-        <div fxFlex class="margin-right-15">
-          <mat-form-field class="display-block">
+        <div fxFlex>
+          <mat-form-field class="display-block margin-right-7">
             <input matInput placeholder="Master tag name" [(ngModel)]="newTag.tag"
                    [ngModelOptions]="{standalone: true}">
           </mat-form-field>
         </div>
         <div>
           <div class="float-right h100">
-            <button mat-raised-button color="primary" class="centered-block" (click)="saveTagNewTag()"
+            <button mat-mini-fab color="primary" class="centered-block" (click)="saveTagNewTag()"
                     type="submit">
               <mat-icon>save</mat-icon>
             </button>
           </div>
-          <div class="float-left margin-right-15 h100">
-            <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon"
+          <div class="float-left margin-right-7 h100">
+            <button mat-icon-button color="warn" aria-label="Example icon button with a menu icon"
                     class="centered-block" (click)="newTag.favorite = !newTag.favorite">
-              <mat-icon *ngIf="newTag.favorite">star</mat-icon>
-              <mat-icon *ngIf="newTag.favorite">star_border</mat-icon>
+              <mat-icon *ngIf="newTag.favorite">favorite</mat-icon>
+              <mat-icon *ngIf="!newTag.favorite">favorite_border</mat-icon>
             </button>
           </div>
         </div>
@@ -32,13 +32,19 @@
 <div class="padding-left-5 padding-right-5" *ngIf="allTags && allTags.length > 0">
   <mat-list>
     <h3 matSubheader>Tags</h3>
-
-    <mat-card class="padding-0 padding-left-15 padding-top-15 padding-right-15">
+    <mat-card style="padding-bottom: 0; padding-top: 5px;">
       <form class="w100">
-        <mat-form-field class="w100">
-          <mat-label>Filter</mat-label>
-          <input matInput placeholder="Tag name ..." [formControl]="filterInput" autocomplete="off">
-        </mat-form-field>
+        <div fxFlex>
+          <mat-form-field class="w100 no-label">
+            <mat-label>Filter</mat-label>
+            <input matInput placeholder="Tag name ..." [formControl]="filterInput" autocomplete="off">
+          </mat-form-field>
+        </div>
+        <div class="margin-left-7">
+          <button mat-mini-fab color="warn" class="centered-block" (click)="filterInput.setValue('')">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
       </form>
     </mat-card>
 
@@ -54,18 +60,18 @@
           <mat-icon *ngIf="tag.favorite">favorite</mat-icon>
           <mat-icon *ngIf="!tag.favorite">favorite_border</mat-icon>
         </button>
-        <button mat-icon-button color="warn" class="margin-left-15" *ngIf="tag.id !== this.editedTag.id" (click)="askForDelete(tag)">
+        <button mat-icon-button color="warn" class="margin-left-7" *ngIf="tag.id !== this.editedTag.id" (click)="askForDelete(tag)">
           <mat-icon>delete_outline</mat-icon>
         </button>
-        <button mat-icon-button color="primary" class="margin-left-15" (click)="setInEdit(tag)"
+        <button mat-icon-button color="primary" class="margin-left-7" (click)="setInEdit(tag)"
                 *ngIf="tag.id !== this.editedTag.id">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" class="margin-left-15" (click)="clearEdit()"
+        <button mat-icon-button color="warn" class="margin-left-7" (click)="clearEdit()"
                 *ngIf="tag.id === this.editedTag.id">
           <mat-icon>clear</mat-icon>
         </button>
-        <button mat-icon-button color="primary" class="margin-left-15" (click)="saveEditedTag(i)"
+        <button mat-icon-button color="primary" class="margin-left-7" (click)="saveEditedTag(i)"
                 *ngIf="tag.id === this.editedTag.id">
           <mat-icon>save</mat-icon>
         </button>

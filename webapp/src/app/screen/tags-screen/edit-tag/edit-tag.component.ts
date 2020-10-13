@@ -11,7 +11,7 @@ import {Observable, of} from "rxjs";
 
 @Component({
   selector: 'ed-edit-tag',
-  templateUrl: './edit-tag.component.html',
+  templateUrl: './edit-tag.component.html'
 })
 export class EditTagComponent {
 

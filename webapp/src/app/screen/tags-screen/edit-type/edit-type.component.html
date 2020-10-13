@@ -3,15 +3,14 @@
     <h4 class="margin-0">New master tag</h4>
     <div fxLayout="row">
       <form class="w100">
-        <div fxFlex class="margin-right-15">
+        <div fxFlex class="margin-right-7">
           <mat-form-field class="display-block">
             <input matInput placeholder="Master tag name" [(ngModel)]="newType.type"
                    [ngModelOptions]="{standalone: true}">
           </mat-form-field>
         </div>
         <div>
-          <button mat-raised-button color="primary" class="centered-block" (click)="saveNewTagType()"
-                  type="submit">
+          <button mat-mini-fab color="primary" class="centered-block" (click)="saveNewTagType()" type="submit">
             <mat-icon>save</mat-icon>
           </button>
         </div>
@@ -30,18 +29,18 @@
       <p matLine *ngIf="tagType.id !== this.editedTagType.id" class="font-weight-bold" style="font-size: 12px"> #MasterTag </p>
       <h3 matLine *ngIf="tagType.id !== this.editedTagType.id">{{tagType.type}}</h3>
       <div class="float-right">
-        <button mat-icon-button color="warn" class="margin-left-15" *ngIf="tagType.id !== this.editedTagType.id" (click)="askForDeleteType(tagType)">
+        <button mat-icon-button color="warn" class="margin-left-7" *ngIf="tagType.id !== this.editedTagType.id" (click)="askForDeleteType(tagType)">
           <mat-icon>delete_outline</mat-icon>
         </button>
-        <button mat-icon-button color="primary" class="margin-left-15" (click)="setInEditType(tagType)"
+        <button mat-icon-button color="primary" class="margin-left-7" (click)="setInEditType(tagType)"
                 *ngIf="tagType.id !== this.editedTagType.id">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" class="margin-left-15" (click)="clearEditType()"
+        <button mat-icon-button color="warn" class="margin-left-7" (click)="clearEditType()"
                 *ngIf="tagType.id === this.editedTagType.id">
           <mat-icon>clear</mat-icon>
         </button>
-        <button mat-icon-button color="primary" class="margin-left-15" (click)="saveEditedTagType(i)"
+        <button mat-icon-button color="primary" class="margin-left-7" (click)="saveEditedTagType(i)"
                 *ngIf="tagType.id === this.editedTagType.id">
           <mat-icon>save</mat-icon>
         </button>
