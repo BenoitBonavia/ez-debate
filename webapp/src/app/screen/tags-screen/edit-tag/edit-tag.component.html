@@ -32,7 +32,17 @@
 <div class="padding-left-5 padding-right-5" *ngIf="allTags && allTags.length > 0">
   <mat-list>
     <h3 matSubheader>Tags</h3>
-    <mat-list-item *ngFor="let tag of allTags; let i = index;" class="mat-2-line">
+
+    <mat-card class="padding-0 padding-left-15 padding-top-15 padding-right-15">
+      <form class="w100">
+        <mat-form-field class="w100">
+          <mat-label>Filter</mat-label>
+          <input matInput placeholder="Tag name ..." [formControl]="filterInput" autocomplete="off">
+        </mat-form-field>
+      </form>
+    </mat-card>
+
+    <mat-list-item *ngFor="let tag of filteredTags | async ; let i = index;" class="mat-2-line">
       <mat-icon matListIcon *ngIf="tag.id !== this.editedTag.id">label</mat-icon>
       <mat-icon matListIcon *ngIf="tag.id === this.editedTag.id">edit</mat-icon>
       <p matLine *ngIf="tag.id === this.editedTag.id"></p>
