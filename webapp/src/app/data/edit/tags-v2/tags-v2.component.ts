@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
@@ -22,7 +22,9 @@ export class TagsV2Component implements OnInit {
 
   filteredTags: Observable<TagModel[]>;
 
-  tags: TagModel[] = [];
+  @Input() tags: TagModel[] = [];
+  @Output() tagsChange = new EventEmitter();
+
 
   allTypes: TagTypeModel[] = [];
   allTags: TagModel[] = [];
@@ -97,6 +99,7 @@ export class TagsV2Component implements OnInit {
       this.tags.push(tag);
       this.tagCtrl.setValue(null);
       this.tagInput.nativeElement.value = null;
+      this.tagsChange.emit(this.tags);
     }
   }
 
