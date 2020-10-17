@@ -2,7 +2,7 @@
   <div [ngStyle]="{'width': leftMargin + 'px'}" class="display-inline-block" *ngIf="this.leftMargin"></div>
   <div class="h100 display-inline-block position-relative" *ngFor="let media of medias; let i = index;" #element>
     <button mat-mini-fab color="primary" class="share-button position-absolute" *ngIf="this.shareButton" (click)="share(media.title, media.link)"><mat-icon>share</mat-icon></button>
-    <img [src]="media.link" *ngIf="media.type.includes('image')" class="h100">
+    <img [src]="media.link" *ngIf="media.type.includes('image')" class="h100" [style]="{'max-width': this.containerWidth}">
     <div *ngIf="media.type.includes('video') && videoWidth" class="h100" [ngStyle]="{'width': videoWidth + 'px'}">
 <!--      <ed-youtube-embeder [url]="media.link"></ed-youtube-embeder>-->
 <!--      <ed-rutube-embeder [url]="media.link"></ed-rutube-embeder>-->
