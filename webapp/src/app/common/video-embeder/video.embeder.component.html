@@ -1,2 +1,3 @@
 <ed-rutube-embeder *ngIf="video.link.includes('rutube')" [url]="video.link" (sizeChange)="detectChanges()" [fullHeight]="false"></ed-rutube-embeder>
 <ed-youtube-embeder *ngIf="video.link.includes('youtu')" [url]="video.link" (sizeChange)="detectChanges()" [fullHeight]="false"></ed-youtube-embeder>
+<ed-archive-video-embeder *ngIf="video.link.includes('archive')" [url]="video.link" (sizeChange)="detectChanges()" [fullHeight]="false"></ed-archive-video-embeder>

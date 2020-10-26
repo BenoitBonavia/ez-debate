@@ -1,11 +1,10 @@
 <div class="vertical-video-carousel-container position-relative hide-scroll overflow-hidden h100 w100" #container>
   <div [ngStyle]="{'width': leftMargin + 'px'}" class="display-inline-block" *ngIf="this.leftMargin"></div>
   <div class="h100 display-inline-block position-relative" *ngFor="let media of medias; let i = index;" #element>
+    <mat-chip color="primary" selected class="title-chips position-absolute">{{ media.title }}</mat-chip>
     <button mat-mini-fab color="primary" class="share-button position-absolute" *ngIf="this.shareButton" (click)="share(media.title, media.link)"><mat-icon>share</mat-icon></button>
     <img [src]="media.link" *ngIf="media.type.includes('image')" class="h100" [ngStyle]="{'max-width': this.containerWidth*0.75 + 'px'}">
     <div *ngIf="media.type.includes('video') && videoWidth" class="h100" [ngStyle]="{'width': videoWidth + 'px'}">
-<!--      <ed-youtube-embeder [url]="media.link"></ed-youtube-embeder>-->
-<!--      <ed-rutube-embeder [url]="media.link"></ed-rutube-embeder>-->
         <ed-video-embeder [video]="media"></ed-video-embeder>
     </div>
     <div class="position-absolute overlay"

@@ -2,8 +2,10 @@ import {
   AfterViewChecked,
   ChangeDetectorRef,
   Component,
-  ElementRef, EventEmitter,
-  Input, Output,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
   ViewChild
 } from "@angular/core";
 
@@ -22,6 +24,13 @@ export class YoutubeEmbederComponent implements AfterViewChecked {
   newOffsetWidth: number = undefined;
 
   fixedHeight: number = undefined;
+  @Output() sizeChange = new EventEmitter();
+  @Input() fullHeight: boolean = true;
+  @ViewChild('youtubeContainer', {static: false}) youtubeContainer: ElementRef;
+
+  constructor(private cdRef: ChangeDetectorRef) {
+
+  }
 
   @Input()
   set url(url) {
@@ -30,15 +39,6 @@ export class YoutubeEmbederComponent implements AfterViewChecked {
     if (ampersandIndex !== -1) {
       this.videoId = this.videoId.substring(0, ampersandIndex)
     }
-  }
-
-  @Output() sizeChange = new EventEmitter();
-  @Input() fullHeight: boolean = true;
-
-  @ViewChild('youtubeContainer', {static: false}) youtubeContainer: ElementRef;
-
-  constructor(private cdRef: ChangeDetectorRef) {
-
   }
 
   ngAfterViewChecked() {
