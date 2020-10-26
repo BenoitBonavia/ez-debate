@@ -15,6 +15,8 @@ import {
 })
 export class RutubeEmbederComponent implements AfterViewChecked {
 
+  videoId: string = '';
+
   width: number = undefined;
   height: number = undefined;
 
@@ -27,7 +29,16 @@ export class RutubeEmbederComponent implements AfterViewChecked {
 
 
   @Output() sizeChange = new EventEmitter();
-  @Input() url: string;
+
+  @Input()
+  set url(url) {
+    this.videoId = url.split('video/')[1];
+    const ampersandIndex = this.videoId.indexOf('/');
+    if (ampersandIndex !== -1) {
+      this.videoId = this.videoId.substring(0, ampersandIndex)
+    }
+  }
+
   @Input() fullHeight: boolean = true;
 
   constructor(private cdRef: ChangeDetectorRef) {

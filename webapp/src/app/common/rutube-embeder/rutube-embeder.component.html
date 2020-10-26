@@ -1,6 +1,6 @@
 <div #rutubeContainer class="w100 h100" [style]="{'min-height': fixedHeight + 'px'}">
-  <iframe [src]="url | safe" *ngIf="this.fullHeight && width && height" [style.height]="height + 'px'" [style.width]="width + 'px'" style="border: 0; top: 0; left: 0; position: absolute;" allowfullscreen allow="encrypted-media"></iframe>
-  <iframe [src]="url | safe" *ngIf="!this.fullHeight && width && fixedHeight" [style.height]="fixedHeight + 'px'" [style.width]="width + 'px'" style="border: 0; top: 0; left: 0; position: absolute;" allowfullscreen allow="encrypted-media"></iframe>
+  <iframe [src]="'https://rutube.ru/play/embed/' + this.videoId + '?isfulltab=true' | safe" *ngIf="this.fullHeight && width && height" [style.height]="height + 'px'" [style.width]="width + 'px'" style="border: 0; top: 0; left: 0; position: absolute;" allowfullscreen allow="encrypted-media"></iframe>
+  <iframe [src]="'https://rutube.ru/play/embed/' + this.videoId + '?isfulltab=true' | safe" *ngIf="!this.fullHeight && width && fixedHeight" [style.height]="fixedHeight + 'px'" [style.width]="width + 'px'" style="border: 0; top: 0; left: 0; position: absolute;" allowfullscreen allow="encrypted-media"></iframe>
 </div>
 
 

@@ -32,7 +32,10 @@ export class EditMediasComponent {
         this.medias[this.medias.length - 1].type = "video";
         this.medias[this.medias.length - 1].uploaded = true;
         this.mediasChange.emit(this.medias);
-      })
+      }, error => {
+        this.matSnackBar.open("An error occured during the video upload", "Ok", {duration: 2000});
+        this.medias = this.medias.slice(this.medias.length - 1, 1);
+      });
     }
   }
 
