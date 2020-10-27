@@ -1,13 +1,4 @@
-import {
-  AfterViewChecked,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Input,
-  Output,
-  ViewChild,
-  EventEmitter
-} from "@angular/core";
+import {AfterViewChecked, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from "@angular/core";
 
 @Component({
   selector: 'ed-rutube-embeder',
@@ -20,15 +11,13 @@ export class RutubeEmbederComponent implements AfterViewChecked {
   width: number = undefined;
   height: number = undefined;
 
-  newOffsetHeight: number = undefined;
   newOffsetWidth: number = undefined;
 
-  fixedHeight: number = undefined;
-
+  @Output() sizeChange = new EventEmitter();
   @ViewChild('rutubeContainer', {static: false}) rutubeContainer: ElementRef;
 
-
-  @Output() sizeChange = new EventEmitter();
+  constructor(private cdRef: ChangeDetectorRef) {
+  }
 
   @Input()
   set url(url) {
@@ -39,21 +28,13 @@ export class RutubeEmbederComponent implements AfterViewChecked {
     }
   }
 
-  @Input() fullHeight: boolean = true;
-
-  constructor(private cdRef: ChangeDetectorRef) {
-  }
-
   ngAfterViewChecked(): void {
     this.newOffsetWidth = this.rutubeContainer.nativeElement.offsetWidth
-    this.newOffsetHeight = this.rutubeContainer.nativeElement.offsetHeight
-    if (!this.newOffsetHeight || !this.newOffsetWidth || this.newOffsetHeight !== this.height || this.newOffsetWidth !== this.width) {
+    if (!this.newOffsetWidth || this.newOffsetWidth !== this.width) {
       this.width = this.newOffsetWidth;
-      this.height = this.newOffsetHeight;
-      this.fixedHeight = (this.newOffsetWidth / 16) * 9;
+      this.height = (this.newOffsetWidth / 16) * 9;
       this.sizeChange.emit();
       this.cdRef.detectChanges();
     }
   }
-
 }

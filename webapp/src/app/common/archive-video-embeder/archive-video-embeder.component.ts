@@ -1,36 +1,22 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ElementRef,
-  ChangeDetectorRef,
-  AfterViewInit
-} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'ed-archive-video-embeder',
-  templateUrl: './archive-video-embeder.component.html',
-  styleUrls: ['./archive-video-embeder.component.scss']
+  templateUrl: './archive-video-embeder.component.html'
 })
-export class ArchiveVideoEmbederComponent implements OnInit, AfterViewInit {
+export class ArchiveVideoEmbederComponent {
 
   videoId: string = '';
 
   width: number = undefined;
   height: number = undefined;
 
-  newOffsetHeight: number = undefined;
   newOffsetWidth: number = undefined;
 
-  fixedHeight: number = undefined;
+  @Output() sizeChange = new EventEmitter();
+  @ViewChild('archiveContainer', {static: false}) archiveContainer: ElementRef;
 
-  constructor(private cdRef: ChangeDetectorRef) { }
-
-  ngOnInit(): void {
-
+  constructor(private cdRef: ChangeDetectorRef) {
   }
 
   @Input()
@@ -42,24 +28,13 @@ export class ArchiveVideoEmbederComponent implements OnInit, AfterViewInit {
     }
   }
 
-  @Output() sizeChange = new EventEmitter();
-  @Input() fullHeight: boolean = true;
-
-  @ViewChild('archiveContainer', {static: false}) archiveContainer: ElementRef;
-
   ngAfterViewChecked() {
     this.newOffsetWidth = this.archiveContainer.nativeElement.offsetWidth;
-    this.newOffsetHeight = this.archiveContainer.nativeElement.offsetHeight;
-    if (!this.newOffsetHeight || !this.newOffsetWidth || this.newOffsetHeight !== this.height || this.newOffsetWidth !== this.width) {
+    if (!this.newOffsetWidth || this.newOffsetWidth !== this.width) {
       this.width = this.newOffsetWidth;
-      this.height = this.newOffsetHeight;
-      this.fixedHeight = (this.newOffsetWidth / 16) * 9;
+      this.height = (this.newOffsetWidth / 16) * 9;
       this.sizeChange.emit();
       this.cdRef.detectChanges();
     }
-  }
-
-  ngAfterViewInit(): void {
-
   }
 }

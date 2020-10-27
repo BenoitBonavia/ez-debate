@@ -5,7 +5,6 @@
         <mat-step label="Title, subtitle & tags" class="padding-top-15">
           <ed-edit-title-subtitle [(data)]="newData"></ed-edit-title-subtitle>
           <mat-card>
-<!--            <ed-edit-tags [(tags)]="newData.tags" [createNewTags]="true"></ed-edit-tags>-->
             <ed-edit-tags-v2 [(tags)]="newData.tags"></ed-edit-tags-v2>
           </mat-card>
           <div fxLayout="row">
