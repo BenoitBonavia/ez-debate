@@ -24,6 +24,6 @@
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
 </div>
-<div class="text-align-center margin-auto">
+<div class="text-align-center margin-auto" *ngIf="elementsArray.length > 1">
   <div class="element-dot" [ngClass]="{'background-color-primary': dotIndex === this.index, 'background-color-white': dotIndex !== index}" *ngFor="let dot of elementsArray; let dotIndex = index;"></div>
 </div>
