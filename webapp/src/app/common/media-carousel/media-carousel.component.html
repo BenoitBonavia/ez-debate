@@ -1,8 +1,8 @@
 <div class="vertical-video-carousel-container position-relative hide-scroll overflow-hidden h100 w100" #container>
   <div [ngStyle]="{'width': leftMargin + 'px'}" class="display-inline-block" *ngIf="this.leftMargin"></div>
   <div class="h100 display-inline-block position-relative" *ngFor="let media of medias; let i = index;" #element>
-    <mat-chip color="primary" selected class="title-chips position-absolute">{{ media.title }}</mat-chip>
-    <button mat-mini-fab color="primary" class="share-button position-absolute" *ngIf="this.shareButton" (click)="share(media.title, media.link)"><mat-icon>share</mat-icon></button>
+    <mat-chip color="primary" selected class="title-chips position-absolute" *ngIf="media.type.includes('image')">{{ media.title }}</mat-chip>
+<!--    <button mat-mini-fab color="primary" class="share-button position-absolute" *ngIf="this.shareButton" (click)="share(media.title, media.link)"><mat-icon>share</mat-icon></button>-->
     <img [src]="media.link" *ngIf="media.type.includes('image')" class="h100" [ngStyle]="{'max-width': this.containerWidth*0.75 + 'px'}">
     <div *ngIf="media.type.includes('video') && videoWidth" class="h100" [ngStyle]="{'width': videoWidth + 'px'}">
         <ed-video-embeder [video]="media"></ed-video-embeder>
@@ -15,12 +15,15 @@
 <div class="padding-top-15">
   <button mat-mini-fab color="primary"
           class="translateY-100 float-right margin-right-15 z-index-1000000"
-          (click)="next()">
+          (click)="next()" [ngClass]="{'visibility-hidden': this.elementsArray && index >= this.elementsArray.length - 1}">
     <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
   <button mat-mini-fab color="primary"
           class="translateY-100 float-right margin-right-15 z-index-1000000"
-          (click)="prev()">
+          (click)="prev()" [ngClass]="{'visibility-hidden': index === 0}">
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
+</div>
+<div class="text-align-center margin-auto">
+  <div class="element-dot" [ngClass]="{'background-color-primary': dotIndex === this.index, 'background-color-white': dotIndex !== index}" *ngFor="let dot of elementsArray; let dotIndex = index;"></div>
 </div>

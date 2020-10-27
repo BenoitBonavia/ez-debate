@@ -1,34 +1,33 @@
 import {
   AfterViewChecked,
-  AfterViewInit,
   ChangeDetectorRef,
   Component,
   ElementRef,
-  Input, OnInit,
+  Input,
   QueryList,
   ViewChild,
   ViewChildren
-} from "@angular/core";
-import {MediaModel} from "../../models/media.model";
-import {MatSnackBar} from "@angular/material/snack-bar";
+} from '@angular/core';
+import {MediaModel} from '../../models/media.model';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'ed-media-carousel',
   templateUrl: 'media-carousel.component.html',
   styleUrls: ['media-carousel.component.scss']
 })
-export class MediaCarouselComponent implements AfterViewChecked{
+export class MediaCarouselComponent implements AfterViewChecked {
 
   @Input() medias: MediaModel[];
-  @Input() shareButton: boolean = true;
+  @Input() shareButton = true;
   @ViewChildren('element') elements: QueryList<ElementRef>;
   @ViewChild('container') container: ElementRef;
 
   elementsArray: ElementRef[];
 
-  hasToRecheck: boolean = true;
+  hasToRecheck = true;
 
-  currentElementIndex: number = 0;
+  currentElementIndex = 0;
   currentElement: ElementRef;
 
   containerWidth: number;
@@ -36,6 +35,8 @@ export class MediaCarouselComponent implements AfterViewChecked{
 
   leftMargin: number;
   rightMargin: number;
+
+  index = 0;
 
   constructor(private cdRef: ChangeDetectorRef, private snackBar: MatSnackBar) {
 
@@ -57,33 +58,34 @@ export class MediaCarouselComponent implements AfterViewChecked{
   }
 
   recheck() {
-    if (!this.hasToRecheck || !this.elementsArray) return;
+    if (!this.hasToRecheck || !this.elementsArray) { return; }
     this.hasToRecheck = !((this.leftMargin === (this.containerWidth - this.elementsArray[0].nativeElement.offsetWidth) / 2) && (this.rightMargin === (this.containerWidth - this.elementsArray[this.elementsArray.length - 1].nativeElement.offsetWidth) / 2));
   }
 
   next() {
     if (this.elementsArray.length - 2 >= this.currentElementIndex) {
-      this.container.nativeElement.scrollLeft += (this.elementsArray[this.currentElementIndex].nativeElement.offsetWidth + this.elementsArray[this.currentElementIndex + 1].nativeElement.offsetWidth)/2;
+      this.container.nativeElement.scrollLeft += (this.elementsArray[this.currentElementIndex].nativeElement.offsetWidth + this.elementsArray[this.currentElementIndex + 1].nativeElement.offsetWidth) / 2;
       this.currentElementIndex++;
+      this.index++;
     }
   }
 
   prev() {
     if (this.currentElementIndex > 0) {
-      console.log(this.elementsArray[this.currentElementIndex].nativeElement.offsetWidth/2 + this.container.nativeElement.scrollLeft + this.elementsArray[this.currentElementIndex - 1].nativeElement.offsetWidth/2);
-      this.container.nativeElement.scrollLeft -= (this.elementsArray[this.currentElementIndex].nativeElement.offsetWidth + this.elementsArray[this.currentElementIndex - 1].nativeElement.offsetWidth)/2;
+      this.container.nativeElement.scrollLeft -= (this.elementsArray[this.currentElementIndex].nativeElement.offsetWidth + this.elementsArray[this.currentElementIndex - 1].nativeElement.offsetWidth) / 2;
       this.currentElementIndex--;
+      this.index--;
     }
   }
 
   share(title, url) {
     if (navigator.share) {
       navigator.share({
-        title: title,
-        url: url
+        title,
+        url
       }).then(() => {
         console.log('Content shared');
-      })
+      });
     } else {
       navigator.clipboard.writeText(url).then(() => {
         this.snackBar.open('Link copied to clipboard !', null, {duration: 2000});
@@ -92,7 +94,7 @@ export class MediaCarouselComponent implements AfterViewChecked{
   }
 
   copyText(text) {
-    let selBox = document.createElement('textarea');
+    const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
     selBox.style.top = '0';
